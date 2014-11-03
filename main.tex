@@ -1,0 +1,63 @@
+\documentclass[graybox, envcountchap]{svmult}
+
+\usepackage{mathptmx}        % selects Times Roman as basic font
+\usepackage{helvet}          % selects Helvetica as sans-serif font
+\usepackage{courier}         % selects Courier as typewriter font
+
+\usepackage{xspace}
+\usepackage{hyperref}
+\usepackage{makeidx}         % allows index generation
+\usepackage{graphicx}        % standard LaTeX graphics tool
+                             % when including figure files
+\usepackage{multicol}        % used for the two-column index
+\usepackage[bottom]{footmisc}% places footnotes at page bottom
+
+\usepackage{proof}
+\usepackage{bussproofs}
+\EnableBpAbbreviations
+
+\usepackage[sorting=ydnt,maxnames=99]{biblatex}
+\usepackage{bibliographies}
+
+\usepackage{commands}
+\usepackage{logicalsymbols}
+
+
+
+
+\makeindex             % used for the subject index
+                       % please use the style svind.ist with
+                       % your makeindex program
+
+
+\begin{document}
+
+\frontmatter
+
+  %\include{dedic}
+  %\include{foreword}
+  %\include{preface}
+  %\include{acknow}
+
+  \tableofcontents
+  %\include{cblist}
+  %\include{acronym}
+
+
+\mainmatter
+
+  %\include{part}
+
+  \include{proofsystems}
+
+
+\backmatter
+
+  \appendix
+  %\include{appendix}
+  %\include{glossary}
+  \printindex
+
+
+\end{document}
+

@@ -1,0 +1,69 @@
+\newcommand{\NDc}{\ensuremath{\mathbf{ND}^\mathbf{c}}\xspace}
+
+\calculusName{Contextual Natural Deduction}
+\calculusAcronym{\NDc}
+\calculusYear{2013}
+\calculusAuthor{Bruno Woltzenlogel Paleo}
+\entryAuthor{Bruno Woltzenlogel Paleo}
+
+\maketitle
+
+
+\begin{entry}{ContextualND}
+
+\newcommand{\lc}{\lambda^c}
+\newcommand{\C}{\mathcal{C}}
+
+\begin{calculus}
+\centering
+$$
+\infer{\Gamma, a: A \seq a: A}{}
+$$
+
+$$
+\infer[\imp_I (\pi)]{\Gamma \seq \lambda_{\pi} a^A. b : \C_{\pi}[A \imp B]}
+{\Gamma, a: A \seq b: \C_{\pi}[B]}
+$$
+%
+
+$$
+\infer[\imp_E^{\rightharpoonup} (\pi_1;\pi_2)]{\Gamma \seq (f \ x)^{\rightharpoonup}_{(\pi_1;\pi_2)} : \C^1_{\pi_1}[\C^2_{\pi_2}[B]]}
+{\Gamma \seq f: \C^1_{\pi_1}[A \imp B]  &  \Gamma \seq x: \C^2_{\pi_2}[A] }
+$$
+%
+$$
+\infer[\imp_E^{\leftharpoonup} (\pi_1;\pi_2)]{\Gamma \seq (f \ x)^{\leftharpoonup}_{(\pi_1;\pi_2)} : \C^2_{\pi_1}[\C^1_{\pi_2}[B]]}
+{\Gamma \seq f: \C^1_{\pi_1}[A \imp B]  &  \Gamma \seq x: \C^2_{\pi_2}[A] }
+$$
+
+\small{$\pi$, $\pi_1$ and $\pi_2$ must be positive positions. 
+$a$ is allowed to occur in $b$ only if $\pi$ is strongly positive.}
+\end{calculus}
+
+\begin{clarifications}
+$\C_{\pi}[F]$ denotes a formula with $F$ occurring in the hole of 
+a \emph{context} $\C_{\pi}[]$. $\pi$ is the position of the hole. 
+It is: \emph{positive} iff it is in the left side of an even number 
+of implications; \emph{strongly positive} iff this number is zero.
+\end{clarifications}
+
+\begin{history}
+Contextual Natural Deduction~\cite{ContextualND} 
+combines the idea of deep inference~\iref{ToDo} with 
+Gentzen's natural deduction~\iref{NaturalDeduction}. 
+\end{history}
+
+\begin{technicalities}
+Soundness and completeness w.r.t. minimal logic are 
+proven~\cite{ContextualND} by providing translations 
+between \NDc and Gentzen's natural deduction. 
+Proofs in \NDc can be quadratically shorter than 
+proofs in Gentzen's natural deduction.
+\end{technicalities}
+
+
+\end{entry}
+
+
+
+

@@ -1,0 +1,159 @@
+\RequirePackage{fancybox}
+
+
+\newenvironment{entry}[1]
+{\label{entry:#1}\begin{refsection}[#1]}
+{\printbibliography\end{refsection}}
+
+\newenvironment{calculus}
+{\begin{center}\begin{Sbox}\begin{minipage}{\textwidth}}
+{\end{minipage}\end{Sbox}\fbox{\TheSbox}\end{center}}
+
+\newenvironment{clarifications}
+{\noindent\textbf{Clarifications:}}
+{\smallskip}
+
+\newenvironment{history}
+{\noindent\textbf{History:}}
+{\smallskip}
+
+\newenvironment{technicalities}
+{\noindent\textbf{Technicalities:}}
+{\smallskip}
+
+\makeatletter
+
+
+\newcommand{\includeProofSystem}[1]{\input{mainmatter/#1}}
+
+\newcommand{\iref}[1]{\{\ref{entry:#1}\}}
+\newcommand{\irefmissing}[1]{}
+
+\let\@calculusName\@empty
+\let\@calculusAcronym\@empty
+\let\@calculusAuthor\@empty
+\let\@calculusYear\@empty
+\let\@entryAuthor\@empty
+
+\newcommand{\calculusName}[1]{\gdef\@calculusName{#1}}
+\newcommand{\calculusAcronym}[1]{{\gdef\@calculusAcronym{#1}}}
+\newcommand{\calculusAuthor}[1]{\gdef\@calculusAuthor{#1}}
+\newcommand{\calculusYear}[1]{\gdef\@calculusYear{#1}}
+\newcommand{\entryAuthor}[1]{\gdef\@entryAuthor{#1}}
+
+
+\renewcommand\maketitle{\par
+  \title{\@calculusName}
+  \author{\@entryAuthor}
+
+  \stepcounter{section}%
+  \setcounter{section}{0}%
+  \setcounter{subsection}{0}%
+  \setcounter{figure}{0}
+  \setcounter{table}{0}
+  \setcounter{equation}{0}
+  \setcounter{footnote}{0}%
+  \if@numart
+     \stepcounter{chapter}%
+     \addtocounter{chapter}{-1}%
+  \else
+     \refstepcounter{chapter}%
+  \fi
+  \stepcounter{contribution}%
+  \immediate\write\@auxout{\string\immediate\string\closeout\string\minitoc}%
+  \immediate\write\@auxout{\let\MiniTOC=N}%
+% try to be hyperref-compatible
+  \csname phantomsection\endcsname
+  \begingroup
+    \parindent=\z@
+%%%%%%%%%    \renewcommand\thefootnote{\@fnsymbol\c@footnote}%
+%
+    \renewcommand\thefootnote{\@fnsymbol\c@footnote}%
+    \def\@makefnmark{$^{\@thefnmark}$}%
+    \renewcommand\@makefntext[1]{%
+    \noindent
+    \hb@xt@\bibindent{\hss\@makefnmark\enspace}##1\vrule height0pt
+    width0pt depth8pt}
+%
+    \newpage
+    \global\@topnum\z@   % Prevents figures from going at top of page.
+    \@maketitle
+
+    \@ifundefined{thispagecropped}{}{\thispagecropped}
+    \thispagestyle{bchap}\@thanks
+%
+    \def\\{\unskip\ \ignorespaces}\def\inst##1{\unskip{}}%
+    \def\thanks##1{\unskip{}}\def\fnmsep{\unskip}%
+    \instindent=\hsize
+    \advance\instindent by-\headlineindent
+    \if@numart % keine Nummer
+        \if!\the\toctitle!\addcontentsline{toc}{title}{\@title}\else
+        \addcontentsline{toc}{title}{\the\toctitle}\fi
+    \else
+        \if!\the\toctitle!\addcontentsline{toc}{titlech}{\protect\numberline{\thechapter\thechapterend}\@title}\else
+        \addcontentsline{toc}{titlech}{\protect\numberline{\thechapter\thechapterend}\the\toctitle}\fi
+    \fi
+    \if@runhead
+       \if!\the\titlerunning!\else
+         \edef\@title{\the\titlerunning}%
+       \fi
+       \global\setbox\titrun=\hbox{\small\rm\unboldmath\if@numart\else
+                                   \@seccntformat{chapter}\fi
+                                   \ignorespaces\@title}%
+       \ifdim\wd\titrun>\instindent
+          \typeout{Title too long for running head. Please supply}%
+          \typeout{a shorter form with \string\titlerunning\space prior to
+                   \string\maketitle}%
+          \global\setbox\titrun=\hbox{\small\rm
+          Title Suppressed Due to Excessive Length}%
+       \fi
+       \xdef\@title{\copy\titrun}%
+    \fi
+%
+
+  \endgroup
+% \setcounter{footnote}{0}% footnote starts at (\inst+1)
+  \@afterindentfalse\@afterheading
+  \clearheadinfo}
+%
+\def\@maketitle{\newpage
+ \markboth{}{}%
+ \def\lastand{\ifnum\value{@inst}=2\relax
+                 \unskip{} \andname\
+              \else
+                 \unskip \lastandname\
+              \fi}%
+ \def\and{\stepcounter{@auth}\relax
+          \ifnum\value{@auth}=\value{@inst}%
+             \lastand
+          \else
+             \unskip,
+          \fi}%
+  \raggedright
+ {\chapnumsize
+  \chapnumstyle
+  \pretolerance=10000
+  \let\\=\newline
+% \@hangfrom{\@svsec}%
+%%%  \@svsec
+  \raggedright
+  \hyphenpenalty \@M
+  \interlinepenalty \@M
+  \ignorespaces
+  \chapsize
+  \chapstyle
+  \@calculusName \ -- \ \@calculusAcronym (\@calculusYear) 
+  \footnote[0]{Entry by: \@entryAuthor} 
+  \par}
+ \setbox0=\vbox{\setcounter{@auth}{1}\def\and{\stepcounter{@auth}}%
+ \def\thanks##1{}\@author}%
+ \global\value{@inst}=\value{@auth}%
+ \global\value{auco}=\value{@auth}%
+ \setcounter{@auth}{1}%
+{%\lineskip .5em
+ \noindent\ignorespaces
+% \@author\vskip.35cm
+}
+}
+
+\makeatother
