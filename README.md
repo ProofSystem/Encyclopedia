@@ -2,7 +2,10 @@ Encyclopedia of Proof Systems
 =============================
 
 This is a collaborative and open Encyclopedia of Proof Systems.
-It is licensed according to a Creative Commons license: [![License](http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png)](http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US).
+
+It is licensed according to a Creative Commons license: 
+
+[![License](http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png)](http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US).
 
 
 
@@ -47,7 +50,7 @@ By submitting an entry, you agree to the above mentioned Creative Commons licens
 Criteria for Acceptance
 -----------------------
 
-1. In the spirit of an encyclopedia, every entry 
+1. In the spirit of encyclopedias, every entry 
 must be about a proof system that has already been 
 published in a conference or in a journal.
 
@@ -61,7 +64,7 @@ If you are planning to submit an entry about a proof system invented by somebody
 Compilation Instructions
 ------------------------
 
-The encyclopedia uses biblatex and biber to handle multiple bibliographies. These are modern alternatives to bibtex. Therefore, to compile, you must run:
+The encyclopedia uses *biblatex* and *biber* to handle multiple bibliographies. These are modern alternatives to bibtex. Therefore, to compile, you must run:
 
 ```
 $ pdflatex main
