@@ -51,8 +51,10 @@ Criteria for Acceptance
 -----------------------
 
 1. In the spirit of encyclopedias, every entry 
-must be about a proof system that has already been 
-published in a conference or in a journal.
+must be about a proof system that has either already been 
+published in a conference or in a journal or that is already 
+used as the theoretical basis for well-established 
+automated reasoning tools.
 
 2. Every entry should be factually and historically correct.
 
