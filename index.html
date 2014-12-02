@@ -36,15 +36,15 @@ encyclopedia of proof systems. Every entry in this encyclopedia will
 follow a given template and will preferably be exactly one page long,
 displaying the inference rules of the proof system and possibly a few
 clarifying remarks. The one-page encyclopedia entries will be
-displayed as posters during CADE.</p>
+displayed as posters during <a href="http://conference.mi.fu-berlin.de/cade-25/home">CADE</a>.</p>
 
 <h2>
-<a id="instructions-for-contribution" class="anchor" href="#instructions-for-contribution" aria-hidden="true"><span class="octicon octicon-link"></span></a>Instructions for Contribution</h2>
+<a id="submission-instructions" class="anchor" href="#submission-instructions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Submission Instructions</h2>
 
-<p>If you would like to contribute to the encyclopedia, you must produce two files:</p>
+<p>You must produce two files:</p>
 
 <ul>
-<li><p>A LaTeX source file (e.g. "SequentCalculus.tex") following the <a href="/mainmatter/Template.tex">Template</a>. </p></li>
+<li><p>A LaTeX source file (e.g. "SequentCalculus.tex") following the <a href="https://github.com/ProofSystem/Encyclopedia/blob/master//mainmatter/Template.tex">template</a>. </p></li>
 <li><p>A bibliography (e.g. "SequentCalculus.bib") file containing only the bibitems cited in your entry.</p></li>
 </ul>
 
@@ -52,22 +52,42 @@ displayed as posters during CADE.</p>
 
 <p>When compiled, your entry should have exactly one page. If your proof system has too many inference rules and does not fit in one page, please <a href="mailto:bruno@logic.at">contact the editor</a>, send him a paper containing your proof system and ask for an exception.</p>
 
-<p>If you have a Github account, you may then:</p>
+<p><strong>If you have a Github account and are familiarised with git</strong>, you should:</p>
 
 <ol>
-<li><p>fork this repository to your own account and clone it to your local machine;</p></li>
-<li><p>add your ".tex" file to the <a href="/mainmatter">/mainmatter</a> folder;</p></li>
-<li><p>add your ".bib" file to the <a href="/bibliographies">/bibliographies</a> folder;</p></li>
-<li><p>link your ".tex" file to the rest of the encyclopedia by writing an <code>\includeProofSystem</code> statement in the <a href="proofsystems.tex">proofsystems.tex</a> file;</p></li>
-<li><p>link your ".bib" file to the rest of the encyclopedia by writing an <code>\addbibresource</code> statement in the <a href="bibliographies.sty">bibliographies.sty</a> file;</p></li>
+<li><p><a href="https://github.com/ProofSystem/Encyclopedia/fork">fork the repository</a> to your own account and clone it to your local machine;</p></li>
+<li><p>add your ".tex" file to the <a href="https://github.com/ProofSystem/Encyclopedia/blob/master/mainmatter">/mainmatter</a> folder;</p></li>
+<li><p>add your ".bib" file to the <a href="https://github.com/ProofSystem/Encyclopedia/blob/master/bibliographies">/bibliographies</a> folder;</p></li>
+<li><p>link your ".tex" file to the rest of the encyclopedia by writing an <code>\includeProofSystem</code> statement in the <a href="https://github.com/ProofSystem/Encyclopedia/blob/master/proofsystems.tex">proofsystems.tex</a> file;</p></li>
+<li><p>link your ".bib" file to the rest of the encyclopedia by writing an <code>\addbibresource</code> statement in the <a href="https://github.com/ProofSystem/Encyclopedia/blob/master/bibliographies.sty">bibliographies.sty</a> file;</p></li>
 <li><p>compile (see instructions below) and check that everything is fine (e.g. no overfull hboxes);</p></li>
 <li><p>commit your changes and push them to your forked repository;</p></li>
 <li><p>Make a <em>pull request</em> of your changes. (The editor will then merge your changes back into this repository); </p></li>
 </ol>
 
-<p>If you are not skilled in <em>git</em> yet and the instructions above were not understandable, it is highly recommended that you <a href="https://help.github.com/articles/good-resources-for-learning-git-and-github/">learn git</a>. If, however, this is not an option for you, you may also <a href="mailto:bruno@logic.at">send to the editor</a> your ".tex" and ".bib" file.</p>
+<p><strong>If you do not know how to use git and Github</strong>, you may instead:</p>
 
-<p>By submitting an entry, you agree to the above mentioned Creative Commons license, and you additionally license your entry for publication as a chapter of the encyclopedia as a book in the future.</p>
+<ol>
+<li><p><a href="https://github.com/ProofSystem/Encyclopedia/zipball/master">download the encyclopedia</a></p></li>
+<li><p>add your ".tex" file to the <a href="https://github.com/ProofSystem/Encyclopedia/blob/master/mainmatter">/mainmatter</a> folder;</p></li>
+<li><p>add your ".bib" file to the <a href="https://github.com/ProofSystem/Encyclopedia/blob/master/bibliographies">/bibliographies</a> folder;</p></li>
+<li><p>link your ".tex" file to the rest of the encyclopedia by writing an <code>\includeProofSystem</code> statement in the <a href="https://github.com/ProofSystem/Encyclopedia/blob/master/proofsystems.tex">proofsystems.tex</a> file;</p></li>
+<li><p>link your ".bib" file to the rest of the encyclopedia by writing an <code>\addbibresource</code> statement in the <a href="https://github.com/ProofSystem/Encyclopedia/blob/master/bibliographies.sty">bibliographies.sty</a> file;</p></li>
+<li><p>compile (see instructions below) and check that everything is fine (e.g. no overfull hboxes);</p></li>
+<li><p><a href="mailto:bruno@logic.at">Send to the editor</a> your ".tex" and ".bib" files. </p></li>
+</ol>
+
+<h2>
+<a id="compilation-instructions" class="anchor" href="#compilation-instructions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Compilation Instructions</h2>
+
+<p>The encyclopedia uses <em>biblatex</em> and <em>biber</em> to handle multiple bibliographies. These are modern alternatives to bibtex. Therefore, to compile, you must run:</p>
+
+<pre><code>$ pdflatex main
+
+$ biber main
+
+$ pdflatex main
+</code></pre>
 
 <h2>
 <a id="criteria-for-acceptance" class="anchor" href="#criteria-for-acceptance" aria-hidden="true"><span class="octicon octicon-link"></span></a>Criteria for Acceptance</h2>
@@ -84,23 +104,9 @@ If you are planning to submit an entry about a proof system invented by somebody
 </ol>
 
 <h2>
-<a id="compilation-instructions" class="anchor" href="#compilation-instructions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Compilation Instructions</h2>
-
-<p>The encyclopedia uses <em>biblatex</em> and <em>biber</em> to handle multiple bibliographies. These are modern alternatives to bibtex. Therefore, to compile, you must run:</p>
-
-<pre><code>$ pdflatex main
-
-$ biber main
-
-$ pdflatex main
-</code></pre>
-
-<h2>
 <a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
 
-<p>This is a collaborative and open Encyclopedia of Proof Systems.</p>
-
-<p>It is licensed according to a Creative Commons license: </p>
+<p>By submitting an entry to the encyclopedia, you agree to the following Creative Commons license, and you additionally license your entry for publication as a chapter of the encyclopedia as a book in the future.</p>
 
 <p><a href="http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US"><img src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" alt="License"></a>.</p>
       </section>
