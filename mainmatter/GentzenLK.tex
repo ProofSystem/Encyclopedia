@@ -4,9 +4,9 @@
 
 \newcommand{\LK}{\ensuremath{\mathbf{LK}}\xspace}
 
-\calculusName{Gentzen Sequent }   % The name of the calculus
-\calculusAcronym{}    % The acronym if defined above, or empty otherwise. 
-\calculusYear{1934}   % The year when the calculus was invented.
+\calculusName{Sequent Calculus for Classical Logic }   % The name of the calculus
+\calculusAcronym{\LK}    % The acronym if defined above, or empty otherwise. 
+\calculusYear{1935}   % The year when the calculus was invented.
 \calculusAuthor{Gerhard Gentzen} % The name(s) of the author(s) of the calculus.
 \entryAuthor{Martin Riener}    % Your name(s). Separate multiple names with "\and"
 
@@ -21,8 +21,60 @@
 % e.g. \newcommand{\necessarily}{\Box}
 % e.g. \newcommand{\possibly}{\Diamond}
 
-\newcommand{\lkproves}{\ensuremath{\rightarrow}}
+\newcommand{\lkproves}{\ensuremath{\vdash}}
 \renewcommand{\fCenter}{\lkproves}
+
+\newcommand{\twocolumns}[2]{
+\begin{minipage}[b]{0.5\linewidth}
+\centering
+#1
+\end{minipage}
+\hspace{0.5cm}
+\begin{minipage}[b]{0.5\linewidth}
+\centering
+#2
+\end{minipage}
+}
+
+\newcommand{\threecolumns}[3]{
+\begin{minipage}[b]{0.3\linewidth}
+\centering
+#1
+\end{minipage}
+\hspace{0.5cm}
+\begin{minipage}[b]{0.3\linewidth}
+\centering
+#2
+\end{minipage}
+\hspace{0.5cm}
+\begin{minipage}[b]{0.3\linewidth}
+\centering
+#3
+\end{minipage}
+}
+
+\newcommand{\fourcolumns}[4]{
+\begin{minipage}[b]{0.22\linewidth}
+\centering
+#1
+\end{minipage}
+\hspace{0.5cm}
+\begin{minipage}[b]{0.22\linewidth}
+\centering
+#2
+\end{minipage}
+\hspace{0.5cm}
+\begin{minipage}[b]{0.22\linewidth}
+\centering
+#3
+\end{minipage}
+\begin{minipage}[b]{0.22\linewidth}
+\centering
+#4
+\end{minipage}
+}
+
+
 
 \newcommand{\LKAX}[2]{\AxiomC{\ensuremath{#1} \fCenter \ensuremath{#2}}}
 \newcommand{\LKUI}[2]{\UnaryInfC{\ensuremath{#1} \fCenter \ensuremath{#2}}}
@@ -31,54 +83,202 @@
 \newcommand{\LKRL}[1]{\RightLabel{\footnotesize \ensuremath{#1}}}
 \newcommand{\LKRLN}[1]{\RightLabel{#1}}
 
-\newcommand{\SALLL}{\RL{\forall:l}}
-\newcommand{\SALLR}{\RL{\forall:r}}
-\newcommand{\SEXL}{\RL{\exists:l}}
-\newcommand{\SEXR}{\RL{\exists:r}}
-\newcommand{\SANDL}{\RL{\land:l}}
-\newcommand{\SANDR}{\RL{\land:r}}
-\newcommand{\SORL}{\RL{\lor:l}}
-\newcommand{\SORR}{\RL{\lor:r}}
-\newcommand{\SIMPL}{\RL{\impl:l}}
-\newcommand{\SIMPR}{\RL{\impl:r}}
-\newcommand{\SNEGL}{\RL{\neg:l}}
-\newcommand{\SNEGR}{\RL{\neg:r}}
-\newcommand{\SWEAKL}{\RL{w:l}}
-\newcommand{\SWEAKR}{\RL{w:r}}
-\newcommand{\SCONTRL}{\RL{c:l}}
-\newcommand{\SCONTRR}{\RL{c:r}}
-\newcommand{\SCUT}{\RL{cut}}
-\newcommand{\SDEF}{\RL{def}}
+\newcommand{\SALLL}{\LKRL{\forall:l}}
+\newcommand{\SALLR}{\LKRL{\forall:r\,(*)}}
+\newcommand{\SEXL}{\LKRL{\exists:l\,(*)}}
+\newcommand{\SEXR}{\LKRL{\exists:r}}
+\newcommand{\SANDL}{\LKRL{\land:l}}
+\newcommand{\SANDR}{\LKRL{\land:r}}
+\newcommand{\SORL}{\LKRL{\lor:l}}
+\newcommand{\SORR}{\LKRL{\lor:r}}
+\newcommand{\SIMPL}{\LKRL{\imp:l}}
+\newcommand{\SIMPR}{\LKRL{\imp:r}}
+\newcommand{\SNEGL}{\LKRL{\neg:l}}
+\newcommand{\SNEGR}{\LKRL{\neg:r}}
+\newcommand{\SWEAKL}{\LKRL{w:l}}
+\newcommand{\SWEAKR}{\LKRL{w:r}}
+\newcommand{\SCONTRL}{\LKRL{c:l}}
+\newcommand{\SCONTRR}{\LKRL{c:r}}
+\newcommand{\SEXCHL}{\LKRL{e:l}}
+\newcommand{\SEXCHR}{\LKRL{e:r}}
+\newcommand{\SCUT}{\LKRL{cut}}
+\newcommand{\SDEF}{\LKRL{def}}
+
+\newcommand{\ALLL}     [3]{\SALLL \LKUI{#2}{#3} }
+\newcommand{\ALLR}     [3]{\SALLR \LKUI{#2}{#3} }
+\newcommand{\EXL}      [3]{\SEXL  \LKUI{#2}{#3} }
+\newcommand{\EXR}      [3]{\SEXR  \LKUI{#2}{#3} }
+\newcommand{\ANDL}     [2]{\SANDL \LKUI{#1}{#2} }
+\newcommand{\ANDR}     [2]{\SANDR \LKBI{#1}{#2} }
+\newcommand{\ORL}      [2]{\SORL  \LKBI{#1}{#2} }
+\newcommand{\ORR}      [2]{\SORR  \LKUI{#1}{#2} }
+\newcommand{\IMPL}     [2]{\SIMPL \LKBI{#1}{#2}}
+\newcommand{\IMPR}     [2]{\SIMPR \LKUI{#1}{#2}}
+\newcommand{\NEGL}     [2]{\SNEGL \LKUI{#1}{#2}}
+\newcommand{\NEGR}     [2]{\SNEGR \LKUI{#1}{#2}}
+\newcommand{\EQL}      [2]{\SEQL  \LKBI{#1}{#2}}
+\newcommand{\EQR}      [2]{\SEQR  \LKBI{#1}{#2}}
+\newcommand{\WEAKL}    [2]{\SWEAKL \LKUI{#1}{#2}}
+\newcommand{\WEAKR}    [2]{\SWEAKR \LKUI{#1}{#2}}
+\newcommand{\EXCHL}    [2]{\SEXCHL \LKUI{#1}{#2}}
+\newcommand{\EXCHR}    [2]{\SEXCHR \LKUI{#1}{#2}}
+\newcommand{\CONTRL}   [2]{\SCONTRL \LKUI{#1}{#2}}
+\newcommand{\CONTRR}   [2]{\SCONTRR \LKUI{#1}{#2}}
+\newcommand{\CUT}      [2]{\SCUT    \LKBI{#1}{#2}}
+
 
 \begin{calculus}
 
 % Add the inference rules of your proof system here.
 % The "proof.sty" and "bussproofs.sty" packages are available.
 % If you need any other package, please contact the editor (bruno@logic.at)
+\textbf{Structural rules:}\\
+\twocolumns{
+  \AxiomC{}
+  \LKRL{Axiom}
+  \LKUI{D}{D}
+  \DisplayProof
+}{
+  \LKAX{\Gamma}{\Theta,D}
+  \LKAX{\Gamma,D}{\Theta}
+  \CUT{\Gamma}{\Theta}
+  \DisplayProof
+}
+\\
+
+\fourcolumns{
+  \LKAX{\Gamma}{\Theta}
+  \WEAKL{D, \Gamma}{\Theta}
+  \DisplayProof
+}{
+  \LKAX{\Gamma}{\Theta}
+  \WEAKR{\Gamma}{\Theta, D}
+  \DisplayProof
+}{
+  \LKAX{D,D,\Gamma}{\Theta}
+  \CONTRL{D, \Gamma}{\Theta}
+  \DisplayProof
+}{
+  \LKAX{\Gamma}{\Theta,D,D}
+  \CONTRR{\Gamma}{\Theta, D}
+  \DisplayProof
+}
+\\
 
 
+\twocolumns{
+  \LKAX{\Gamma,D,E,\Delta}{\Theta}
+  \EXCHL{\Gamma, E, D, \Delta}{\Theta}
+  \DisplayProof
+}{
+  \LKAX{\Gamma}{\Theta,D,E, \Lambda}
+  \EXCHR{\Gamma}{\Theta, E, D, \Lambda}
+  \DisplayProof
+ 
+}
 
 
+\textbf{Logical rules:}\\
+\twocolumns{
+\LKAX{A,\Gamma}{\Theta}
+\ANDL{A \land B,\Gamma}{\Theta}
+\DisplayProof
+}{
+\LKAX{B,\Gamma}{\Theta}
+\ANDL{A \land B,\Gamma}{\Theta}
+\DisplayProof
+}
 
+
+\twocolumns{
+\LKAX{\Gamma}{\Theta,A}
+\ORR{\Gamma}{\Theta,A\lor B}
+\DisplayProof
+}{
+\LKAX{\Gamma}{\Theta,B}
+\ORR{\Gamma}{\Theta,A\lor B}
+\DisplayProof
+}
+
+\twocolumns{
+\LKAX{A,  \Gamma}{\Theta}
+\LKAX{B,  \Gamma}{\Theta}
+\ORL{A \lor B\Gamma}{\Theta}
+\DisplayProof
+}{
+\LKAX{\Gamma}{\Theta,A}
+\LKAX{\Gamma}{\Theta,B}
+\ANDR{\Gamma}{\Theta,A \land B}
+\DisplayProof
+}
+
+\twocolumns{
+\LKAX{\Gamma}{\Theta, A}
+\LKAX{B,  \Delta}{\Lambda}
+\IMPL{A \imp B\Gamma}{\Theta}
+\DisplayProof
+}{
+\LKAX{A, \Gamma}{\Theta, B}
+\IMPR{\Gamma}{\Theta,A \imp B}
+\DisplayProof
+}
+
+\twocolumns{
+\LKAX{A,\Gamma}{\Theta}
+\NEGR{\Gamma}{\Theta, \neg A}
+\DisplayProof
+}{
+\LKAX{\Gamma}{\Theta,A}
+\NEGL{ \neg A,\Gamma}{\Theta}
+\DisplayProof
+}
+
+\twocolumns{
+  \LKAX{F\,a, \Gamma}{\Theta}
+  \ALLL{}{\forall x\,F x, \Gamma}{\Theta}
+  \DisplayProof
+}{
+  \LKAX{\Gamma}{\Theta,F\,a}
+  \EXR{}{\Gamma}{\Theta,\exists x\,F x}
+  \DisplayProof
+}
+
+\twocolumns{
+  \LKAX{F\,a, \Gamma}{\Theta}
+  \EXL{}{\exists x\,F x, \Gamma}{\Theta}
+  \DisplayProof
+}{
+  \LKAX{\Gamma}{\Theta,F\,a}
+  \ALLR{}{\Gamma}{\Theta,\forall x\,F x}
+  \DisplayProof
+}
+
+$(*)$: Eigenvariable condition
+
+%} % end centering
 \end{calculus}
 
 % The following environments ("clarifications", "history", 
 % "technicalities") are optional. If you do use them, 
 % be very concise and objective.
 
-% \begin{clarifications}
+ \begin{clarifications}
+   In all rules, $A,B,D,E,F$ are arbitrary formulas, $\Gamma,\Theta,\Delta,\Lambda$ are lists of arbitrary formulas, $a$ is a free variable and $x$ a bound variable. Within the quantifier rules, $F a$ is obtained from $F x$ by applying the substitution $\{ a/x \} $. Additionally, the rules $\forall:r$ and $\exists:l$ must fulfill the so called Eigenvariable condition $(*)$. That means that the quantified variable $x$ may not occur in the conclusion $\Gamma$, $\Delta$ and $\forall x\, F x$ respectively $\exists x\, F x$.
+
+
 % ToDo: write here short remarks that may help the reader to understand 
 % the inference rules of the proof system.
-% \end{clarifications}
+ \end{clarifications}
 
-% \begin{history}
+ \begin{history}
+This is G. Gentzen's formulation of sequent calculus as defined in his PhD thesis which was later on published in the journal ``Mathematische Zeitschrift''\cite{Gentzen1934}. The term language in this formulation only has free and bound variables. A version of \LK with terms is presented in G. Takeuti's book on proof theory\cite{Takeuti1975}. Restricting the right hand side to only one formula, we obtain the intuitionistic calculus $LJ$\irefmissing{GentzenLJ}. The variant $LK'$ has only invertible non-quantifier rules\irefmissing{LKprime} allowing better proof search. J{-}Y. Girard 's linear logic\cite{Girard1987} allows to formula purely additive or multiplicative rules, wheras Gentzen defined a mixed calculus.
 % ToDo: write here short historical remarks about this proof system,
 % especially if they relate to other proof systems. 
 % Use "\iref{OtherProofSystem}" to refer to another proof system 
 % in the Encyclopedia (where "OtherProofSystem" is its ID). 
 % Use "\irefmissing{SuggestedIDForOtherProofSystem}" to refer to 
 % another proof system that is not yet available in the encyclopedia.
-% \end{history}
+\end{history}
 
 % \begin{technicalities}
 % ToDo: write here remarks about soundness, completeness, decidability...
