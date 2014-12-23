@@ -2,23 +2,53 @@
 % If the calculus has an acronym, define it.
 % (e.g. \newcommand{\LK}{\ensuremath{\mathbf{LK}}\xspace})
 
-\calculusName{ToDo}   % The name of the calculus
+\newcommand{\LK}{\ensuremath{\mathbf{LK}}\xspace}
+
+\calculusName{Gentzen Sequent }   % The name of the calculus
 \calculusAcronym{}    % The acronym if defined above, or empty otherwise. 
-\calculusYear{ToDo}   % The year when the calculus was invented.
-\calculusAuthor{ToDo} % The name(s) of the author(s) of the calculus.
-\entryAuthor{ToDo}    % Your name(s). Separate multiple names with "\and"
+\calculusYear{1934}   % The year when the calculus was invented.
+\calculusAuthor{Gerhard Gentzen} % The name(s) of the author(s) of the calculus.
+\entryAuthor{Martin Riener}    % Your name(s). Separate multiple names with "\and"
 
 \maketitle
 
 
 % If your files are called "<ID>.tex" and "<ID>.bib", 
 % then you should write "\begin{entry}{<ID>}" in the line below
-\begin{entry}{ToDo}  
+\begin{entry}{GentzenLK}  
 
 % Define here any newcommands you may need:
 % e.g. \newcommand{\necessarily}{\Box}
 % e.g. \newcommand{\possibly}{\Diamond}
 
+\newcommand{\lkproves}{\ensuremath{\rightarrow}}
+\renewcommand{\fCenter}{\lkproves}
+
+\newcommand{\LKAX}[2]{\AxiomC{\ensuremath{#1} \fCenter \ensuremath{#2}}}
+\newcommand{\LKUI}[2]{\UnaryInfC{\ensuremath{#1} \fCenter \ensuremath{#2}}}
+\newcommand{\LKBI}[2]{\BinaryInfC{\ensuremath{#1} \fCenter \ensuremath{#2}}}
+\newcommand{\LKLL}[1]{\LeftLabel{\footnotesize \ensuremath{#1}}}
+\newcommand{\LKRL}[1]{\RightLabel{\footnotesize \ensuremath{#1}}}
+\newcommand{\LKRLN}[1]{\RightLabel{#1}}
+
+\newcommand{\SALLL}{\RL{\forall:l}}
+\newcommand{\SALLR}{\RL{\forall:r}}
+\newcommand{\SEXL}{\RL{\exists:l}}
+\newcommand{\SEXR}{\RL{\exists:r}}
+\newcommand{\SANDL}{\RL{\land:l}}
+\newcommand{\SANDR}{\RL{\land:r}}
+\newcommand{\SORL}{\RL{\lor:l}}
+\newcommand{\SORR}{\RL{\lor:r}}
+\newcommand{\SIMPL}{\RL{\impl:l}}
+\newcommand{\SIMPR}{\RL{\impl:r}}
+\newcommand{\SNEGL}{\RL{\neg:l}}
+\newcommand{\SNEGR}{\RL{\neg:r}}
+\newcommand{\SWEAKL}{\RL{w:l}}
+\newcommand{\SWEAKR}{\RL{w:r}}
+\newcommand{\SCONTRL}{\RL{c:l}}
+\newcommand{\SCONTRR}{\RL{c:r}}
+\newcommand{\SCUT}{\RL{cut}}
+\newcommand{\SDEF}{\RL{def}}
 
 \begin{calculus}
 
@@ -26,7 +56,9 @@
 % The "proof.sty" and "bussproofs.sty" packages are available.
 % If you need any other package, please contact the editor (bruno@logic.at)
 
-ToDo
+
+
+
 
 \end{calculus}
 
