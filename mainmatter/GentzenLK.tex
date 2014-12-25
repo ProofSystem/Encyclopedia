@@ -1,8 +1,6 @@
 
-% If the calculus has an acronym, define it.
-% (e.g. \newcommand{\LK}{\ensuremath{\mathbf{LK}}\xspace})
-
 \newcommand{\LK}{\ensuremath{\mathbf{LK}}\xspace}
+\newcommand{\LJ}{\ensuremath{\mathbf{LJ}}\xspace}
 
 \calculusName{Sequent Calculus for Classical Logic }   % The name of the calculus
 \calculusAcronym{\LK}    % The acronym if defined above, or empty otherwise. 
@@ -13,14 +11,9 @@
 \maketitle
 
 
-% If your files are called "<ID>.tex" and "<ID>.bib", 
-% then you should write "\begin{entry}{<ID>}" in the line below
 \begin{entry}{GentzenLK}  
 
-% Define here any newcommands you may need:
-% e.g. \newcommand{\necessarily}{\Box}
-% e.g. \newcommand{\possibly}{\Diamond}
-
+% new commands %
 \newcommand{\lkproves}{\ensuremath{\vdash}}
 \renewcommand{\fCenter}{\lkproves}
 
@@ -37,38 +30,39 @@
 }
 
 \newcommand{\threecolumns}[3]{
-\begin{minipage}[b]{0.3\linewidth}
+\begin{minipage}[b]{0.31\linewidth}
 \centering
 #1
 \end{minipage}
-\hspace{0.5cm}
-\begin{minipage}[b]{0.3\linewidth}
+\hspace{0.01\linewidth}
+\begin{minipage}[b]{0.31\linewidth}
 \centering
 #2
 \end{minipage}
-\hspace{0.5cm}
-\begin{minipage}[b]{0.3\linewidth}
+\hspace{0.01\linewidth}
+\begin{minipage}[b]{0.31\linewidth}
 \centering
 #3
-\end{minipage}
+\end{minipage}\\
 }
 
 \newcommand{\fourcolumns}[4]{
-\begin{minipage}[b]{0.22\linewidth}
+\begin{minipage}[b]{0.23\linewidth}
 \centering
 #1
 \end{minipage}
-\hspace{0.5cm}
-\begin{minipage}[b]{0.22\linewidth}
+\hspace{0.01\linewidth}
+\begin{minipage}[b]{0.23\linewidth}
 \centering
 #2
 \end{minipage}
-\hspace{0.5cm}
-\begin{minipage}[b]{0.22\linewidth}
+\hspace{0.01\linewidth}
+\begin{minipage}[b]{0.23\linewidth}
 \centering
 #3
 \end{minipage}
-\begin{minipage}[b]{0.22\linewidth}
+\hspace{0.01\linewidth}
+\begin{minipage}[b]{0.23\linewidth}
 \centering
 #4
 \end{minipage}
@@ -83,26 +77,26 @@
 \newcommand{\LKRL}[1]{\RightLabel{\footnotesize \ensuremath{#1}}}
 \newcommand{\LKRLN}[1]{\RightLabel{#1}}
 
-\newcommand{\SALLL}{\LKRL{\forall:l}}
-\newcommand{\SALLR}{\LKRL{\forall:r\,(*)}}
-\newcommand{\SEXL}{\LKRL{\exists:l\,(*)}}
-\newcommand{\SEXR}{\LKRL{\exists:r}}
-\newcommand{\SANDL}{\LKRL{\land:l}}
-\newcommand{\SANDR}{\LKRL{\land:r}}
-\newcommand{\SORL}{\LKRL{\lor:l}}
-\newcommand{\SORR}{\LKRL{\lor:r}}
-\newcommand{\SIMPL}{\LKRL{\imp:l}}
-\newcommand{\SIMPR}{\LKRL{\imp:r}}
-\newcommand{\SNEGL}{\LKRL{\neg:l}}
-\newcommand{\SNEGR}{\LKRL{\neg:r}}
-\newcommand{\SWEAKL}{\LKRL{w:l}}
-\newcommand{\SWEAKR}{\LKRL{w:r}}
+\newcommand{\SALLL  }{\LKRL{\forall:l}}
+\newcommand{\SALLR  }{\LKRL{\forall:r\,(*)}}
+\newcommand{\SEXL   }{\LKRL{\exists:l\,(*)}}
+\newcommand{\SEXR   }{\LKRL{\exists:r}}
+\newcommand{\SANDL  }{\LKRL{\land:l}}
+\newcommand{\SANDR  }{\LKRL{\land:r}}
+\newcommand{\SORL   }{\LKRL{\lor:l}}
+\newcommand{\SORR   }{\LKRL{\lor:r}}
+\newcommand{\SIMPL  }{\LKRL{\imp:l}}
+\newcommand{\SIMPR  }{\LKRL{\imp:r}}
+\newcommand{\SNEGL  }{\LKRL{\neg:l}}
+\newcommand{\SNEGR  }{\LKRL{\neg:r}}
+\newcommand{\SWEAKL }{\LKRL{w:l}}
+\newcommand{\SWEAKR }{\LKRL{w:r}}
 \newcommand{\SCONTRL}{\LKRL{c:l}}
 \newcommand{\SCONTRR}{\LKRL{c:r}}
-\newcommand{\SEXCHL}{\LKRL{e:l}}
-\newcommand{\SEXCHR}{\LKRL{e:r}}
-\newcommand{\SCUT}{\LKRL{cut}}
-\newcommand{\SDEF}{\LKRL{def}}
+\newcommand{\SEXCHL }{\LKRL{e:l}}
+\newcommand{\SEXCHR }{\LKRL{e:r}}
+\newcommand{\SCUT   }{\LKRL{cut}}
+\newcommand{\SDEF   }{\LKRL{def}}
 
 \newcommand{\ALLL}     [3]{\SALLL \LKUI{#2}{#3} }
 \newcommand{\ALLR}     [3]{\SALLR \LKUI{#2}{#3} }
@@ -132,7 +126,7 @@
 % Add the inference rules of your proof system here.
 % The "proof.sty" and "bussproofs.sty" packages are available.
 % If you need any other package, please contact the editor (bruno@logic.at)
-\textbf{Structural rules:}\\
+%\textbf{Structural rules:}\\
 \twocolumns{
   \AxiomC{}
   \LKRL{Axiom}
@@ -144,9 +138,8 @@
   \CUT{\Gamma}{\Theta}
   \DisplayProof
 }
-\\
-
-\fourcolumns{
+\vspace{1mm}
+\threecolumns{
   \LKAX{\Gamma}{\Theta}
   \WEAKL{D, \Gamma}{\Theta}
   \DisplayProof
@@ -158,15 +151,9 @@
   \LKAX{D,D,\Gamma}{\Theta}
   \CONTRL{D, \Gamma}{\Theta}
   \DisplayProof
-}{
-  \LKAX{\Gamma}{\Theta,D,D}
-  \CONTRR{\Gamma}{\Theta, D}
-  \DisplayProof
 }
-\\
-
-
-\twocolumns{
+\vspace{1mm}
+\threecolumns{
   \LKAX{\Gamma,D,E,\Delta}{\Theta}
   \EXCHL{\Gamma, E, D, \Delta}{\Theta}
   \DisplayProof
@@ -175,11 +162,14 @@
   \EXCHR{\Gamma}{\Theta, E, D, \Lambda}
   \DisplayProof
  
+}{
+  \LKAX{\Gamma}{\Theta,D,D}
+  \CONTRR{\Gamma}{\Theta, D}
+  \DisplayProof
 }
-
-
-\textbf{Logical rules:}\\
-\twocolumns{
+\vspace{1mm}
+%\textbf{Logical rules:}\\
+\threecolumns{
 \LKAX{A,\Gamma}{\Theta}
 \ANDL{A \land B,\Gamma}{\Theta}
 \DisplayProof
@@ -187,19 +177,26 @@
 \LKAX{B,\Gamma}{\Theta}
 \ANDL{A \land B,\Gamma}{\Theta}
 \DisplayProof
-}
-
-
-\twocolumns{
+}{
 \LKAX{\Gamma}{\Theta,A}
 \ORR{\Gamma}{\Theta,A\lor B}
+\DisplayProof
+}
+\vspace{1mm}
+\threecolumns{
+\LKAX{\Gamma}{\Theta,A}
+\NEGL{\neg A,\Gamma}{\Theta}
+\DisplayProof
+}{
+\LKAX{A,\Gamma}{\Theta}
+\NEGR{\Gamma}{\Theta, \neg A}
 \DisplayProof
 }{
 \LKAX{\Gamma}{\Theta,B}
 \ORR{\Gamma}{\Theta,A\lor B}
 \DisplayProof
 }
-
+\vspace{1mm}
 \twocolumns{
 \LKAX{A,  \Gamma}{\Theta}
 \LKAX{B,  \Gamma}{\Theta}
@@ -211,7 +208,7 @@
 \ANDR{\Gamma}{\Theta,A \land B}
 \DisplayProof
 }
-
+\vspace{1mm}
 \twocolumns{
 \LKAX{\Gamma}{\Theta, A}
 \LKAX{B,  \Delta}{\Lambda}
@@ -222,17 +219,7 @@
 \IMPR{\Gamma}{\Theta,A \imp B}
 \DisplayProof
 }
-
-\twocolumns{
-\LKAX{A,\Gamma}{\Theta}
-\NEGR{\Gamma}{\Theta, \neg A}
-\DisplayProof
-}{
-\LKAX{\Gamma}{\Theta,A}
-\NEGL{ \neg A,\Gamma}{\Theta}
-\DisplayProof
-}
-
+\vspace{1mm}
 \twocolumns{
   \LKAX{F\,a, \Gamma}{\Theta}
   \ALLL{}{\forall x\,F x, \Gamma}{\Theta}
@@ -242,7 +229,7 @@
   \EXR{}{\Gamma}{\Theta,\exists x\,F x}
   \DisplayProof
 }
-
+\vspace{1mm}
 \twocolumns{
   \LKAX{F\,a, \Gamma}{\Theta}
   \EXL{}{\exists x\,F x, \Gamma}{\Theta}
@@ -253,7 +240,7 @@
   \DisplayProof
 }
 
-$(*)$: Eigenvariable condition
+$(*)$: Eigenvariable condition: $x$ does not occur in $\Gamma$, $\Delta$ and $\forall x\, F x$/$\exists x\, F x$.
 
 %} % end centering
 \end{calculus}
@@ -263,43 +250,67 @@ $(*)$: Eigenvariable condition
 % be very concise and objective.
 
  \begin{clarifications}
-   In all rules, $A,B,D,E,F$ are arbitrary formulas, $\Gamma,\Theta,\Delta,\Lambda$ are lists of arbitrary formulas, $a$ is a free variable and $x$ a bound variable. Within the quantifier rules, $F a$ is obtained from $F x$ by applying the substitution $\{ a/x \} $. Additionally, the rules $\forall:r$ and $\exists:l$ must fulfill the so called Eigenvariable condition $(*)$. That means that the quantified variable $x$ may not occur in the conclusion $\Gamma$, $\Delta$ and $\forall x\, F x$ respectively $\exists x\, F x$.
+   In all rules, $A,B,D,E,F$ are formulas, $\Gamma,\Theta,\Delta,\Lambda$ are lists of formulas, $a$ is a free and $x$ a bound variable. Within the quantifier rules, $F a$ is obtained from $F x$ by applying the substitution $\{ a/x \} $.
 
-
-% ToDo: write here short remarks that may help the reader to understand 
-% the inference rules of the proof system.
  \end{clarifications}
 
  \begin{history}
-This is G. Gentzen's formulation of sequent calculus as defined in his PhD thesis which was later on published in the journal ``Mathematische Zeitschrift''\cite{Gentzen1934}. The term language in this formulation only has free and bound variables. A version of \LK with terms is presented in G. Takeuti's book on proof theory\cite{Takeuti1975}. Restricting the right hand side to only one formula, we obtain the intuitionistic calculus $LJ$\irefmissing{GentzenLJ}. The variant $LK'$ has only invertible non-quantifier rules\irefmissing{LKprime} allowing better proof search. J{-}Y. Girard 's linear logic\cite{Girard1987} allows to formula purely additive or multiplicative rules, wheras Gentzen defined a mixed calculus.
-% ToDo: write here short historical remarks about this proof system,
-% especially if they relate to other proof systems. 
-% Use "\iref{OtherProofSystem}" to refer to another proof system 
-% in the Encyclopedia (where "OtherProofSystem" is its ID). 
-% Use "\irefmissing{SuggestedIDForOtherProofSystem}" to refer to 
-% another proof system that is not yet available in the encyclopedia.
+This is Gentzen's original formulation\cite{Gentzen1934} where the term language has only free and bound variables. A version adding individual and function constants is given in Takeuti's ``Proof Theory''\cite{Takeuti1975}. An invertible variant of \LK is $\LK'$\irefmissing{LKprime}, an intuitionistic version is \LJ\irefmissing{GentzenLJ}. 
 \end{history}
 
 % \begin{technicalities}
 % ToDo: write here remarks about soundness, completeness, decidability...
 % \end{technicalities}
 
+% undefine for new commands
+\let\LKAX\undefined
+\let\LKUI\undefined
+\let\LKBI\undefined
+\let\LKLL\undefined
+\let\LKRL\undefined
+\let\LKRLN\undefined
 
+\let\SALLL  \undefined
+\let\SALLR  \undefined
+\let\SEXL   \undefined
+\let\SEXR   \undefined
+\let\SANDL  \undefined
+\let\SANDR  \undefined
+\let\SORL   \undefined
+\let\SORR   \undefined
+\let\SIMPL  \undefined
+\let\SIMPR  \undefined
+\let\SNEGL  \undefined
+\let\SNEGR  \undefined
+\let\SWEAKL \undefined
+\let\SWEAKR \undefined
+\let\SCONTRL\undefined
+\let\SCONTRR\undefined
+\let\SEXCHL \undefined
+\let\SEXCHR \undefined
+\let\SCUT   \undefined
+\let\SDEF   \undefined
 
-% Please cite the original paper where the proof system was defined.
-% To do so, you may use the \cite command within 
-% one of the optional environments above,
-% or use the \nocite command otherwise.
+\let\ALLL  \undefined
+\let\ALLR  \undefined
+\let\EXL   \undefined
+\let\EXR   \undefined
+\let\ANDL  \undefined
+\let\ANDR  \undefined
+\let\ORL   \undefined
+\let\ORR   \undefined
+\let\IMPL  \undefined
+\let\IMPR  \undefined
+\let\NEGL  \undefined
+\let\NEGR  \undefined
+\let\WEAKL \undefined
+\let\WEAKR \undefined
+\let\CONTRL\undefined
+\let\CONTRR\undefined
+\let\EXCHL \undefined
+\let\EXCHR \undefined
+\let\CUT   \undefined
+\let\DEF   \undefined
 
-% You may also cite a modern paper or book where the 
-% proof system is explained in greater depth or clarity.
-% Cite parsimoniously.
-
-% Do not cite related work. Instead, use the "\iref" or "\irefmissing" 
-% commands to make an internal reference to another entry, 
-% as explained within the "history" environment above.
-
-% You do not need to create the "References" section yourself. 
-% This is done automatically.
 
 \end{entry}
