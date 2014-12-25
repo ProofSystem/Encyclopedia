@@ -1,4 +1,5 @@
 
+\newcommand{\ND}{\ensuremath{\mathbf{ND}}\xspace}
 \newcommand{\LK}{\ensuremath{\mathbf{LK}}\xspace}
 \newcommand{\LJ}{\ensuremath{\mathbf{LJ}}\xspace}
 
@@ -255,13 +256,14 @@ $(*)$: Eigenvariable condition: $x$ does not occur in $\Gamma$, $\Delta$ and $\f
  \end{clarifications}
 
  \begin{history}
-This is Gentzen's original formulation\cite{Gentzen1934} where the term language has only free and bound variables. A version adding individual and function constants is given in Takeuti's ``Proof Theory''\cite{Takeuti1975}. An invertible variant of \LK is $\LK'$\irefmissing{LKprime}, an intuitionistic version is \LJ\irefmissing{GentzenLJ}. 
+This is Gentzen's original formulation\cite{lk:Gentzen1935} where the term language has only free and bound variables. Takeuti's version\cite{lk:Takeuti1975} adds individual and function constants. An invertible variant of \LK is $\LK'$\irefmissing{LKprime}, an intuitionistic version is \LJ\iref{SequentCalculusLJ}. 
 \end{history}
 
-% \begin{technicalities}
+\begin{technicalities}
 % ToDo: write here remarks about soundness, completeness, decidability...
-% \end{technicalities}
-
+Soundness is obtained by a translation to \ND\irefmissing{ND}, completeness by cut-elimination i.e. Gentzen's Hauptsatz\cite{lk:Gentzen1935}.
+\end{technicalities}
+\end{entry}
 % undefine for new commands
 \let\LKAX\undefined
 \let\LKUI\undefined
@@ -311,6 +313,3 @@ This is Gentzen's original formulation\cite{Gentzen1934} where the term language
 \let\EXCHR \undefined
 \let\CUT   \undefined
 \let\DEF   \undefined
-
-
-\end{entry}
