@@ -1,0 +1,131 @@
+
+% If the calculus has an acronym, define it.
+% (e.g. \newcommand{\LK}{\ensuremath{\mathbf{LK}}\xspace})
+%\newcommand{\ND}{\ensuremath{\mathbf{ND}}\xspace} % already defined in GentzenLK.tex
+\newcommand{\NJ}{\ensuremath{\mathbf{NJ}}\xspace} 
+\newcommand{\LH}{\ensuremath{\mathbf{LJ}}\xspace}
+
+\calculusName{Sequent Calculus \LJ}   % The name of the calculus
+\calculusAcronym{}    % The acronym if defined above, or empty otherwise. 
+\calculusYear{1935}   % The year when the calculus was invented.
+\calculusAuthor{Gerhard Karl Erich Gentzen} % The name(s) of the author(s) of the calculus.
+\entryAuthor{Giselle Reis}    % Your name(s). Separate multiple names with "\and"
+
+\maketitle
+
+
+% If your files are called "<ID>.tex" and "<ID>.bib", 
+% then you should write "\begin{entry}{<ID>}" in the line below
+\begin{entry}{SequentCalculusLJ}  
+
+% Define here any newcommands you may need:
+% e.g. \newcommand{\necessarily}{\Box}
+% e.g. \newcommand{\possibly}{\Diamond}
+
+
+\begin{calculus}
+
+% Add the inference rules of your proof system here.
+% The "proof.sty" and "bussproofs.sty" packages are available.
+% If you need any other package, please contact the editor (bruno@logic.at)
+\[
+\begin{array}{cc}
+\infer[init]{A \vdash A}{}
+&
+\infer[cut]{\Gamma_1, \Gamma_2 \vdash C}{\Gamma_1 \vdash P & \Gamma_2, P \vdash C}
+\\[8pt]
+\infer[\neg_l]{\Gamma, \neg P \vdash }{\Gamma \vdash P}
+&
+\infer[\neg_r]{\Gamma \vdash \neg P}{\Gamma, P \vdash }
+\\[8pt]
+\infer[\wedge_{li}]{P_1 \wedge P_2, \Gamma \vdash C}{P_i, \Gamma \vdash C}
+&
+\infer[\wedge_r]{\Gamma \vdash P \wedge Q}{\Gamma \vdash P & \Gamma \vdash Q}
+\\[8pt]
+\infer[\vee_l]{P \vee Q, \Gamma \vdash C}{P, \Gamma \vdash C & Q, \Gamma \vdash C}
+&
+\infer[\vee_{ri}]{\Gamma \vdash P_1 \vee P_2}{\Gamma \vdash P_i}
+\\[8pt]
+\infer[\rightarrow_l]{P \rightarrow Q, \Gamma_1, \Gamma_2 \vdash C}{\Gamma_1
+\vdash P & Q, \Gamma_2 \vdash C}
+&
+\infer[\rightarrow_r]{\Gamma \vdash P \rightarrow Q}{\Gamma, P \vdash Q}
+\\[8pt]
+\infer[\exists_l]{\exists x.P, \Gamma \vdash C}{P\{x \leftarrow
+\alpha\}, \Gamma \vdash C}
+&
+\infer[\exists_r]{\Gamma \vdash \exists x.P}{\Gamma \vdash P\{x
+\leftarrow t\}}
+\\[8pt]
+\infer[\forall_l]{\forall x.P, \Gamma \vdash C}{P\{x \leftarrow t\}, \Gamma \vdash C}
+&
+\infer[\forall_r]{\Gamma \vdash \forall x.P}{\Gamma \vdash P\{x
+\leftarrow \alpha \}}
+\\
+\end{array}
+\]
+$$
+\infer[c_l]{P, \Gamma \vdash C}{P, P, \Gamma \vdash C}
+\qquad
+\infer[w_l]{P, \Gamma \vdash C}{\Gamma \vdash C}
+\qquad
+\infer[w_r]{\Gamma \vdash P}{\Gamma \vdash}
+$$
+
+\end{calculus}
+
+% The following environments ("clarifications", "history", 
+% "technicalities") are optional. If you do use them, 
+% be very concise and objective.
+
+\begin{clarifications}
+% ToDo: write here short remarks that may help the reader to understand 
+% the inference rules of the proof system.
+Assuming that $\alpha$ is a variable not contained in $P$, $\Gamma$ or $C$,
+$t$ does not contain variables bound in $P$ and $C$ stands for
+one formula or the empty set.
+\end{clarifications}
+
+\begin{history}
+% ToDo: write here short historical remarks about this proof system,
+% especially if they relate to other proof systems. 
+% Use "\iref{OtherProofSystem}" to refer to another proof system 
+% in the Encyclopedia (where "OtherProofSystem" is its ID). 
+% Use "\irefmissing{SuggestedIDForOtherProofSystem}" to refer to 
+% another proof system that is not yet available in the encyclopedia.
+Proposed by Gentzen in \cite{Gentzen1935} by restricting the
+succedent of sequents in \irefmissing{SequentCalculusLK} to have at most one
+formula. In the original paper, he notes that this restriction is equivalent to
+removing the principle of excluded middle from the natural deduction system
+\iref{NaturalDeduction} in order to obtain \irefmissing{NJ}.
+% NOTE Assuming that Natural Deduction is the classical version.
+The cut is admissible in \LJ and this result is known as \emph{Hauptsatz}.
+\end{history}
+
+\begin{technicalities}
+% ToDo: write here remarks about soundness, completeness, decidability...
+Soundness and completeness of \LJ can be proved using a translation of \LJ
+derivations into \NJ\irefmissing{NJ}.
+Decidability of the propositional fragment and consistency of intuitionistic
+logic follows from the cut admissibility in this calculus.
+\end{technicalities}
+
+
+
+% Please cite the original paper where the proof system was defined.
+% To do so, you may use the \cite command within 
+% one of the optional environments above,
+% or use the \nocite command otherwise.
+
+% You may also cite a modern paper or book where the 
+% proof system is explained in greater depth or clarity.
+% Cite parsimoniously.
+
+% Do not cite related work. Instead, use the "\iref" or "\irefmissing" 
+% commands to make an internal reference to another entry, 
+% as explained within the "history" environment above.
+
+% You do not need to create the "References" section yourself. 
+% This is done automatically.
+
+\end{entry}
