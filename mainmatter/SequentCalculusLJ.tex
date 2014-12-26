@@ -1,8 +1,11 @@
 
 % If the calculus has an acronym, define it.
 % (e.g. \newcommand{\LK}{\ensuremath{\mathbf{LK}}\xspace})
+%\newcommand{\ND}{\ensuremath{\mathbf{ND}}\xspace} % already defined in GentzenLK.tex
+\newcommand{\NJ}{\ensuremath{\mathbf{NJ}}\xspace} 
+\newcommand{\LH}{\ensuremath{\mathbf{LJ}}\xspace}
 
-\calculusName{Sequent Calculus LJ}   % The name of the calculus
+\calculusName{Sequent Calculus \LJ}   % The name of the calculus
 \calculusAcronym{}    % The acronym if defined above, or empty otherwise. 
 \calculusYear{1935}   % The year when the calculus was invented.
 \calculusAuthor{Gerhard Karl Erich Gentzen} % The name(s) of the author(s) of the calculus.
@@ -96,13 +99,13 @@ formula. In the original paper, he notes that this restriction is equivalent to
 removing the principle of excluded middle from the natural deduction system
 \iref{NaturalDeduction} in order to obtain \irefmissing{NJ}.
 % NOTE Assuming that Natural Deduction is the classical version.
-The cut is admissible in LJ and this result is known as \emph{Hauptsatz}.
+The cut is admissible in \LJ and this result is known as \emph{Hauptsatz}.
 \end{history}
 
 \begin{technicalities}
 % ToDo: write here remarks about soundness, completeness, decidability...
-Soundness and completeness of LJ can be proved using a translation of LJ
-derivations into \irefmissing{NJ}.
+Soundness and completeness of \LJ can be proved using a translation of \LJ
+derivations into \NJ\irefmissing{NJ}.
 Decidability of the propositional fragment and consistency of intuitionistic
 logic follows from the cut admissibility in this calculus.
 \end{technicalities}
