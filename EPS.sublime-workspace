@@ -1,0 +1,530 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "proofsystems.tex",
+			"settings":
+			{
+				"buffer_size": 428,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "mainmatter/Template.tex",
+			"settings":
+			{
+				"buffer_size": 2444,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "bibliographies.sty",
+			"settings":
+			{
+				"buffer_size": 492,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "mainmatter/counterfactual.tex",
+			"settings":
+			{
+				"buffer_size": 8401,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "mainmatter/NaturalDeduction.tex",
+			"settings":
+			{
+				"buffer_size": 525,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "mainmatter/ContextualND.tex",
+			"settings":
+			{
+				"buffer_size": 1909,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "main.tex",
+			"settings":
+			{
+				"buffer_size": 1329,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "commands.sty",
+			"settings":
+			{
+				"buffer_size": 4529,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "bibliographies/counterfactual.bib",
+			"settings":
+			{
+				"buffer_size": 1319,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/Bruno/Dropbox/Pesquisa/Papers/ProofSystemsEncyclopedia/EPS.sublime-project",
+		"/Users/Bruno/Dropbox/Pesquisa/Workshops/APPA/BackCover Description.txt",
+		"/Users/Bruno/Dropbox/Sports/Yoga/YogaBookTranslation/Contact Form Saraiva.txt",
+		"/Users/Bruno/Dropbox/Sports/Yoga/YogaBookTranslation/EmailToPublishers.txt",
+		"/Users/Bruno/Downloads/Modal Square of Opposition.svg",
+		"/Users/Bruno/Dropbox/Pesquisa/Projects/GoedelGod/Papers/InProgress/LogicAndReligionCongress/Abstract.tex",
+		"/Users/Bruno/Downloads/android-sdk-macosx/SDK Readme.txt",
+		"/Users/Bruno/Dropbox/Pesquisa/Projects/GoedelGod/Papers/InProgress/LogicAndReligionCongress/Bibliography.bib",
+		"/Users/Bruno/OwnCloud/TUWien/Issues/Future.txt",
+		"/Users/Bruno/OwnCloud/CV/CV/CV-InvitedTalks.tex",
+		"/Users/Bruno/OwnCloud/CV/CV/CV-InformalTalks.tex",
+		"/Users/Bruno/Dropbox/Pesquisa/Workshops/APPA/Contributions/Dale Miller/appa.tex",
+		"/Users/Bruno/Dropbox/Pesquisa/Workshops/APPA/Proceedings/Main.tex",
+		"/Users/Bruno/Dropbox/Pesquisa/Projects/GoedelGod/Papers/InProgress/NaturalDeduction/GodProof-ND.tex",
+		"/Users/Bruno/Downloads/bootstrap.css",
+		"/Users/Bruno/Dropbox/Pesquisa/Workshops/UITP/EPTCS Proceedings/Preface/Preface.tex",
+		"/Users/Bruno/Dropbox/Pesquisa/Workshops/UITP/EPTCS Proceedings/HTML - Preface.html",
+		"/Users/Bruno/Dropbox/Pesquisa/Workshops/UITP/EPTCS Proceedings/Preface/example.tex",
+		"/Users/Bruno/Dropbox/Pesquisa/Workshops/UITP/EPTCS Proceedings/Preface.tex"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"society",
+			"improve",
+			"tenure-track",
+			"ceres",
+			" 3 ",
+			"thre",
+			"innopolis",
+			"Plinio",
+			"russia",
+			"subscripttext",
+			"Mathematiker_200",
+			"Hajek_der_Mathematiker_2002",
+			"Dutch",
+			"promised",
+			"(Vienna",
+			"footer",
+			"ß",
+			"é",
+			"ä",
+			"ü"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"&#x00df;",
+			"&#x00e9;",
+			"&#x00e4;",
+			"&#x00fc;"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 3,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "proofsystems.tex",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 428,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								274,
+								274
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/LaTeX/LaTeX.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "mainmatter/Template.tex",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2444,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/LaTeX/LaTeX.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "bibliographies.sty",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 492,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								332,
+								332
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/LaTeX/TeX.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "mainmatter/counterfactual.tex",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8401,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3115,
+								3115
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/LaTeX/LaTeX.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "mainmatter/NaturalDeduction.tex",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 525,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								409,
+								409
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/LaTeX/LaTeX.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 386.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "mainmatter/ContextualND.tex",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1909,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1706,
+								1687
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/LaTeX/LaTeX.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 1137.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "main.tex",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1329,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								628,
+								628
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/LaTeX/LaTeX.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 38.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "commands.sty",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4529,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								158,
+								158
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/LaTeX/TeX.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "bibliographies/counterfactual.bib",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1319,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/LaTeX/Bibtex.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 35.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"project": "EPS.sublime-project",
+	"replace":
+	{
+		"height": 66.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
