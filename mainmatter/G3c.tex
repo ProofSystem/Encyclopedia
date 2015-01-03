@@ -1,0 +1,118 @@
+
+% If the calculus has an acronym, define it.
+% (e.g. \newcommand{\LK}{\ensuremath{\mathbf{LK}}\xspace})
+\newcommand{\Gtc}{\ensuremath{\mathbf{G3c}}\xspace}
+
+\calculusName{G3c}   % The name of the calculus
+\calculusAcronym{\Gtc}    % The acronym if defined above, or empty otherwise. 
+\calculusYear{1996}   % The year when the calculus was invented.
+\calculusAuthor{A.S.~Troelstra \and H.~Schwichtenberg} % The name(s) of the author(s) of the calculus.
+\entryAuthor{}    % Your name(s). Separate multiple names with "\and"
+
+\maketitle
+
+
+% If your files are called "<ID>.tex" and "<ID>.bib", 
+% then you should write "\begin{entry}{<ID>}" in the line below
+\begin{entry}{G3c}  
+
+% Define here any newcommands you may need:
+% e.g. \newcommand{\necessarily}{\Box}
+% e.g. \newcommand{\possibly}{\Diamond}
+
+\newcommand{\rarr}{\rightarrow}
+
+\begin{calculus}
+% Add the inference rules of your proof system here.
+% The "proof.sty" and "bussproofs.sty" packages are available.
+% If you need any other package, please contact the editor (bruno@logic.at)
+  \[
+  \begin{array}{l@{\qquad}l}
+      \infer[\mathrm{Ax}]{P, \Gamma \seq \Delta, P
+  }{}
+  &
+  \infer[\mathrm{L}\bot]{\bot, \Gamma \seq \Delta}{}
+  \medskip\\
+  \infer[\mathrm{L}\land]{A \land B, \Gamma \seq \Delta}{A, B, \Gamma \seq \Delta}
+  &
+  \infer[\mathrm{R}\land]{\Gamma \seq \Delta, A\land B}{\Gamma \seq \Delta,A &
+    \Gamma \seq \Delta, B}
+  \medskip\\
+  \infer[\mathrm{L}\lor]{A\lor B, \Gamma \seq \Delta}{A, \Gamma \seq \Delta & B, \Gamma \seq \Delta}
+  &
+  \infer[\mathrm{R}\lor]{\Gamma \seq \Delta, A\lor B}{\Gamma \seq \Delta, A, B}
+  \medskip\\
+  \infer[\mathrm{L}\rarr]{A \rarr B, \Gamma \seq \Delta}{\Gamma \seq \Delta, A
+    & B, \Gamma \seq \Delta}
+  &
+  \infer[\mathrm{R}\rarr]{\Gamma \seq \Delta, A \rarr B}{A, \Gamma \seq \Delta,
+  B}
+  \medskip\\
+  \infer[\mathrm{L}\forall]{\forall x A, \Gamma \seq \Delta}{\forall x A,
+    A[x/t], \Gamma \seq \Delta}
+  &
+  \infer[\mathrm{R}\forall]{\Gamma \seq \Delta, \forall x A}{\Gamma \seq
+    \Delta, A[x/y]}
+  \medskip\\
+  \infer[\mathrm{L}\exists]{\exists x A, \Gamma \seq \Delta}{A [ x/ y], \Gamma \seq \Delta}
+  &
+  \infer[\mathrm{R}\exists]{\Gamma \seq \Delta, \exists x A}{\Gamma \seq
+    \Delta, A[x/t], \exists x A}
+  \end{array}
+  \]
+\centerline{\small with $P$ in $\mathrm{Ax}$ atomic and $y$ not free
+  in the conclusion in $\mathrm{R}\forall, \;\mathrm{L}\exists$}
+\end{calculus}
+
+% The following environments ("clarifications", "history", 
+% "technicalities") are optional. If you do use them, 
+% be very concise and objective.
+
+\begin{clarifications}
+% ToDo: write here short remarks that may help the reader to understand 
+% the inference rules of the proof system.
+  Sequents are based on multisets. A formula $A[x/t]$ is the result of
+  uniformly substituting the term $t$ for the variable $x$ in
+  $A$.\nocite{Troelstra:2000}
+\end{clarifications}
+
+% \begin{history}
+% ToDo: write here short historical remarks about this proof system,
+% especially if they relate to other proof systems. 
+% Use "\iref{OtherProofSystem}" to refer to another proof system 
+% in the Encyclopedia (where "OtherProofSystem" is its ID). 
+% Use "\irefmissing{SuggestedIDForOtherProofSystem}" to refer to 
+% another proof system that is not yet available in the encyclopedia.
+% \end{history}
+
+\begin{technicalities}
+% ToDo: write here remarks about soundness, completeness, decidability...
+  Sound and complete wrt.\ classical first-order logic.  Weakening and
+  contraction are depth-preserving admissible and all the rules are
+  depth-preserving invertible.
+\end{technicalities}
+
+
+
+% Please cite the original paper where the proof system was defined.
+% To do so, you may use the \cite command within 
+% one of the optional environments above,
+% or use the \nocite command otherwise.
+
+% You may also cite a modern paper or book where the 
+% proof system is explained in greater depth or clarity.
+% Cite parsimoniously.
+
+% Do not cite related work. Instead, use the "\iref" or "\irefmissing" 
+% commands to make an internal reference to another entry, 
+% as explained within the "history" environment above.
+
+% You do not need to create the "References" section yourself. 
+% This is done automatically.
+
+\end{entry}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "../main"
+%%% End: 
