@@ -54,7 +54,7 @@ is encouraged, but not required.</p>
 
 <p>When compiled, your entry should have exactly one page. If your proof system has too many inference rules and does not fit in one page, please <a href="mailto:bruno@logic.at">contact the editor</a>, send him a paper containing your proof system and ask for an exception.</p>
 
-<p>Examples of entries can be found in the <a href="https://github.com/ProofSystem/Encyclopedia/blob/master/main.tex">current version of the encyclopedia</a>.
+<p><a href="https://github.com/ProofSystem/Encyclopedia/tree/master/mainmatter">Examples of entries</a> can be found in the <a href="https://github.com/ProofSystem/Encyclopedia/blob/master/main.pdf?raw=true">current version of the encyclopedia</a>.
 Please conform to the examples.</p>
 
 <p><strong>If you have a Github account and are familiarised with git</strong>, you should:</p>
@@ -85,14 +85,29 @@ Please conform to the examples.</p>
 <h2>
 <a id="compilation-instructions" class="anchor" href="#compilation-instructions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Compilation Instructions</h2>
 
-<p>The encyclopedia uses <em>biblatex</em> and <em>biber</em> to handle multiple bibliographies. These are modern alternatives to bibtex. Therefore, to compile, you must run:</p>
+<p>To compile, run:</p>
 
-<pre><code>$ pdflatex main
-
-$ biber main
-
-$ pdflatex main
+<pre><code>$ make
 </code></pre>
+
+<p>This will automatically execute <em>pdflatex</em> and <a href="http://biblatex-biber.sourceforge.net">biber</a> for you. </p>
+
+<p>If you use Windows, you may need to install <a href="http://gnuwin32.sourceforge.net/packages/make.htm">make</a> first. Alternatively, you may execute <em>pdflatex</em> and <em>biber</em> yourself.</p>
+
+<p><em>biber</em> is a modern alternative to <em>bibtex</em>. When use in conjunction with <em>biblatex</em>, it is more convenient for handling multiple bibliographies. It comes pre-installed in most modern distributions of <em>LaTeX</em>. However, if your <em>LaTeX</em> distribution does not contain <em>biber</em> and you see error messages, you may use one of the alternative commands below:</p>
+
+<pre><code>$ make withBiberForWindows
+
+$ make withBiberForLinux32
+
+$ make withBiberForLinux64
+
+$ make withBiberForMac
+</code></pre>
+
+<p>The commands above will use one of the pre-compiled <em>biber</em> executables distributed together with the encyclopedia.</p>
+
+<p>If you face any difficulties to compile, <a href="mailto:bruno@logic.at">contact the editor</a>.</p>
 
 <h2>
 <a id="criteria-for-acceptance" class="anchor" href="#criteria-for-acceptance" aria-hidden="true"><span class="octicon octicon-link"></span></a>Criteria for Acceptance</h2>
@@ -119,7 +134,7 @@ But the following deadline should be respected if you would like your entry to b
 <li>Notification: 15th of May 2015</li>
 </ul>
 
-<p>(Please submit early in order to reduce the probability of duplicates)</p>
+<p>(Please submit early in order to reduce the probability of duplicates.)</p>
 
 <h2>
 <a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
