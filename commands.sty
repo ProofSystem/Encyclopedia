@@ -1,12 +1,14 @@
 \RequirePackage{fancybox}
 
+\newcommand{\myline}{\noindent\makebox[\linewidth]{\rule{\textwidth}{0.4pt}}}
+
 
 \newenvironment{entry}[1]
 {\label{entry:#1}\begin{refsection}[#1]}
-{\printbibliography\end{refsection}}
+{\myline\printbibliography[heading=none]\end{refsection}}
 
 \newenvironment{calculus}
-{\begin{center}\begin{Sbox}\begin{minipage}{\textwidth}}
+{\begin{center}\begin{Sbox}\begin{minipage}{0.98\textwidth}}
 {\end{minipage}\end{Sbox}\fbox{\TheSbox}\end{center}}
 
 \newenvironment{clarifications}
@@ -18,7 +20,7 @@
 {\smallskip}
 
 \newenvironment{technicalities}
-{\noindent\textbf{Technicalities:}}
+{\noindent\textbf{Remarks:}}
 {\smallskip}
 
 \makeatletter
@@ -34,16 +36,19 @@
 \let\@calculusAuthor\@empty
 \let\@calculusYear\@empty
 \let\@entryAuthor\@empty
+\let\@entryTitle\@empty
 
 \newcommand{\calculusName}[1]{\gdef\@calculusName{#1}}
 \newcommand{\calculusAcronym}[1]{{\gdef\@calculusAcronym{#1}}}
 \newcommand{\calculusAuthor}[1]{\gdef\@calculusAuthor{#1}}
 \newcommand{\calculusYear}[1]{\gdef\@calculusYear{#1}}
+
+\newcommand{\entryTitle}[1]{\gdef\@entryTitle{#1}}
 \newcommand{\entryAuthor}[1]{\gdef\@entryAuthor{#1}}
 
 
 \renewcommand\maketitle{\par
-  \title{\@calculusName}
+  \title{\@entryTitle}
   \author{\@entryAuthor}
 
   \stepcounter{section}%
@@ -142,8 +147,8 @@
   \ignorespaces
   \chapsize
   \chapstyle
-  \@calculusName \ -- \ \@calculusAcronym (\@calculusYear) 
-  \footnote[0]{Entry by: \@entryAuthor} 
+  \@entryTitle \ (\@calculusYear) 
+  \footnote[0]{\hspace{-13pt} Entry {\thechapter} by: \@entryAuthor} 
   \par}
  \setbox0=\vbox{\setcounter{@auth}{1}\def\and{\stepcounter{@auth}}%
  \def\thanks##1{}\@author}%
