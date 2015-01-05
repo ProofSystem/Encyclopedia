@@ -2,16 +2,16 @@
 % If the calculus has an acronym, define it.
 % (e.g. \newcommand{\LK}{\ensuremath{\mathbf{LK}}\xspace})
 %\newcommand{\ND}{\ensuremath{\mathbf{ND}}\xspace} % already defined in GentzenLK.tex
-\newcommand{\NJ}{\ensuremath{\mathbf{NJ}}\xspace} 
+%\newcommand{\NJ}{\ensuremath{\mathbf{NJ}}\xspace} 
 
-\calculusName{Intuitionistic Sequent Calculus}   % The name of the calculus
-\calculusAcronym{\LJ}    % The acronym if defined above, or empty otherwise. 
+\calculusName{Multi-conclusion Intuitionistic Sequent Calculus}   % The name of the calculus
+\calculusAcronym{\textbf{LJ'}}    % The acronym if defined above, or empty otherwise. 
 \calculusLogic{Intuitionistic Predicate Logic}
 \calculusType{Sequent Calculus}
-\calculusYear{1935}   % The year when the calculus was invented.
-\calculusAuthor{Gerhard Karl Erich Gentzen} % The name(s) of the author(s) of the calculus.
+\calculusYear{1954}   % The year when the calculus was invented.
+\calculusAuthor{Sh\^{o}ji Maehara} % The name(s) of the author(s) of the calculus.
 
-\entryTitle{Intuitionistic Sequent Calculus \LJ}
+\entryTitle{Multi-conclusion Intuitionistic Sequent Calculus \textbf{LJ'}}
 \entryAuthor{Giselle Reis}    % Your name(s). Separate multiple names with "\and"
 
 \maketitle
@@ -19,7 +19,7 @@
 
 % If your files are called "<ID>.tex" and "<ID>.bib", 
 % then you should write "\begin{entry}{<ID>}" in the line below
-\begin{entry}{GentzenLJ}  
+\begin{entry}{MultiConclusionLJ}  
 
 % Define here any newcommands you may need:
 % e.g. \newcommand{\necessarily}{\Box}
@@ -34,36 +34,50 @@
 \begin{array}{cc}
 \infer[init]{A \rightarrow A}{}
 &
-\infer[cut]{\Gamma, \Delta \rightarrow \Theta}{\Gamma \rightarrow A & A, \Delta \rightarrow \Theta}
-\\[8pt]
-\infer[\neg_l]{\neg A, \Gamma \rightarrow }{\Gamma \rightarrow A}
+\infer[cut]{\Gamma, \Delta \rightarrow \Theta, \Lambda}{\Gamma \rightarrow
+\Theta, A & A, \Delta \rightarrow \Lambda}
+\\[7pt]
+\infer[\wedge_{li}]{A_1 \wedge A_2, \Gamma \rightarrow \Theta}{A_i, \Gamma \rightarrow \Theta}
 &
-\infer[\neg_r]{\Gamma \rightarrow \neg A}{A, \Gamma \rightarrow }
-\\[8pt]
-\infer[\&_{li}]{A_1 \& A_2, \Gamma \rightarrow \Theta}{A_i, \Gamma \rightarrow \Theta}
-&
-\infer[\&_r]{\Gamma \rightarrow A \& B}{\Gamma \rightarrow A & \Gamma \rightarrow B}
-\\[8pt]
+\infer[\wedge_r]{\Gamma \rightarrow \Theta, A \wedge B}{\Gamma \rightarrow
+\Theta, A & \Gamma \rightarrow \Theta, B}
+\\[7pt]
 \infer[\vee_l]{A \vee B, \Gamma \rightarrow \Theta}{A, \Gamma \rightarrow \Theta & B, \Gamma \rightarrow \Theta}
 &
-\infer[\vee_{ri}]{\Gamma \rightarrow A_1 \vee A_2}{\Gamma \rightarrow A_i}
-\\[8pt]
-\infer[\supset_l]{A \supset B, \Gamma, \Delta \rightarrow \Theta}{\Gamma \rightarrow A & B, \Delta \rightarrow \Theta}
+\infer[\vee_{ri}]{\Gamma \rightarrow \Theta, A_1 \vee A_2}{\Gamma \rightarrow
+\Theta, A_i}
+\\[7pt]
+\infer[\supset_l]{A \supset B, \Gamma, \Delta \rightarrow \Theta, \Lambda}{\Gamma
+\rightarrow \Theta, A & B, \Delta \rightarrow \Lambda}
 &
 \infer[\supset_r]{\Gamma \rightarrow A \supset B}{A, \Gamma \rightarrow B}
-\\[8pt]
+\\
+\end{array}
+\]
+\[
+\begin{array}{cccc}
 \infer[\exists_l]{\exists x.Ax, \Gamma \rightarrow \Theta}{A\alpha, \Gamma \rightarrow \Theta}
 &
-\infer[\exists_r]{\Gamma \rightarrow \exists x.Ax}{\Gamma \rightarrow At}
-\\[8pt]
+\infer[\exists_r]{\Gamma \rightarrow \Theta, \exists x.Ax}{\Gamma \rightarrow
+\Theta, At}
+&
 \infer[\forall_l]{\forall x.Ax, \Gamma \rightarrow \Theta}{At, \Gamma \rightarrow \Theta}
 &
 \infer[\forall_r]{\Gamma \rightarrow \forall x.Ax}{\Gamma \rightarrow A\alpha}
-\\[8pt]
+\\[7pt]
+\infer[\neg_l]{\neg A, \Gamma \rightarrow \Theta}{\Gamma \rightarrow \Theta, A}
+&
+\infer[\neg_r]{\Gamma \rightarrow \neg A}{A, \Gamma \rightarrow }
+&
 \infer[e_l]{\Gamma, A, B, \Delta \rightarrow \Theta}{\Gamma, B, A, \Delta \rightarrow \Theta}
 &
+\infer[e_r]{\Gamma \rightarrow \Theta, A, B, \Lambda}{\Gamma \Delta \rightarrow
+\Theta, B, A, \Lambda}
+\\[7pt]
 \infer[c_l]{A, \Gamma \rightarrow \Theta}{A, A, \Gamma \rightarrow \Theta}
-\\[8pt]
+&
+\infer[c_r]{\Gamma \rightarrow \Theta, A}{\Gamma \rightarrow \Theta, A, A}
+&
 \infer[w_l]{A, \Gamma \rightarrow \Theta}{\Gamma \rightarrow \Theta}
 &
 \infer[w_r]{\Gamma \rightarrow A}{\Gamma \rightarrow}
@@ -79,14 +93,15 @@
 \begin{clarifications}
 % ToDo: write here short remarks that may help the reader to understand 
 % the inference rules of the proof system.
-In all rules, $A$, $A_i$ and $B$ are arbitrary formulas and $\Theta$ is a set
-with at most one formula. In rules $\exists_l$
+In all rules, $A$, $A_i$ and $B$ are arbitrary formulas. In rules $\exists_l$
 and $\forall_r$, $\alpha$ is a variable not contained in $A$, $\Gamma$ or
 $\Theta$. In rules $\exists_r$ and $\forall_l$, $t$ does not contain variables
 bound in $A$.
-It is common to consider \textbf{LJ} without the exchange rule $e_l$ just by
+It is common to consider \textbf{LJ'} without the exchange rules $e_l$ and $e_r$ just by
 interpreting $\Gamma$ and $\Theta$ as multi-sets of formulas instead of lists.
-Also, the conjunction $\&$ is usually denoted by $\wedge$.
+While \textbf{LJ}\iref{GentzenLJ} is defined by restricting all rules of
+\textbf{LK}\iref{GentzenLK} to single conclusion, in \textbf{LJ'} this
+restriction is only for the rules $\neg_r$, $\supset_r$ and $\forall_r$.
 \end{clarifications}
 
 \begin{history}
@@ -96,21 +111,18 @@ Also, the conjunction $\&$ is usually denoted by $\wedge$.
 % in the Encyclopedia (where "OtherProofSystem" is its ID). 
 % Use "\irefmissing{SuggestedIDForOtherProofSystem}" to refer to 
 % another proof system that is not yet available in the encyclopedia.
-Proposed by Gentzen in \cite{Gentzen1935} by restricting the
-succedent of sequents in \irefmissing{SequentCalculusLK} to have at most one
-formula. In the original paper, he notes that this restriction is equivalent to
-removing the principle of excluded middle from the natural deduction system
-\iref{NaturalDeduction} in order to obtain \irefmissing{NJ}.
-% NOTE Assuming that Natural Deduction is the classical version.
-%The cut is admissible in \LJ and this result is known as \emph{Hauptsatz}.
+Proposed by Maehara in \cite{Maehara1954} and used to prove the completeness of
+\textbf{LJ}\iref{GentzenLJ} in \cite{Takeuti1987}. The same calculus (and other
+multi-conclusion calculi for intuitionistic logic) is rediscovered in
+\cite{Nadathur1998} while analysing classical and intuitionistic provability.
 \end{history}
 
 \begin{technicalities}
 % ToDo: write here remarks about soundness, completeness, decidability...
-Soundness and completeness of \LJ can be proved using a translation of \LJ
-derivations into \NJ\irefmissing{NJ}.
-Decidability of the propositional fragment and consistency of intuitionistic
-logic follows from cut admissibility in this calculus (\emph{Hauptsatz}).
+The equivalence of \textbf{LJ'} to \textbf{LJ} is established by translating
+sequents $\Gamma \vdash A_1, ..., A_n$ into $\Gamma \vdash A_1 \vee ... \vee
+A_n$. Cut is admissible in this calculus via a combination of the rewriting
+rules for cut-elimination in \textbf{LJ} and \textbf{LK}.
 \end{technicalities}
 
 
