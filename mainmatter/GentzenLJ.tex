@@ -3,7 +3,6 @@
 % (e.g. \newcommand{\LK}{\ensuremath{\mathbf{LK}}\xspace})
 %\newcommand{\ND}{\ensuremath{\mathbf{ND}}\xspace} % already defined in GentzenLK.tex
 \newcommand{\NJ}{\ensuremath{\mathbf{NJ}}\xspace} 
-\newcommand{\LH}{\ensuremath{\mathbf{LJ}}\xspace}
 
 \calculusName{Intuitionistic Sequent Calculus}   % The name of the calculus
 \calculusAcronym{\LJ}    % The acronym if defined above, or empty otherwise. 
@@ -26,7 +25,6 @@
 % e.g. \newcommand{\necessarily}{\Box}
 % e.g. \newcommand{\possibly}{\Diamond}
 
-
 \begin{calculus}
 
 % Add the inference rules of your proof system here.
@@ -34,48 +32,44 @@
 % If you need any other package, please contact the editor (bruno@logic.at)
 \[
 \begin{array}{cc}
-\infer[init]{A \vdash A}{}
+\infer[init]{A \rightarrow A}{}
 &
-\infer[cut]{\Gamma_1, \Gamma_2 \vdash C}{\Gamma_1 \vdash P & \Gamma_2, P \vdash C}
+\infer[cut]{\Gamma, \Delta \rightarrow \Theta}{\Gamma \rightarrow A & A, \Delta \rightarrow \Theta}
 \\[8pt]
-\infer[\neg_l]{\Gamma, \neg P \vdash }{\Gamma \vdash P}
+\infer[\neg_l]{\neg A, \Gamma \rightarrow }{\Gamma \rightarrow A}
 &
-\infer[\neg_r]{\Gamma \vdash \neg P}{\Gamma, P \vdash }
+\infer[\neg_r]{\Gamma \rightarrow \neg A}{A, \Gamma \rightarrow }
 \\[8pt]
-\infer[\wedge_{li}]{P_1 \wedge P_2, \Gamma \vdash C}{P_i, \Gamma \vdash C}
+\infer[\&_{li}]{A_1 \& A_2, \Gamma \rightarrow \Theta}{A_i, \Gamma \rightarrow \Theta}
 &
-\infer[\wedge_r]{\Gamma \vdash P \wedge Q}{\Gamma \vdash P & \Gamma \vdash Q}
+\infer[\&_r]{\Gamma \rightarrow A \& B}{\Gamma \rightarrow A & \Gamma \rightarrow B}
 \\[8pt]
-\infer[\vee_l]{P \vee Q, \Gamma \vdash C}{P, \Gamma \vdash C & Q, \Gamma \vdash C}
+\infer[\vee_l]{A \vee B, \Gamma \rightarrow \Theta}{A, \Gamma \rightarrow \Theta & B, \Gamma \rightarrow \Theta}
 &
-\infer[\vee_{ri}]{\Gamma \vdash P_1 \vee P_2}{\Gamma \vdash P_i}
+\infer[\vee_{ri}]{\Gamma \rightarrow A_1 \vee A_2}{\Gamma \rightarrow A_i}
 \\[8pt]
-\infer[\rightarrow_l]{P \rightarrow Q, \Gamma_1, \Gamma_2 \vdash C}{\Gamma_1
-\vdash P & Q, \Gamma_2 \vdash C}
+\infer[\supset_l]{A \supset B, \Gamma, \Delta \rightarrow \Theta}{\Gamma \rightarrow A & B, \Delta \rightarrow \Theta}
 &
-\infer[\rightarrow_r]{\Gamma \vdash P \rightarrow Q}{\Gamma, P \vdash Q}
+\infer[\supset_r]{\Gamma \rightarrow A \supset B}{A, \Gamma \rightarrow B}
 \\[8pt]
-\infer[\exists_l]{\exists x.P, \Gamma \vdash C}{P\{x \leftarrow
-\alpha\}, \Gamma \vdash C}
+\infer[\exists_l]{\exists x.Ax, \Gamma \rightarrow \Theta}{A\alpha, \Gamma \rightarrow \Theta}
 &
-\infer[\exists_r]{\Gamma \vdash \exists x.P}{\Gamma \vdash P\{x
-\leftarrow t\}}
+\infer[\exists_r]{\Gamma \rightarrow \exists x.Ax}{\Gamma \rightarrow At}
 \\[8pt]
-\infer[\forall_l]{\forall x.P, \Gamma \vdash C}{P\{x \leftarrow t\}, \Gamma \vdash C}
+\infer[\forall_l]{\forall x.Ax, \Gamma \rightarrow \Theta}{At, \Gamma \rightarrow \Theta}
 &
-\infer[\forall_r]{\Gamma \vdash \forall x.P}{\Gamma \vdash P\{x
-\leftarrow \alpha \}}
+\infer[\forall_r]{\Gamma \rightarrow \forall x.Ax}{\Gamma \rightarrow A\alpha}
+\\[8pt]
+\infer[e_l]{\Gamma, A, B, \Delta \rightarrow \Theta}{\Gamma, B, A, \Delta \rightarrow \Theta}
+&
+\infer[c_l]{A, \Gamma \rightarrow \Theta}{A, A, \Gamma \rightarrow \Theta}
+\\[8pt]
+\infer[w_l]{A, \Gamma \rightarrow \Theta}{\Gamma \rightarrow \Theta}
+&
+\infer[w_r]{\Gamma \rightarrow A}{\Gamma \rightarrow}
 \\
 \end{array}
 \]
-$$
-\infer[c_l]{P, \Gamma \vdash C}{P, P, \Gamma \vdash C}
-\qquad
-\infer[w_l]{P, \Gamma \vdash C}{\Gamma \vdash C}
-\qquad
-\infer[w_r]{\Gamma \vdash P}{\Gamma \vdash}
-$$
-
 \end{calculus}
 
 % The following environments ("clarifications", "history", 
@@ -85,9 +79,14 @@ $$
 \begin{clarifications}
 % ToDo: write here short remarks that may help the reader to understand 
 % the inference rules of the proof system.
-Assuming that $\alpha$ is a variable not contained in $P$, $\Gamma$ or $C$,
-$t$ does not contain variables bound in $P$ and $C$ stands for
-one formula or the empty set.
+In all rules, $A$, $A_i$ and $B$ are arbitrary formulas and $\Theta$ is a set
+with at most one formula. In rules $\exists_l$
+and $\forall_r$, $\alpha$ is a variable not contained in $A$, $\Gamma$ or
+$\Theta$. In rules $\exists_r$ and $\forall_l$, $t$ does not contain variables
+bound in $A$.
+It is common to consider \textbf{LJ} without the exchange rule $e_l$ just by
+interpreting $\Gamma$ and $\Theta$ as multi-sets of formulas instead of lists.
+Also, the conjunction $\&$ is usually denoted by $\wedge$.
 \end{clarifications}
 
 \begin{history}
@@ -103,7 +102,7 @@ formula. In the original paper, he notes that this restriction is equivalent to
 removing the principle of excluded middle from the natural deduction system
 \iref{NaturalDeduction} in order to obtain \irefmissing{NJ}.
 % NOTE Assuming that Natural Deduction is the classical version.
-The cut is admissible in \LJ and this result is known as \emph{Hauptsatz}.
+%The cut is admissible in \LJ and this result is known as \emph{Hauptsatz}.
 \end{history}
 
 \begin{technicalities}
@@ -111,7 +110,7 @@ The cut is admissible in \LJ and this result is known as \emph{Hauptsatz}.
 Soundness and completeness of \LJ can be proved using a translation of \LJ
 derivations into \NJ\irefmissing{NJ}.
 Decidability of the propositional fragment and consistency of intuitionistic
-logic follows from the cut admissibility in this calculus.
+logic follows from cut admissibility in this calculus (\emph{Hauptsatz}).
 \end{technicalities}
 
 
