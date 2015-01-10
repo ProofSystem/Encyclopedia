@@ -82,24 +82,24 @@
 \newcommand{\LKRL}[1]{\RightLabel{\footnotesize \ensuremath{#1}}}
 \newcommand{\LKRLN}[1]{\RightLabel{#1}}
 
-\newcommand{\SALLL  }{\LKRL{\forall:l}}
-\newcommand{\SALLR  }{\LKRL{\forall:r\,(*)}}
-\newcommand{\SEXL   }{\LKRL{\exists:l\,(*)}}
-\newcommand{\SEXR   }{\LKRL{\exists:r}}
-\newcommand{\SANDL  }{\LKRL{\land:l}}
-\newcommand{\SANDR  }{\LKRL{\land:r}}
-\newcommand{\SORL   }{\LKRL{\lor:l}}
-\newcommand{\SORR   }{\LKRL{\lor:r}}
-\newcommand{\SIMPL  }{\LKRL{\imp:l}}
-\newcommand{\SIMPR  }{\LKRL{\imp:r}}
-\newcommand{\SNEGL  }{\LKRL{\neg:l}}
-\newcommand{\SNEGR  }{\LKRL{\neg:r}}
-\newcommand{\SWEAKL }{\LKRL{w:l}}
-\newcommand{\SWEAKR }{\LKRL{w:r}}
-\newcommand{\SCONTRL}{\LKRL{c:l}}
-\newcommand{\SCONTRR}{\LKRL{c:r}}
-\newcommand{\SEXCHL }{\LKRL{e:l}}
-\newcommand{\SEXCHR }{\LKRL{e:r}}
+\newcommand{\SALLL  }{\LKRL{\forall_l}}
+\newcommand{\SALLR  }{\LKRL{\forall_r\,(*)}}
+\newcommand{\SEXL   }{\LKRL{\exists_l\,(*)}}
+\newcommand{\SEXR   }{\LKRL{\exists_r}}
+\newcommand{\SANDL  }{\LKRL{\land_l}}
+\newcommand{\SANDR  }{\LKRL{\land_r}}
+\newcommand{\SORL   }{\LKRL{\lor_l}}
+\newcommand{\SORR   }{\LKRL{\lor_r}}
+\newcommand{\SIMPL  }{\LKRL{\imp_l}}
+\newcommand{\SIMPR  }{\LKRL{\imp_r}}
+\newcommand{\SNEGL  }{\LKRL{\neg_l}}
+\newcommand{\SNEGR  }{\LKRL{\neg_r}}
+\newcommand{\SWEAKL }{\LKRL{w_l}}
+\newcommand{\SWEAKR }{\LKRL{w_r}}
+\newcommand{\SCONTRL}{\LKRL{c_l}}
+\newcommand{\SCONTRR}{\LKRL{c_r}}
+\newcommand{\SEXCHL }{\LKRL{e_l}}
+\newcommand{\SEXCHR }{\LKRL{e_r}}
 \newcommand{\SCUT   }{\LKRL{cut}}
 \newcommand{\SDEF   }{\LKRL{def}}
 
@@ -255,12 +255,12 @@ $(*)$: Eigenvariable condition: $x$ does not occur in $\Gamma$, $\Delta$ and $\f
 % be very concise and objective.
 
  \begin{clarifications}
-   In all rules, $A,B,D,E,F$ are formulas, $\Gamma,\Theta,\Delta,\Lambda$ are lists of formulas, $a$ is a free and $x$ a bound variable. Within the quantifier rules, $F a$ is obtained from $F x$ by applying the substitution $\{ a/x \} $.
+   In all rules, $A,B,D,E,F$ are formulas, $\Gamma,\Theta,\Delta,\Lambda$ are lists of formulas, $a$ is a free and $x$ a bound variable. Within the quantifier rules, $F a$ is obtained from $F x$ by applying the substitution $\{ a/x \} $. Inferences over a term $t$ are obtained by substituting a free variable for $t$. 
 
  \end{clarifications}
 
  \begin{history}
-This is Gentzen's original formulation\cite{lk:Gentzen1935} where the term language has only free and bound variables. Takeuti's version\cite{lk:Takeuti1975} adds individual and function constants. An invertible variant of \LK is $\LK'$\irefmissing{LKprime}, an intuitionistic version is \LJ\iref{SequentCalculusLJ}. 
+This is Gentzen's original formulation\cite{lk:Gentzen1935}, Takeuti\cite{lk:Takeuti1975} has a bit more modern presentation. An invertible variant of \LK is $\LK'$\irefmissing{LKprime}, an intuitionistic version is \LJ\iref{SequentCalculusLJ}. 
 \end{history}
 
 \begin{technicalities}
