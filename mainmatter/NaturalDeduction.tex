@@ -1,42 +1,101 @@
 
-% \newcommand{\ND}{\ensuremath{\mathbf{ND}}\xspace}
+\newcommand{\NJ}{\ensuremath{\mathbf{NJ}}\xspace}
+\newcommand{\LHJ}{\ensuremath{\mathbf{LHJ}}\xspace}
 
 \calculusName{Natural Deduction}
-\calculusAcronym{ToDo}
-\calculusLogic{ToDo}
-\calculusType{ToDo}
+\calculusAcronym{\NJ}
+\calculusLogic{Intuitionistic Predicate Logic}
+\calculusType{Natural Deduction}
 \calculusYear{1935}
 \calculusAuthor{Gerhard Karl Erich Gentzen}
 
-\entryTitle{Gentzen's Natural Deduction Calculus}
+\entryTitle{Intuitionistic Natural Deduction \NJ}
 \entryAuthor{Bruno Woltzenlogel Paleo}
 
 \maketitle
 
 \begin{entry}{NaturalDeduction}
 
-\newcommand{\lc}{\lambda^c}
-\newcommand{\C}{\mathcal{C}}
+\newcommand{\A}{A}
+\newcommand{\B}{B}
+\newcommand{\C}{C}
+\newcommand{\DD}{D}
+\newcommand{\F}{F}
+\newcommand{\x}{x}
+
+\newcommand{\implies}{\supset}
+\newcommand{\bottom}{\bot}
 
 \begin{calculus}
-\centering
 
-ToDo
+\[
+\quad
+\infer[UE]{\A \& \B}{\A & \B} 
+\qquad
+\infer[UB]{\A}{\A \& \B}
+\qquad
+\infer[UB]{\B}{\A \& \B} 
+\]
+
+\[
+\qquad
+\infer[OE]{\A \vee \B}{\A}
+\qquad
+\infer[OE]{\A \vee \B}{\B}
+\qquad
+\infer[OB]{\C}{\A \vee \B & 
+               \infer*{\C}{[\A]} &
+               \infer*{\C}{[\B]}}
+\]
+
+\[
+\quad
+\infer[AE]{\forall \x \F \x}{\F a}
+\qquad
+\infer[AB]{\F a}{\forall \x \F \x}
+\qquad
+\infer[EE]{\exists \x \F \x}{\F a}
+\qquad
+\infer[EB]{\C}{\exists \x \F \x & \infer*{\C}{[\F a]}}
+\]
+
+\[
+\quad
+\infer[FE]{\A \implies \B}{\infer*{B}{[A]}}
+\qquad
+\infer[FB]{\B}{\A & \A \implies \B}
+\quad
+\infer[NE]{\neg \A}{\infer*{\bottom}{[\A]}}
+\qquad
+\infer[NB]{\bottom}{\A & \neg \A}
+\qquad
+\infer{\DD}{\bottom}
+\]
+
+The eigenvariable $a$ of an $AE$ must not occur in the formula 
+designated in the schema by $\forall \x \F \x$; 
+nor in any assumption formula upon which that formula depends. 
+The eigenvariable $a$ of an $EB$ must not occur in the formula 
+designated in the schema by $\exists \x \F \x$; 
+nor in any assumption formula upon which that formula depends, 
+with the exception of the assumption formulae designated by $\F a$.
 
 \end{calculus}
 
 \begin{clarifications}
-
+The names of the rules are those originally given by Gentzen~\cite{Gentzen1935}: $U$ = und (and), $O$ = oder (or), $A$ = all, $E$ = es-gibt (exists), $F$ = folgt (follows), $N$ = nicht (not), $E$ = Einf\"uhrung (introduction), $B$ = Beseitigung (elimination).
 \end{clarifications}
 
 
 \begin{history}
-
+The main novelty introduced by Gentzen in this proof system is its 
+\emph{assumption} handling mechanism, which allows formal proofs to reflect 
+more naturally the logical reasoning involved in mathematical proofs.
 \end{history}
 
 
 \begin{technicalities}
-
+In \cite{Gentzen1935}, completeness of \NJ is proven by showing how to translate proofs in the Hilbert-style calculus \LHJ \irefmissing{ToDo} to \NJ-proofs, and soundness is proven by showing how to translate \NJ-proofs to $\mathbf{LJ}$-proofs \iref{GentzenLJ}.
 \end{technicalities}
 
 
