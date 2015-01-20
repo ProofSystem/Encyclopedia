@@ -107,3 +107,7 @@ sympy-plots-for-*.tex/
 
 # xindy
 *.xdy
+
+# SublimeText project configuration files
+*.sublime-project
+*.sublime-workspace
