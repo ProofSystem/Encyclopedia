@@ -20,6 +20,7 @@
 \newcommand{\DD}{\mathfrak{D}}
 \newcommand{\F}{\mathfrak{F}}
 \newcommand{\x}{\mathfrak{x}}
+\newcommand{\ma}{\mathfrak{a}}
 
 \newcommand{\implies}{\supset}
 \newcommand{\bottom}{\curlywedge}
@@ -48,13 +49,13 @@
 
 \[
 \quad
-\infer[AE]{\forall \x \F \x}{\F a}
+\infer[AE]{\forall \x \F \x}{\F \ma}
 \qquad
-\infer[AB]{\F a}{\forall \x \F \x}
+\infer[AB]{\F \ma}{\forall \x \F \x}
 \qquad
-\infer[EE]{\exists \x \F \x}{\F a}
+\infer[EE]{\exists \x \F \x}{\F \ma}
 \qquad
-\infer[EB]{\C}{\exists \x \F \x & \infer*{\C}{[\F a]}}
+\infer[EB]{\C}{\exists \x \F \x & \infer*{\C}{[\F \ma]}}
 \]
 
 \[
@@ -70,13 +71,13 @@
 \infer{\DD}{\bottom}
 \]
 
-The eigenvariable $a$ of an $AE$ must not occur in the formula 
+The eigenvariable $\ma$ of an $AE$ must not occur in the formula 
 designated in the schema by $\forall \x \F \x$; 
 nor in any assumption formula upon which that formula depends. 
-The eigenvariable $a$ of an $EB$ must not occur in the formula 
+The eigenvariable $\ma$ of an $EB$ must not occur in the formula 
 designated in the schema by $\exists \x \F \x$; 
 nor in any assumption formula upon which that formula depends, 
-with the exception of the assumption formulae designated by $\F a$.
+with the exception of the assumption formulae designated by $\F \aa$.
 
 \end{calculus}
 
