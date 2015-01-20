@@ -57,34 +57,29 @@
 \\
 \end{array}
 \]
+
+\centering
+The eigenvariable $\alpha$ should not occur in $\Gamma$, $\Theta$ or $A[x]$. \\ 
+The term $t$ should not contain variables bound in $A[t]$.
 \end{calculus}
 
 
 \begin{clarifications}
-In all rules, $A$, $A_i$ and $B$ are arbitrary formulas and $\Theta$ is a set
-with at most one formula. In rules $\exists_l$
-and $\forall_r$, $\alpha$ is a variable not contained in $A$, $\Gamma$ or
-$\Theta$. In rules $\exists_r$ and $\forall_l$, $t$ does not contain variables
-bound in $A$.
-It is common to consider \textbf{LJ} without the exchange rule $e_l$ just by
-interpreting $\Gamma$ and $\Theta$ as multi-sets of formulas instead of lists.
-Also, the conjunction $\&$ is usually denoted by $\wedge$.
+\LJ and \LK \iref{GentzenLK} have exactly the same rules, 
+but in \LJ the succedent of every sequent may have at most one formula.
+This restriction is equivalent to
+forbidding the axiom of excluded middle in natural deduction.
+%It is common to consider \LJ without the exchange rule $e_l$ just by
+%interpreting $\Gamma$ and $\Theta$ as multi-sets of formulas instead of lists.
 \end{clarifications}
 
-\begin{history}
-Proposed by Gentzen in \cite{Gentzen1935} by restricting the
-succedent of sequents in \irefmissing{GentzenLK} to have at most one
-formula. In the original paper, he notes that this restriction is equivalent to
-removing the principle of excluded middle from the classical 
-natural deduction system \irefmissing{GentzenNK} 
-in order to obtain \NJ \iref{GentzenNJ}.
-\end{history}
+% \begin{history}
+% \end{history}
+
+\newcommand{\LHJ}{\ensuremath{\mathbf{LHJ}}\xspace}
 
 \begin{technicalities}
-Soundness and completeness of \LJ can be proved using a translation of \LJ
-derivations into \NJ \iref{GentzenNJ}.
-Decidability of the propositional fragment and consistency of intuitionistic
-logic follows from cut admissibility in this calculus (\emph{Hauptsatz}).
+The cut rule is eliminable (\emph{Hauptsatz} \cite{Gentzen1935}), and hence intuitionistic predicate logic is consistent and its propositional fragment is decidable \cite{Gentzen1935a}. \LJ is complete relative to \NJ \iref{GentzenNJ} and sound relative to the Hilbert-style calculus \LHJ \irefmissing{ToDo} \cite{Gentzen1935a}.
 \end{technicalities}
 
 
