@@ -1,35 +1,23 @@
 
-% If the calculus has an acronym, define it.
-% (e.g. \newcommand{\LK}{\ensuremath{\mathbf{LK}}\xspace})
-%\newcommand{\ND}{\ensuremath{\mathbf{ND}}\xspace} % already defined in GentzenLK.tex
-%\newcommand{\NJ}{\ensuremath{\mathbf{NJ}}\xspace} 
-
-\calculusName{Multi-conclusion Intuitionistic Sequent Calculus}   % The name of the calculus
-\calculusAcronym{\textbf{LJ'}}    % The acronym if defined above, or empty otherwise. 
+\calculusName{Multi-Conclusion Intuitionistic Sequent Calculus} 
+\calculusAcronym{\textbf{LJ'}}
 \calculusLogic{Intuitionistic Predicate Logic}
 \calculusType{Sequent Calculus}
-\calculusYear{1954}   % The year when the calculus was invented.
-\calculusAuthor{Sh\^{o}ji Maehara} % The name(s) of the author(s) of the calculus.
+\calculusYear{1954} 
+\calculusAuthor{Sh\^{o}ji Maehara} 
 
 \entryTitle{Multi-conclusion Intuitionistic Sequent Calculus \textbf{LJ'}}
-\entryAuthor{Giselle Reis}    % Your name(s). Separate multiple names with "\and"
+\entryAuthor{Giselle Reis}  
 
 \maketitle
 
 
-% If your files are called "<ID>.tex" and "<ID>.bib", 
-% then you should write "\begin{entry}{<ID>}" in the line below
 \begin{entry}{MultiConclusionLJ}  
 
-% Define here any newcommands you may need:
-% e.g. \newcommand{\necessarily}{\Box}
-% e.g. \newcommand{\possibly}{\Diamond}
 
 \begin{calculus}
 
-% Add the inference rules of your proof system here.
-% The "proof.sty" and "bussproofs.sty" packages are available.
-% If you need any other package, please contact the editor (bruno@logic.at)
+
 \[
 \begin{array}{cc}
 \infer[init]{A \rightarrow A}{}
@@ -86,13 +74,8 @@
 \]
 \end{calculus}
 
-% The following environments ("clarifications", "history", 
-% "technicalities") are optional. If you do use them, 
-% be very concise and objective.
 
 \begin{clarifications}
-% ToDo: write here short remarks that may help the reader to understand 
-% the inference rules of the proof system.
 In all rules, $A$, $A_i$ and $B$ are arbitrary formulas. In rules $\exists_l$
 and $\forall_r$, $\alpha$ is a variable not contained in $A$, $\Gamma$ or
 $\Theta$. In rules $\exists_r$ and $\forall_l$, $t$ does not contain variables
@@ -105,12 +88,6 @@ restriction is only for the rules $\neg_r$, $\supset_r$ and $\forall_r$.
 \end{clarifications}
 
 \begin{history}
-% ToDo: write here short historical remarks about this proof system,
-% especially if they relate to other proof systems. 
-% Use "\iref{OtherProofSystem}" to refer to another proof system 
-% in the Encyclopedia (where "OtherProofSystem" is its ID). 
-% Use "\irefmissing{SuggestedIDForOtherProofSystem}" to refer to 
-% another proof system that is not yet available in the encyclopedia.
 Proposed by Maehara in \cite{Maehara1954} and used to prove the completeness of
 \textbf{LJ}\iref{GentzenLJ} in \cite{Takeuti1987}. The same calculus (and other
 multi-conclusion calculi for intuitionistic logic) is rediscovered in
@@ -118,29 +95,10 @@ multi-conclusion calculi for intuitionistic logic) is rediscovered in
 \end{history}
 
 \begin{technicalities}
-% ToDo: write here remarks about soundness, completeness, decidability...
 The equivalence of \textbf{LJ'} to \textbf{LJ} is established by translating
 sequents $\Gamma \vdash A_1, ..., A_n$ into $\Gamma \vdash A_1 \vee ... \vee
 A_n$. Cut is admissible in this calculus via a combination of the rewriting
 rules for cut-elimination in \textbf{LJ} and \textbf{LK}.
 \end{technicalities}
-
-
-
-% Please cite the original paper where the proof system was defined.
-% To do so, you may use the \cite command within 
-% one of the optional environments above,
-% or use the \nocite command otherwise.
-
-% You may also cite a modern paper or book where the 
-% proof system is explained in greater depth or clarity.
-% Cite parsimoniously.
-
-% Do not cite related work. Instead, use the "\iref" or "\irefmissing" 
-% commands to make an internal reference to another entry, 
-% as explained within the "history" environment above.
-
-% You do not need to create the "References" section yourself. 
-% This is done automatically.
 
 \end{entry}
