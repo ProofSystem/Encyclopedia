@@ -138,9 +138,11 @@
 \\[8pt]
 \infer[e_l]{\Gamma, A, B, \Delta \vdash \Theta}{\Gamma, B, A, \Delta \vdash \Theta}
 \quad%&
-\infer[e_r]{\Gamma \vdash \Theta, A, B, \Delta}{\Gamma \vdash \Theta, B, A, \Delta}
-&%\\[8pt]
 \infer[c_l]{A, \Gamma \vdash \Theta}{A, A, \Gamma \vdash \Theta}
+\quad
+&%\\[8pt]
+\quad
+\infer[e_r]{\Gamma \vdash \Theta, A, B, \Delta}{\Gamma \vdash \Theta, B, A, \Delta}
 \quad%&
 \infer[c_r]{\Gamma \vdash \Theta, A}{\Gamma \vdash \Theta, A, A}
 \\[8pt]
@@ -161,12 +163,14 @@
 \infer[\rightarrow_r]{\Gamma \vdash \Theta, A \rightarrow B}{A, \Gamma \vdash \Theta, B}
 \\[8pt]
 \infer[\exists_l]{\exists x.A[x], \Gamma \vdash \Theta}{A[\alpha], \Gamma \vdash \Theta}
-&
-\infer[\exists_r]{\Gamma \vdash \exists x.A[x]}{\Gamma \vdash A[t]}
-\\[8pt]
+\quad
 \infer[\forall_l]{\forall x.A[x], \Gamma \vdash \Theta}{A[t], \Gamma \vdash \Theta}
+\ \
 &
-\infer[\forall_r]{\Gamma \vdash \forall x.A[x]}{\Gamma \vdash A[\alpha]}
+\ \
+\infer[\forall_r]{\Gamma \vdash \Theta, \forall x.A[x]}{\Gamma \vdash \Theta, A[\alpha]}
+\quad
+\infer[\exists_r]{\Gamma \vdash \Theta, \exists x.A[x]}{\Gamma \vdash \Theta, A[t]}
 \\
 \end{array}
 \]
@@ -178,7 +182,7 @@ The term $t$ should not contain variables bound in $A[t]$.
 
 
 \begin{history}
-This is a modern presentation of Gentzen's original \LK calculus\cite{lk:Gentzen1935}. Originally, terms could only be object variables (either free or bound). Constant and function symbols were added to the term language only later (cf. \cite{lk:Takeuti1975}).
+This is a modern presentation of Gentzen's original \LK calculus\cite{lk:Gentzen1935}, using modern notations and rule names. Originally, terms could only be object variables (either free or bound); there were no constant and function symbols.
 \end{history}
 
 \newcommand{\LHK}{\ensuremath{\mathbf{LHK}}\xspace}
@@ -186,7 +190,7 @@ This is a modern presentation of Gentzen's original \LK calculus\cite{lk:Gentzen
 
 
 \begin{technicalities}
-\LK is complete relative to \NK (i.e. \NJ \iref{GentzenNJ} with the axiom of excluded middle) and sound relative to a Hilbert-style calculus \LHK \cite{lk:Gentzen1935a}. Cut is eliminable (\emph{Hauptsatz} \cite{lk:Gentzen1935}) and if the end-sequent is in prenex form, a cut-free proof may be further transformed into a shape that contains a \emph{midsequent}, above which only propositional rules are applied and below which only quantification and structural rules are applied (sharpened \emph{Hauptsatz} \cite{lk:Gentzen1935a}).
+\LK is complete relative to \NK (i.e. \NJ \iref{GentzenNJ} with the axiom of excluded middle) and sound relative to a Hilbert-style calculus \LHK \cite{lk:Gentzen1935a}. Cut is eliminable (\emph{Hauptsatz} \cite{lk:Gentzen1935}), and hence classical predicate logic is consistent. Any \emph{prenex} cut-free proof may be further transformed into a shape with only propositional inferences above and only quantifier and structural inferences below a \emph{midsequent} \cite{lk:Gentzen1935a}.
 \end{technicalities}
 
 \end{entry}
