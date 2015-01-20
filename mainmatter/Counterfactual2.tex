@@ -1,31 +1,23 @@
 
-% If the calculus has an acronym, define it.
-% (e.g. \newcommand{\LK}{\ensuremath{\mathbf{LK}}\xspace})
-
-\calculusName{Counterfactual Sequent Calculi II} % The name of the calculus
-\calculusAcronym{} % The acronym if defined above, or empty otherwise.
+\calculusName{Counterfactual Sequent Calculi II} 
+\calculusAcronym{} 
 \calculusLogic{Lewis' Propositional Counterfactual Logics}
 \calculusType{Sequent Calculus}
-\calculusYear{2012, 2013} % The year when the calculus was invented.
-\calculusAuthor{Lellmann, Pattinson} % The name(s) of the author(s) of the calculus.
+\calculusYear{2012, 2013} 
+\calculusAuthor{Lellmann, Pattinson} 
 
 \entryTitle{Counterfactual Sequent Calculi II}
-\entryAuthor{Bj{\"o}rn Lellmann} % Your name(s). Separate multiple names with "\and"
+\entryAuthor{Bj{\"o}rn Lellmann} 
 
 \maketitle
 
-% If your files are called "<ID>.tex" and "<ID>.bib",
-% then you should write "\begin{entry}{<ID>}" in the line below
 
 \begin{entry}{Counterfactual2}
 
-% Define here any newcommands you may need:
-% e.g. \newcommand{\necessarily}{\Box}
-% e.g. \newcommand{\possibly}{\Diamond}
 
 \newcommand{\nc}{\newcommand}
 \nc{\rarr}{\rightarrow}
-\nc{\scimp}{\boxRight} % uses package txfonts
+\nc{\scimp}{\boxRight} 
 \nc{\CC}{\mathbb{C}}
 \nc{\NN}{\mathbb{N}}
 \newcommand{\Rules}{\mathcal{R}}
@@ -52,6 +44,7 @@
   }
 }
 \]
+
 \[
 \vcenter{
   \infer[T_m]
@@ -70,6 +63,7 @@
   }
 }
 \]
+
 \[
 \vcenter{
   \infer[W_{n,m}]
@@ -87,6 +81,7 @@
   }
 }
 \]
+
 \[
 \vcenter{
   \infer[R_{C1}]
@@ -130,59 +125,30 @@ $\Rules_{\VV_\scimp}\cup\{R_{C1},R_{C2}\}$\\
 \end{tabular}
 \end{center}
 
-% Add the inference rules of your proof system here.
-% The "proof.sty" and "bussproofs.sty" packages are available.
-% If you need any other package, please contact the editor (bruno@logic.at)
-% ToDo
 
 \end{calculus}
 
-% The following environments ("clarifications", "history",
-% "technicalities") are optional. If you do use them,
-% be very concise and objective.
+
 \begin{clarifications}
-% ToDo: write here short remarks that may help the reader to understand
-% the inference rules of the proof system.
-  Sequents are based on multisets.  The propositional part is that of
-  \Gtc \iref{G3c}. Also includes the contraction rules. Rules
-  $\Rules_{\mathcal{L}_\scimp}$ are for the logic $\mathcal{L}$ in
-  terms of the \emph{strong counterfactual implication} $\scimp$ from
-  \cite{Lewis:1973uq}.
+  Sequents are based on multisets. The rules $\Rules_{\mathcal{L}_\scimp}$ 
+  form a calculus for a counterfactual logic $\mathcal{L}$ described 
+  in \cite{Lewis:1973uq}, where $\scimp$ is the 
+  \emph{strong counterfactual implication} operator. 
+  Besides the rules shown above, these calculi also include the 
+  propositional rules of \Gtc \iref{G3c} and contraction rules.
 \end{clarifications}
 
 \begin{history}
-% ToDo: write here short historical remarks about this proof system,
-% especially if they relate to other proof systems.
-% Use "\iref{OtherProofSystem}" to refer to another proof system
-% in the Encyclopedia (where "OtherProofSystem" is its ID).
-% Use "\irefmissing{SuggestedIDForOtherProofSystem}" to refer to
-% another proof system that is not yet available in the encyclopedia.
-  Introduced in \cite{Lellmann:2012fk}, corrected in
+  These calculi were introduced in \cite{Lellmann:2012fk} and corrected in
   \cite{Lellmann:2013}.
 \end{history}
 
 \begin{technicalities}
-% ToDo: write here remarks about soundness, completeness, decidability...
-  Translations of the calculi \iref{counterfactual} to the language
+  Translations of the calculi in \iref{Counterfactual} to the language
   with $\scimp$. Inherit cut elimination and yield $\mathsf{PSPACE}$
   decision procedures. Contraction can be made admissible.
 \end{technicalities}
-% Please cite the original paper where the proof system was defined.
-% To do so, you may use the \cite command within
-% one of the optional environments above,
-% or use the \nocite command otherwise.
-% You may also cite a modern paper or book where the
-% proof system is explained in greater depth or clarity.
-% Cite parsimoniously.
-% Do not cite related work. Instead, use the "\iref" or "\irefmissing"
-% commands to make an internal reference to another entry,
-% as explained within the "history" environment above.
-% You do not need to create the "References" section yourself.
-% This is done automatically.
+
 
 \end{entry}
 
-%%% Local Variables: 
-%%% mode: latex
-%%% TeX-master: "../main"
-%%% End: 
