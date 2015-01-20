@@ -1,26 +1,20 @@
 
-% If the calculus has an acronym, define it.
-% (e.g. \newcommand{\LK}{\ensuremath{\mathbf{LK}}\xspace})
 
-\calculusName{Counterfactual Sequent Calculi I} % The name of the calculus
-\calculusAcronym{} % The acronym if defined above, or empty otherwise.
+\calculusName{Counterfactual Sequent Calculi I} 
+\calculusAcronym{} 
 \calculusLogic{Lewis' Propositional Counterfactual Logics}
 \calculusType{Sequent Calculus}
-\calculusYear{1983,1992,2012,2013} % The year when the calculus was invented.
-\calculusAuthor{de Swart, Gent, Lellmann, Pattinson} % The name(s) of the author(s) of the calculus.
+\calculusYear{1983,1992,2012,2013} 
+\calculusAuthor{de Swart, Gent, Lellmann, Pattinson} 
 
 \entryTitle{Counterfactual Sequent Calculi I}
-\entryAuthor{Bj{\"o}rn Lellmann} % Your name(s). Separate multiple names with "\and"
+\entryAuthor{Bj{\"o}rn Lellmann} 
+
 \maketitle
 
-% If your files are called "<ID>.tex" and "<ID>.bib",
-% then you should write "\begin{entry}{<ID>}" in the line below
 
 \begin{entry}{Counterfactual}
 
-% Define here any newcommands you may need:
-% e.g. \newcommand{\necessarily}{\Box}
-% e.g. \newcommand{\possibly}{\Diamond}
 
 \newcommand{\nc}{\newcommand}
 \nc{\cless}{\preccurlyeq}
@@ -43,6 +37,7 @@
     \{\;C_k\seq A_1,\dots,A_n,D_1,\dots,D_{k-1}\mid k\leq m\;\} \end{array}
   }}
 \]
+
 \[
 \infer[T_{m}]{\Gamma, (C_1\cless D_1),\dots, (C_m\cless D_m) \seq \Delta
 }
@@ -50,6 +45,7 @@
   \Delta, D_1,\dots, D_m
 }
 \]
+
 \[
   \vcenter{\infer[W_{n,m}]{\Gamma,(C_1\cless
     D_1),\dots,(C_m\cless D_m)\seq \Delta,(A_1\cless
@@ -58,6 +54,7 @@
     A_1,\dots,A_n,D_1,\dots,D_{k-1}\mid k \leq m\;\} \quad&\quad
     \Gamma\seq\Delta,A_1,\dots,A_n,D_1,\dots,D_m}} 
 \]
+
 \[
 \vcenter{\infer[R_{C1}]{\Gamma\seq\Delta,(A\cless
     B)}{\Gamma\seq\Delta,A}} \quad 
@@ -65,6 +62,7 @@
      B)\seq\Delta}{\Gamma,A\seq\Delta \quad&\quad \Gamma\seq \Delta,
      B}}
 \]
+
 \[
 \infer[A_{n,m}]{\Gamma, (C_1\cless D_1), \dots,
   (C_m\cless D_m) \seq \Delta, ( A_1,\cless B_1), \dots,
@@ -74,7 +72,7 @@
     \{\; \Gamma^\cless,C_k\seq \Delta^\cless, A_1,\dots,A_n,D_1,\dots,D_{k-1}\mid k\leq m\;\}\end{array}
 }
 \]
-\medskip
+\bigskip
 
 \begin{center}
 \begin{tabular}{c@{\qquad}c}
@@ -94,67 +92,38 @@ $\Rules_{\VNA_\cless}$ & = & $\{ A_{n,m} \mid n + m\geq 1 \}$
 \end{tabular}
 \end{center}
 
-% Add the inference rules of your proof system here.
-% The "proof.sty" and "bussproofs.sty" packages are available.
-% If you need any other package, please contact the editor (bruno@logic.at)
 
 \end{calculus}
 
-% The following environments ("clarifications", "history",
-% "technicalities") are optional. If you do use them,
-% be very concise and objective.
+
 \begin{clarifications}
-% ToDo: write here short remarks that may help the reader to understand
-% the inference rules of the proof system.
-  Sequents are based on multisets.  The propositional part is that of
-  \Gtc \iref{G3c}. Also include the contraction rules.  Rules
-  $\Rules_{\mathcal{L}_\cless}$ are for the logic $\mathcal{L}$ in
-  terms of the \emph{comparative plausibility} operator $\cless$ from
-  \cite{Lewis:1973uq}.  The contexts $\Gamma^\cless$ resp.\
-  $\Delta^\cless$ contain all formulae of $\Gamma$ resp.\ $\Delta$ of
+  Sequents are based on multisets. The rules $\Rules_{\mathcal{L}_\cless}$ 
+  form a calculus for a counterfactual logic $\mathcal{L}$ described 
+  in \cite{Lewis:1973uq}, where $\cless$ is the \emph{comparative plausibility} 
+  operator. Besides the rules shown above, these calculi also include the 
+  propositional rules of
+  \Gtc \iref{G3c} and contraction rules. The contexts $\Gamma^\cless$ and \
+  $\Delta^\cless$ contain all formulae of resp. $\Gamma$ and \ $\Delta$ of
   the form $A \cless B$.
 \end{clarifications}
 
 \begin{history}
-% ToDo: write here short historical remarks about this proof system,
-% especially if they relate to other proof systems.
-% Use "\iref{OtherProofSystem}" to refer to another proof system
-% in the Encyclopedia (where "OtherProofSystem" is its ID).
-% Use "\irefmissing{SuggestedIDForOtherProofSystem}" to refer to
-% another proof system that is not yet available in the encyclopedia.
   The calculus for $\VV\CC$ was introduced in the tableaux setting
-  \cite{Swart:1983uq,Gent:1992p3090}.  The remaining calculi were
+  \cite{Swart:1983uq,Gent:1992p3090}. The remaining calculi were
   introduced in \cite{Lellmann:2012fk,Lellmann:2013fk} and corrected
   in \cite{Lellmann:2013}.
 \end{history}
 
 \begin{technicalities}
-% ToDo: write here remarks about soundness, completeness, decidability...
-  Soundness and completeness via equivalence to Hilbert-style calculi
-  and (syntactical) cut elimination. Yield $\mathsf{PSPACE}$ decision
-  procedures (resp.\ $\mathsf{EXPTIME}$ for $\VA_\cless$ and
-  $\VNA_\cless$) and in most cases Craig Interpolation. Contraction
-  can be made admissible. \cite{Lellmann:2012fk,Lellmann:2013}
+  Soundness and completeness are proven via equivalence to 
+  Hilbert-style calculi and (syntactical) cut elimination. 
+  These calculi yield $\mathsf{PSPACE}$ decision
+  procedures ($\mathsf{EXPTIME}$ for $\VA_\cless$ and
+  $\VNA_\cless$) and, in most cases, enjoy Craig Interpolation. 
+  Contraction can be made admissible. %\nocite{Lellmann:2012fk,Lellmann:2013}
 \end{technicalities}
-% Please cite the original paper where the proof system was defined.
-% To do so, you may use the \cite command within
-% one of the optional environments above,
-% or use the \nocite command otherwise.
-% You may also cite a modern paper or book where the
-% proof system is explained in greater depth or clarity.
-% Cite parsimoniously.
-% Do not cite related work. Instead, use the "\iref" or "\irefmissing"
-% commands to make an internal reference to another entry,
-% as explained within the "history" environment above.
-% You do not need to create the "References" section yourself.
-% This is done automatically.
-%
 
 \clearpage
 
 \end{entry}
 
-%%% Local Variables: 
-%%% mode: latex
-%%% TeX-master: "../main"
-%%% End: 
