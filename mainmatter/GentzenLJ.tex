@@ -28,41 +28,41 @@
 % If you need any other package, please contact the editor (bruno@logic.at)
 \[
 \begin{array}{cc}
-\infer[init]{A \rightarrow A}{}
+\infer{A \vdash A}{}
 &
-\infer[cut]{\Gamma, \Delta \rightarrow \Theta}{\Gamma \rightarrow A & A, \Delta \rightarrow \Theta}
+\infer[cut]{\Gamma, \Delta \vdash \Theta}{\Gamma \vdash A & A, \Delta \vdash \Theta}
 \\[8pt]
-\infer[\neg_l]{\neg A, \Gamma \rightarrow }{\Gamma \rightarrow A}
+\infer[\neg_l]{\neg A, \Gamma \vdash }{\Gamma \vdash A}
 &
-\infer[\neg_r]{\Gamma \rightarrow \neg A}{A, \Gamma \rightarrow }
+\infer[\neg_r]{\Gamma \vdash \neg A}{A, \Gamma \vdash }
 \\[8pt]
-\infer[\&_{li}]{A_1 \& A_2, \Gamma \rightarrow \Theta}{A_i, \Gamma \rightarrow \Theta}
+\infer[\wedge_{l}]{A_1 \wedge A_2, \Gamma \vdash \Theta}{A_i, \Gamma \vdash \Theta}
 &
-\infer[\&_r]{\Gamma \rightarrow A \& B}{\Gamma \rightarrow A & \Gamma \rightarrow B}
+\infer[\wedge_r]{\Gamma \vdash A \wedge B}{\Gamma \vdash A & \Gamma \vdash B}
 \\[8pt]
-\infer[\vee_l]{A \vee B, \Gamma \rightarrow \Theta}{A, \Gamma \rightarrow \Theta & B, \Gamma \rightarrow \Theta}
+\infer[\vee_l]{A \vee B, \Gamma \vdash \Theta}{A, \Gamma \vdash \Theta & B, \Gamma \vdash \Theta}
 &
-\infer[\vee_{ri}]{\Gamma \rightarrow A_1 \vee A_2}{\Gamma \rightarrow A_i}
+\infer[\vee_{r}]{\Gamma \vdash A_1 \vee A_2}{\Gamma \vdash A_i}
 \\[8pt]
-\infer[\supset_l]{A \supset B, \Gamma, \Delta \rightarrow \Theta}{\Gamma \rightarrow A & B, \Delta \rightarrow \Theta}
+\infer[\rightarrow_l]{A \rightarrow B, \Gamma, \Delta \vdash \Theta}{\Gamma \vdash A & B, \Delta \vdash \Theta}
 &
-\infer[\supset_r]{\Gamma \rightarrow A \supset B}{A, \Gamma \rightarrow B}
+\infer[\rightarrow_r]{\Gamma \vdash A \rightarrow B}{A, \Gamma \vdash B}
 \\[8pt]
-\infer[\exists_l]{\exists x.Ax, \Gamma \rightarrow \Theta}{A\alpha, \Gamma \rightarrow \Theta}
+\infer[\exists_l]{\exists x.A[x], \Gamma \vdash \Theta}{A[\alpha], \Gamma \vdash \Theta}
 &
-\infer[\exists_r]{\Gamma \rightarrow \exists x.Ax}{\Gamma \rightarrow At}
+\infer[\exists_r]{\Gamma \vdash \exists x.A[x]}{\Gamma \vdash A[t]}
 \\[8pt]
-\infer[\forall_l]{\forall x.Ax, \Gamma \rightarrow \Theta}{At, \Gamma \rightarrow \Theta}
+\infer[\forall_l]{\forall x.A[x], \Gamma \vdash \Theta}{A[t], \Gamma \vdash \Theta}
 &
-\infer[\forall_r]{\Gamma \rightarrow \forall x.Ax}{\Gamma \rightarrow A\alpha}
+\infer[\forall_r]{\Gamma \vdash \forall x.A[x]}{\Gamma \vdash A[\alpha]}
 \\[8pt]
-\infer[e_l]{\Gamma, A, B, \Delta \rightarrow \Theta}{\Gamma, B, A, \Delta \rightarrow \Theta}
+\infer[e_l]{\Gamma, A, B, \Delta \vdash \Theta}{\Gamma, B, A, \Delta \vdash \Theta}
 &
-\infer[c_l]{A, \Gamma \rightarrow \Theta}{A, A, \Gamma \rightarrow \Theta}
+\infer[c_l]{A, \Gamma \vdash \Theta}{A, A, \Gamma \vdash \Theta}
 \\[8pt]
-\infer[w_l]{A, \Gamma \rightarrow \Theta}{\Gamma \rightarrow \Theta}
+\infer[w_l]{A, \Gamma \vdash \Theta}{\Gamma \vdash \Theta}
 &
-\infer[w_r]{\Gamma \rightarrow A}{\Gamma \rightarrow}
+\infer[w_r]{\Gamma \vdash A}{\Gamma \vdash}
 \\
 \end{array}
 \]
