@@ -27,20 +27,26 @@ $$
 \infer[\imp_I (\pi)]{\Gamma \seq \lambda_{\pi} a^A. b : \C_{\pi}[A \imp B]}
 {\Gamma, a: A \seq b: \C_{\pi}[B]}
 $$
-%
+
 
 $$
 \infer[\imp_E^{\rightharpoonup} (\pi_1;\pi_2)]{\Gamma \seq (f \ x)^{\rightharpoonup}_{(\pi_1;\pi_2)} : \C^1_{\pi_1}[\C^2_{\pi_2}[B]]}
 {\Gamma \seq f: \C^1_{\pi_1}[A \imp B]  &  \Gamma \seq x: \C^2_{\pi_2}[A] }
 $$
-%
+
+
 $$
 \infer[\imp_E^{\leftharpoonup} (\pi_1;\pi_2)]{\Gamma \seq (f \ x)^{\leftharpoonup}_{(\pi_1;\pi_2)} : \C^2_{\pi_1}[\C^1_{\pi_2}[B]]}
 {\Gamma \seq f: \C^1_{\pi_1}[A \imp B]  &  \Gamma \seq x: \C^2_{\pi_2}[A] }
 $$
 
+\bigskip
+
 \small{$\pi$, $\pi_1$ and $\pi_2$ must be positive positions. 
 $a$ is allowed to occur in $b$ only if $\pi$ is strongly positive.}
+
+\smallskip
+
 \end{calculus}
 
 \begin{clarifications}
@@ -53,15 +59,15 @@ of implications; \emph{strongly positive} iff this number is zero.
 \begin{history}
 Contextual Natural Deduction~\cite{ContextualND} 
 combines the idea of deep inference~\irefmissing{ToDo} with 
-Gentzen's natural deduction~\iref{NaturalDeduction}. 
+Gentzen's natural deduction~\iref{GentzenNJ}. 
 \end{history}
 
 \begin{technicalities}
 Soundness and completeness w.r.t. minimal logic are 
 proven~\cite{ContextualND} by providing translations 
-between \NDc and Gentzen's natural deduction. 
-Proofs in \NDc can be quadratically shorter than 
-proofs in Gentzen's natural deduction.
+between \NDc and the minimal fragment of \NJ \iref{GentzenNJ}. 
+\NDc proofs can be quadratically shorter than 
+proofs in the minimal fragment of \NJ.
 \end{technicalities}
 
 
