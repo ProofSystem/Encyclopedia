@@ -23,6 +23,14 @@
 &
 \infer[cut]{\Gamma, \Delta \vdash \Theta}{\Gamma \vdash A & A, \Delta \vdash \Theta}
 \\[8pt]
+\infer[w_l]{A, \Gamma \vdash \Theta}{\Gamma \vdash \Theta}
+&
+\infer[w_r]{\Gamma \vdash A}{\Gamma \vdash}
+\\[8pt]
+\infer[e_l]{\Gamma, A, B, \Delta \vdash \Theta}{\Gamma, B, A, \Delta \vdash \Theta}
+&
+\infer[c_l]{A, \Gamma \vdash \Theta}{A, A, \Gamma \vdash \Theta}
+\\[8pt]
 \infer[\neg_l]{\neg A, \Gamma \vdash }{\Gamma \vdash A}
 &
 \infer[\neg_r]{\Gamma \vdash \neg A}{A, \Gamma \vdash }
@@ -46,14 +54,6 @@
 \infer[\forall_l]{\forall x.A[x], \Gamma \vdash \Theta}{A[t], \Gamma \vdash \Theta}
 &
 \infer[\forall_r]{\Gamma \vdash \forall x.A[x]}{\Gamma \vdash A[\alpha]}
-\\[8pt]
-\infer[e_l]{\Gamma, A, B, \Delta \vdash \Theta}{\Gamma, B, A, \Delta \vdash \Theta}
-&
-\infer[c_l]{A, \Gamma \vdash \Theta}{A, A, \Gamma \vdash \Theta}
-\\[8pt]
-\infer[w_l]{A, \Gamma \vdash \Theta}{\Gamma \vdash \Theta}
-&
-\infer[w_r]{\Gamma \vdash A}{\Gamma \vdash}
 \\
 \end{array}
 \]
