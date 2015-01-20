@@ -1,6 +1,4 @@
 
-\newcommand{\NJ}{\ensuremath{\mathbf{NJ}}\xspace}
-\newcommand{\LHJ}{\ensuremath{\mathbf{LHJ}}\xspace}
 
 \calculusName{Natural Deduction}
 \calculusAcronym{\NJ}
@@ -14,17 +12,17 @@
 
 \maketitle
 
-\begin{entry}{NaturalDeduction}
+\begin{entry}{GentzenNJ}
 
-\newcommand{\A}{A}
-\newcommand{\B}{B}
-\newcommand{\C}{C}
-\newcommand{\DD}{D}
-\newcommand{\F}{F}
-\newcommand{\x}{x}
+\newcommand{\A}{\mathfrak{A}}
+\newcommand{\B}{\mathfrak{B}}
+\newcommand{\C}{\mathfrak{C}}
+\newcommand{\DD}{\mathfrak{D}}
+\newcommand{\F}{\mathfrak{F}}
+\newcommand{\x}{\mathfrak{x}}
 
 \newcommand{\implies}{\supset}
-\newcommand{\bottom}{\bot}
+\newcommand{\bottom}{\curlywedge}
 
 \begin{calculus}
 
@@ -64,7 +62,7 @@
 \infer[FE]{\A \implies \B}{\infer*{B}{[A]}}
 \qquad
 \infer[FB]{\B}{\A & \A \implies \B}
-\quad
+\qquad
 \infer[NE]{\neg \A}{\infer*{\bottom}{[\A]}}
 \qquad
 \infer[NB]{\bottom}{\A & \neg \A}
@@ -83,7 +81,9 @@ with the exception of the assumption formulae designated by $\F a$.
 \end{calculus}
 
 \begin{clarifications}
-The names of the rules are those originally given by Gentzen~\cite{Gentzen1935}: $U$ = und (and), $O$ = oder (or), $A$ = all, $E$ = es-gibt (exists), $F$ = folgt (follows), $N$ = nicht (not), $E$ = Einf\"uhrung (introduction), $B$ = Beseitigung (elimination).
+The names of the rules are those originally given by Gentzen~\cite{Gentzen1935}: \\
+$U$ = und (and), $O$ = oder (or), $A$ = all, $E$ = es-gibt (exists), $F$ = folgt (follows), \\ 
+$N$ = nicht (not), $E$ = Einf\"uhrung (introduction), $B$ = Beseitigung (elimination).
 \end{clarifications}
 
 
@@ -93,6 +93,7 @@ The main novelty introduced by Gentzen in this proof system is its
 more naturally the logical reasoning involved in mathematical proofs.
 \end{history}
 
+\newcommand{\LHJ}{\ensuremath{\mathbf{LHJ}}\xspace}
 
 \begin{technicalities}
 In \cite{Gentzen1935}, completeness of \NJ is proven by showing how to translate proofs in the Hilbert-style calculus \LHJ \irefmissing{ToDo} to \NJ-proofs, and soundness is proven by showing how to translate \NJ-proofs to $\mathbf{LJ}$-proofs \iref{GentzenLJ}.

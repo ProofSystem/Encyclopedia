@@ -1,7 +1,5 @@
 
-\newcommand{\ND}{\ensuremath{\mathbf{ND}}\xspace}
-\newcommand{\LK}{\ensuremath{\mathbf{LK}}\xspace}
-\newcommand{\LJ}{\ensuremath{\mathbf{LJ}}\xspace}
+
 
 \calculusName{Classical Sequent Calculus}   % The name of the calculus
 \calculusAcronym{\LK}    % The acronym if defined above, or empty otherwise. 
@@ -260,12 +258,12 @@ $(*)$: Eigenvariable condition: $x$ does not occur in $\Gamma$, $\Delta$ and $\f
  \end{clarifications}
 
  \begin{history}
-This is Gentzen's original formulation\cite{lk:Gentzen1935}, Takeuti\cite{lk:Takeuti1975} has a bit more modern presentation. An invertible variant of \LK is $\LK'$\irefmissing{LKprime}, an intuitionistic version is \LJ\iref{SequentCalculusLJ}. 
+This is Gentzen's original formulation\cite{lk:Gentzen1935}, Takeuti\cite{lk:Takeuti1975} has a bit more modern presentation. An invertible variant of \LK is $\LK'$\irefmissing{LKprime}, an intuitionistic version is \LJ \iref{GentzenLJ}. 
 \end{history}
 
 \begin{technicalities}
 % ToDo: write here remarks about soundness, completeness, decidability...
-Soundness is obtained by a translation to \ND\irefmissing{ND}, completeness by cut-elimination i.e. Gentzen's Hauptsatz\cite{lk:Gentzen1935}.
+Soundness is obtained by a translation to \NJ \iref{GentzenNJ}, completeness by cut-elimination i.e. Gentzen's Hauptsatz\cite{lk:Gentzen1935}.
 \end{technicalities}
 
 \end{entry}
