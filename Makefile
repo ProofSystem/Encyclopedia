@@ -1,5 +1,5 @@
 TEX=pdflatex
-BIBTEX=biber
+BIBTEX=biber/biber18Linux64
 
 
 all : main.tex proofsystems.tex frontmatter/*.tex backmatter/*.tex mainmatter/*.tex bibliographies/*.bib 
