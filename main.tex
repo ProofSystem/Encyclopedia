@@ -5,12 +5,13 @@
 \usepackage{courier}         % selects Courier as typewriter font
 
 \usepackage{xspace}
-\usepackage{hyperref}
-\usepackage{makeidx}         % allows index generation
+\usepackage{multind}         % allows multiple index generation
 \usepackage{graphicx}        % standard LaTeX graphics tool
                              % when including figure files
 \usepackage{multicol}        % used for the two-column index
 \usepackage[bottom]{footmisc}% places footnotes at page bottom
+
+\usepackage{hyperref}
 
 \usepackage{amssymb}
 \usepackage{txfonts}
@@ -27,10 +28,10 @@
 
 
 
-
-\makeindex             % used for the subject index
-                       % please use the style svind.ist with
-                       % your makeindex program
+% makeindex should use "svind.ist" 
+\makeindex{logics} % index for logics
+\makeindex{ctypes} % index for calculus types
+                       
 
 
 \begin{document}
@@ -60,8 +61,13 @@
   %\include{acronym}
   %\include{appendix}
   %\include{backmatter/glossary}
-  \printindex
 
+  \newpage
+
+  \begin{scriptsize}
+  \printindex{logics}{Logics}
+  \printindex{ctypes}{Proof Systems Grouped by Type}
+  \end{scriptsize}
 
 \end{document}
 

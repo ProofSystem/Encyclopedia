@@ -1,10 +1,13 @@
 TEX=pdflatex
 BIBTEX=biber
+MAKEINDEX=makeindex
 
 
 all : main.tex proofsystems.tex frontmatter/*.tex backmatter/*.tex mainmatter/*.tex bibliographies/*.bib 
 	$(TEX) -interaction nonstopmode $<
 	$(BIBTEX) --recodedata=recode_data.xml main
+	$(MAKEINDEX)  logics
+	$(MAKEINDEX)  ctypes
 	$(TEX) -interaction nonstopmode $<
 	$(TEX) -interaction nonstopmode $<
 
@@ -12,6 +15,8 @@ all : main.tex proofsystems.tex frontmatter/*.tex backmatter/*.tex mainmatter/*.
 withBiberForWindows: main.tex proofsystems.tex frontmatter/*.tex backmatter/*.tex mainmatter/*.tex bibliographies/*.bib 
 	$(TEX) -interaction nonstopmode $<
 	./biber/biber18Windows.exe --recodedata=recode_data.xml main
+	$(MAKEINDEX) logics
+	$(MAKEINDEX) ctypes
 	$(TEX) -interaction nonstopmode $<
 	$(TEX) -interaction nonstopmode $<
 
@@ -19,6 +24,8 @@ withBiberForWindows: main.tex proofsystems.tex frontmatter/*.tex backmatter/*.te
 withBiberForMac: main.tex proofsystems.tex frontmatter/*.tex backmatter/*.tex mainmatter/*.tex bibliographies/*.bib 
 	$(TEX) -interaction nonstopmode $<
 	./biber/biber18Mac64 --recodedata=recode_data.xml main
+	$(MAKEINDEX) logics
+	$(MAKEINDEX) ctypes
 	$(TEX) -interaction nonstopmode $<
 	$(TEX) -interaction nonstopmode $<
 
@@ -26,6 +33,8 @@ withBiberForMac: main.tex proofsystems.tex frontmatter/*.tex backmatter/*.tex ma
 withBiberForLinux32: main.tex proofsystems.tex frontmatter/*.tex backmatter/*.tex mainmatter/*.tex bibliographies/*.bib 
 	$(TEX) -interaction nonstopmode $<
 	./biber/biber18Linux32 --recodedata=recode_data.xml main
+	$(MAKEINDEX) logics
+	$(MAKEINDEX) ctypes
 	$(TEX) -interaction nonstopmode $<
 	$(TEX) -interaction nonstopmode $<
 
@@ -33,6 +42,8 @@ withBiberForLinux32: main.tex proofsystems.tex frontmatter/*.tex backmatter/*.te
 withBiberForLinux64: main.tex proofsystems.tex frontmatter/*.tex backmatter/*.tex mainmatter/*.tex bibliographies/*.bib 
 	$(TEX) -interaction nonstopmode $<
 	./biber/biber18Linux64 --recodedata=recode_data.xml main
+	$(MAKEINDEX) logics
+	$(MAKEINDEX) ctypes
 	$(TEX) -interaction nonstopmode $<
 	$(TEX) -interaction nonstopmode $<
 

@@ -3,28 +3,6 @@
 \newcommand{\myline}{\noindent\makebox[\linewidth]{\rule{\textwidth}{0.4pt}}}
 
 
-\newenvironment{entry}[1]
-{\label{entry:#1}\begin{refsection}[#1]}
-{\myline\printbibliography[heading=none]\end{refsection}}
-
-\newenvironment{calculus}
-{\begin{center}\begin{Sbox}\begin{minipage}{0.98\textwidth}}
-{\end{minipage}\end{Sbox}\fbox{\TheSbox}\end{center}}
-
-\newenvironment{clarifications}
-{\noindent\textbf{Clarifications:}}
-{\smallskip}
-
-\newenvironment{history}
-{\noindent\textbf{History:}}
-{\smallskip}
-
-\newenvironment{technicalities}
-{\noindent\textbf{Remarks:}}
-{\smallskip}
-
-\makeatletter
-
 
 \newcommand{\includeProofSystem}[1]{\input{mainmatter/#1}}
 
@@ -168,4 +146,29 @@
 }
 }
 
-\makeatother
+
+\newenvironment{entry}[1]
+{\label{entry:#1}\begin{refsection}[#1]}
+{\updateindex\myline\printbibliography[heading=none]\end{refsection}}
+
+\newenvironment{calculus}
+{\begin{center}\begin{Sbox}\begin{minipage}{0.98\textwidth}}
+{\end{minipage}\end{Sbox}\fbox{\TheSbox}\end{center}}
+
+\newenvironment{clarifications}
+{\noindent\textbf{Clarifications:}}
+{\smallskip}
+
+\newenvironment{history}
+{\noindent\textbf{History:}}
+{\smallskip}
+
+\newenvironment{technicalities}
+{\noindent\textbf{Remarks:}}
+{\smallskip}
+
+
+\newcommand{\updateindex}{
+  \index{logics}{\@calculusLogic} 
+  \index{ctypes}{\@calculusType!\@calculusName} 
+}
