@@ -1,0 +1,151 @@
+% If the calculus has an acronym, define it.
+	% (e.g. \newcommand{\LK}{\ensuremath{\mathbf{LK}}\xspace})
+	
+	\calculusName{Second Order $\lambda$-Calculus (System $\SystemF$)} % The name of the calculus
+	\calculusAcronym{\SystemF} % The acronym if defined above, or empty otherwise.
+	\calculusLogic{Second Order Intuitionistic Propositional Logic} 
+% Specify the logic (e.g. classical, intuitionistic, ...) for which this calculus is intended.
+	\calculusType{Sequential Natural Deduction with Labels} % Specify the calculus type (e.g. Frege-Hilbert style, tableau, sequent calculus, hypersequent calculus, natural deduction, ...)
+	\calculusYear{1971} % The year when the calculus was invented.
+	\calculusAuthor{Jean-Yves Girard} % The name(s) of the author(s) of the calculus.
+	
+	
+	\entryTitle{Second Order $\lambda$-Calculus (System $\SystemF$)} % Title of the entry (usually coincides with the name of the calculus).
+	\entryAuthor{Giuseppe Longo \and Kathleen Milsted \and Sergei Soloviev} % Your name(s). Separate multiple names with "\and".
+	
+	
+	% If you wish, use tags to give any other information
+	% that might be helpful for classifying and grouping this entry:
+	% e.g. \tag{Two-Sided Sequents}
+	% e.g. \tag{Multiset Cedents}
+	% e.g. \tag{List Cedents}
+	% You are free to invent your own tags.
+	% The Encyclopedia's coordinator will take care of
+	% merging semantically similar tags in the future.
+	
+	
+	\maketitle
+	
+	
+	% If your files are called "<ID>.tex" and "<ID>.bib",
+	% then you should write "\begin{entry}{<ID>}" in the line below
+	\begin{entry}{fc}
+        %\begin{entry}{fc}
+	
+	% Define here any newcommands you may need:
+	% e.g. \newcommand{\necessarily}{\Box}
+	% e.g. \newcommand{\possibly}{\Diamond}
+	
+	
+	\begin{calculus}
+	
+	% Add the inference rules of your proof system here
+
+\centering
+$$
+\infer[\mathrm{assumption}]{\Gamma; E \seq x: T}{(x:T)\in E}
+$$
+  \[
+  \begin{array}{l@{\qquad}l}
+\infer[\rightarrow{I}]
+{\Gamma; E \seq \lambda (x:T.e):(T\rightarrow S)}
+{\Gamma; E, (x:T) \seq e: S}
+  &
+  \infer[\rightarrow{E}]{\Gamma; E \seq (fe):\tau}
+{\Gamma; E \seq f: (T\rightarrow S) &
+    \Gamma; E \seq e: T}
+  \medskip\\
+\infer[\forall{I^*}]
+{\Gamma; E \seq (\Lambda X:Tp.e):(\forall X:Tp.T)}
+{\Gamma\, X; E \seq e: T}
+  &
+  \infer[\forall{E}]{\Gamma; E \seq fS:[S/X]T}
+{\Gamma; E \seq f:(\forall X:Tp.T) & \Gamma\seq S:Tp}
+  \medskip\\
+  \end{array}
+  \]
+
+\small{* $X$ must be not free in the type of any free term variable in $E$.}
+
+%\centering
+%$$ \infer[\mathrm{Ax\, C}]{\Gamma \seq M\tau = M\tau': \sigma}{\Gamma \seq M:\forall X\sigma & X\notin FV(\sigma)}
+%$$
+	% The "proof.sty" and "bussproofs.sty" packages are available.
+	% If you need any other package, please contact the editor (bruno@logic.at)
+	
+	\end{calculus}
+	
+	% The following environments ("clarifications", "history",
+	% "technicalities") are optional. If you do use them,
+	% be very concise and objective.
+	
+	\begin{clarifications}
+	 The presentation from~\cite{AspLongo:91} with minor corrections is used. Below $X, Y, Z...$ are type-variables and $x, y, ...$ term variables. 
+
+	Type expressions: 
+$T:= X | (T\rightarrow S)|(\forall X:Tp.T)$. 
+
+Term expressions: $e:= x|(ee)|(eT)|(\lambda x:T.e)|(\Lambda X:Tp.e)$.  
+
+$\forall, \Lambda$ and $\lambda$ are variable binders. All expressions are considered up to renaming of bound variables
+($\alpha$-conversion). An unbound variable is free. $FV(R)$ is the set of free
+variables for any (type or term) expression; $[e/x]$, $[S/X]$ mean capture-avoiding substitution in term- and type-expressions respectively (defined by induction). 
+A context is a finite set $\Gamma$ of type variables; $\Gamma X$ stands for $\Gamma\cup{X}$. A type $T$ is legal in $\Gamma$ iff 
+$FV(T)\subseteq FV(\Gamma)$. A type assignment in $\Gamma$ is a finite list
+$E = (x_1:T_1),..., (x_n:T_n)$ where any $T_i$ is legal in $\Gamma$. 
+The typing
+relation $\Gamma; E\seq e:T$, where $E$ is a type assignmentlegal in $\Gamma$,
+$e$ is a term expression and $T$ is a type expression, is defined by the rules
+above.
+
+The {\em conversion relation} between well-typed 
+terms is very important. It is defined
+by the following axioms: ($\beta$) $(\lambda x:T.f)e = [e/x]f$; 
+($\beta_2$) $(\Lambda X:Tp.e)S=[S/X]e$; $(\eta)$ $\lambda x:T.(ex)=e$ if 
+$x\notin FV(e)$; $(\eta_2)$ $\Lambda X:Tp.(eX) = e$ if 
+$X\notin FV(e)$, and by usual rules that turn ``$=$'' into congruence.
+The system $\SystemF_c$ is obtained if one more equality axiom is added:
+({\bf C})\,\,\,\, $eT = eT'$ for $\Gamma; E\seq e:\forall X.S$ and $X\notin FV(S)$.
+	% ToDo: write here short remarks that may help the reader to understand
+	% the inference rules of the proof system.
+	\end{clarifications}
+	
+	\begin{history}
+Introduced by Girard~\cite{Gir:71} and Reynolds~\cite{Rey:74}. Inspired works on higher order type systems. Included by Barendregt in his $\lambda$-cube~\cite{Bar:91}. Various extensions were considered, for example, $\SystemF_c$~\cite{LMS:93}, $\SystemF$ with subtyping~\cite{CMMS:91, LMS:00}. Important for functional programming languages.
+	% ToDo: write here short historical remarks about this proof system,
+	% especially if they relate to other proof systems.
+	% Use "\iref{OtherProofSystem}" to refer to another proof system
+	% in the Encyclopedia (where "OtherProofSystem" is its ID).
+	% Use "\irefmissing{SuggestedIDForOtherProofSystem}" to refer to
+	% another proof system that is not yet available in the encyclopedia.
+	\end{history}
+	
+	\begin{technicalities}
+A strong normalization theorem for $\SystemF$ was proved by Girard
+~\cite{Gir:72}. It implies a normalization theorem and consistency for second
+order arithmetic $PA_2$. For $\SystemF_c$, a {\em genericity theorem} holds~\cite{LMS:93}.
+	% ToDo: write here remarks about soundness, completeness, decidability...
+	\end{technicalities}
+	
+	
+	
+	% Please cite the original paper where the proof system was defined.
+	% To do so, you may use the \cite command within
+	% one of the optional environments above,
+	% or use the \nocite command otherwise.
+	
+	% You may also cite a modern paper or book where the
+	% proof system is explained in greater depth or clarity.
+	% Cite parsimoniously.
+	
+	% Do not cite related work. Instead, use the "\iref" or "\irefmissing"
+	% commands to make an internal reference to another entry,
+	% as explained within the "history" environment above.
+	
+	% You do not need to create the "References" section yourself.
+	% This is done automatically.
+	
+	
+	% Leave an empty line above "\end{entry}".
+	
+	\end{entry}

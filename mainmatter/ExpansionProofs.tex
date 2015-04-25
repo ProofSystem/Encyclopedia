@@ -1,0 +1,151 @@
+\calculusName{Expansion Proofs}
+\calculusAcronym{Expansion Proofs}
+\calculusLogic{First-order classical logic}
+\calculusType{Matrix-based proof system}
+\calculusYear{1983}
+\calculusAuthor{Dale Miller}
+
+\entryTitle{Expansion Proofs}
+\entryAuthor{Dale Miller}
+
+\tag{Matrix-based proof system}
+
+\maketitle
+
+\begin{entry}{ExpansionProofs}  
+
+\newcommand{\Dp}[1]{\mathsf{Dp}(#1)}
+\newcommand{\Sh}[1]{\mathsf{Sh}(#1)}
+\newcommand{\calE}{\mathcal{E}}
+
+\newcommand\ALL   {}
+\def\ALL#1.{\forall{#1}.\,}
+\def\ALLx#1.{\forall\mkern -3mu{#1}.\,}
+\newcommand\EX    {}
+\def\EX#1.{\exists{#1}.\,}
+
+\begin{calculus}
+
+\emph{Expansion trees}, \emph{eigenvariables}, and the function
+$\Sh{-}$ (read \emph{shallow formula of}), that maps an expansion
+tree to a formula, are defined as follows:
+\begin{enumerate} 
+\item If $A$ is $\top$ (true), $\bot$ (false), or a literal, then $A$ is an
+    expansion tree with top node $A$, and $\Sh{A} = A$.
+\item If $E$ is an expansion tree with $\Sh{E}=[y/x]A$ and $y$ is not an
+    eigenvariable of any node in $E$, then $E' = \ALLx x. A +^y E$ is
+    an expansion tree with top node $\ALLx x. A$ and $\Sh{E'}
+    = \ALLx x. A$.  The variable $y$ is called an {\em eigenvariable}
+    of (the top node of) $E'$\kern -3pt.  The set of eigenvariables of
+    all nodes in an expansion tree is called the \emph{eigenvariables
+    of} the tree.
+\item If $\{t_1,\ldots,t_n\}$ (with $n \ge 0$) is a set of terms and
+    $E_1,\ldots,E_n$ are expansion trees with pairwise disjoint
+    eigenvariable sets and with $\Sh{E_i} = [t_i/x]A$ for
+    $i\in\{1,\ldots,n\}$, then $E' = \EX x.  A +^{t_1} E_1 \ldots
+    +^{t_n} E_n$ is an expansion tree with top node $\EX x.  A$ and
+    $\Sh{E'} = \EX x. A$.  The terms $t_1,\ldots,t_n$ are known
+    as the \emph{expansion terms} of (the top node of) $E'$.
+\item If $E_1$ and $E_2$ are expansion trees that share no eigenvariables and
+    $\circ\in\{\land,\lor\}$, then $E_1\circ E_2$ is an expansion tree
+    with top node $\circ$ and $\Sh{E_1\circ E_2}
+    = \Sh{E_1} \circ \Sh{E_2}$.
+\end{enumerate}
+
+\medskip
+
+In the expansion tree $\ALLx x. A +^x E$ (resp. in $\EX x. A +^{t_1} E_1
+\ldots +^{t_n} E_n$), we say that $x$ (resp. $t_i$) \emph{labels} the top node
+of $E$ (resp. $E_i$, for any $i \in\{1,\ldots,n\}$).  A term
+$t$ \emph{dominates} a node in an expansion tree if it labels a parent
+node of that node in the tree.
+
+\medskip
+
+For an expansion tree $E$, the quantifier-free formula $\Dp{E}$, 
+called the \emph{deep formula of} $E$, is defined as:
+\begin{itemize}
+\item $\Dp{E} = E$ if $E$ is $\top$, $\bot$, or a literal;
+\item $\Dp{E_1 \circ E_2} = \Dp{E_1} \circ \Dp{E_2}$ for
+      $\circ\in\{\land, \lor \}$; 
+\item $\Dp{\ALLx x. A +^y E} = \Dp{E}$; and
+\item $\Dp{\EX x. A +^{t_1} E_1 \cdots +^{t_n} E_n} = 
+       \Dp{E_1}\lor\ldots\lor \Dp{E_n}$ if $n > 0$, and $\Dp{\EX
+  x. A} = \bot$. 
+\end{itemize}
+
+Let $\calE$ be an expansion tree and let $<^0_{\calE}$ be the binary
+relation on the occurrences of expansion terms in $\calE$ defined by
+$t <^0_{\calE} s$ if there is an $x$ which is free in $s$ and which is
+the eigenvariable of a node dominated by $t$.  Then $<_{\calE}$, the
+transitive closure of $<^0_{\calE}$, is called the
+\emph{dependency relation} of $\calE$.
+
+\medskip
+
+An expansion tree $\calE$ is said to be an \emph{expansion proof} if
+$<_\calE$ is acyclic and $\Dp{\calE}$ is a tautology; in particular,
+$\calE$ is an \emph{expansion proof of} $\Sh{\calE}$.
+\end{calculus}
+
+% The following environments ("clarifications", "history", 
+% "technicalities") are optional. If you do use them, 
+% be very concise and objective.
+
+\begin{clarifications}
+The soundness and completeness theorem for expansion trees is the
+following.  A formula $B$ is a theorem of first-order logic if and
+only if there is an expansion proof $Q$ such that $\Sh{Q}=B$.
+\end{clarifications}
+
+\begin{history}
+Expansion trees and expansion proofs \cite{miller87sl,miller83}
+provide a simple generalization of both Herbrand's disjunctions and
+Gentzen's mid-sequent theorem to formulas that are not necessarily in
+prenex-normal form.  These proof structures were originally defined
+for higher-order classical logic and used to provide a generalization
+of Herbrand's theorem for higher-order logic as well as a soundness
+proof for skolemization in the presence of higher-order
+quantification.  Expansion trees are an early example of a
+matrix-based proof system that emphasizes parallelism within proof
+structures in a manner similar to that found in linear logic proof
+nets \cite{girard87tcs}.  That parallelism is explicitly analyzed
+in \cite{chaudhuri14jlc} using a multi-focused version of
+LKF \iref{LKF}.
+\end{history}
+
+% \begin{history}
+% ToDo: write here short historical remarks about this proof system,
+% especially if they relate to other proof systems. 
+% Use "\iref{OtherProofSystem}" to refer to another proof system 
+% in the Encyclopedia (where "OtherProofSystem" is its ID). 
+% Use "\irefmissing{SuggestedIDForOtherProofSystem}" to refer to 
+% another proof system that is not yet available in the encyclopedia.
+% \end{history}
+
+% \begin{technicalities}
+% ToDo: write here remarks about soundness, completeness, decidability...
+% \end{technicalities}
+
+
+
+% Please cite the original paper where the proof system was defined.
+% To do so, you may use the \cite command within 
+% one of the optional environments above,
+% or use the \nocite command otherwise.
+
+% You may also cite a modern paper or book where the 
+% proof system is explained in greater depth or clarity.
+% Cite parsimoniously.
+
+% Do not cite related work. Instead, use the "\iref" or "\irefmissing" 
+% commands to make an internal reference to another entry, 
+% as explained within the "history" environment above.
+
+% You do not need to create the "References" section yourself. 
+% This is done automatically.
+
+
+% Leave an empty line above "\end{entry}".
+
+\end{entry}

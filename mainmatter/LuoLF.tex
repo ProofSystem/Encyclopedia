@@ -1,0 +1,142 @@
+% If the calculus has an acronym, define it.
+	% (e.g. \newcommand{\LK}{\ensuremath{\mathbf{LK}}\xspace})
+	
+	\calculusName{Z. Luo's LF} % The name of the calculus
+	\calculusAcronym{LF} % The acronym if defined above, or empty otherwise.
+	\calculusLogic{Type Theory} % Specify the logic (e.g. classical, intuitionistic, ...) for which this calculus is intended.
+	\calculusType{Logical Framework} % Specify the calculus type (e.g. Frege-Hilbert style, tableau, sequent calculus, hypersequent calculus, natural deduction, ...)
+	\calculusYear{1994} % The year when the calculus was invented.
+	\calculusAuthor{Zhaohui Luo} % The name(s) of the author(s) of the calculus.
+	
+	
+	\entryTitle{Z. Luo's LF} % Title of the entry (usually coincides with the name of the calculus).
+	\entryAuthor{Zhaohui Luo \and Sergei Soloviev} % Your name(s). Separate multiple names with "\and".
+	
+	
+	% If you wish, use tags to give any other information
+	% that might be helpful for classifying and grouping this entry:
+	% e.g. \tag{Two-Sided Sequents}
+	% e.g. \tag{Multiset Cedents}
+	% e.g. \tag{List Cedents}
+	% You are free to invent your own tags.
+	% The Encyclopedia's coordinator will take care of
+	% merging semantically similar tags in the future.
+	
+	
+	\maketitle
+	
+	
+	% If your files are called "<ID>.tex" and "<ID>.bib",
+	% then you should write "\begin{entry}{<ID>}" in the line below
+	\begin{entry}{LuoLF}
+        %\begin{entry}{LF_Luo_bib}
+	
+	% Define here any newcommands you may need:
+	% e.g. \newcommand{\necessarily}{\Box}
+	% e.g. \newcommand{\possibly}{\Diamond}
+	
+	
+	\begin{calculus}
+	
+	% Add the inference rules of your proof system here
+\centering
+$$
+\infer{<>\seq {\bf valid}}{}\!\quad\!\infer{\Gamma, x:K\seq {\bf valid}}{\Gamma\seq K{\bf kind} & x\notin FV(\Gamma)}\quad\!\infer{\Gamma, x:K, \Gamma'\seq x:K}{\Gamma, x:K, \Gamma'\seq {\bf valid}}\!\quad\! (1)
+$$
+$$
+\infer{\Gamma\seq k:K'}{\Gamma\seq k:K & \Gamma\seq K=K'}\!\quad\!
+\infer{\Gamma\seq k=k':K'}{\Gamma\seq k=k':K & \Gamma\seq K=K'}\!\quad\! (2)^*
+$$
+$$\infer{\Gamma, [k/x]\Gamma'\seq [k/x]J}{\Gamma, x:K, \Gamma'\seq J & 
+\Gamma\seq k:K}\!\quad\! (3)^{**}$$
+$$
+\infer{\Gamma\seq (x:K)K'{\bf kind}}{\Gamma\seq K{\bf kind} & 
+\Gamma, x:K\seq K'{\bf kind}}\!\quad\!
+\infer{\Gamma\seq (x:K_1)K_1'=(x:K_2)K_2'}{\Gamma\seq K_1=K_2 & 
+\Gamma, x:K_1\seq K_1'=K_2'}
+$$
+$$
+\infer{\Gamma\seq (x:K)K'{\bf kind}}{\Gamma\seq K{\bf kind} & 
+\Gamma, x:K\seq K'{\bf kind}}\!\quad\!
+\infer{\Gamma\seq (x:K_1)K_1'=(x:K_2)K_2'}{\Gamma\seq K_1=K_2 & 
+\Gamma, x:K_1\seq K_1'=K_2'}
+$$
+$$
+\infer{\Gamma\seq (x:K)K'{\bf kind}}{\Gamma\seq K{\bf kind} & 
+\Gamma, x:K\seq K'{\bf kind}}\!\quad\!
+\infer{\Gamma\seq (x:K_1)K_1'=(x:K_2)K_2'}{\Gamma\seq K_1=K_2 & 
+\Gamma, x:K_1\seq K_1'=K_2'}
+$$
+$$
+\infer{\Gamma\seq (x:K)K'{\bf kind}}{\Gamma\seq K{\bf kind} & 
+\Gamma, x:K\seq K'{\bf kind}}\!\quad\!
+\infer{\Gamma\seq (x:K_1)K_1'=(x:K_2)K_2'}{\Gamma\seq K_1=K_2 & 
+\Gamma, x:K_1\seq K_1'=K_2'}\!\quad\! (4)
+$$
+$$
+\infer{\Gamma\seq {\bf Type\, kind}}{\Gamma\seq{\bf valid}}\!\quad
+\!\infer{\Gamma\seq El(A){\bf kind}}{\Gamma\seq A:{\bf Type}}\!\quad\! (5)
+$$
+
+
+	% The "proof.sty" and "bussproofs.sty" packages are available.
+	% If you need any other package, please contact the editor (bruno@logic.at)
+	
+	%ToDo
+	
+	\end{calculus}
+	
+	% The following environments ("clarifications", "history",
+	% "technicalities") are optional. If you do use them,
+	% be very concise and objective.
+	
+	\begin{clarifications}
+We follow~\cite{Luo:94}.  
+Terms of $\LF$ are of the forms ${\bf Type}, El(A)$, $(x:K)K'$
+(dependent product), $[x:K]K'$ (abstraction), $f(k)$, and judgements
+of the forms $\Gamma\seq{\bf valid}$ (validity of context),
+$\Gamma\seq K{\bf kind}$, $\Gamma\seq k:K$, $\Gamma\seq k=k':K$, $\Gamma\seq K=K'$. 
+Rule groups: (1) rules for contexts and assumptions; (2)* equality rules (reflexivity, symmetry and transitivity rules are ommitted); (3)** substitution rules ($J$ denotes the right side of any of the five forms of judgement); (4) rules for dependent product kinds; (5) and the kind {\bf Type}. 
+	\end{clarifications}
+	
+	\begin{history}
+The calculus was defined in~\cite{Luo:94}, ch. 9. LF is a typed version of Martin-L\"of's logical framework~\cite{NPS:90}\irefmissing{Martin-L\"of's LF}. Type theories specified in $\LF$ were used as basis of proof-assistants Lego and Plastic. Later
+the system was extended to include coercive subtyping~\cite{SolLuo:02,
+LuoSolXue:14}\irefmissing{LF with coercive subtyping}.
+	% ToDo: write here short historical remarks about this proof system,
+	% especially if they relate to other proof systems.
+	% Use "\iref{OtherProofSystem}" to refer to another proof system
+	% in the Encyclopedia (where "OtherProofSystem" is its ID).
+	% Use "\irefmissing{SuggestedIDForOtherProofSystem}" to refer to
+	% another proof system that is not yet available in the encyclopedia.
+	 \end{history}
+	
+	\begin{technicalities}
+	The proof-theoretical analysis of LF above was used in meta-theoretical studies of larger theories defined on its basis, {\em e.g.}, UTT (Universal Type Theory) that includes inductive schemata, second order logic SOL with impredicative type $Prop$ and a hierarchy of predicative universes~\cite{Luo:94}. H. Goguen defined a typed operational
+semantics for UTT and proved strong normalization theorem~\cite{HG:94}. For $\LF$
+with coercive subtyping conservativity results were obtained~\cite{SolLuo:02,
+LuoSolXue:14}.
+	\end{technicalities}
+	
+	
+	
+	% Please cite the original paper where the proof system was defined.
+	% To do so, you may use the \cite command within
+	% one of the optional environments above,
+	% or use the \nocite command otherwise.
+	
+	% You may also cite a modern paper or book where the
+	% proof system is explained in greater depth or clarity.
+	% Cite parsimoniously.
+	
+	% Do not cite related work. Instead, use the "\iref" or "\irefmissing"
+	% commands to make an internal reference to another entry,
+	% as explained within the "history" environment above.
+	
+	% You do not need to create the "References" section yourself.
+	% This is done automatically.
+	
+	
+	% Leave an empty line above "\end{entry}".
+	
+	\end{entry}

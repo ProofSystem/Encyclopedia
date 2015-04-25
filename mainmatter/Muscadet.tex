@@ -1,0 +1,65 @@
+\calculusName{Natural Knowledge Bases}
+\calculusAcronym{\Muscadet}
+\calculusLogic{Classical Predicate Logic}
+\calculusType{Natural Deduction}
+\calculusYear{1984}
+\calculusAuthor{Dominique Pastre}
+
+
+\entryTitle{Natural Knowledge Bases - \Muscadet}
+\entryAuthor{Dominique Pastre}
+
+\tag{natural methods}
+\tag{knowledge-based systems}
+
+\maketitle
+
+\begin{entry}{Muscadet}  
+
+\begin{calculus}
+
+\textbf {Some of the rules given to the system} :\\
+To prove $A\land B$, prove $A$ and prove $B$\\
+To prove $\forall X P(X)$, take any $X_1$ and prove $P(X_1)$\\
+To prove $\exists X P(X)$, search for an $X$ such that $P(X)$\\
+To prove $A \Rightarrow B$, assume $A$ and prove $B$ \\
+To prove $C$, if $A \lor B$, then prove $A \Rightarrow C \land B \Rightarrow C$\\
+Flatten : Replace $P(f(X))$ by $\exists Y(Y:f(X) \land P(Y))$ or by $\forall Y (Y:f(X) \Rightarrow P(Y)$\\
+To prove $\neg A$, assume $A$ and search for a contradiction (i.e. prove $false$)
+\\
+\textbf {Some of the rules automatically built by metarules from  definitions} :\\
+If $A \subset B$ and $X \in A$ then $X \in B$\\
+If $C:A \cap B$ and $X \in C$, then $X \in A$ \\
+If $C : A \cap B$, $X \in A$ and $X \in B$, then $X \in C$
+\end{calculus}
+
+\begin{clarifications}
+$C:A \cap B$ expresses that $C$ is 
+$A \cap B$ which has already been introduced.
+Rules are conditional actions. Actions may be defined by packs of rules. 
+Metarules builds rules from definitions, lemmas and universal hypotheses. 
+\end{clarifications}
+
+\begin{history}
+{\sc \Muscadet} \cite{pastre:1989,pastre:1993} is a knowledge-based system.
+It uses natural deduction (following the terminology of Bledsoe
+ (\cite{bledsoe:71,bledsoe77}), that is natural humanlike methods).
+Facts are hypotheses and the conclusion 
+of a theorem or a sub-theorem to be proved,
+and all sorts of facts which give relevant information
+during the proof searching process.
+Universal hypotheses are handled as local definitions (no skolemisation). 
+\Muscadet worked in set theory, mappings and relations, topology and topological linear spaces, elementary geometry, discrete geometry, cellular automata, and TPTP problems. 
+It attended CASC competitions.
+\end{history}
+
+\begin{technicalities}
+The system is sound but not complete (because of the use of many selective rules heuristics).
+It displays proofs easily readable by a human reader.
+\end{technicalities}
+
+\nocite{pastre:2011}
+% Leave an empty line above "\end{entry}".
+
+\end{entry}
+

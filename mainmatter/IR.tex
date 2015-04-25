@@ -1,0 +1,154 @@
+% If the calculus has an acronym, define it.
+% (e.g. \newcommand{\LK}{\ensuremath{\mathbf{LK}}\xspace})
+
+\calculusName{IR}   % The name of the calculus
+\calculusAcronym{IR}    % The acronym if defined above, or empty otherwise. 
+\calculusLogic{False  Quantified Boolean Formulas in Closed Prenex CNF}  % Specify the logic (e.g. classical, intuitionistic, ...) for which this calculus is intended.
+\calculusType{Resolution}   % Specify the calculus type (e.g. Frege-Hilbert style, tableau, sequent calculus, hypersequent calculus, natural deduction, ...)
+\calculusYear{2014}   % The year when the calculus was invented.
+\calculusAuthor{Olaf Beyersdorff, Leroy Chew, Mikol\'{a}\v{s} Janota } % The name(s) of the author(s) of the calculus.
+
+
+\entryTitle{IR}     % Title of the entry (usually coincides with the name of the calculus).
+\entryAuthor{Leroy Chew \and Mikol\'{a}\v{s} Janota}    % Your name(s). Separate multiple names with "\and".
+\maketitle
+
+\tag{Resolution}
+\tag{Refutation}
+\tag{Instantiation}
+\tag{CNF}
+\tag{Closed Prenex QBF}
+\tag{QBF}
+
+% If you wish, use tags to give any other information 
+% that might be helpful for classifying and grouping this entry:
+% e.g. \tag{Two-Sided Sequents}
+% e.g. \tag{Multiset Cedents}
+% e.g. \tag{List Cedents}
+% You are free to invent your own tags. 
+% The Encyclopedia's coordinator will take care of 
+% merging semantically similar tags in the future.
+
+
+%\maketitle
+
+
+% If your files are called "<ID>.tex" and "<ID>.bib", 
+% then you should write "\begin{entry}{<ID>}" in the line below
+\begin{entry}{IR}  
+
+% Define here any newcommands you may need:
+% e.g. \newcommand{\necessarily}{\Box}
+% e.g. \newcommand{\possibly}{\Diamond}
+%\DeclareMathOperator*{\lev}{\operatorname{lv}}
+%\DeclareMathOperator*{\instantiate}{\textsf{inst}}
+%\DeclareMathOperator*{\range}{{\sf rng}}
+\newcommand{\comprehension}[2]{\ensuremath{\left\{ {#1} \;|\; {#2}\right\}}}
+\newcommand{\lev}{{\sf lv}}
+\newcommand{\restr}{{\sf restr}}
+\newcommand{\range}{{\sf rng}}
+\newcommand{\domain}{{\sf dom}}
+
+\begin{calculus}
+
+% Add the inference rules of your proof system here.
+% The "proof.sty" and "bussproofs.sty" packages are available.
+% If you need any other package, please contact the editor (bruno@logic.at)
+%\framebox{
+%  \parbox{0.4\breite}
+%  {\small
+    \begin{prooftree}
+      \AxiomC{}
+      \RightLabel{(Ax)}
+      \UnaryInfC{
+        $\comprehension{x^{\hspace{1pt}\restr(\tau,x)}}
+                       {x\in C, x\textrm{ is existential}} $}
+    \end{prooftree}
+    $C$ is a non-tautological clause from the matrix. \\$\tau=\comprehension{0/u}{u\textrm{ is universal in }C}$, where the notation $0/u$ for literals $u$ is shorthand for $0/y$ if $u=y$ and $1/y$ if $u=\neg y$. We define $\restr(\tau, x)$ as ${\comprehension{c/u}{c/u\in \tau, \lev(u)<\lev(x)}}$.
+    \begin{prooftree}
+      \AxiomC{$x^\tau\lor C_1 $ }
+      \AxiomC{$\lnot x^\tau\lor C_2 $}
+      \RightLabel{(Resolution)}
+      \BinaryInfC{$C_1\cup C_2$}
+ \end{prooftree}
+    \begin{prooftree}
+      \AxiomC{$C$}
+      \RightLabel{(Instantiation)}
+      \UnaryInfC{$\comprehension{x^{\hspace{1pt}\xi}}{x^{\hspace{1pt}\sigma}\in C, x\textrm{ is existential}}$}
+    \end{prooftree}
+    $\tau$ is a partial assignment to universal variables with $\range(\tau) \subseteq \{0,1\}$.
+    $\xi=\sigma\cup\comprehension{c/u}{c/u \in \restr(\tau,x), u \notin \domain(\sigma)}$
+  %\caption{The rules of \irc  \cite{MFCS14}}
+
+    \centerline{The rules of IR~\cite{MFCS14}}
+\end{calculus}
+
+
+\begin{clarifications}
+  The calculus aims to refute a quantified Boolean formula (QBF) of the form
+  $Q_1 x_1\dots Q_n x_n.\,\phi$ where $Q_i\in\{\forall,\exists\}$
+  and $\phi$ is a Boolean formula in conjunctive normal form (CNF).
+  The formula $\phi$ is referred to as the \emph{matrix}.
+  We write $\lev(x)$ for the \emph{quantification level} of~$x$, i.e.\ $\lev(x_i)=i$.
+  A variable~$x_i$ is \emph{existential} (resp.\ \emph{universal}) if $Q_i=\exists$ (resp.\ $Q_i=\forall$).
+
+  The calculus works by introducing clauses as \emph{annotated clauses}, which are sets of annotated literals. Annotated literals consist of an existential literal and an annotation -- a partial assignment to universal variables in $\{0,1\}$. Two literals are identical if and only if both the existential literal and annotation are equal.
+%
+  The calculus enables deriving the empty clause if and only if the given formula is false.
+\end{clarifications}
+
+
+\begin{technicalities}
+Soundness was shown by extracting valid Herbrand functions. Completeness is shown by p-simulation of 
+another known QBF system Q-Resolution \irefmissing{QResolution}.
+\end{technicalities}
+
+
+% The following environments ("clarifications", "history", 
+% "technicalities") are optional. If you do use them, 
+% be very concise and objective.
+
+% \begin{clarifications}
+% ToDo: write here short remarks that may help the reader to understand 
+% the inference rules of the proof system.
+% \end{clarifications}
+
+\begin{history}
+The name of the calculus comes from the two pivotal operations \emph{instantiation} and \emph{resolution}.
+The calculus naturally generalizes an older calculus $\forall$Exp+Res~\cite{JanotaTCS15},
+which  requires all clauses to be introduced into the proof by using a complete assignment.
+\irefmissing{SuggestedIDForOtherProofSystem}
+% ToDo: write here short historical remarks about this proof system,
+% especially if they relate to other proof systems. 
+% Use "\iref{OtherProofSystem}" to refer to another proof system 
+% in the Encyclopedia (where "OtherProofSystem" is its ID). 
+% Use "\irefmissing{SuggestedIDForOtherProofSystem}" to refer to 
+% another proof system that is not yet available in the encyclopedia.
+\end{history}
+
+% \begin{technicalities}
+% ToDo: write here remarks about soundness, completeness, decidability...
+% \end{technicalities}
+
+
+
+% Please cite the original paper where the proof system was defined.
+% To do so, you may use the \cite command within 
+% one of the optional environments above,
+% or use the \nocite command otherwise.
+
+% You may also cite a modern paper or book where the 
+% proof system is explained in greater depth or clarity.
+% Cite parsimoniously.
+
+% Do not cite related work. Instead, use the "\iref" or "\irefmissing" 
+% commands to make an internal reference to another entry, 
+% as explained within the "history" environment above.
+
+% You do not need to create the "References" section yourself. 
+% This is done automatically.
+
+
+% Leave an empty line above "\end{entry}".
+
+\end{entry}
