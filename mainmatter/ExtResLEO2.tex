@@ -351,6 +351,7 @@ Optional additional rules include (a) exhaustive universal instantion rule for (
 
  \begin{history}
 The original calculus (without choice) has been presented in \cite{C5} and \cite{J5}. Recent modifications and extensions (e.g. choice) are discussed in  \cite{W47} and \cite{EasyChair:215}.
+The calculus is inspired by and extends Huet's constrained resolution \cite{Huet:amott73,Huet:cracmfhol72} and the extensional resolution calculus in \cite{C2}.
 % ToDo: write here short historical remarks about this proof system,
 % especially if they relate to other proof systems. 
 % Use "\iref{OtherProofSystem}" to refer to another proof system 
@@ -360,7 +361,7 @@ The original calculus (without choice) has been presented in \cite{C5} and \cite
  \end{history}
 
 \begin{technicalities} 
-The calculus is sound (and complete) for classical higher-order logic with Henkin semantics and choice. In the prover LEO-II, the factorisation rule is for performance reasons restricted to binary clauses and a (parametrisable) depth limit is employed fr pre-unification. Such restrictions are a (deliberative) source for incompleteness.
+The calculus is sound and (presumably) complete for classical higher-order logic with Henkin semantics and choice. In the prover LEO-II, the factorisation rule is for performance reasons restricted to binary clauses and a (parametrisable) depth limit is employed for pre-unification. Such restrictions are a (deliberative) source for incompleteness.
  \end{technicalities}
 
 
