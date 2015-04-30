@@ -1,0 +1,138 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Typesetting Deductions
+% (obtained from F. Pfenning, beefed up by Michael Kohlhase)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% There are two basic constructors of proof trees \ian and \ibn
+% for aplications of unary and binary inference rules.
+% There are versions \ianc and \ibnc that center the names of the rules.
+% For representing subtrees we have a macro \subtree that has 2 lines 
+% and a name for the subtre as of yet is only supports linear subtrees.
+
+\def\premdivider{{\mbox{$\quad$}}}
+
+\def\@lineskipamount{4pt}
+\def\ian#1#2#3{{\lineskip\@lineskipamount\inrulean{#1}{#2}{#3}}} %premise, conc, name
+\def\ibn#1#2#3#4{{\lineskip\@lineskipamount\inrulebn{#1}{#2}{#3}{#4}}}  %prem1, prem2, conc, name
+\def\icn#1#2#3#4#5{{\lineskip\@lineskipamount\inrulecn{#1}{#2}{#3}{#4}{#5}}}  %prem1, prem2, prem3, conc, name
+\def\idn#1#2#3#4#5#6{{\lineskip\@lineskipamount\inruledn{#1}{#2}{#3}{#4}{#5}{#6}}}  %prem1,
+                                                                        %prem2,
+                                                                        %prem3, prem4, conc, name
+\def\ianc#1#2#3{{\lineskip\@lineskipamount\lowerhalf{\inruleanhelp{#1}{#2}{#3}%
+                   \box\tempb\hskip\wd\tempd}}}
+\def\ibnc#1#2#3#4{{\lineskip\@lineskipamount\ianc{#1\premdivider #2}{#3}{#4}}}
+\def\icnc#1#2#3#4#5{{\lineskip\@lineskipamount\ianc{#1\premdivider #2\premdivider #3}{#4}{#5}}}
+\def\idnc#1#2#3#4#5#6{{\lineskip\@lineskipamount\ianc{#1\premdivider #2\premdivider
+      #3\premdivider #4}{#5}{#6}}}
+
+\def\subtree#1#2#3{{\lineskip .4ex\doubleinrulean{#1}{#2}{#3}}} %prem, conc, name
+\def\subtreec#1#2#3{{\lineskip .4ex\lowerhalf{\doubleinrulean{#1}{#2}{#3}%
+                   \box\tempb\hskip\wd\tempd}}} %prem, conc, name
+
+\def\lowerhalf#1{\hbox{\raise -0.8\baselineskip\hbox{#1}}}
+
+
+\newbox\tempa
+\newbox\tempb
+\newdimen\tempc
+\newbox\tempd
+
+\def\mud#1{\hfil $\displaystyle{#1}$\hfil}
+\def\rig#1{\hfil $\displaystyle{#1}$}
+
+\def\inruleanhelp#1#2#3{\setbox\tempa=\hbox{$\displaystyle{\mathstrut #2}$}%
+                        \setbox\tempd=\hbox{$\; #3$}%
+                        \setbox\tempb=\vbox{\vskip 2pt\halign{##\cr
+        \mud{#1}\cr
+        \noalign{\vskip\the\lineskip}%
+        \noalign{\hrule height 0pt}%
+        \rig{\vbox to 0pt{\vss\hbox to 0pt{\copy\tempd \hss}\vss}}\cr
+        \noalign{\hrule}%
+        \noalign{\vskip\the\lineskip}%
+        \mud{\copy\tempa}\cr}}%
+                      \tempc=\wd\tempb
+                      \advance\tempc by \wd\tempa
+                      \divide\tempc by 2 }
+
+\def\inrulean#1#2#3{{\inruleanhelp{#1}{#2}{#3}%
+                     \hbox to \wd\tempa{\hss \box\tempb \hss}}}
+\def\inrulebn#1#2#3#4{\inrulean{#1\premdivider #2}{#3}{#4}}
+\def\inrulecn#1#2#3#4#5{\inrulean{#1\premdivider #2\premdivider #3}{#4}{#5}}
+\def\inruledn#1#2#3#4#5#6{\inrulean{#1\premdivider #2\premdivider #3\premdivider #4}{#5}{#6}}
+
+
+\def\smallnd{\def\Rulespacing{\renewcommand{\arraystretch}{3}%
+\arraycolsep 0em}}
+\def\normalnd{\def\Rulespacing{\renewcommand{\arraystretch}{4}%
+ \arraycolsep 0em}}
+\normalnd
+\def\normalspacing{\renewcommand{\arraystretch}{1}}
+
+\def\doubleinruleanhelp#1#2#3{\setbox\tempa=\hbox{$\displaystyle{\mathstrut #2}$}%
+                        \setbox\tempd=\hbox{$\; #3$}%
+                        \setbox\tempb=\vbox{\halign{##\cr
+        \mud{#1}\cr
+        \noalign{\vskip\the\lineskip}%
+        \noalign{\hrule height 0pt}%
+        \rig{\vbox to 0pt{\vss\hbox to 0pt{\copy\tempd \hss}\vss}}\cr
+        \noalign{\hrule}%
+        \noalign{\vskip\the\lineskip}%
+        \noalign{\hrule}%
+        \noalign{\vskip\the\lineskip}%
+        \mud{\copy\tempa}\cr}}%
+                      \tempc=\wd\tempb
+                      \advance\tempc by \wd\tempa
+                      \divide\tempc by 2 }
+
+\def\doubleinrulean#1#2#3{{\doubleinruleanhelp{#1}{#2}{#3}%
+                     \hbox to \wd\tempa{\hss \box\tempb \hss}}}
+
+\def\dedover#1#2{\hbox{\vbox{$\displaystyle{\mathstrut #1}$}\vbox{$\displaystyle{\mathstrut #2}$}}}
+
+\newenvironment{displaynd}%
+{\vspace*{-.5em}\begin{displaymath}\Rulespacing\begin{array}{c}}%
+{\end{array}\end{displaymath}\aftergroup\ignorespaces\vspace*{-2.5em}}
+
+\newenvironment{Displaynd}[1]%
+{\begin{displaymath}\Rulespacing\begin{array}{#1}}%
+{\end{array}\end{displaymath}\aftergroup\ignorespaces\vspace*{-1em}}
+
+\newenvironment{textnd}%
+{$\displaystyle\Rulespacing\begin{array}{c}}%
+{\end{array}$}
+
+\def\ndsepline{\hline\\[-7ex]}
+
+\newenvironment{cboxnd}%
+{\vspace*{-.5em}\begin{displaymath}\Rulespacing\begin{array}{|@{\hspace{.5em}}c@{\hspace{.5em}}|}\hline}%
+{\\\hline\end{array}\end{displaymath}\aftergroup\ignorespaces\vspace*{-2.5em}}
+
+\newenvironment{tboxnd}%
+{$\displaystyle\Rulespacing\begin{array}{|@{\hspace{.5em}}c@{\hspace{.5em}}|}\hline}%
+{\\\hline\end{array}$}
+
+\newenvironment{fignd}[2]%
+{\begin{figure}\def\fignd@label{fig:#1}\def\fignd@capt{{#2}}\begin{cboxnd}}%
+{\end{cboxnd}\caption{\fignd@capt}\label{\fignd@label}\end{figure}}
+\def\endfignd{\end{cboxnd}\caption{\fignd@capt}\label{\fignd@label}\end{figure}}
+
+%%%% now some useful macros for displaying tableaux
+
+\newenvironment{tableau}%
+{\arraycolsep .2em\def\arraystretch{.9}\begin{array}{c}}%
+{\end{array}}
+
+\newenvironment{displaytableau*}%
+{\begin{displaymath}\begin{tableau}}%
+{\end{tableau}\end{displaymath}\aftergroup\ignorespaces}
+
+\newenvironment{displaytableau}[1]% label
+{\begin{equation}\label{tab:#1}\begin{tableau}}%
+{\end{tableau}\end{equation}\aftergroup\ignorespaces}
+
+\newenvironment{branches}[1]% formt
+{\begin{array}[t]{#1}\begin{array}[t]{c}}%
+{\end{array}\end{array}}
+
+\def\nextbranch{\end{array}&\begin{array}[t]{c}}
+
