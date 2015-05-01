@@ -7,7 +7,7 @@
 \calculusAuthor{Sh\^{o}ji Maehara} 
 
 \entryTitle{Multi-Conclusion Sequent Calculus \LJmc}
-\entryAuthor{Giselle Reis}  
+\entryAuthor{Giselle Reis and Valeria de Paiva}  
 
 \tag{Two-Sided Sequents}
 \tag{Multiset Cedents}
@@ -20,25 +20,24 @@
 
 
 \begin{calculus}
-
-
+%
 \[
 \begin{array}{cc}
 \infer{A \vdash A}{}
 &
 \infer[cut]{\Gamma, \Delta \vdash \Theta, \Lambda}{\Gamma \vdash
 \Theta, A & A, \Delta \vdash \Lambda}
-\\[8pt]
+\\[5pt]
 \infer[\wedge_l]{A_1 \wedge A_2, \Gamma \vdash \Theta}{A_i, \Gamma \vdash \Theta}
 &
 \infer[\wedge_r]{\Gamma \vdash \Theta, A \wedge B}{\Gamma \vdash
 \Theta, A & \Gamma \vdash \Theta, B}
-\\[8pt]
+\\[5pt]
 \infer[\vee_l]{A \vee B, \Gamma \vdash \Theta}{A, \Gamma \vdash \Theta & B, \Gamma \vdash \Theta}
 &
 \infer[\vee_r]{\Gamma \vdash \Theta, A_1 \vee A_2}{\Gamma \vdash
 \Theta, A_i}
-\\[8pt]
+\\[5pt]
 \infer[\rightarrow_l]{A \rightarrow B, \Gamma, \Delta \vdash \Theta, \Lambda}{\Gamma
 \vdash \Theta, A & B, \Delta \vdash \Lambda}
 &
@@ -56,7 +55,7 @@
 \infer[\forall_l]{\forall x.Ax, \Gamma \vdash \Theta}{At, \Gamma \vdash \Theta}
 &
 \infer[\forall_r]{\Gamma \vdash \forall x.Ax}{\Gamma \vdash A\alpha}
-\\[8pt]
+\\[5pt]
 \infer[\neg_l]{\neg A, \Gamma \vdash \Theta}{\Gamma \vdash \Theta, A}
 &
 \infer[\neg_r]{\Gamma \vdash \neg A}{A, \Gamma \vdash }
@@ -65,7 +64,7 @@
 &
 \infer[e_r]{\Gamma \vdash \Theta, A, B, \Lambda}{\Gamma \Delta \vdash
 \Theta, B, A, \Lambda}
-\\[8pt]
+\\[5pt]
 \infer[c_l]{A, \Gamma \vdash \Theta}{A, A, \Gamma \vdash \Theta}
 &
 \infer[c_r]{\Gamma \vdash \Theta, A}{\Gamma \vdash \Theta, A, A}
@@ -76,7 +75,7 @@
 \\
 \end{array}
 \]
-
+%
 \centering
 The eigenvariable $\alpha$ should not occur in $\Gamma$, $\Theta$ or $A[x]$. \\ 
 The term $t$ should not contain variables bound in $A[t]$.
@@ -84,28 +83,27 @@ The term $t$ should not contain variables bound in $A[t]$.
 
 
 \begin{clarifications}
-While \LJ \iref{GentzenLJ} is defined by restricting \LK \iref{GentzenLK} to a single conclusion 
-(i.e. at most one formula per succedent), in \LJmc only the rules 
-$\neg_r$, $\rightarrow_r$ and $\forall_r$ have this
-restriction.
-%It is common to consider \textbf{LJ'} without the 
-%exchange rules $e_l$ and $e_r$ just by
-%interpreting $\Gamma$ and $\Theta$ as multi-sets of formulas instead of lists.
+While \LJ \iref{GentzenLJ} is defined by restricting \LK \iref{GentzenLK} to
+single conclusion, in \LJmc only the rules $\neg_r$, $\rightarrow_r$ and
+$\forall_r$ have this restriction.
 \end{clarifications}
 
 \begin{history}
 \LJmc was proposed in \cite{Maehara1954} and used to prove the completeness of
-\LJ \iref{GentzenLJ} in \cite{Takeuti1987}. The same calculus (and other
-multi-conclusion calculi for intuitionistic logic) was rediscovered in
-\cite{Nadathur1998} while analyzing classical and intuitionistic provability.
+\LJ \iref{GentzenLJ} in \cite{takeuti87}. 
+It also appears in \cite{dragalin88} (as GHPC) and \cite{dummett77} (as L').
+%It is also the sequent calculus system
+%for intuitionistic logic in \cite{dragalin88}, as GHPC, and an alternative for
+%the single conclusion system in \cite{dummett77}, as L'.
 \end{history}
 
 \begin{technicalities}
 \LJmc is equivalent to \LJ, and this is established by translating
 sequents of the form $\Gamma \vdash A_1, ..., A_n$ into 
 sequents of the form $\Gamma \vdash A_1 \vee ... \vee A_n$. 
-Cut is eliminable and this can be proven by using a combination of the rewriting
-rules for cut-elimination in \LJ and \LK.
+Cut can be eliminated by using a combination of the rewriting
+rules for cut-elimination in \LJ and \LK and permutation of inferences, as shown
+by Schellinx \cite{Schellinx91} and Reis \cite{GisellePhD}.
 \end{technicalities}
 
 \end{entry}
