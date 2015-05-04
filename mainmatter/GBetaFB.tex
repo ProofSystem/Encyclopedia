@@ -678,15 +678,15 @@
 
 
 
-\calculusName{One-Sided Higher-Order Sequent Calculi $\SEQCALCD$ and $\SEQCALCFB$}   % The name of the calculus
+\calculusName{HO Sequent Calculi $\SEQCALCD$ and $\SEQCALCFB$}   % The name of the calculus
 \calculusAcronym{GBetaFB}    % The acronym if defined above, or empty otherwise. 
 \calculusLogic{classical higher-order logic}  % Specify the logic (e.g. classical, intuitionistic, ...) for which this calculus is intended.
 \calculusType{resolution}   % Specify the calculus type (e.g. Frege-Hilbert style, tableau, sequent calculus, hypersequent calculus, natural deduction, ...)
-\calculusYear{2004-2009}   % The year when the calculus was invented.
+\calculusYear{2003-2009}   % The year when the calculus was invented.
 \calculusAuthor{Christoph Benzm{\"u}ller \and Chad Brown \and Michael Kohlhase} % The name(s) of the author(s) of the calculus.
 
 
-\entryTitle{One-Sided Higher-Order Sequent Calculi $\SEQCALCD$ and $\SEQCALCFB$}     % Title of the entry (usually coincides with the name of the calculus).
+\entryTitle{HO Sequent Calculi $\SEQCALCD$ and $\SEQCALCFB$}     % Title of the entry (usually coincides with the name of the calculus).
 \entryAuthor{Christoph Benzm{\"u}ller}    % Your name(s). Separate multiple names with "\and".
 
 
@@ -735,8 +735,7 @@
        {\seqpir} \\[.5em]
 \textbf{Initialization} \hfill
   \ianc{s{\mbox{ atomic (and $\beta$-normal)}}}{\Delta,s,\neg
-    s}{\seqinit}\\[.5em]
-  \phantom{b} \hfill
+    s}{\seqinit} \hfill
   \ibnc{\Delta,( s\Leibeq^\typebool t)}{ s {\mbox{,}} t {\mbox{ atomic}}}
        {\Delta,\neg s,t}
        {\seqinitleib} \\[.5em]
@@ -750,11 +749,11 @@
        {\seqpropb} \\[.5em]
 \textbf{Decomposition} \hfill
   \ibnc{\Delta,( s^1\Leibeq^{\typea_1} t^1)\;\cdots\;\Delta,( s^n\Leibeq^{\typea_n} t^n)}
-       {\begin{array}{c} n\geq 1,\typeb\in\{\typebool,\typeind\}, \\ h_{\ov{\typea^n}\ar\typeb}\in\Signat\end{array}}
+       {\begin{array}{c} n\geq 1,\typeb\in\{\typebool,\typeind\}, h_{\ov{\typea^n}\ar\typeb}\in\Signat\end{array}}
        {\Delta, (h\ov{ s^n}\Leibeq^{\typeb} h\ov{ t^n})}
        {\seqdec}\\[1em]
 
-Calculus $\SEQCALCD$ is defined by 
+One-sided sequent calculus $\SEQCALCD$ is defined by the rules
 $\seqinit$, $\seqneg$, $\seqlorl$, $\seqlorr$, $\seqpil$ and $\seqpir$.
 
 Calculus $\SEQCALCFB$ extends $\SEQCALCD$ by the additional
@@ -769,10 +768,10 @@ rules $\seqpropb$, $\seqpropf$, $\seqdec$,  and $\seqinitleib$.
 
  \begin{clarifications}
    $\Delta$ and $\Delta'$ are finite sets of $\beta$-normal closed
-   formulas of classical higher-order logic (HOL)
-   \cite{sep-type-theory-church} and let $\Delta,s$ denote the set
-   $\Delta\cup\{s\}$. HOL terms and formulas: Let
-   $\alpha,\beta,o \in {T}$. The \emph{terms} of HOL are defined by
+   formulas of classical higher-order logic (HOL; Church's Type Theory)
+   \cite{sep-type-theory-church}. $\Delta,s$ denotes the set
+   $\Delta\cup\{s\}$. Let
+   $\alpha,\beta,o \in {T}$. HOL \emph{terms} are defined by
    the grammar ($c_{\alpha}$ denotes typed constants and $X_{\alpha}$
    typed variables distinct from $c_\alpha$):
    $ s,t ::= c_{\alpha} \mid X_{\alpha} \mid (\lambda
@@ -786,18 +785,25 @@ rules $\seqpropb$, $\seqpropf$, $\seqdec$,  and $\seqinitleib$.
    $ s_\typea \Leibeq^\alpha t_\typea := \forall P_{\typea\typearrow
      o} (\neg P s \vee P t)$.
    For each simply typed $\lambda$-term $s$ there is a unique
-   \emph{$\beta$-normal form} (denoted $\Bnormform{s}$) and a unique
-   $\beta\eta$-normal form (denoted $\Benormform{s}$).  HOL formulas
+   \emph{$\beta$-normal form} (denoted $\Bnormform{s}$).  HOL formulas
    are defined as terms of type $o$. A \emph{non-atomic formula} is
    any formula whose {$\beta$-normal form} is of the form
    $[c\ov{\bA^n}]$ where $c$ is a logical constant.  An \emph{atomic
      formula} is any other formula.
+
+   Theorem proving in these calculi works as follows: In order to
+   prove that a (closed) conjecture formula $c$ logically follows from
+   a (possibly empty) set of (closed) axioms $\{a^1,\ldots,a^n\}$, we
+   start from the initial sequent
+   $\Delta:=\{c,\neg a^1,\ldots,\neg a^n\}$ and reason backwards by
+   applying the respective calculus rules.
 \end{clarifications}
 
 
  \begin{history}
 The calculi have been presented in \cite{J18}.
-Earlier versions and further related sequent calculi for HOL are presented in \cite{R19}.
+Earlier (two-sided) versions and further related sequent calculi for
+HOL have been  presented in \cite{R19} and \cite{BrownPhD}.
 
 % ToDo: write here short historical remarks about this proof system,
 % especially if they relate to other proof systems. 
@@ -808,13 +814,10 @@ Earlier versions and further related sequent calculi for HOL are presented in \c
 \end{history}
 
 \begin{technicalities} 
-  $\SEQCALCD$ is sound and complete for elementary type theory (ETT):
-  $\models^{\textrm{ETT}} c \textrm{ if and only if } \vdash^{\SEQCALCD}
-  \{c\}$.
-  $\SEQCALCD$ is thus also sound for HOL.  $\SEQCALCFB$ is sound and
-  complete for HOL:
-  $\models^{\textrm{HOL}} c \textrm{ if and only if } \vdash^{\SEQCALCFB}
-  \{c\}$
+  $\SEQCALCD$ is sound and complete for elementary type theory
+  ($\SEQCALCD$ is thus also sound for HOL).  $\SEQCALCFB$ is sound and
+  complete for HOL. Moreover, both calculi are cut-free and they do not
+  admit cut-simulation \cite{J18}.
 \end{technicalities}
 
 
