@@ -1,0 +1,198 @@
+
+% If the calculus has an acronym, define it.
+% (e.g. \newcommand{\LK}{\ensuremath{\mathbf{LK}}\xspace})
+
+\calculusName{Full Intuitionistic Linear Logic}   % The name of the calculus
+\calculusAcronym{\FILL}    % The acronym if defined above, or empty otherwise. 
+\calculusLogic{Intuitionistic,Linear}  % Specify the logic (e.g. classical, intuitionistic, ...) for which this calculus is intended.
+\calculusType{Sequent Calculus}   % Specify the calculus type (e.g. Frege-Hilbert style, tableau, sequent calculus, hypersequent calculus, natural deduction, ...)
+\calculusYear{1991}   % The year when the calculus was invented.
+\calculusAuthor{Martin Hyland \and Valeria de Paiva} % The name(s) of the author(s) of the calculus.
+
+\entryTitle{Full Intuitionistic Linear Logic}        % Title of the entry (usually coincides with the name of the calculus).
+\entryAuthor{Harley Eades III \and Valeria de Paiva} % Your name(s). Separate multiple names with "\and".
+
+% If you wish, use tags to give any other information 
+% that might be helpful for classifying and grouping this entry:
+% e.g. \tag{Two-Sided Sequents}
+% e.g. \tag{Multiset Cedents}
+% e.g. \tag{List Cedents}
+% You are free to invent your own tags. 
+% The Encyclopedia's coordinator will take care of 
+% merging semantically similar tags in the future.
+\tag{Two-Sided Sequents}
+\tag{Term Assignment}
+
+
+\maketitle
+
+
+% If your files are called "MyProofSystem.tex" and "MyProofSystem.bib", 
+% then you should write "\begin{entry}{MyProofSystem}" in the line below
+\begin{entry}{FILL}  
+
+% Define here any newcommands you may need:
+% e.g. \newcommand{\necessarily}{\Box}
+% e.g. \newcommand{\possibly}{\Diamond}
+\newcommand{\letbe}[3]{\mathsf{let}\,#1\,\mathsf{be}\,#2\,\mathsf{in}\,#3}
+\newcommand{\letpat}[3]{\mathsf{let}\mbox{-}\mathsf{pat}\,#1\,#2\,#3}
+
+\begin{calculus}
+\[
+\begin{array}{ccc}
+\infer[Ax]{x : A \vdash x : A}{}
+&
+\quad
+&
+\infer[cut]{\Gamma, \Gamma' \vdash \Delta \mid [t/y]\Delta'}{\Gamma \vdash t : A \mid \Delta & \Gamma', y : A \vdash \Delta'}
+\\[8pt]
+\infer[IL]{\Gamma,x : \top \vdash \letbe{x}{*}{\Delta}}{\Gamma \vdash \Delta}
+&
+\quad
+&
+\infer[IR]{\cdot \vdash * : \top}{}
+\\[8pt]
+\infer[PL]{x : \perp \vdash \cdot}{}
+& \quad & 
+\infer[PR]{\Gamma \vdash \circ : \perp \mid \Delta}{\Gamma \vdash \Delta}
+\\[8pt]
+\infer[TL]{\Gamma,z : A \otimes B \vdash \letbe{z}{x \otimes y}{\Delta}}{\Gamma,x : A,y : B \vdash \Delta}
+&
+\quad
+&
+\infer[TR]{\Gamma,\Gamma' \vdash t_1 \otimes t_2 : A \otimes B \mid \Delta \mid \Delta'}{\Gamma \vdash t_1 : A \mid \Delta & \Gamma' \vdash t_2 : B \mid \Delta'}
+\\
+\end{array}
+\]
+\[
+\begin{array}{ccc}
+  \infer[ParL]{\Gamma,\Gamma',z : A \oplus B \vdash \letpat{z}{(x \oplus -)}{t_i} : C_i \mid \letpat{z}{(- \oplus y)}{t_j} : D_j}{\Gamma,x : A \vdash t_i : C_i & \Gamma', y : B \vdash t_j : D_j}\\
+\end{array}
+\]
+\[
+\begin{array}{ccc}
+  \infer[ParR]{\Gamma \vdash \Delta \mid t_1 \oplus t_2 : A \oplus B \mid \Delta'}{\Gamma \vdash \Delta \mid t_1 : A \mid t_2 : B \mid \Delta'}
+  &
+  \quad
+  &
+  \infer[ImpL]{\Gamma,y:A \multimap B,\Gamma' \vdash [y\,t/x]t_i : C_i \mid \Delta}{\Gamma \vdash t : A \mid \Delta & \Gamma',x : B \vdash t_i : C_i}
+  \\[8pt]
+  \infer[ImpR]{\Gamma \vdash \lambda x.t : A \multimap B \mid \Delta}{\Gamma, x : A \vdash t : B & x \not\in \mathsf{FV}(\Delta)}
+  \\
+\end{array}
+\]
+
+
+\end{calculus}
+
+% The following sections ("clarifications", "history", 
+% "technicalities") are optional. If you use them, 
+% be very concise and objective. Nevertheless, do write full sentences. 
+% Try to have at most one paragraph per section, because line breaks 
+% do not look nice in a short entry.
+
+\begin{clarifications}
+The left-hand side and right-hand side of sequents are multisets of
+formulas denoted $\Gamma$ and $\Delta$.  The terms annotating formulas
+are standard terms used in the simply typed $\lambda$-calculus.
+Capture avoiding substitution is denoted by $[t/x]t'$, and
+uniformly replaces every occurrence of $x$ in $t'$ with $t$.  The
+definition of the let-pattern function used in the rule $ParL$ is
+defined as follows:
+\begin{center}
+    \begin{math}
+      \begin{array}{lll}      
+        \begin{array}{lll}
+          \letpat{z}{(x \oplus -)}{t} = t\\
+          \,\,\,\,\,\,\mbox{where } x \not\in \mathsf{FV}(t)\\
+        \end{array}
+        & 
+          \begin{array}{lll}
+            \letpat{z}{(- \oplus y)}{t} = t\\
+        \,\,\,\,\,\,\mbox{where } y \not\in \mathsf{FV}(t)\\
+          \end{array}
+        & 
+          \begin{array}{lll}
+            \letpat{z}{p}{t} = \letbe{z}{p}{t}\\
+            & \\
+          \end{array}
+      \end{array}
+    \end{math}
+\end{center}
+We denote vectors of terms (resp. types) by $t_i$ (resp. $A_j$).  The
+function $\mathsf{FV}(\Delta)$ constructs the set of all free
+variables in each term found in $\Delta$.
+\end{clarifications}
+
+\begin{history}
+%% ToDo: write here short historical remarks about this proof system,
+%% especially if they relate to other proof systems. 
+%% Use "\iref{OtherProofSystem}" to refer to another proof system 
+%% in the Encyclopedia (where "OtherProofSystem" is its ID). 
+%% Use "\irefmissing{SuggestedIDForOtherProofSystem}" to refer to 
+%% another proof system that is not yet available in the encyclopedia.
+  The formulation of $\FILL$ given here was defined by Martin Hyland
+  and Valeria de Paiva \cite{Hyland:1993}.  This version was an
+  improvement over an early version first defined by Valeria de Paiva
+  in her thesis \cite{dePaiva:1988}.  The improvement was the addition
+  of the term assignment which was necessary to gain cut elimination.
+\end{history}
+
+%% \begin{technicalities}
+%%   $\FILL$ enjoys cut elimination.  It also has a categorical model in
+%%   dialectica categories \cite{dePaiva:1988}.
+%% \end{technicalities}
+
+% General Instructions:
+% =====================
+
+% The preferred length of an entry is 1 page. 
+% Do the best you can to fit your proof system in one page.
+%
+% If you are finding it hard to fit what you want in one page, remember:
+%
+%   * Your entry needs to be neither self-contained nor fully understandable
+%     (the interested reader may consult the cited full paper for details)
+%
+%   * If you are describing several proof systems in one entry, 
+%     consider splitting your entry.
+%
+%   * You may reduce the size of your entry by ommitting inference rules
+%     that are already described in other entries.
+%
+%   * Cite parsimoniously (see detailed citation instructions below).
+%
+% 
+% If you do not manage to fit everything in one page, 
+% it is acceptable for an entry to have 2 pages.
+%
+% For aesthetical reasons, it is preferable for an entry to have
+% 1 full page or 2 full pages, in order to avoid unused blank space.
+
+
+
+% Citation Instructions:
+% ======================
+
+% Please cite the original paper where the proof system was defined.
+% To do so, you may use the \cite command within 
+% one of the optional environments above,
+% or use the \nocite command otherwise.
+
+% You may also cite a modern paper or book where the 
+% proof system is explained in greater depth or clarity.
+% Cite parsimoniously.
+
+% Do not cite related work. Instead, use the "\iref" or "\irefmissing" 
+% commands to make an internal reference to another entry, 
+% as explained within the "history" environment above.
+
+% You do not need to create the "References" section yourself. 
+% This is done automatically.
+
+
+
+
+% Leave an empty line above "\end{entry}".
+
+\end{entry}
