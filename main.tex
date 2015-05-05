@@ -41,8 +41,8 @@
 \begin{document}
 \frontmatter
 
-  %\include{dedic}
-  %\include{foreword}
+  %\include{frontmatter/dedic}
+  %\include{frontmatter/foreword}
   \include{frontmatter/preface}
   %\include{frontmatter/acknow}
 
@@ -52,17 +52,19 @@
 
 \mainmatter
 
-  %\include{part}
+  \include{intros}
 
   \include{proofsystems}
 
 
 \backmatter
 
+  \part{\emph{Indexes}}
+
   \appendix
-  %\include{frontmatter/cblist}
-  %\include{acronym}
-  %\include{appendix}
+
+  \include{backmatter/cblist}
+  \include{backmatter/acronym}
   %\include{backmatter/glossary}
 
   \newpage
