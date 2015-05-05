@@ -1,0 +1,876 @@
+% If the calculus has an acronym, define it.
+% (e.g. \newcommand{\LK}{\ensuremath{\mathbf{LK}}\xspace})
+
+\newcommand{\typearrow}{\shortrightarrow}
+
+\def\tps{\sc Tps}
+\def\leo{{\sc Leo}}
+\def\Vars{{\cV}}                      %set of variables
+\def\Signat{{\Sigma}}                 %Signature
+\def\free{{free}}
+\def\thdash{\null\mathrel{\vdash\!\!\!\vdash}}
+\def\semtrue{{\tt T}}
+\def\semfalse{{\tt F}}
+\def\semival{\upsilon}
+\def\follof{\longleftrightarrow}         % Logische Aequivalenz
+\def\implies{\rightarrow}
+\def\Leibq{\mbox{\bf Q}}
+\def\Leibeq{\doteq}
+\def\Andrewseq{\stackrel{..}{=}}
+\def\Metaeq{\equiv}
+\def\Primeq{=}
+\def\Primq{\bf{q}}
+\def\Domeq{\sf{q}}
+\def\deq{{\;\colon\kern-.2em=\;}}
+\def\ov#1{{\overline{#1}}}
+\def\sdot{\rule{.3ex}{.3ex}\hskip.1ex}
+\def\lamdot#1{\lambda {#1}}
+\def\alldot#1{\forall {#1}}
+\def\exdot#1{\exists{#1}\sdot}
+\def\setdivider{\;\bigl|\;}
+\def\lden{[\kern-0.18em[}    %oeffnende Denotatklammern
+\def\rden{]\kern-0.18em]}  %schliessende Denotatklammern
+\def\quotientspace#1#2{{#1/_{\kern-.5ex{#2}}}}
+\def\restrict#1#2{{#1\bigr|_{#2}}}
+\def\Funcs{{\mbox{$\cF$}}}
+\def\to{\longrightarrow}
+\def\appo{@}
+\def\termstructure#1#2{\cT\kern-.3ex\cE_{#1}(#2)}
+\def\Termstructure#1{{\termstructure{#1}\Signat}}
+\def\rulename#1{{\it {#1}}}
+\def\algname#1#2{\rulename{#1(#2)}}
+\def\bnormform#1{\left.#1\hspace*{-.4ex}\right\downarrow_\beta}
+\def\benormform#1{\left.#1\hspace*{-.4ex}\right\downarrow_{\beta\eta}}
+\def\Bnormform#1{\left.{#1}\hspace*{-.4ex}\right\downarrow_\beta}
+\def\Benormform#1{\left.{#1}\hspace*{-.4ex}\right\downarrow_{\beta\eta}}
+\def\ambnormform#1{{#1}\hspace*{-1.1ex}\downarrow_{\kern-.2em\scriptscriptstyle *}} % ``ambiguous'' normal form
+\def\eqb{{\Metaeq_{\beta}}}
+\def\eqe{{\Metaeq_{\eta}}}
+\def\eqbe{{\Metaeq_{\beta\eta}}}
+\def\convarrow{\rightarrow}
+\newcommand{\convb}{\convarrow_{\beta}}
+\newcommand{\conve}{\convarrow_{\eta}}
+\def\Types{{\cT}}                     %set of type symbols
+\def\ar{\rightarrow}
+\def\typea{\alpha}
+\def\typeb{\beta}
+\def\typec{\gamma}
+\def\typed{\delta}
+\def\typebool{o}
+\def\typeind{\iota}
+\def\abtype#1{_{#1}}
+\def\abtypea{\abtype\typea}
+\def\abtypebool{\abtype\typebool}
+\def\wff#1{\hbox{\it wff}_{#1}}
+\def\Wff#1{\hbox{\it wff}_{#1}(\Signat)}
+\def\cWff#1{{c\Wff{#1}}}
+\def\cWffind{\cWff\typeind}
+\def\cwffa{\cwff\typea}
+\def\cWffa{\cWff\typea}
+\def\Wffa{\Wff\typea}
+\def\Wffb{\Wff{\beta}}
+\def\Wffbool{\Wff\typebool}
+\def\Wffall{\Wff{}}
+\def\cWffbool{\cWff\typebool}
+\def\cWffall{\cWff{}}
+\def\Cwff#1{\hbox{\it cwff}_{#1}(\Signat)}
+\def\cwff#1{\hbox{\it cwff}_{#1}}
+\def\Wffcl#1{\Cwff{#1}}
+\def\Wffclbool{\Cwff{\typebool}}
+\def\Wffclall{\Wffcl{}}
+\def\HOL{{\cH\kern-.4ex\cO\kern-.4ex\cL}}  % Higher-order Logic
+\def\falseconst{\bF\abtypebool}
+\def\trueconst{\bT\abtypebool}
+\def\Calc{{\mathfrak T}}
+\def\AndCalc{{\Calc_\beta}}
+\def\NCalc{{\mathfrak N\kern -.1em\mathfrak K}}
+\def\Ndcalc{{\NCalc_\beta}}
+\def\NdcalcFB{{\NCalc_{\beta\propf\propb}}}
+\def\allNdcalc{{\NCalc_\ast}}
+\def\ndcalcbeta{\algname\NCalc{\beta}}
+\def\ndcalceta{\algname\NCalc{\propeta}}
+\def\ndcalcxi{\algname\NCalc{\propxi}}
+\def\ndcalcf{\algname\NCalc{\propf}}
+\def\ndcalcb{\algname\NCalc{\propb}}
+\def\ndcalceqr{\algname\NCalc{=^r}}
+\def\ndcalceql{\algname\NCalc{=^l}}
+\def\ndcalchyp{\algname\NCalc{Hyp}}
+\def\ndcalccontr{\algname\NCalc{Contr}}
+\def\ndcalcnegi{\algname\NCalc{\neg I}}
+\def\ndcalcnege{\algname\NCalc{\neg E}}
+\def\ndcalcoril{\algname\NCalc{\lor I_L}}
+\def\ndcalcorir{\algname\NCalc{\lor I_R}}
+\def\ndcalcore{\algname\NCalc{\lor E}}
+\def\ndcalcpii{\algname\NCalc{\Pi I}}
+\def\ndcalcpie{\algname\NCalc{\Pi E}}
+\def\premdivider{{\mbox{$\quad$}}}
+\def\@lineskipamount{4pt}
+\def\lowerhalf#1{\hbox{\raise -0.8\baselineskip\hbox{#1}}}
+\def\inruleanhelp#1#2#3{\setbox\tempa=\hbox{$\displaystyle{\mathstrut #2}$}%
+                        \setbox\tempd=\hbox{$\; #3$}%
+                        \setbox\tempb=\vbox{\vskip 2pt\halign{##\cr
+        \mud{#1}\cr
+        \noalign{\vskip\the\lineskip}%
+        \noalign{\hrule height 0pt}%
+        \rig{\vbox to 0pt{\vss\hbox to 0pt{\copy\tempd \hss}\vss}}\cr
+        \noalign{\hrule}%
+        \noalign{\vskip\the\lineskip}%
+        \mud{\copy\tempa}\cr}}%
+                      \tempc=\wd\tempb
+                      \advance\tempc by \wd\tempa
+                      \divide\tempc by 2 }
+\def\inrulean#1#2#3{{\inruleanhelp{#1}{#2}{#3}%
+                     \hbox to \wd\tempa{\hss \box\tempb \hss}}}
+\def\inrulebn#1#2#3#4{\inrulean{#1\premdivider #2}{#3}{#4}}
+\def\inrulecn#1#2#3#4#5{\inrulean{#1\premdivider #2\premdivider #3}{#4}{#5}}
+\def\ian#1#2#3{{\lineskip\@lineskipamount\inrulean{#1}{#2}{#3}}} %premise, conc, name
+\def\ibn#1#2#3#4{{\lineskip\@lineskipamount\inrulebn{#1}{#2}{#3}{#4}}}  %prem1, prem2, conc, name
+\def\ianc#1#2#3{{\lineskip\@lineskipamount\lowerhalf{\inruleanhelp{#1}{#2}{#3}%
+                   \box\tempb\hskip\wd\tempd}}}
+\def\ibnc#1#2#3#4{{\lineskip\@lineskipamount\ianc{#1\premdivider #2}{#3}{#4}}}
+\def\icnc#1#2#3#4#5{{\lineskip\@lineskipamount\ianc{#1\premdivider #2\premdivider #3}{#4}{#5}}}
+\def\Rulespacing{\renewcommand{\arraystretch}{4}%
+ \arraycolsep 0em}
+\newbox\tempa
+\newbox\tempb
+\newdimen\tempc
+\newbox\tempd
+\def\mud#1{\hfil $\displaystyle{#1}$\hfil}
+\def\rig#1{\hfil $\displaystyle{#1}$}
+\def\propf{\mathfrak{f}}
+\def\propn{{\hspace*{-0.01cm}f\hspace*{-0.07cm}r}}
+\def\propeta{\eta}
+\def\propxi{\xi}
+\def\propq{{\mathfrak{q}}}
+\def\propb{{\mathfrak{b}}}
+\def\PD{{\mbox{\hspace*{-0.02cm}}\beta}}
+\def\PETA{{\mbox{\hspace*{-0.02cm}}\beta\mbox{\hspace*{-0.02cm}}\propeta}}
+\def\PXI{{\mbox{\hspace*{-0.02cm}}\beta\mbox{\hspace*{-0.02cm}}\propxi}}
+\def\PF{{\mbox{\hspace*{-0.02cm}}\beta\mbox{\hspace*{-0.02cm}}\propf}}
+\def\PB{{\mbox{\hspace*{-0.02cm}}\beta\mbox{\hspace*{-0.02cm}}\propb}}
+\def\PETAB{{\mbox{\hspace*{-0.02cm}}\beta\mbox{\hspace*{-0.02cm}}\propeta\mbox{\hspace*{-0.02cm}}\propb}}
+\def\PXIB{{\mbox{\hspace*{-0.02cm}}\beta\mbox{\hspace*{-0.02cm}}\propxi\mbox{\hspace*{-0.02cm}}\propb}}
+\def\PFB{{\mbox{\hspace*{-0.02cm}}\beta\mbox{\hspace*{-0.02cm}}\propf\mbox{\hspace*{-0.02cm}}\propb}}
+\def\MOD{{\mathfrak{M}}}
+\def\MODD{\MOD_\PD}
+\def\MODETA{\MOD_\PETA}
+\def\MODXI{\MOD_\PXI}
+\def\MODF{\MOD_\PF}
+\def\MODB{\MOD_\PB}
+\def\MODETAB{\MOD_\PETAB}
+\def\MODXIB{\MOD_\PXIB}
+\def\MODFB{\MOD_\PFB}
+\def\HE{{\mathfrak{H}}}
+\def\STM{{\mathfrak{ST}}}
+\def\MODALL{\MOD_*}
+\def\Leibext#1{{\mbox{\sc EXT}_{\Leibeq}^{#1}}}
+\def\Primext#1{{\mbox{\sc EXT}_{\Primeq}^{#1}}}
+\def\Primexta{\Primext{\typea\ar\typeb}}
+\def\Primexto{\Primext\typebool}
+\def\Leibexta{\Leibext{\typea\ar\typeb}}
+\def\Leibexto{\Leibext\typebool}
+\def\Leibextf{\Leibext{\ar}}
+\def\Primextf{\Primext{\ar}}
+\def\simml{\stackrel{.}{\sim}}
+\def\acc{\Gamma_{\mbox{\hspace*{-0.1cm}}\Sigma}}
+\def\ACC#1{\mathfrak{Acc}_{#1}}
+\def\ACCstar{{\ACC{*}}}
+\def\ACCMODD{\ACC\PD}
+\def\ACCMODETA{\ACC\PETA}
+\def\ACCMODXI{\ACC\PXI}
+\def\ACCMODF{\ACC\PF}
+\def\ACCMODB{\ACC\PB}
+\def\ACCMODETAB{\ACC\PETAB}
+\def\ACCMODXIB{\ACC\PXIB}
+\def\ACCMODFB{\ACC\PFB}
+\def\absstar{\nabla_{\mbox{\hspace*{-0.08cm}}*}}
+\def\absc{\nabla_{\mbox{\hspace*{-0.08cm}}c}}
+\def\abssat{\nabla_{\mbox{\hspace*{-0.08cm}}sat}}
+\def\absneg{\nabla_{\mbox{\hspace*{-0.08cm}}\neg}}
+\def\absbe{\nabla_{\mbox{\hspace*{-0.08cm}}\propeta}}
+\def\absxi{\nabla_{\mbox{\hspace*{-0.08cm}}\propxi}}
+\def\absbeta{\nabla_{\mbox{\hspace*{-0.08cm}}\beta}}
+\def\absor{\nabla_{\mbox{\hspace*{-0.08cm}}\vee}}
+\def\absand{\nabla_{\mbox{\hspace*{-0.08cm}}\wedge}}
+\def\absforall{\nabla_{\mbox{\hspace*{-0.08cm}}\forall}}
+\def\absexists{\nabla_{\mbox{\hspace*{-0.08cm}}\exists}}
+\def\absf{\nabla_{\mbox{\hspace*{-0.08cm}}\propf}}
+\def\absb{\nabla_{\mbox{\hspace*{-0.08cm}}\propb}}
+\def\abser{\nabla^{r}_{\mbox{\hspace*{-0.08cm}}\Primeq}}
+\def\abses{\nabla^s_{\mbox{\hspace*{-0.08cm}}\Primeq}}
+\def\abspl{\nabla^{\Leibeq}_{\mbox{\hspace*{-0.08cm}}\Primeq}}
+\def\absplb{\nabla^{\Leibeq^-}_{\mbox{\hspace*{-0.08cm}}\Primeq^-}}
+\def\abslp{\nabla^{\Primeq}_{\mbox{\hspace*{-0.08cm}}\Leibeq}}
+\def\abslpb{\nabla^{\Primeq^-}_{\mbox{\hspace*{-0.08cm}}\Leibeq^-}}
+\def\absrb{\nabla_{\mbox{\hspace*{-0.08cm}}\Leibeq}^{r}}
+\def\absbb{\nabla_{\mbox{\hspace*{-0.08cm}}\Leibeq}^o}
+\def\absfb{\nabla_{\mbox{\hspace*{-0.08cm}}\Leibeq}^\ar}
+\def\absappb{\nabla_{\mbox{\hspace*{-0.08cm}}\Leibeq}^{App}}
+\def\hintcstar{\stackrel{\leftarrow}{\nabla}_{\mbox{\hspace*{-0.08cm}}*}}
+\def\hintdstar{\vec{\nabla}_{\mbox{\hspace*{-0.08cm}}*}}
+\def\hintdc{\vec{\nabla}_{\mbox{\hspace*{-0.08cm}}c}}
+\def\hintdsat{\vec{\nabla}_{\mbox{\hspace*{-0.08cm}}sat}}
+\def\hintdneg{\vec{\nabla}_{\mbox{\hspace*{-0.08cm}}\neg}}
+\def\hintdbe{\vec{\nabla}_{\mbox{\hspace*{-0.08cm}}\propeta}}
+\def\hintdbeta{\vec{\nabla}_{\mbox{\hspace*{-0.08cm}}\beta}}
+\def\hintdor{\vec{\nabla}_{\mbox{\hspace*{-0.08cm}}\vee}}
+\def\hintdand{\vec{\nabla}_{\mbox{\hspace*{-0.08cm}}\wedge}}
+\def\hintdforall{\vec{\nabla}_{\mbox{\hspace*{-0.08cm}}\forall}}
+\def\hintdexists{\vec{\nabla}_{\mbox{\hspace*{-0.08cm}}\exists}}
+\def\hintxi{\vec{\nabla}_{\mbox{\hspace*{-0.08cm}}\propxi}}
+\def\hintdf{\vec{\nabla}_{\mbox{\hspace*{-0.08cm}}\propf}}
+\def\hintdb{\vec{\nabla}_{\mbox{\hspace*{-0.08cm}}\propb}}
+\def\hintdpl{\vec{\nabla}^{\Leibeq}_{\mbox{\hspace*{-0.08cm}}\Primeq}}
+\def\hintder{\vec{\nabla}^r_{\mbox{\hspace*{-0.08cm}}\Primeq}}
+\def\hintdleibrefl{\vec{\nabla}^{r}_{\mbox{\hspace*{-0.08cm}}\Leibeq}}
+\def\hintdleibapp{\vec{\nabla}^{\ar}_{\mbox{\hspace*{-0.08cm}}\Leibeq}}
+\def\hintdleibtrans{\vec{\nabla}^{tr}_{\mbox{\hspace*{-0.08cm}}\Leibeq}}
+\def\hintsatneg{\overline{\nabla}_{\mbox{\hspace*{-0.08cm}}\neg}}
+\def\hintsator{\overline{\nabla}_{\mbox{\hspace*{-0.08cm}}\vee}}
+\def\hintsatforall{\overline{\nabla}_{\mbox{\hspace*{-0.08cm}}\forall}}
+\def\hintsatforallbeta{\overline{\nabla}_{\mbox{\hspace*{-0.08cm}}\forall}^\beta}
+\def\hintsatb{\overline{\nabla}_{\mbox{\hspace*{-0.08cm}}\propb}}
+\def\hintsatxi{\overline{\nabla}_{\mbox{\hspace*{-0.08cm}}\propxi}}
+\def\hintsatxibeta{\overline{\nabla}_{\mbox{\hspace*{-0.08cm}}\propxi}^\beta}
+\def\hintsateta{\overline{\nabla}_{\mbox{\hspace*{-0.08cm}}\propeta}}
+\def\hintsatf{\overline{\nabla}_{\mbox{\hspace*{-0.08cm}}\propf}}
+\def\hintsatfbeta{\overline{\nabla}_{\mbox{\hspace*{-0.08cm}}\propf}^\beta}
+\def\hintsatrefl{\overline{\nabla}_{\mbox{\hspace*{-0.08cm}}r}}
+\def\hintpl{\overline{\nabla}^{\Leibeq}_{\mbox{\hspace*{-0.08cm}}\Primeq}}
+\def\Scom{{\bf{S}}}
+\def\Kcom{{\bf{K}}}
+\def\HINT#1{\mathfrak{Hint}_{#1}}
+\def\HINTstar{{\HINT{*}}}
+\def\HINTMODD{\HINT\PD}
+\def\HINTMODETA{\HINT\PETA}
+\def\HINTMODXI{\HINT\PXI}
+\def\HINTMODF{\HINT\PF}
+\def\HINTMODB{\HINT\PB}
+\def\HINTMODETAB{\HINT\PETAB}
+\def\HINTMODXIB{\HINT\PXIB}
+\def\HINTMODFB{\HINT\PFB}
+\def\valprop{\mathfrak{L}}
+\def\valnot#1{\valprop_\neg(#1)}
+\def\valor#1{\valprop_\lor(#1)}
+\def\valand#1{\valprop_\land(#1)}
+\def\valimplies#1{\valprop_\implies(#1)}
+\def\valequiv#1{\valprop_\follof(#1)}
+\def\valpi#1#2{\valprop^{#1}_\forall(#2)}
+\def\valsigma#1#2{\valprop^{#1}_\exists(#2)}
+\def\valeq#1#2{\valprop^{#1}_\Primeq(#2)}
+\newcommand{\bA}{{\mathbf{A}}}
+\newcommand{\bB}{{\mathbf{B}}}
+\newcommand{\bC}{{\mathbf{C}}}
+\newcommand{\bD}{{\mathbf{D}}}
+\newcommand{\bE}{{\mathbf{E}}}
+\newcommand{\bF}{{\mathbf{F}}}
+\newcommand{\bG}{{\mathbf{G}}}
+\newcommand{\bH}{{\mathbf{H}}}
+\newcommand{\bI}{{\mathbf{I}}}
+\newcommand{\bL}{{\mathbf{L}}}
+\newcommand{\bM}{{\mathbf{M}}}
+\newcommand{\bN}{{\mathbf{N}}}
+\newcommand{\bO}{{\mathbf{O}}}
+\newcommand{\bP}{{\mathbf{P}}}
+\newcommand{\bQ}{{\mathbf{Q}}}
+\newcommand{\bT}{{\mathbf{T}}}
+\newcommand{\bU}{{\mathbf{U}}}
+\newcommand{\bW}{{\mathbf{W}}}
+\newcommand{\bX}{{\mathbf{X}}}
+\def\phi{\varphi}
+\def\cA{{\mathcal{A}}}
+\def\cB{{\mathcal{B}}}
+\def\cC{{\mathcal{C}}}
+\def\cD{{\mathcal{D}}}
+\def\cE{{\mathcal{E}}}
+\def\cF{{\mathcal{F}}}
+\def\cG{{\mathcal{G}}}
+\def\cR{{\mathcal{R}}}
+\def\cH{{\mathcal{H}}}
+\def\cI{{\mathcal{I}}}
+\def\cJ{{\mathcal{J}}}
+\def\cL{{\mathcal{L}}}
+\def\cM{{\mathcal{M}}}
+\def\cO{{\mathcal{O}}}
+\def\cP{{\mathcal{P}}}
+\def\cS{{\mathcal{S}}}
+\def\cT{{\mathcal{T}}}
+\def\cV{{\mathcal{V}}}
+\def\sema{{\sf a}}
+\def\semA{{\sf A}}
+\def\semb{{\sf b}}
+\def\semB{{\sf B}}
+\def\semc{{\sf c}}
+\def\semd{{\sf d}}
+\def\seme{{\sf e}}
+\def\semf{{\sf f}}
+\def\semg{{\sf g}}
+\def\semh{{\sf h}}
+\def\semH{{\sf H}}
+\def\semG{{\sf G}}
+\def\semi{{\sf i}}
+\def\semk{{\sf k}}
+\def\semn{{\sf n}}
+\def\semp{{\sf p}}
+\def\semP{{\sf P}}
+\def\semq{{\sf q}}
+\def\semr{{\sf r}}
+\def\semw{{\sf w}}
+\def\defins#1{{\defemph{#1}s}}
+\def\defin#1{{\defemph{#1}}}
+\def\defemph#1{{\em #1}}
+\def\TFuncs{\Funcs_\Types}
+\def\sigcard{{\aleph_s}}
+\def\my@ref#1#2#3{#1~\ref{#2:#3}}
+%% \newenvironment{myfig}[2]%
+%% {\begin{figure}[tb]\def\myfiglabel{#1}\def\myfigcaption{{#2}}\begin{center}}
+%% {\caption{\myfigcaption}\label{fig:\myfiglabel}\end{center}\end{figure}}
+%% \def\myfigref#1{\my@ref{Figure}{fig}{#1}}
+\def\thmnl{\strut\par\noindent}
+
+%\def\absitem#1{\item[{\makebox[0.4cm][l]{$#1$}}]}
+\def\absitem#1{\item[$#1$]}
+\def\Andrewseq{\stackrel{..}{=}}
+
+
+\def\funcint#1#2{\funcinto(#1,#2)}
+\def\funcinto{\Upsilon}
+\def\diffarg#1#2{\diffargo(#1,#2)}
+\def\diffargo{\overline{\Upsilon}}
+\def\diffarga#1#2{\diffargoa(#1,#2)}
+\def\diffargoa{\Upsilon_1}
+\def\diffargb#1#2{\diffargob(#1,#2)}
+\def\diffargob{\Upsilon_2}
+\def\ord{\mbox{order-of}}
+
+\def\defins#1{{\defemph{#1}s}}
+\def\defin#1{{\defemph{#1}}}
+\def\defemph#1{{\em #1}}
+
+\def\propeta{\eta}
+
+\def\sindex#1#2{}
+\def\MATH{\vspace*{-0.2cm}\[}
+\def\EMATH{\vspace*{-0.2cm}\]}
+\def\df#1{{\bf #1}}
+\def\dfi#1{{\bf #1}}
+
+\def\TFuncs{\Funcs_\Types}
+\def\Cwff#1{\hbox{\it cwff}_{#1}(\Signat)}
+\def\cwff#1{\hbox{\it cwff}_{#1}}
+\def\Wffcl#1{\Cwff{#1}}
+\def\wffcl#1{\cwff{#1}}
+\def\Wffclbool{\Cwff{\typebool}}
+\def\Wffclall{\Wffcl{}}
+\def\wffclbool{\wwff{\typebool}}
+\def\wffclall{\wffcl{}}
+\def\bnormform#1{#1\hspace*{-.4ex}\bigl\downarrow_\beta}
+\def\benormform#1{#1\hspace*{-.4ex}\bigl\downarrow_{\beta\eta}}
+\def\Bnormform#1{\left.{#1}\hspace*{-.4ex}\right\downarrow_\beta}
+\def\Benormform#1{\left.{#1}\hspace*{-.4ex}\right\downarrow_{\beta\eta}}
+
+\def\sigcard{{\aleph_s}}
+
+\def\nUnif#1{unif_{#1}(\Sigma)}
+\def\nunif{\not=}
+
+\def\absu#1{\nabla^{\nunif}_{\mbox{\hspace*{-0.08cm}}#1}}
+\def\absieunif#1{\nabla^{\typeind}_{\mbox{\hspace*{-0.08cm}}#1 u}}
+\def\absbeunif#1{\nabla^{\typebool}_{\mbox{\hspace*{-0.08cm}}#1 u}}
+\def\absfeunif#1{\nabla^{\ar}_{\mbox{\hspace*{-0.08cm}}#1 u}}
+\def\absur{\nabla^{r}_{\mbox{\hspace*{-0.08cm}}\nunif}}
+
+\def\hintdur{\vec{\nabla}^{r}_{\mbox{\hspace*{-0.08cm}}\nunif}}
+
+\def\bconv{\Metaeq_\beta}
+
+\def\Geneq{\approx}
+
+\def\absgef#1{\nabla^\ar_{\mbox{\hspace*{-0.08cm}}#1}}
+\def\absgeb#1{\nabla^\typebool_{\mbox{\hspace*{-0.08cm}}#1}}
+
+\def\absfu{\nabla^{\propf}_{\mbox{\hspace*{-0.08cm}}\nunif}}
+\def\absbu{\nabla^{\propb}_{\mbox{\hspace*{-0.08cm}}\nunif}}
+\def\absbeu{\nabla^{\propeta}_{\mbox{\hspace*{-0.08cm}}\nunif}}
+\def\absbetau{\nabla^{\beta}_{\mbox{\hspace*{-0.08cm}}\nunif}}
+
+%% already defined below
+%% \def\absdec#1{\nabla_{\mbox{\hspace*{-0.08cm}}dec}^{#1}}
+%% \def\absfundec{\absdec{f}}%{\nabla_{\mbox{\hspace*{-0.08cm}}fdec}}
+%% \def\abskdec{\nabla_{\mbox{\hspace*{-0.08cm}}k}}
+%% \def\absmate{\nabla_{\mbox{\hspace*{-0.08cm}}m}}
+
+\def\ACCE#1#2{\mathfrak{Acc}_{#1}^{#2}}
+\def\ACCstarE#1{\ACCE{*}{#1}}
+\def\ACCMODDE#1{\ACCE{\PD}{#1}}
+\def\ACCMODETAE#1{\ACCE{\PETA}{#1}}
+\def\ACCMODFE#1{\ACCE{\PF}{#1}}
+\def\ACCMODBE#1{\ACCE{\PB}{#1}}
+\def\ACCMODETABE#1{\ACCE{\PETAB}{#1}}
+\def\ACCMODFBE#1{\ACCE{\PFB}{#1}}
+\def\ACCstarG{\ACCE{*}{\Geneq}}
+\def\ACCMODDG{\ACCE{\PD}{\Geneq}}
+\def\ACCMODETAG{\ACCE{\PETA}{\Geneq}}
+\def\ACCMODFG{\ACCE{\PF}{\Geneq}}
+\def\ACCMODBG{\ACCE{\PB}{\Geneq}}
+\def\ACCMODETABG{\ACCE{\PETAB}{\Geneq}}
+\def\ACCMODFBG{\ACCE{\PFB}{\Geneq}}
+
+%  Macros not appearing in submit.tex - Chad - 7/02
+\def\above#1#2{\normalspacing\begin{array}[b]{c}\relax #1\\\relax #2\end{array}}
+\def\abovel#1#2{\normalspacing\begin{array}[b]{l}\relax #1\\[.2cm]\relax #2\end{array}}
+\def\abovec#1#2{\normalspacing\begin{array}{c}\relax #1\\\relax #2\end{array}}
+\def\abovecdots#1#2{\normalspacing\begin{array}[b]{c}\relax #1\\\relax\vdots\\\relax #2\end{array}}
+\def\TPS{{\sc Tps}}
+\def\powerset{{\mathcal P}}
+
+\def\ambnormform#1{{#1}\hspace*{-1.1ex}\downarrow_{\kern-.2em\scriptscriptstyle *}} % ``ambiguous'' normal form
+
+\def\starstructure#1#2{{\cF_{*}^{#2}}}
+\def\fbstructure#1{{\cF_{\propf\propb}^{#1}}}
+\def\fstructure#1{{\cF_{\propf}^{#1}}}
+\def\xibstructure#1{{\cF_{\propxi\propb}^{#1}}}
+\def\xistructure#1{{\cF_{\propxi}^{#1}}}
+\def\compatstructure#1{{\cF_{c}^{#1}}}
+
+\def\Wffn#1{\hbox{\it wff}_{#1}}
+\def\enormform#1{{#1}\hspace*{-1.1ex}\downarrow^{\kern-.2em\scriptscriptstyle\eta}}
+\def\absdec#1{\nabla_{\mbox{\hspace*{-0.08cm}}d}^{#1}}
+%\def\absxidec{\absdec\propxi}%{\nabla_{\mbox{\hspace*{-0.08cm}}\propxi dec}}
+%\def\absfundec{\absdec{f}}%{\nabla_{\mbox{\hspace*{-0.08cm}}fdec}}
+%\def\absdecd{\absdec{1}}%{\nabla_{\mbox{\hspace*{-0.08cm}}1 dec}}
+%\def\absdece{\absdec{2}}%{\nabla_{\mbox{\hspace*{-0.08cm}}2 dec}}
+%\def\absdecb{\absdec{3}}%{\nabla_{\mbox{\hspace*{-0.08cm}}3 dec}}
+%\def\absdecc{\absdec{4}}%{\nabla_{\mbox{\hspace*{-0.08cm}}4 dec}}
+\def\absdecd{\nabla_{\mbox{\hspace*{-0.08cm}}d}}
+\def\absdece{\nabla_{\mbox{\hspace*{-0.08cm}}cd}}
+\def\absdecb{\nabla^{f}_{\mbox{\hspace*{-0.08cm}}d}}
+\def\absdecc{\nabla^{\lambda}_{\mbox{\hspace*{-0.08cm}}d}}
+\def\abskdec{\nabla_{\mbox{\hspace*{-0.08cm}}k}}
+\def\absmate{\nabla_{\mbox{\hspace*{-0.08cm}}m}}
+\def\hintdec#1{\vec\nabla_{\mbox{\hspace*{-0.08cm}}d}^{#1}}
+%\def\hintxidec{\vec\nabla_{\mbox{\hspace*{-0.08cm}}\propxi dec}}
+%\def\hintfundec{\vec\nabla_{\mbox{\hspace*{-0.08cm}}fdec}}
+%\def\hintdecd{\hintdec{1}}%\def\hintdecb{\vec\nabla_{\mbox{\hspace*{-0.08cm}}1 dec}}
+%\def\hintdece{\hintdec{2}}%\def\hintdecc{\vec\nabla_{\mbox{\hspace*{-0.08cm}}2 dec}}
+%\def\hintdecb{\hintdec{3}}%\def\hintdecb{\vec\nabla_{\mbox{\hspace*{-0.08cm}}3 dec}}
+%\def\hintdecc{\hintdec{4}}%\def\hintdecc{\vec\nabla_{\mbox{\hspace*{-0.08cm}}4 dec}}
+\def\hintdecd{\vec\nabla_{\mbox{\hspace*{-0.08cm}}d}}
+\def\hintdece{\vec\nabla_{\mbox{\hspace*{-0.08cm}}cd}}
+\def\hintdecb{\vec\nabla^{f}_{\mbox{\hspace*{-0.08cm}}d}}
+\def\hintdecc{\vec\nabla^{\lambda}_{\mbox{\hspace*{-0.08cm}}d}}
+\def\hintkdec{\vec\nabla_{\mbox{\hspace*{-0.08cm}}k}}
+\def\hintmate{\vec\nabla_{\mbox{\hspace*{-0.08cm}}m}}
+\def\prel{\sim} % PER on possible values semantics
+\def\possl{\left\lceil} % possible values left brack
+\def\possr{\right\rceil} % possible values right brack
+
+\def\propf{\mathfrak{f}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  sequent calculus
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\SEQCALC{\cG}
+\def\SEQCALCIstar{\cG^{-}_{*}}
+\def\SEQCALCID{\SEQCALC^{-}_\PD}
+\def\SEQCALCIETA{\SEQCALC^{-}_{\PETA}}
+\def\SEQCALCIXI{\SEQCALC^{-}_{\PXI}}
+\def\SEQCALCIF{\SEQCALC^{-}_{\PF}}
+\def\SEQCALCIB{\SEQCALC^{-}_{\PB}}
+\def\SEQCALCIETAB{\SEQCALC^{-}_{\PETAB}}
+\def\SEQCALCIXIB{\SEQCALC^{-}_{\PXIB}}
+\def\SEQCALCIFB{\SEQCALC^{-}_{\PFB}}
+
+\def\SEQCALCstar{\cG_{*}}
+\def\SEQCALCD{\SEQCALC_\PD}
+\def\SEQCALCETA{\SEQCALC_{\PETA}}
+\def\SEQCALCXI{\SEQCALC_{\PXI}}
+\def\SEQCALCF{\SEQCALC_{\PF}}
+\def\SEQCALCB{\SEQCALC_{\PB}}
+\def\SEQCALCETAB{\SEQCALC_{\PETAB}}
+\def\SEQCALCXIB{\SEQCALC_{\PXIB}}
+\def\SEQCALCFB{\SEQCALC_{\PFB}}
+\def\SEQCALCQB{\SEQCALC_{\PQB}}
+\def\accseq#1{\acc^{#1}}
+\def\accSEQCALCstar{\acc^{\cG_{*}}}
+\def\accSEQCALCD{\acc^{\SEQCALC_\PD}}
+\def\accSEQCALCETA{\acc^{\SEQCALC_{\PETA}}}
+\def\accSEQCALCXI{\acc^{\SEQCALC_{\PXI}}}
+\def\accSEQCALCF{\acc^{\SEQCALC_{\PF}}}
+\def\accSEQCALCQ{\acc^{\SEQCALC_{\PQ}}}
+\def\accSEQCALCB{\acc^{\SEQCALC_{\PB}}}
+\def\accSEQCALCETAB{\acc^{\SEQCALC_{\PETAB}}}
+\def\accSEQCALCXIB{\acc^{\SEQCALC_{\PXIB}}}
+\def\accSEQCALCFB{\acc^{\SEQCALC_{\PFB}}}
+\def\accSEQCALCQB{\acc^{\SEQCALC_{\PQB}}}
+\def\accMODstar{\acc^{\MOD_{*}}}
+\def\accMODD{\acc^{\MOD_{\PD}}}
+\def\accMODETA{\acc^{\MOD_{\PETA}}}
+\def\accMODXI{\acc^{\MOD_{\PXI}}}
+\def\accMODF{\acc^{\MOD_{\PF}}}
+\def\accMODB{\acc^{\MOD_{\PB}}}
+\def\accMODETAB{\acc^{\MOD_{\PETAB}}}
+\def\accMODXIB{\acc^{\MOD_{\PXIB}}}
+\def\accMODFB{\acc^{\MOD_{\PFB}}}
+
+
+
+\def\seqweak{\algname\SEQCALC{weak}}
+\def\seqcut{\algname\SEQCALC{cut}}
+\def\seqbetainv{\algname\SEQCALC{\beta^\downarrow}}
+\def\seqbeinv{\algname\SEQCALC{\beta\eta^\downarrow}}
+\def\seqneginv{\algname\SEQCALC{Inv^\neg}}
+\def\seqlorl{\algname\SEQCALC{\lor_-}}
+\def\seqlorr{\algname\SEQCALC{\lor_+}}
+\def\seqneg{\algname\SEQCALC{\neg}}
+\def\seqnegl{\algname\SEQCALC{\neg_-}}
+\def\seqnegr{\algname\SEQCALC{\neg_+}}
+\def\seqpilg#1{\algname\SEQCALC{\Pi_-^{#1}}}
+\def\seqpil{\algname\SEQCALC{\Pi_-^l}}
+\def\seqpirg#1{\algname\SEQCALC{\Pi_+^{#1}}}
+\def\seqpir{\algname\SEQCALC{\Pi_+^c}}
+\def\seqbeta{\algname\SEQCALC{\beta}}
+\def\seqbetal{\algname\SEQCALC{\beta_L}}
+\def\seqbetar{\algname\SEQCALC{\beta_R}}
+\def\seqinit{\algname\SEQCALC{init}}
+\def\seqbe{\algname\SEQCALC{\beta\eta}}
+\def\seqbel{\algname\SEQCALC{\beta\eta_L}}
+\def\seqber{\algname\SEQCALC{\beta\eta_R}}
+\def\seqinitleib{\algname\SEQCALC{Init^{\Leibeq}}}
+\def\seqxi{\algname\SEQCALC{\xi}}
+\def\seqpropf{\algname\SEQCALC{\propf}}
+\def\seqpropb{\algname\SEQCALC{\propb}}
+\def\seqdec{\algname\SEQCALC{d}}
+\def\seqdech{\algname\SEQCALC{d^h}}
+\def\seqxidec{\algname\SEQCALC{\xi dec}}
+\def\seqfdec{\algname\SEQCALC{\propf dec}}
+\def\seqdecb{\algname\SEQCALC{fd}}
+\def\seqdecc{\algname\SEQCALC{\lambda d}}
+\def\seqk{\algname\SEQCALC{k}}
+\def\seqcut{\algname\SEQCALC{cut}}
+\def\seqcuta{\algname\SEQCALC{cut^\bA}}
+\def\seqaxiomb{\algname\SEQCALC{\cB}}
+\def\axiomf{\cF_{\kern-.3em\typea\kern-.1em\typeb}}
+\def\axiomb{\cB_\typebool}
+\def\seqaxiomf{\algname\SEQCALC\axiomf}
+
+\def\RESCALC{\cR}
+\def\resweak{\algname\RESCALC{weak}}
+\def\resdetectchoice{\algname\RESCALC{DetectChoice}}
+\def\reschoice{\algname\RESCALC{Choice}}
+\def\resres{\algname\RESCALC{Res}}
+\def\resfac{\algname\RESCALC{Fac}}
+\def\restriv{\algname\RESCALC{Triv}}
+\def\ressubst{\algname\RESCALC{Subst}}
+\def\resprimsubst{\algname\RESCALC{PrimSubst}}
+\def\resflexrigid{\algname\RESCALC{FlexRigid}}
+\def\rescut{\algname\RESCALC{cut}}
+\def\resbetainv{\algname\RESCALC{\beta^\downarrow}}
+\def\resbeinv{\algname\RESCALC{\beta\eta^\downarrow}}
+\def\resneginv{\algname\RESCALC{Inv^\neg}}
+\def\reslorl{\algname\RESCALC{\lor_\false}}
+\def\reslorr{\algname\RESCALC{\lor_\true}}
+\def\resneg{\algname\RESCALC{\neg}}
+\def\resnegl{\algname\RESCALC{\neg_\false}}
+\def\resnegr{\algname\RESCALC{\neg_\true}}
+\def\respilg#1{\algname\RESCALC{\Pi_\false^{#1}}}
+\def\respil{\algname\RESCALC{\Pi_\false^l}}
+\def\respirg#1{\algname\RESCALC{\Pi_\true^{#1}}}
+\def\respir{\algname\RESCALC{\Pi_\true^c}}
+\def\resbeta{\algname\RESCALC{\beta}}
+\def\resbetal{\algname\RESCALC{\beta_L}}
+\def\resbetar{\algname\RESCALC{\beta_R}}
+\def\resinit{\algname\RESCALC{init}}
+\def\resbe{\algname\RESCALC{\beta\eta}}
+\def\resbel{\algname\RESCALC{\beta\eta_L}}
+\def\resber{\algname\RESCALC{\beta\eta_R}}
+\def\resinitleib{\algname\RESCALC{Init^{\Leibeq}}}
+\def\resxi{\algname\RESCALC{\xi}}
+\def\respropf{\algname\RESCALC{\propf}}
+\def\respropb{\algname\RESCALC{\propb}}
+\def\respropfr{\algname\RESCALC{\propf_\true}}
+\def\respropbr{\algname\RESCALC{\propb_\true}}
+\def\respropfl{\algname\RESCALC{\propf_\false}}
+\def\respropbl{\algname\RESCALC{\propb_\false}}
+\def\resdec{\algname\RESCALC{d}}
+\def\resdech{\algname\RESCALC{d^h}}
+\def\resxidec{\algname\RESCALC{\xi dec}}
+\def\resfdec{\algname\RESCALC{\propf dec}}
+\def\resdecb{\algname\RESCALC{fd}}
+\def\resdecc{\algname\RESCALC{\lambda d}}
+\def\resk{\algname\RESCALC{k}}
+\def\rescut{\algname\RESCALC{cut}}
+\def\rescuta{\algname\RESCALC{cut^\bA}}
+\def\resaxiomb{\algname\RESCALC{\cB}}
+\def\resaxiomf{\algname\RESCALC\axiomf}
+
+
+
+\def\cHstar{\cH_{*}}
+\def\cHFstar{\cH_{\propf *}}
+\def\cHXIstar{\cH_{\propxi *}}
+\def\cHD{\cH_\PD}
+\def\cHF{\cH_{\PF}}
+\def\cHXI{\cH_{\PXI}}
+\def\cHETA{\cH_{\PETA}}
+\def\cHB{\cH_{\PB}}
+\def\cHETAB{\cH_{\PETAB}}
+\def\cHFB{\cH_{\PFB}}
+\def\cHXIB{\cH_{\PXIB}}
+\def\cHQB{\cH_{\PQB}}
+
+%\def\hwcomp{{\parallel{\mbox{\hspace*{-.27cm}}}\scriptscriptstyle^w}\ }
+\def\hwcomp{\between}
+\def\hcomp{{\parallel}}
+\def\hfcomp{{\parallel{\mbox{\hspace*{-.25cm}}}\scriptstyle^\propf}\ }
+\def\hxicomp{{\parallel{\mbox{\hspace*{-.25cm}}}\scriptstyle_\propxi}\ }
+\def\hfxicomp{{\parallel{\mbox{\hspace*{-.25cm}}}\scriptstyle^\propf{\mbox{\hspace*{-.12cm}}}\scriptstyle_\propxi}\ }
+\def\hbcomp{{\parallel{\mbox{\hspace*{-.25cm}}}\scriptstyle^\propb}\ }
+\def\phiofseq#1#2{\Phi_{#1\rightarrow #2}}
+%\def\phiofseq#1{\Phi_{#1}} % if 1-sided
+
+\def\perdom#1#2#3{\overline{#1^{#2}_{#3}}}
+\def\perd#1#2#3{#1^{#2}_{#3}}
+\def\repfns#1#2#3{\cR\cF^{#1}_{#2\ar #3}}
+
+\def\possbools#1#2{{\bf\cB}_{#1}^{#2}}
+
+\def\perpropconst{\partial^\Sigma}
+\def\perpropv{\partial^\semival}
+\def\perpropvsurj{\partial^{\semtrue\semfalse}}
+%\def\perproptot{\partial^{\typebool,\typeind}}
+\def\perproptota#1{\partial^{tot}_{#1}}
+\def\perpropneg{\partial^\neg}
+\def\perpropor{\partial^\lor}
+\def\perpropall{\partial^\Pi}
+\def\perpropq{\partial^\propq}
+\def\perpropb{\partial^\propb}
+\def\perpropf{\partial^\propf}
+\def\perpropxi{\partial^\propxi}
+\def\perpropeta{\partial^\propeta}
+%\def\perpropcong{\partial^c}
+\def\perpropcong{\partial^{\appo}}
+\def\perpropsubst{\partial^{sub}}
+
+\def\compatrefl{\sharp^r}
+\def\compatcons{\sharp^c}
+\def\compatfns{\sharp^\ar}
+\def\compatbeta{\sharp^\beta}
+
+\def\diseqn{\nunif}
+
+
+\def\perrep#1{#1^{\star}}
+
+\def\semt{{\sf t}}
+
+\def\andrewsarbval{\diamond}
+\def\tracers#1{{\mathcal T}(#1)}
+\def\pvalretr{{\mathcal R}}
+\def\pvfst#1{\lfloor #1\rfloor_{_{\mbox{\bf\footnotesize 1}}}}
+\def\pvsnd#1{\lfloor #1\rfloor_{_{\mbox{\bf\footnotesize 2}}}}
+%\def\pvfst#1{\lfloor #1\rfloor_{_1}}
+%\def\pvsnd#1{\lfloor #1\rfloor_{_2}}
+
+\newcommand{\bK}{{\mathbf{K}}}
+\def\dersize#1{size(#1)}
+
+
+
+\calculusName{HO Sequent Calculi $\SEQCALCD$ and $\SEQCALCFB$}   % The name of the calculus
+\calculusAcronym{GBetaFB}    % The acronym if defined above, or empty otherwise. 
+\calculusLogic{classical higher-order logic}  % Specify the logic (e.g. classical, intuitionistic, ...) for which this calculus is intended.
+\calculusType{resolution}   % Specify the calculus type (e.g. Frege-Hilbert style, tableau, sequent calculus, hypersequent calculus, natural deduction, ...)
+\calculusYear{2003-2009}   % The year when the calculus was invented.
+\calculusAuthor{Christoph Benzm{\"u}ller \and Chad Brown \and Michael Kohlhase} % The name(s) of the author(s) of the calculus.
+
+
+\entryTitle{HO Sequent Calculi $\SEQCALCD$ and $\SEQCALCFB$}     % Title of the entry (usually coincides with the name of the calculus).
+\entryAuthor{Christoph Benzm{\"u}ller}    % Your name(s). Separate multiple names with "\and".
+
+
+% If you wish, use tags to give any other information 
+% that might be helpful for classifying and grouping this entry:
+% e.g. \tag{Two-Sided Sequents}
+% e.g. \tag{Multiset Cedents}
+% e.g. \tag{List Cedents}
+% You are free to invent your own tags. 
+% The Encyclopedia's coordinator will take care of 
+% merging semantically similar tags in the future.
+
+
+
+\maketitle
+
+
+% If your files are called "MyProofSystem.tex" and "MyProofSystem.bib", 
+% then you should write "\begin{entry}{MyProofSystem}" in the line below
+\begin{entry}{GBetaFB}  
+
+% Define here any newcommands you may need:
+% e.g. \newcommand{\necessarily}{\Box}
+% e.g. \newcommand{\possibly}{\Diamond}
+
+
+\begin{calculus}
+
+% Add the inference rules of your proof system here.
+% The "proof.sty" and "bussproofs.sty" packages are available.
+% If you need any other package, please contact the editor (bruno@logic.at)
+\textbf{Basic Rules} \hfill
+ \ianc{\Delta,s}{\Delta,\neg\neg s}{\seqneg} \quad
+  \ibnc{\Delta,\neg s}{\Delta,\neg t}{\Delta,\neg( s\lor t)}{\seqlorl} \quad
+  \ianc{\Delta,s,t}
+       {\Delta,( s\lor t)}
+       {\seqlorr} \\[.5em]
+  \phantom{b} \hfill
+  \ibnc{\Delta,{\neg\bnormform{(s l)}}}
+       {l_\typea \textrm{ closed term}}
+       {\Delta,\neg\Pi^\typea s}
+       {\seqpil} \quad 
+  \ibnc{\Delta,\bnormform{(s c)}}
+       {c_\typed \textrm{ new symbol}}
+       {\Delta,\Pi^\typea s}
+       {\seqpir} \\[.5em]
+\textbf{Initialization} \hfill
+  \ianc{s{\mbox{ atomic (and $\beta$-normal)}}}{\Delta,s,\neg
+    s}{\seqinit} \hfill
+  \ibnc{\Delta,( s\Leibeq^\typebool t)}{ s {\mbox{,}} t {\mbox{ atomic}}}
+       {\Delta,\neg s,t}
+       {\seqinitleib} \\[.5em]
+\textbf{Extensionality} \hfill
+  \ianc{\Delta,\bnormform{(\alldot {X_\typea} s X\Leibeq^{\typeb} t X)}}
+       {\Delta,( s\Leibeq^{\typea\ar\typeb} t)}
+       {\seqpropf} \quad
+  \ibnc{\Delta,\neg s,t}
+       {\Delta,\neg t,s}
+       {\Delta,( s\Leibeq^\typebool t)}
+       {\seqpropb} \\[.5em]
+\textbf{Decomposition} \hfill
+  \ibnc{\Delta,( s^1\Leibeq^{\typea_1} t^1)\;\cdots\;\Delta,( s^n\Leibeq^{\typea_n} t^n)}
+       {\begin{array}{c} n\geq 1,\typeb\in\{\typebool,\typeind\}, h_{\ov{\typea^n}\ar\typeb}\in\Signat\end{array}}
+       {\Delta, (h\ov{ s^n}\Leibeq^{\typeb} h\ov{ t^n})}
+       {\seqdec}\\[1em]
+
+One-sided sequent calculus $\SEQCALCD$ is defined by the rules
+$\seqinit$, $\seqneg$, $\seqlorl$, $\seqlorr$, $\seqpil$ and $\seqpir$.
+
+Calculus $\SEQCALCFB$ extends $\SEQCALCD$ by the additional
+rules $\seqpropb$, $\seqpropf$, $\seqdec$,  and $\seqinitleib$.
+\end{calculus}
+
+% The following sections ("clarifications", "history", 
+% "technicalities") are optional. If you use them, 
+% be very concise and objective. Nevertheless, do write full sentences. 
+% Try to have at most one paragraph per section, because line breaks 
+% do not look nice in a short entry.
+
+ \begin{clarifications}
+   $\Delta$ and $\Delta'$ are finite sets of $\beta$-normal closed
+   formulas of classical higher-order logic (HOL; Church's Type Theory)
+   \cite{sep-type-theory-church}. $\Delta,s$ denotes the set
+   $\Delta\cup\{s\}$. Let
+   $\alpha,\beta,o \in {T}$. HOL \emph{terms} are defined by
+   the grammar ($c_{\alpha}$ denotes typed constants and $X_{\alpha}$
+   typed variables distinct from $c_\alpha$):
+   $ s,t ::= c_{\alpha} \mid X_{\alpha} \mid (\lambda
+   X_{\alpha}s_{\beta})_{\alpha \typearrow \beta} \mid (s_{\alpha
+     \typearrow \beta}\, t_\alpha)_{\beta} \mid (\neg_{o \typearrow
+     o}\;s_{o})_o \mid (s_o \vee_{o\typearrow o \typearrow o} t_o)_o
+   \mid (\Pi_{(\alpha \typearrow o)\typearrow o}\; s_{\alpha
+     \typearrow o})_o$.
+   \emph{Leibniz equality} $\Leibeq^\alpha$ at type $\alpha$ is
+   defined as
+   $ s_\typea \Leibeq^\alpha t_\typea := \forall P_{\typea\typearrow
+     o} (\neg P s \vee P t)$.
+   For each simply typed $\lambda$-term $s$ there is a unique
+   \emph{$\beta$-normal form} (denoted $\Bnormform{s}$).  HOL formulas
+   are defined as terms of type $o$. A \emph{non-atomic formula} is
+   any formula whose {$\beta$-normal form} is of the form
+   $[c\ov{\bA^n}]$ where $c$ is a logical constant.  An \emph{atomic
+     formula} is any other formula.
+
+   Theorem proving in these calculi works as follows: In order to
+   prove that a (closed) conjecture formula $c$ logically follows from
+   a (possibly empty) set of (closed) axioms $\{a^1,\ldots,a^n\}$, we
+   start from the initial sequent
+   $\Delta:=\{c,\neg a^1,\ldots,\neg a^n\}$ and reason backwards by
+   applying the respective calculus rules.
+\end{clarifications}
+
+
+ \begin{history}
+The calculi have been presented in \cite{J18}.
+Earlier (two-sided) versions and further related sequent calculi for
+HOL have been  presented in \cite{R19} and \cite{BrownPhD}.
+
+% ToDo: write here short historical remarks about this proof system,
+% especially if they relate to other proof systems. 
+% Use "\iref{OtherProofSystem}" to refer to another proof system 
+% in the Encyclopedia (where "OtherProofSystem" is its ID). 
+% Use "\irefmissing{SuggestedIDForOtherProofSystem}" to refer to 
+% another proof system that is not yet available in the encyclopedia.
+\end{history}
+
+\begin{technicalities} 
+  $\SEQCALCD$ is sound and complete for elementary type theory
+  ($\SEQCALCD$ is thus also sound for HOL).  $\SEQCALCFB$ is sound and
+  complete for HOL. Moreover, both calculi are cut-free and they do not
+  admit cut-simulation \cite{J18}.
+\end{technicalities}
+
+
+% General Instructions:
+% =====================
+
+% The preferred length of an entry is 1 page. 
+% Do the best you can to fit your proof system in one page.
+%
+% If you are finding it hard to fit what you want in one page, remember:
+%
+%   * Your entry needs to be neither self-contained nor fully understandable
+%     (the interested reader may consult the cited full paper for details)
+%
+%   * If you are describing several proof systems in one entry, 
+%     consider splitting your entry.
+%
+%   * You may reduce the size of your entry by ommitting inference rules
+%     that are already described in other entries.
+%
+%   * Cite parsimoniously (see detailed citation instructions below).
+%
+% 
+% If you do not manage to fit everything in one page, 
+% it is acceptable for an entry to have 2 pages.
+%
+% For aesthetical reasons, it is preferable for an entry to have
+% 1 full page or 2 full pages, in order to avoid unused blank space.
+
+
+
+% Citation Instructions:
+% ======================
+
+% Please cite the original paper where the proof system was defined.
+% To do so, you may use the \cite command within 
+% one of the optional environments above,
+% or use the \nocite command otherwise.
+
+% You may also cite a modern paper or book where the 
+% proof system is explained in greater depth or clarity.
+% Cite parsimoniously.
+
+% Do not cite related work. Instead, use the "\iref" or "\irefmissing" 
+% commands to make an internal reference to another entry, 
+% as explained within the "history" environment above.
+
+% You do not need to create the "References" section yourself. 
+% This is done automatically.
+
+
+
+
+% Leave an empty line above "\end{entry}".
+
+\end{entry}
