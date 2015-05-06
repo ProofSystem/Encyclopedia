@@ -6,10 +6,10 @@
 \calculusAcronym{\FILL}    % The acronym if defined above, or empty otherwise. 
 \calculusLogic{Intuitionistic,Linear}  % Specify the logic (e.g. classical, intuitionistic, ...) for which this calculus is intended.
 \calculusType{Sequent Calculus}   % Specify the calculus type (e.g. Frege-Hilbert style, tableau, sequent calculus, hypersequent calculus, natural deduction, ...)
-\calculusYear{1991}   % The year when the calculus was invented.
+\calculusYear{1990}   % The year when the calculus was invented.
 \calculusAuthor{Martin Hyland \and Valeria de Paiva} % The name(s) of the author(s) of the calculus.
 
-\entryTitle{Full Intuitionistic Linear Logic}        % Title of the entry (usually coincides with the name of the calculus).
+\entryTitle{Full Intuitionistic Linear Logic (FILL)}        % Title of the entry (usually coincides with the name of the calculus).
 \entryAuthor{Harley Eades III \and Valeria de Paiva} % Your name(s). Separate multiple names with "\and".
 
 % If you wish, use tags to give any other information 
@@ -61,24 +61,20 @@
 \quad
 &
 \infer[TR]{\Gamma,\Gamma' \vdash t_1 \otimes t_2 : A \otimes B \mid \Delta \mid \Delta'}{\Gamma \vdash t_1 : A \mid \Delta & \Gamma' \vdash t_2 : B \mid \Delta'}
-\\
+\\[8pt]
+  \infer[ImpL]{\Gamma,y:A \multimap B,\Gamma' \vdash [y\,t/x]t_i : C_i \mid \Delta}{\Gamma \vdash t : A \mid \Delta & \Gamma',x : B \vdash t_i : C_i}
+  &
+  \quad
+  &
+  \infer[ImpR]{\Gamma \vdash \lambda x.t : A \multimap B \mid \Delta}{\Gamma, x : A \vdash t : B & x \not\in \mathsf{FV}(\Delta)}
+  \\[8pt]
+  \infer[ParR]{\Gamma \vdash \Delta \mid t_1 \oplus t_2 : A \oplus B \mid \Delta'}{\Gamma \vdash \Delta \mid t_1 : A \mid t_2 : B \mid \Delta'}
+  \\
 \end{array}
 \]
 \[
 \begin{array}{ccc}
   \infer[ParL]{\Gamma,\Gamma',z : A \oplus B \vdash \letpat{z}{(x \oplus -)}{t_i} : C_i \mid \letpat{z}{(- \oplus y)}{t_j} : D_j}{\Gamma,x : A \vdash t_i : C_i & \Gamma', y : B \vdash t_j : D_j}\\
-\end{array}
-\]
-\[
-\begin{array}{ccc}
-  \infer[ParR]{\Gamma \vdash \Delta \mid t_1 \oplus t_2 : A \oplus B \mid \Delta'}{\Gamma \vdash \Delta \mid t_1 : A \mid t_2 : B \mid \Delta'}
-  &
-  \quad
-  &
-  \infer[ImpL]{\Gamma,y:A \multimap B,\Gamma' \vdash [y\,t/x]t_i : C_i \mid \Delta}{\Gamma \vdash t : A \mid \Delta & \Gamma',x : B \vdash t_i : C_i}
-  \\[8pt]
-  \infer[ImpR]{\Gamma \vdash \lambda x.t : A \multimap B \mid \Delta}{\Gamma, x : A \vdash t : B & x \not\in \mathsf{FV}(\Delta)}
-  \\
 \end{array}
 \]
 
@@ -134,13 +130,13 @@ variables in each term found in $\Delta$.
   The formulation of $\FILL$ given here was defined by Martin Hyland
   and Valeria de Paiva \cite{Hyland:1993}.  This version was an
   improvement over an early version first defined by Valeria de Paiva
-  in her thesis \cite{dePaiva:1988}.  The improvement was the addition
+  in her thesis \cite{dePaiva:1990}.  The improvement was the addition
   of the term assignment which was necessary to gain cut elimination.
 \end{history}
 
 %% \begin{technicalities}
 %%   $\FILL$ enjoys cut elimination.  It also has a categorical model in
-%%   dialectica categories \cite{dePaiva:1988}.
+%%   dialectica categories \cite{dePaiva:1990}.
 %% \end{technicalities}
 
 % General Instructions:
