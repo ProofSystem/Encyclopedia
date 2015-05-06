@@ -67,14 +67,13 @@
   \quad
   &
   \infer[ImpR]{\Gamma \vdash \lambda x.t : A \multimap B \mid \Delta}{\Gamma, x : A \vdash t : B & x \not\in \mathsf{FV}(\Delta)}
-  \\[8pt]
-  \infer[ParR]{\Gamma \vdash \Delta \mid t_1 \oplus t_2 : A \oplus B \mid \Delta'}{\Gamma \vdash \Delta \mid t_1 : A \mid t_2 : B \mid \Delta'}
   \\
 \end{array}
 \]
 \[
 \begin{array}{ccc}
-  \infer[ParL]{\Gamma,\Gamma',z : A \oplus B \vdash \letpat{z}{(x \oplus -)}{t_i} : C_i \mid \letpat{z}{(- \oplus y)}{t_j} : D_j}{\Gamma,x : A \vdash t_i : C_i & \Gamma', y : B \vdash t_j : D_j}\\
+  \infer[ParL]{\Gamma,\Gamma',z : A \oplus B \vdash \letpat{z}{(x \oplus -)}{t_i} : C_i \mid \letpat{z}{(- \oplus y)}{t_j} : D_j}{\Gamma,x : A \vdash t_i : C_i & \Gamma', y : B \vdash t_j : D_j}\\[8pt]
+  \infer[ParR]{\Gamma \vdash \Delta \mid t_1 \oplus t_2 : A \oplus B \mid \Delta'}{\Gamma \vdash \Delta \mid t_1 : A \mid t_2 : B \mid \Delta'}
 \end{array}
 \]
 
