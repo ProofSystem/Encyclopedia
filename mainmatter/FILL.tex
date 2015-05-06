@@ -44,36 +44,37 @@
 &
 \quad
 &
-\infer[cut]{\Gamma, \Gamma' \vdash \Delta \mid [t/y]\Delta'}{\Gamma \vdash t : A \mid \Delta & \Gamma', y : A \vdash \Delta'}
+\infer[Cut]{\Gamma, \Gamma' \vdash \Delta \mid [t/y]\Delta'}{\Gamma \vdash t : A \mid \Delta & \Gamma', y : A \vdash \Delta'}
 \\[8pt]
-\infer[IL]{\Gamma,x : \top \vdash \letbe{x}{*}{\Delta}}{\Gamma \vdash \Delta}
+\infer[\top_L]{\Gamma,x : \top \vdash \letbe{x}{*}{\Delta}}{\Gamma \vdash \Delta}
 &
 \quad
 &
-\infer[IR]{\cdot \vdash * : \top}{}
+\infer[\top_R]{\cdot \vdash * : \top}{}
 \\[8pt]
-\infer[PL]{x : \perp \vdash \cdot}{}
+\infer[\perp_L]{x : \perp \vdash \cdot}{}
 & \quad & 
-\infer[PR]{\Gamma \vdash \circ : \perp \mid \Delta}{\Gamma \vdash \Delta}
+\infer[\perp_R]{\Gamma \vdash \circ : \perp \mid \Delta}{\Gamma \vdash \Delta}
 \\[8pt]
-\infer[TL]{\Gamma,z : A \otimes B \vdash \letbe{z}{x \otimes y}{\Delta}}{\Gamma,x : A,y : B \vdash \Delta}
+\infer[\otimes_L]{\Gamma,z : A \otimes B \vdash \letbe{z}{x \otimes y}{\Delta}}{\Gamma,x : A,y : B \vdash \Delta}
 &
 \quad
 &
-\infer[TR]{\Gamma,\Gamma' \vdash t_1 \otimes t_2 : A \otimes B \mid \Delta \mid \Delta'}{\Gamma \vdash t_1 : A \mid \Delta & \Gamma' \vdash t_2 : B \mid \Delta'}
+\infer[\otimes_R]{\Gamma,\Gamma' \vdash t_1 \otimes t_2 : A \otimes B \mid \Delta \mid \Delta'}{\Gamma \vdash t_1 : A \mid \Delta & \Gamma' \vdash t_2 : B \mid \Delta'}
 \\[8pt]
-  \infer[ImpL]{\Gamma,y:A \multimap B,\Gamma' \vdash [y\,t/x]t_i : C_i \mid \Delta}{\Gamma \vdash t : A \mid \Delta & \Gamma',x : B \vdash t_i : C_i}
+  \infer[\multimap_L]{\Gamma,y:A \multimap B,\Gamma' \vdash [y\,t/x]t_i : C_i \mid \Delta}{\Gamma \vdash t : A \mid \Delta & \Gamma',x : B \vdash t_i : C_i}
   &
   \quad
   &
-  \infer[ImpR]{\Gamma \vdash \lambda x.t : A \multimap B \mid \Delta}{\Gamma, x : A \vdash t : B & x \not\in \mathsf{FV}(\Delta)}
+  \infer[\multimap_R]{\Gamma \vdash \lambda x.t : A \multimap B \mid \Delta}{\Gamma, x : A \vdash t : B & x \not\in \mathsf{FV}(\Delta)}
   \\
 \end{array}
 \]
 \[
 \begin{array}{ccc}
-  \infer[ParL]{\Gamma,\Gamma',z : A \oplus B \vdash \letpat{z}{(x \oplus -)}{t_i} : C_i \mid \letpat{z}{(- \oplus y)}{t_j} : D_j}{\Gamma,x : A \vdash t_i : C_i & \Gamma', y : B \vdash t_j : D_j}\\[8pt]
-  \infer[ParR]{\Gamma \vdash \Delta \mid t_1 \oplus t_2 : A \oplus B \mid \Delta'}{\Gamma \vdash \Delta \mid t_1 : A \mid t_2 : B \mid \Delta'}
+  \infer[\parr_L]{\Gamma,\Gamma',z : A \parr B \vdash \letpat{z}{(x \parr -)}{t_i} : C_i \mid \letpat{z}{(- \parr y)}{t_j} : D_j}{\Gamma,x : A \vdash t_i : C_i & \Gamma', y : B \vdash t_j : D_j}\\[8pt]
+
+  \infer[\parr_R]{\Gamma \vdash \Delta \mid t_1 \parr t_2 : A \parr B \mid \Delta'}{\Gamma \vdash \Delta \mid t_1 : A \mid t_2 : B \mid \Delta'}
 \end{array}
 \]
 
@@ -98,12 +99,12 @@ defined as follows:
     \begin{math}
       \begin{array}{lll}      
         \begin{array}{lll}
-          \letpat{z}{(x \oplus -)}{t} = t\\
+          \letpat{z}{(x \parr -)}{t} = t\\
           \,\,\,\,\,\,\mbox{where } x \not\in \mathsf{FV}(t)\\
         \end{array}
         & 
           \begin{array}{lll}
-            \letpat{z}{(- \oplus y)}{t} = t\\
+            \letpat{z}{(- \parr y)}{t} = t\\
         \,\,\,\,\,\,\mbox{where } y \not\in \mathsf{FV}(t)\\
           \end{array}
         & 
