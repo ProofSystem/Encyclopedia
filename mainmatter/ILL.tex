@@ -2,15 +2,15 @@
 % If the calculus has an acronym, define it.
 % (e.g. \newcommand{\LK}{\ensuremath{\mathbf{LK}}\xspace})
 
-\calculusName{Linear Logic Sequent Calculus}   % The name of the calculus
-\calculusAcronym{LL}    % The acronym if defined above, or empty otherwise. 
-\calculusLogic{LL}  % Specify the logic (e.g. classical, intuitionistic, ...) for which this calculus is intended.
+\calculusName{Intuinistic Linear Logic Sequent Calculus}   % The name of the calculus
+\calculusAcronym{ILL}    % The acronym if defined above, or empty otherwise. 
+\calculusLogic{ILL}  % Specify the logic (e.g. classical, intuitionistic, ...) for which this calculus is intended.
 \calculusType{sequent calculus}   % Specify the calculus type (e.g. Frege-Hilbert style, tableau, sequent calculus, hypersequent calculus, natural deduction, ...)
 \calculusYear{1987}   % The year when the calculus was invented.
-\calculusAuthor{Jean-Yves Girard} % The name(s) of the author(s) of the calculus.
+\calculusAuthor{Jean-Yves Girard \and Yves Lafont} % The name(s) of the author(s) of the calculus.
 
 
-\entryTitle{Linear Logic Sequent Calculus}     % Title of the entry (usually coincides with the name of the calculus).
+\entryTitle{Intuitionistic Linear Logic Sequent Calculus}     % Title of the entry (usually coincides with the name of the calculus).
 \entryAuthor{Joseph Boudou \and Sergei Soloviev}    % Your name(s). Separate multiple names with "\and".
 
 
@@ -29,7 +29,7 @@
 
 % If your files are called "MyProofSystem.tex" and "MyProofSystem.bib", 
 % then you should write "\begin{entry}{MyProofSystem}" in the line below
-\begin{entry}{LL} 
+\begin{entry}{ILL} 
 
 % Define here any newcommands you may need:
 % e.g. \newcommand{\necessarily}{\Box}
@@ -44,7 +44,7 @@
 \newcommand{\llone}{1}
 
 \newcommand{\sepproof}{\hskip 2em plus 6em\relax}
-\newcommand{\sepseq}{\quad\vdash}
+\newcommand{\sepseq}{\quad}
 \newcommand{\sepline}{\]\[}
 
 \newenvironment{infruleset}[1]{%
@@ -52,43 +52,53 @@
 }{%
   \] %
 }
-\newcommand{\axiom}[2][axiom]{\infer[\mbox{\textit{(#1)}}]{\ensuremath{\vdash #2 }}{}}
-\newcommand{\infrule}[3]{\infer[\mbox{\textit{(#1)}}]{\ensuremath{\vdash #3 }}{\ensuremath{\vdash #2 }}}
 
 \begin{calculus}
 
 \begin{infruleset}{Structural}
-  \axiom[identity]{A, \llneg{A}}
+  \infer{A \vdash A}{}
   \sepproof
-  \infrule{cut}{\Gamma, A \sepseq \llneg{A}, \Delta}{\Gamma, \Delta}
-  \sepline
-  \infrule{exchange: $\sigma$ is a permutation}{\Gamma}{\sigma(\Gamma)}
+  \infer[\mbox{\textit{(cut)}}]{\Gamma, \Delta \vdash B}{\Gamma \vdash A \sepseq A, \Delta \vdash B}
+  \sepproof
+  \infer{\Gamma, B, A, \Delta \vdash C}{\Gamma, A, B, \Delta \vdash C}
 \end{infruleset}
 
 \begin{infruleset}{Logical}
-  \axiom[one]{\llone}
+  \infer{\vdash \llone}{}
   \sepproof
-  \axiom[true]{\Gamma, \top}
+  \infer{\Gamma, \llone \vdash A}{\Gamma \vdash A}
   \sepproof
-  \infrule{false}{\Gamma}{\Gamma, \bot}
+  \infer{\Gamma, \Delta \vdash A \llmconj B}{\Gamma \vdash A \sepseq \Delta \vdash B}
+  \sepproof
+  \infer{\Gamma, A \llmconj B \vdash C}{\Gamma, A, B \vdash C}
   \sepline
-  \infrule{times}{\Gamma, A \sepseq B, \Delta}{\Gamma, A \llmconj B, \Delta}
+%
+  \infer{\Gamma \vdash \top}{}
   \sepproof
-  \infrule{par}{\Gamma, A, B}{\Gamma, A \llmdisj B}
+  \infer{\Gamma \vdash A \llaconj B}{\Gamma \vdash A \sepseq \Gamma \vdash B}
+  \sepproof
+  \infer{\Gamma, A_1 \llaconj A_2 \vdash B}{\Gamma, A_i \vdash B}
   \sepline
-  \infrule{with}{\Gamma, A \sepseq \Gamma, B}{\Gamma, A \llaconj B}
+%
+  \infer{\Gamma, \llzero \vdash A}{}
   \sepproof
-  \infrule{left plus}{\Gamma, A}{\Gamma, A \lladisj B}
+  \infer{\Gamma \vdash A_1 \lladisj A_2}{\Gamma \vdash A_i}
   \sepproof
-  \infrule{right plus}{\Gamma, B}{\Gamma, A \lladisj B}
+  \infer{\Gamma, A \lladisj B \vdash C}{\Gamma, A \vdash C \sepseq \Gamma, B \vdash C}
   \sepline
-  \infrule{weakening}{\Gamma}{\Gamma, ?A}
+%
+  \infer{\Gamma \vdash A \llimp B}{\Gamma, A \vdash B}
   \sepproof
-  \infrule{of course}{?\Gamma, A}{?\Gamma, !A}
+  \infer{\Gamma, A \llimp B, \Delta \vdash C}{\Gamma \vdash A \sepseq B, \Delta \vdash C}
   \sepline
-  \infrule{contraction}{\Gamma, ?A, ?A}{\Gamma, ?A}
+%
+  \infer{!\Gamma \vdash !A}{!\Gamma \vdash A}
   \sepproof
-  \infrule{dereliction}{\Gamma, A}{\Gamma, ?A}
+  \infer{\Gamma, !A \vdash B}{\Gamma \vdash B}
+  \sepproof
+  \infer{\Gamma, !A \vdash B}{\Gamma, A \vdash B}
+  \sepproof
+  \infer{\Gamma, !A \vdash B}{\Gamma, !A, !A \vdash B}
 \end{infruleset}
 
 % Add the inference rules of your proof system here.
@@ -104,28 +114,11 @@
 % Try to have at most one paragraph per section, because line breaks 
 % do not look nice in a short entry.
 
-\begin{clarifications}
-  Formulas are contructed from propositional variables $p, q, \ldots$
-  and their dual $\llneg{p}, \llneg{q}, \ldots$ using the constructs
-  $\llzero, \llone, \top, \bot, \mathord{\llmconj}, \mathord{\llmdisj},
-  \mathord{\llaconj}, \mathord{\lladisj}, \mathord{!}$ and $\mathord{?}$.
-  Negation is \emph{defined} by:
-  \[
-  \begin{array}{rlrl}
-    \llneg{(p)} &= \llneg{p} ~&~ \llneg{(\llneg{p})} &= p \\
-    \llneg{\llzero} &= \top ~&~ \llneg{\top} &= \llzero \\
-    \llneg{\llone} &= \bot ~&~ \llneg{\bot} &= \llone \\
-    \llneg{(A \llmconj B)} &= \llneg{A} \llmdisj \llneg{B} ~&~
-    \llneg{(A \llmdisj B)} &= \llneg{A} \llmconj \llneg{B} \\
-    \llneg{(A \llaconj B)} &= \llneg{A} \lladisj \llneg{B} ~&~
-    \llneg{(A \lladisj B)} &= \llneg{A} \llaconj \llneg{B} \\
-    \llneg{(!A)} &= ?\llneg{A} ~&~ \llneg{(?A)} &= !\llneg{A} \\
-  \end{array}
-  \]
-\end{clarifications}
+%\begin{clarifications}
+%\end{clarifications}
 
 \begin{history}
-  Introduced by Girard in~\cite{girard1987tcs}.
+  Introduced by Girard and Lafont in~\cite{lafont1987tapsoft} as intuitionistic variant of~\iref{LL}.
 \end{history}
 
 % \begin{technicalities}
