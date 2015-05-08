@@ -12,11 +12,13 @@
 % Acronyms of Proof Systems in Chronological Order
 
 
+
 \newcommand{\NJ}{\ensuremath{\mathbf{NJ}}\xspace} % GentzenNJ 1935
 \newcommand{\LK}{\ensuremath{\mathbf{LK}}\xspace} % GentzenLK 1935
 \newcommand{\LJ}{\ensuremath{\mathbf{LJ}}\xspace} % GentzenLJ 1935
 \newcommand{\LJmc}{\ensuremath{\mathbf{LJ'}}\xspace} % MultiConclusionLJ 1954
 \newcommand{\SystemF}{\ensuremath{\mathbf{F}}\xspace} % fc 1971
+\newcommand{\Bledsoe}{\ensuremath{\mathbf{Prover}}\xspace} % Bledsoe 1984
 \newcommand{\Muscadet}{\ensuremath{\mathbf{Muscadet}}\xspace} % Muscadet 1984
 \newcommand{\LF}{\ensuremath{\mathbf{LF}}\xspace} % LuoLF 1994
 \newcommand{\Gtc}{\ensuremath{\mathbf{G3c}}\xspace} % G3c 1996
@@ -34,12 +36,17 @@
 \includeProofSystem{MultiConclusionLJ} % 1954
 \includeProofSystem{fc} % 1971
 \includeProofSystem{ExpansionProofs} % 1983
+\includeProofSystem{Bledsoe} % 1984
 \includeProofSystem{Muscadet} % 1984
 \includeProofSystem{FILL} % 1990
 \includeProofSystem{LuoLF} % 1994
 \includeProofSystem{G3c} % 1996
 \includeProofSystem{GBetaFB} % 2004-2009
+
+\mathversion{mathhungry}
 \includeProofSystem{ExtResLEO2} % 2006-2013
+\mathversion{normal}
+
 \includeProofSystem{LKF} % 2007
 \includeProofSystem{LJF} % 2007
 \includeProofSystem{Counterfactual} % 1983-2013

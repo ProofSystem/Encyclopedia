@@ -1,5 +1,6 @@
 \documentclass[graybox, envcountchap]{svmult}
 
+
 \usepackage{mathptmx}        % selects Times Roman as basic font
 \usepackage{helvet}          % selects Helvetica as sans-serif font
 \usepackage{courier}         % selects Courier as typewriter font
@@ -36,7 +37,9 @@
 % makeindex should use "svind.ist" 
 \makeindex{logics} % index for logics
 \makeindex{ctypes} % index for calculus types
-                       
+               
+% this is needed by entries that use too many math alphabets        
+\DeclareMathVersion{mathhungry}
 
 
 \begin{document}
