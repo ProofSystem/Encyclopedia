@@ -63,7 +63,7 @@
   \infer{\Gamma, B, A, \Delta \vdash C}{\Gamma, A, B, \Delta \vdash C}
 \end{infruleset}
 
-\begin{infruleset}{Logical}
+\begin{infruleset}{Multiplicative}
   \infer{\vdash \llone}{}
   \sepproof
   \infer{\Gamma, \llone \vdash A}{\Gamma \vdash A}
@@ -73,6 +73,12 @@
   \infer{\Gamma, A \llmconj B \vdash C}{\Gamma, A, B \vdash C}
   \sepline
 %
+  \infer{\Gamma \vdash A \llimp B}{\Gamma, A \vdash B}
+  \sepproof
+  \infer{\Gamma, A \llimp B, \Delta \vdash C}{\Gamma \vdash A \sepseq B, \Delta \vdash C}
+\end{infruleset}
+
+\begin{infruleset}{Additive}
   \infer{\Gamma \vdash \top}{}
   \sepproof
   \infer{\Gamma \vdash A \llaconj B}{\Gamma \vdash A \sepseq \Gamma \vdash B}
@@ -85,13 +91,9 @@
   \infer{\Gamma \vdash A_1 \lladisj A_2}{\Gamma \vdash A_i}
   \sepproof
   \infer{\Gamma, A \lladisj B \vdash C}{\Gamma, A \vdash C \sepseq \Gamma, B \vdash C}
-  \sepline
-%
-  \infer{\Gamma \vdash A \llimp B}{\Gamma, A \vdash B}
-  \sepproof
-  \infer{\Gamma, A \llimp B, \Delta \vdash C}{\Gamma \vdash A \sepseq B, \Delta \vdash C}
-  \sepline
-%
+\end{infruleset}
+
+\begin{infruleset}{Exponential}
   \infer{!\Gamma \vdash !A}{!\Gamma \vdash A}
   \sepproof
   \infer{\Gamma, !A \vdash B}{\Gamma \vdash B}
@@ -100,6 +102,17 @@
   \sepproof
   \infer{\Gamma, !A \vdash B}{\Gamma, !A, !A \vdash B}
 \end{infruleset}
+
+%\begin{infruleset}{First order}
+%  \infer{\Gamma \vdash \exists x. A}{\Gamma \vdash A[t]}
+%  \sepproof
+%  \infer{\Gamma, \exists x. A[x] \vdash B}{\Gamma, A[y] \vdash B}
+%  \sepproof
+%  \infer{\Gamma \vdash \forall x. A}{\Gamma \vdash A[y]}
+%  \sepproof
+%  \infer{\Gamma, \forall x. A[x] \vdash B}{\Gamma, A[t] \vdash B}
+%\end{infruleset}
+\vspace{-1em}
 
 % Add the inference rules of your proof system here.
 % The "proof.sty" and "bussproofs.sty" packages are available.
@@ -114,11 +127,15 @@
 % Try to have at most one paragraph per section, because line breaks 
 % do not look nice in a short entry.
 
-%\begin{clarifications}
-%\end{clarifications}
+\begin{clarifications}
+  The succedent of every sequent has exactely one formula.
+  First order quantifier can be added with rules similar to LJ \iref{GentzenLJ}.
+\end{clarifications}
 
 \begin{history}
-  Introduced by Girard and Lafont in~\cite{lafont1987tapsoft} as intuitionistic variant of~\iref{LL}.
+  Introduced by Girard and Lafont in~\cite{lafont1987tapsoft} as intuitionistic variant of LL~\iref{LL}.
+  The sequent calculus for the intuitionistic multiplicative linear logic (IMLL) \cite{mints1977closed}
+  is the restriction to the structural and multiplicative rules.
 \end{history}
 
 % \begin{technicalities}
