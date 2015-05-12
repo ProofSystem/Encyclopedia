@@ -1,0 +1,81 @@
+
+
+
+\calculusName{Bledsoe's Natural Deduction}
+\calculusAcronym{\Bledsoe}
+\calculusLogic{Classical Predicate Logic}
+\calculusType{Natural Deduction}
+\calculusYear{1973-78}
+\calculusAuthor{Woody W. Bledsoe}
+
+
+\entryTitle{Bledsoe's Natural Deduction - \Bledsoe}
+\entryAuthor{Dominique Pastre}
+
+\tag{natural methods}
+
+\maketitle
+
+\begin{entry}{Bledsoe}  
+
+\begin{calculus}
+
+\textbf {SPLIT: basic rules of Natural Deduction}(see \iref{GentzenNJ}),
+for example\\
+To prove $A\land B$, prove $A$ and prove $B$\\
+To prove $p \rightarrow  A \land B$, prove $(p \rightarrow A) \land (p \rightarrow B)$\\
+To prove $p \ \lor q \rightarrow  A $, prove $(p \rightarrow A) \land (q \rightarrow A)$\\
+To prove $\exists x P(x) \rightarrow D$, prove $P(y) \rightarrow D$, where $y$ is a new variable\\
+\textbf {REDUCE: conversion rules}, for example\\
+To prove $x \in A \cap B$, prove   $x \in A \land x \in B$ \\
+To prove $S \in {\cal  P} (A)$, prove $S \subset A \land S \in  {\cal U}$\\
+To prove $x \in \sigma F$, prove $\exists y (y \in F \land x \in y)$
+
+\textbf {DEFINITIONS},  example\\
+$A \subset B$ is defined by $\forall x(x \in A \rightarrow x \in B)$ and is 
+replaced by $x \in A \rightarrow x \in B$ or by 
+$x_o \in A \rightarrow x_o \in B$, depending on the position 
+of the formula in the theorem.\\
+\textbf {IMPLY: }  
+in addition to SPLIT and REDUCE rules, \\
+- search for substitutions which unify some hypotheses and a conclusion and \\
+compose them until obtaining the empty substitution (theorem proved) or failing\\
+- forward chaining : if $P$ and $P'$ are unified by $\theta$ ($P \theta$=$P' \theta$), then a hypothesis  
+$P' \land (P \rightarrow Q)$ is converted into 
+$P' \land (P \rightarrow Q) \land Q \theta$\\
+- PEEK forward chaining : if $P\theta$=$P'\theta$ and $A$ has the definition 
+$(P \rightarrow Q)$, 
+then a hypothesis $P' \land A$ is converted into $P'\land A \land Q \theta$ \\
+- backward chaining : if $A \rightarrow D$ and $D \theta = C \theta$, 
+replace the conclusion $C$ by $A \theta$
+\end{calculus}
+
+\begin{clarifications}
+Bledsoe's natural deduction may be seen as both an extension and 
+a restriction of formal natural deduction \iref{GentzenNJ}. 
+In SPLIT and REDUCE, there is reduction but not expansion. 
+Some subroutines convert expressions into forms convenient 
+for applying the rules. 
+The notions of hypothesis and conclusion are privileged.
+\end{clarifications}
+
+\begin{history}
+After having applied the rules of IMPLY and REDUCE, the first version of
+{\sc \Bledsoe} \cite{bledsoe:1971} called a resolution program if necessary. 
+Then, in \cite{bledsoe:1972}, these calls to resolution are completely 
+replaced by IMPLY. 
+\Bledsoe has been working in set theory, limit theorems, topology and 
+program verification.
+\end{history}
+
+\begin{technicalities}
+The system is sound but not complete.
+Bledsoe emphasizes the fact that, with these methods, provers may succeed 
+because they proceed in a natural human-like way
+\cite{bledsoe:1977}.
+\end{technicalities}
+
+% Leave an empty line above "\end{entry}".
+
+\end{entry}
+

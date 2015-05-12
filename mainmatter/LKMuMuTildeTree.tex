@@ -1,0 +1,178 @@
+
+\calculusName{\LKmumutildetree} % The name of the calculus
+\calculusAcronym{} % The acronym if defined above, or empty otherwise.
+\calculusLogic{Classical or intuitionistic} % Specify the logic (e.g. classical, intuitionistic, ...) for which this calculus is intended.
+\calculusType{sequent calculus} % Specify the calculus type (e.g. Frege-Hilbert style, tableau, sequent calculus, hypersequent calculus, natural deduction, ...)
+\calculusYear{2005} % The year when the calculus was invented.
+\calculusAuthor{Herbelin} % The name(s) of the author(s) of the calculus.
+\entryTitle{LK$\mu\tilde\mu$ in sequent-free tree form} % Title of the entry (usually coincides with the name of the calculus).
+\entryAuthor{Hugo Herbelin} % Your name(s). Separate multiple names with "\and".
+% If you wish, use tags to give any other information
+% that might be helpful for classifying and grouping this entry:
+% e.g. \tag{Multiset Cedents}
+% You are free to invent your own tags.
+% The Encyclopedia's coordinator will take care of
+% merging semantically similar tags in the future.
+\maketitle
+% If your files are called "MyProofSystem.tex" and "MyProofSystem.bib",
+% then you should write "\begin{entry}{MyProofSystem}" in the line below
+\begin{entry}{LKMuMuTildeTree}
+% Define here any newcommands you may need:
+% e.g. \newcommand{\necessarily}{\Box}
+% e.g. \newcommand{\possibly}{\Diamond}
+\begin{calculus}
+% Add the inference rules of your proof system here.
+% The "proof.sty" and "bussproofs.sty" packages are available.
+% If you need any other package, please contact the editor (bruno@logic.at)
+
+{\sc Structural subsystem}
+\[
+\infer[\mathit{Cut}]
+      {\vdash}
+      {\vdash A & A \vdash}
+\]
+\[
+\infer[\mathit{Focus}_L]
+      {A \vdash}
+      {\infer*{\vdash}{[\vdash A]}}
+\qquad
+\infer[\mathit{Focus}_R]
+      {\vdash A}
+      {\infer*{\vdash}{[A \vdash]}}
+\]
+{\sc Introduction rules}
+\[
+\infer[\wedge_L^i]
+      {A_1 \wedge A_2 \vdash}
+      {A_i \vdash}
+\qquad
+\infer[\wedge_R]
+      {\vdash A_1 \wedge A_2}
+      {\vdash A_1 & \vdash A_2}
+\]
+\[
+\infer[\vee_L]
+      { A_1 \vee A_2 \vdash}
+      { A_1 \vdash & A_2 \vdash}
+\qquad
+\infer[\vee_R^i]
+      {\vdash A_1 \vee A_2 }
+      {\vdash A_i }
+\]
+\[
+\infer[\rightarrow_L]
+      {A\rightarrow B \vdash}
+      {\vdash A & B \vdash}
+\qquad
+\infer[\rightarrow_R]
+      {\vdash A \rightarrow B}
+      {\infer*{\vdash B}{[\vdash A]}}
+\]
+\[
+\infer[\exists_L]
+      { \exists x\,A[x] \vdash}
+      { A[y] \vdash}
+\qquad
+\infer[\exists_R]
+      {\vdash \exists x\,A[x] }
+      {\vdash A[t] }
+\]
+\[
+\infer[\forall_L]
+      {\forall x\, A[x] \vdash}
+      {A[t] \vdash}
+\qquad
+\infer[\forall_R]
+      {\vdash \forall x\,A[x]}
+      {\vdash A[y]}
+\]
+\[
+\infer[\bot_L]
+      {\bot \vdash}
+      {}
+\qquad
+\infer[\top_R]
+      {\vdash \top}
+      {}
+\]
+
+\end{calculus}
+% The following sections ("clarifications", "history",
+% "technicalities") are optional. If you use them,
+% be very concise and objective. Nevertheless, do write full sentences.
+% Try to have at most one paragraph per section, because line breaks
+% do not look nice in a short entry.
+\begin{clarifications}
+There are three kinds of nodes, $\vdash A$ for asserting formulas, $A
+\vdash$ for refuting formulas, and $\vdash$ for expressing a
+contradiction. Annotation by proof-terms can optionally be added as in
+\iref{LKMuMuTilde}. Negation $\neg A$ can be defined as $A \rightarrow \bot$.
+\end{clarifications}
+
+\begin{history}
+The purpose of this system is to show that the original distinction in
+Gentzen~\cite{Gentzen1935} between natural deduction presented as a
+tree of formulas and sequent calculus presented as a tree of sequents
+is no longer relevant. It is known from at least
+Howard~\cite{Howard80} that natural deduction can be presented with
+sequents. The above formulation shows that systems based on left and
+right introductions (``sequent-calculus style'') can be presented as a
+sequent-free tree of formulas~\cite{HerbelinHdR}.
+
+The terminology ``sequent calculus'' seems to have become popular
+from~\cite{Prawitz65} followed then e.g. by~\cite{Troelstra73} who
+were associating the term ``sequents'' to Gentzen's LJ and LK systems.
+%In works prior to Prawitz, wording such as Gentzen-type calculi can be
+%found~\cite{Kleene52}.
+The terminology having lost the connection to its
+etymology, this motivated some authors to use alternative
+terminologies such as ``L'' systems~\cite{Munch-Maccagnoni09}.
+\end{history}
+
+% Use "\irefmissing{SuggestedIDForOtherProofSystem}" to refer to
+% another proof system that is not yet available in the encyclopedia.
+% \end{history}
+%\begin{technicalities}
+%The system is obviously logically equivalent to Gentzen's LK when
+%equipped with the appropriate connectives.
+%\end{technicalities}
+% General Instructions:
+% =====================
+% The preferred length of an entry is 1 page.
+% Do the best you can to fit your proof system in one page.
+%
+% If you are finding it hard to fit what you want in one page, remember:
+%
+% * Your entry needs to be neither self-contained nor fully understandable
+% (the interested reader may consult the cited full paper for details)
+%
+% * If you are describing several proof systems in one entry,
+% consider splitting your entry.
+%
+% * You may reduce the size of your entry by ommitting inference rules
+% that are already described in other entries.
+%
+% * Cite parsimoniously (see detailed citation instructions below).
+%
+%
+% If you do not manage to fit everything in one page,
+% it is acceptable for an entry to have 2 pages.
+%
+% For aesthetical reasons, it is preferable for an entry to have
+% 1 full page or 2 full pages, in order to avoid unused blank space.
+% Citation Instructions:
+% ======================
+% Please cite the original paper where the proof system was defined.
+% To do so, you may use the \cite command within
+% one of the optional environments above,
+% or use the \nocite command otherwise.
+% You may also cite a modern paper or book where the
+% proof system is explained in greater depth or clarity.
+% Cite parsimoniously.
+% Do not cite related work. Instead, use the "\iref" or "\irefmissing"
+% commands to make an internal reference to another entry,
+% as explained within the "history" environment above.
+% You do not need to create the "References" section yourself.
+% This is done automatically.
+% Leave an empty line above "\end{entry}".
+\end{entry}

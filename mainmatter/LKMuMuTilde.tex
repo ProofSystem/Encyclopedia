@@ -1,0 +1,232 @@
+
+\newcommand{\LKT}{\ensuremath{\mathbf{LKT}\xspace}}
+\newcommand{\LJT}{\ensuremath{\mathbf{LJT}\xspace}}
+\newcommand{\LKQ}{\ensuremath{\mathbf{LKQ}\xspace}}
+\calculusName{} % The name of the calculus
+\calculusAcronym{\LKmumutilde} % The acronym if defined above, or empty otherwise.
+\calculusLogic{Classical or intuitionistic} % Specify the logic (e.g. classical, intuitionistic, ...) for which this calculus is intended.
+\calculusType{sequent calculus} % Specify the calculus type (e.g. Frege-Hilbert style, tableau, sequent calculus, hypersequent calculus, natural deduction, ...)
+\calculusYear{2000} % The year when the calculus was invented.
+\calculusAuthor{Curien-Herbelin} % The name(s) of the author(s) of the calculus.
+\entryTitle{\LKmumutilde} % Title of the entry (usually coincides with the name of the calculus).
+\entryAuthor{Hugo Herbelin} % Your name(s). Separate multiple names with "\and".
+% If you wish, use tags to give any other information
+% that might be helpful for classifying and grouping this entry:
+\tag{Two-Sided Sequents}
+% e.g. \tag{Multiset Cedents}
+\tag{List Cedents}
+\tag{Term-annotated}
+% You are free to invent your own tags.
+% The Encyclopedia's coordinator will take care of
+% merging semantically similar tags in the future.
+\maketitle
+% If your files are called "MyProofSystem.tex" and "MyProofSystem.bib",
+% then you should write "\begin{entry}{MyProofSystem}" in the line below
+\begin{entry}{LKMuMuTilde}
+% Define here any newcommands you may need:
+% e.g. \newcommand{\necessarily}{\Box}
+% e.g. \newcommand{\possibly}{\Diamond}
+\newcommand{\cut}[2]{\langle #1 | #2 \rangle}
+\begin{calculus}
+% Add the inference rules of your proof system here.
+% The "proof.sty" and "bussproofs.sty" packages are available.
+% If you need any other package, please contact the editor (bruno@logic.at)
+
+{\sc Structural subsystem}
+\[
+\infer[\mathit{Ax_R}]
+      {\Gamma \vdash a:A ~|~ \Delta}
+      {(a:A) \in \Gamma}
+\qquad
+\infer[\mathit{Cut}]
+      {\cut{v}{e} : (\Gamma \vdash \Delta)}
+      {\Gamma \vdash v:A ~|~ \Delta & \Gamma ~|~ e:A \vdash \Delta}
+\qquad
+\infer[\mathit{Ax_L}]
+      {\Gamma ~|~ \alpha:A \vdash \Delta}
+      {(\alpha:A) \in \Delta}
+\]
+\[
+\infer[\mathit{Focus}_L]
+      {\Gamma~|~ \tilde\mu a.c:A \vdash \Delta}
+      {c : (\Gamma, a:A \vdash \Delta)}
+\qquad
+\infer[\mathit{Focus}_R]
+      {\Gamma \vdash \mu \alpha.c:A ~|~ \Delta}
+      {c : (\Gamma \vdash \alpha:A, \Delta)}
+\]
+{\sc Introduction rules}
+\[
+\infer[\wedge_L^i]
+      {\Gamma ~|~ \pi_i\cdot e :  A_1 \wedge A_2 \vdash \Delta}
+      {\Gamma ~|~ e : A_i \vdash \Delta}
+\qquad
+\infer[\wedge_R]
+      {\Gamma \vdash ~|~ (v_1,v_2) : A_1 \wedge A_2 ~|~ \Delta}
+      {\Gamma \vdash v_1:A_1 ~|~ \Delta & \Gamma \vdash v_2 : A_2 ~|~ \Delta}
+\]
+\[
+\infer[\vee_L]
+      {\Gamma ~|~ [e_1,e_2] : A_1 \vee A_2 \vdash \Delta}
+      {\Gamma ~|~ e_1:A_1 \vdash \Delta & \Gamma ~|~ e_2 : A_2 \vdash \Delta}
+\qquad
+\infer[\vee_R^i]
+      {\Gamma \vdash \iota_i(v) :  A_1 \vee A_2 ~|~ \Delta}
+      {\Gamma \vdash v : A_i ~|~ \Delta}
+\]
+\[
+\infer[\rightarrow_L]
+      {\Gamma ~|~ v\cdot e : A\rightarrow B \vdash \Delta}
+      {\Gamma \vdash v:A ~|~ \Delta & \Gamma ~|~ e:B \vdash \Delta}
+\qquad
+\infer[\rightarrow_R]
+      {\Gamma \vdash \lambda a.v : A \rightarrow B ~|~\Delta}
+      {\Gamma, a:A \vdash v:B ~|~ \Delta}
+\]
+\[
+\infer[\exists_L]
+      {\Gamma ~|~ \tilde\lambda x.e : \exists x\,A[x] \vdash \Delta}
+      {\Gamma ~|~ e: A[y] \vdash \Delta}
+\qquad
+\infer[\exists_R]
+      {\Gamma \vdash t \cdot v  : \exists x\,A[x] ~|~ \Delta}
+      {\Gamma \vdash v :  A[t] ~|~ \Delta}
+\]
+\[
+\infer[\forall_L]
+      {\Gamma ~|~ t \cdot e : \forall x\, A[x] \vdash \Delta}
+      {\Gamma \vdash e: A[t] ~|~ \Delta}
+\qquad
+\infer[\forall_R]
+      {\Gamma \vdash \lambda x.v  : \forall x\,A[x] ~|~ \Delta}
+      {\Gamma \vdash v : A[y] ~|~ \Delta}
+\]
+\[
+\infer[\bot_L]
+      {\Gamma ~|~ [~] : \bot \vdash \Delta}
+      {}
+\qquad
+\infer[\top_R]
+      {\Gamma \vdash () : \top ~|~ \Delta}
+      {}
+\]
+
+\end{calculus}
+% The following sections ("clarifications", "history",
+% "technicalities") are optional. If you use them,
+% be very concise and objective. Nevertheless, do write full sentences.
+% Try to have at most one paragraph per section, because line breaks
+% do not look nice in a short entry.
+\begin{clarifications}
+There are three kinds of sequents: first $\Gamma \vdash v:A ~|~
+\Delta$ with a distinguished formula on the right for typing the
+program $v$, second $\Gamma ~|~ e:A \vdash \Delta$ with a
+distinguished formula on the left for typing the evaluation context
+$e$, and finally $c : (\Gamma \vdash \Delta)$ with no distinguished
+formula for typing command $c$, i.e. the interaction of a program
+within an evaluation context. The typing contexts $\Gamma$ and
+$\Delta$ are lists of named formulas so that a non-ambiguous
+correspondence with $\lambda$-calculus is possible (if it were sets or
+multisets, there were e.g. no way to distinguish the two distinct
+proofs of $x:A, x:A \vdash x:A ~|~$). Weakening rules are implemented
+implicitly at the level of axioms. Contraction rules are derived,
+using a cut against an axiom. No exchange rule is needed.  Not all
+cuts are eliminable: only those not involving an axiom rule are.
+Negation $\neg A$ can be defined as $A \rightarrow \bot$. In the rules
+$\exists_E$ and $\forall_R$, $y$ is assumed fresh in $\Gamma$,
+$\Delta$ and $A[x]$. The syntax of the underlying $\lambda$-calculus
+is:
+$$
+\begin{array}{lll}
+c & ::= & \cut{v}{e}\\
+e & ::= & \alpha ~|~ \tilde\mu a.c ~|~ \pi_i\cdot e ~|~ [e,e] ~|~ v \cdot e ~|~ (t,e) ~|~ \tilde\lambda x.e ~|~ []\\
+v & ::= & a ~|~ \mu\alpha.c ~|~ (v,v) ~|~ \iota_i(v) ~|~ \lambda a.v ~|~ \lambda x.v ~|~ (t,v) ~|~ ()\\
+\end{array}
+$$
+\end{clarifications}
+
+\begin{history}
+The purpose of this system is to provide with a
+$\lambda$-calculus-style computational meaning to Gentzen's LK
+\iref{GentzenLK} and to highlight how the symmetries of sequent
+calculus show computationally. Seeing the rules as typing rules, the
+left/right symmetry is a symmetry between programs and their
+evaluation contexts. At the level of cut elimination, giving priority
+to the left-hand side relates to call-by-name evaluation while giving
+priority to the right-hand side relates to call-by-value
+evaluation~\cite{CurienHerbelin00}. Thanks to the presence of two dual
+axiom rules and implicit contraction rules, the system supports a
+tree-like sequent-free presentation like originally presented by
+Gentzen for natural deduction~\cite{HerbelinHdR} (see
+\iref{LKMuMuTildeTree}).
+
+The structural subsystem can be adapted to various sequent calculi,
+such as $\LK_{\mathit{pol}}$~\cite{Munch-Maccagnoni09}, and in
+particular $\LKT$ (emphasizing call-by-name) and $\LKQ$ (emphasizing
+call-by-value)~\cite{DanJoiSch95,DanJoiSch97}. Restriction to
+intuitionistic logic can be obtained by demanding that the right-hand
+side has exactly one formula.
+
+The presentation of this calculus with conjunctive and disjunctive
+additive connectives has been studied in
+\cite{Wadler03,Wadler05,HerbelinHdR}. A variant with only commands,
+called ${\cal X}$, has been studied in \cite{BakLenLes05}, based on
+previous work in~\cite{UrbanPhD}.  Various extensions of the system
+emphasizing different symmetries can be found in~\cite{DownenAriola14}
+(general connectives), recursion/corecursion~\cite{KimuraTatsuta13},
+...  An asymmetric variant of $\LKT$ with sequents of the form $\Gamma
+~|~ A \vdash B ~|~ \Delta$, $\Gamma \vdash A ~|~ \Delta$ and $\Gamma
+\vdash \Delta$ can be found in \cite{HerbelinPhD}, with the
+intuitionistic restriction $\LJT$ studied in \cite{Herbelin94,Kikuchi04}.
+
+\end{history}
+
+% Use "\irefmissing{SuggestedIDForOtherProofSystem}" to refer to
+% another proof system that is not yet available in the encyclopedia.
+% \end{history}
+\begin{technicalities}
+The system is obviously logically equivalent to Gentzen's $\LK$ when
+equipped with the corresponding connectives and observed through the
+sequents of the form $\Gamma \vdash \Delta$. 
+\end{technicalities}
+
+% General Instructions:
+% =====================
+% The preferred length of an entry is 1 page.
+% Do the best you can to fit your proof system in one page.
+%
+% If you are finding it hard to fit what you want in one page, remember:
+%
+% * Your entry needs to be neither self-contained nor fully understandable
+% (the interested reader may consult the cited full paper for details)
+%
+% * If you are describing several proof systems in one entry,
+% consider splitting your entry.
+%
+% * You may reduce the size of your entry by ommitting inference rules
+% that are already described in other entries.
+%
+% * Cite parsimoniously (see detailed citation instructions below).
+%
+%
+% If you do not manage to fit everything in one page,
+% it is acceptable for an entry to have 2 pages.
+%
+% For aesthetical reasons, it is preferable for an entry to have
+% 1 full page or 2 full pages, in order to avoid unused blank space.
+% Citation Instructions:
+% ======================
+% Please cite the original paper where the proof system was defined.
+% To do so, you may use the \cite command within
+% one of the optional environments above,
+% or use the \nocite command otherwise.
+% You may also cite a modern paper or book where the
+% proof system is explained in greater depth or clarity.
+% Cite parsimoniously.
+% Do not cite related work. Instead, use the "\iref" or "\irefmissing"
+% commands to make an internal reference to another entry,
+% as explained within the "history" environment above.
+% You do not need to create the "References" section yourself.
+% This is done automatically.
+% Leave an empty line above "\end{entry}".
+\end{entry}
