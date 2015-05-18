@@ -48,7 +48,7 @@
 \newcommand{\sepline}{\]\[}
 
 \newenvironment{infruleset}[1]{%
-  \sc{#1} \[ %
+  \sc{#1} \vspace{-1ex} \[ %
 }{%
   \] %
 }
@@ -114,33 +114,26 @@
 %\end{infruleset}
 \vspace{-1em}
 
-% Add the inference rules of your proof system here.
-% The "proof.sty" and "bussproofs.sty" packages are available.
-% If you need any other package, please contact the editor (bruno@logic.at)
-
 
 \end{calculus}
 
-% The following sections ("clarifications", "history", 
-% "technicalities") are optional. If you use them, 
-% be very concise and objective. Nevertheless, do write full sentences. 
-% Try to have at most one paragraph per section, because line breaks 
-% do not look nice in a short entry.
-
 \begin{clarifications}
-  The succedent of every sequent has exactely one formula.
+  Succedents are sole formulas.
+  Antecedents are ordered list of formulas.
+  If $\Gamma$ is the list $A_1, \ldots, A_n$ of formulas, $!\Gamma$ denotes the list $!A_1, \ldots, !A_n$.
   First order quantifier can be added with rules similar to LJ \iref{GentzenLJ}.
+  Conversely, removing the exponential rules leads to the intuitionistic multiplicative additive linear logic (IMALL).
+  And by further removing the additive rules, the intuitionistic multiplicative linear logic (IMLL) \cite{mints1977closed} is obtained.
 \end{clarifications}
 
 \begin{history}
   Introduced by Girard and Lafont in~\cite{lafont1987tapsoft} as intuitionistic variant of LL~\iref{LL}.
-  The sequent calculus for the intuitionistic multiplicative linear logic (IMLL) \cite{mints1977closed}
-  is the restriction to the structural and multiplicative rules.
+  By contrast with the full intuitionistic linear logic~\iref{FILL}, there is no multiplicative disjunction in ILL.
 \end{history}
 
-% \begin{technicalities}
-% ToDo: write here remarks about soundness, completeness, decidability...
-% \end{technicalities}
+\begin{technicalities}
+  Enjoys cut elimination~\cite{lafont1987tapsoft}.
+\end{technicalities}
 
 
 % General Instructions:

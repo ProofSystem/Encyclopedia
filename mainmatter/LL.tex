@@ -50,7 +50,7 @@
 \newenvironment{infruleset}[1]{%
   \sc{#1} \[ %
 }{%
-  \] %
+  \] \vspace{-1em} %
 }
 \newcommand{\axiom}[2][axiom]{\infer[\mbox{\textit{(#1)}}]{\ensuremath{\vdash #2 }}{}}
 \newcommand{\infrule}[3]{\infer[\mbox{\textit{(#1)}}]{\ensuremath{\vdash #3 }}{\ensuremath{\vdash #2 }}}
@@ -62,7 +62,7 @@
   \sepproof
   \infrule{cut}{\Gamma, A \sepseq \llneg{A}, \Delta}{\Gamma, \Delta}
   \sepline
-  \infrule{exchange: $\sigma$ is a permutation}{\Gamma}{\sigma(\Gamma)}
+  \infrule{permutation}{\Gamma, A, B, \Delta}{\Gamma, B, A, \Delta}
 \end{infruleset}
 
 \begin{infruleset}{Logical}
@@ -105,16 +105,18 @@
 % do not look nice in a short entry.
 
 \begin{clarifications}
+  Sequents are ordered lists of formulas.
+  If $\Gamma$ is a list $A_1, \ldots, A_n$ of formulas, $?\Gamma$ denotes the list $?A_1, \ldots, ?A_n$.
   Formulas are contructed from propositional variables $p, q, \ldots$
-  and their dual $\llneg{p}, \llneg{q}, \ldots$ using the constructs
-  $\llzero, \llone, \top, \bot, \mathord{\llmconj}, \mathord{\llmdisj},
+  and their dual $\llneg{p}, \llneg{q}, \ldots$, using the constructs
+  $\llzero, \top, \bot, \llone, \mathord{\llmconj}, \mathord{\llmdisj},
   \mathord{\llaconj}, \mathord{\lladisj}, \mathord{!}$ and $\mathord{?}$.
   Negation is \emph{defined} by:
   \[
   \begin{array}{rlrl}
     \llneg{(p)} &= \llneg{p} ~&~ \llneg{(\llneg{p})} &= p \\
     \llneg{\llzero} &= \top ~&~ \llneg{\top} &= \llzero \\
-    \llneg{\llone} &= \bot ~&~ \llneg{\bot} &= \llone \\
+    \llneg{\bot} &= \llone ~&~ \llneg{\llone} &= \bot \\
     \llneg{(A \llmconj B)} &= \llneg{A} \llmdisj \llneg{B} ~&~
     \llneg{(A \llmdisj B)} &= \llneg{A} \llmconj \llneg{B} \\
     \llneg{(A \llaconj B)} &= \llneg{A} \lladisj \llneg{B} ~&~
@@ -122,11 +124,19 @@
     \llneg{(!A)} &= ?\llneg{A} ~&~ \llneg{(?A)} &= !\llneg{A} \\
   \end{array}
   \]
+  Similarly, the linear implication is defined by $A \llimp B = \llneg{A} \llmdisj B$.
+  The multiplicatives $\mathord{\llmconj}, \mathord{\llmdisj}, \mathord{\llimp}$,
+  additives $\mathord{\llaconj}, \mathord{\lladisj}$
+  and exponentials $\mathord{!}, \mathord{?}$ of linear logic
+  are inspired by linear and bilinear aspects in the behaviour of standard connectives,
+  that may be seen, in particular, in the treatment of contexts and structural rules 
+  in intuitionistic, classical and modal systems.
 \end{clarifications}
 
 \begin{history}
   Introduced by Girard in~\cite{girard1987tcs}.
 \end{history}
+
 
 % \begin{technicalities}
 % ToDo: write here remarks about soundness, completeness, decidability...
