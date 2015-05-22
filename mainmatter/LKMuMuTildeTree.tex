@@ -105,8 +105,10 @@
 \begin{clarifications}
 There are three kinds of nodes, $\vdash A$ for asserting formulas, $A
 \vdash$ for refuting formulas, and $\vdash$ for expressing a
-contradiction. Annotation by proof-terms can optionally be added as in
-\iref{LKMuMuTilde}. Negation $\neg A$ can be defined as $A \rightarrow \bot$.
+contradiction. Negation $\neg A$ can be defined as $A \rightarrow \bot$.
+In the rules $\exists_E$ and $\forall_R$, $y$ is assumed fresh in all
+the unbracketed assumption formula upon which that the derivation of
+$A(y)$ depends.
 \end{clarifications}
 
 \begin{history}
@@ -132,10 +134,16 @@ terminologies such as ``L'' systems~\cite{Munch-Maccagnoni09}.
 % Use "\irefmissing{SuggestedIDForOtherProofSystem}" to refer to
 % another proof system that is not yet available in the encyclopedia.
 % \end{history}
-%\begin{technicalities}
+\begin{technicalities}
 %The system is obviously logically equivalent to Gentzen's LK when
 %equipped with the appropriate connectives.
-%\end{technicalities}
+As pointed out e.g. in~\cite{GeuversPhD} in the context of natural
+deduction, to obtain a computationally non-degenerate proof-as-program
+correspondence with a presentation of a calculus as a tree of
+formulas, the bracketed assumptions have to be annotated with the
+exact occurrence of the rule which bracketed them. Then, annotation by
+proof-terms can optionally be added as in \iref{LKMuMuTilde}.
+\end{technicalities}
 % General Instructions:
 % =====================
 % The preferred length of an entry is 1 page.
