@@ -36,7 +36,7 @@
 % e.g. \newcommand{\possibly}{\Diamond}
 
 \newenvironment{infruleset}[1]{%
-%  \sc{#1} \vspace{-1ex} %
+  \sc{#1} %\vspace{-.5ex} %
   \[ %
 %  $$
 }{%
@@ -61,7 +61,7 @@
 % The "proof.sty" and "bussproofs.sty" packages are available.
 % If you need any other package, please contact the editor (bruno@logic.at)
 
-\[
+\begin{infruleset}{Boolean rules}
   \infrule{$\bot$}{
     \draw pic ["${\Gamma, A, \neg A}$"] {lstate};}{
     \draw pic ["${\Gamma, A, \neg A, \bot}$"] {lstate};}
@@ -74,14 +74,18 @@
     \draw pic ["${\Gamma, A \wedge B}$"] {lstate} ;}{
     \draw pic ["${\Gamma, A \wedge B, A, B}$"] {lstate} ;}
   \sepproof
-  \infrule{$\vee_i$}{
+  \infrule{$\vee$}{
     \draw pic ["${\Gamma, A_1 \vee A_2}$"] {lstate} ;}{
     \draw pic ["${\Gamma, A_1 \vee A_2, A_i}$"] {lstate} ;}
-  \sepline
+\end{infruleset}
+
+\begin{infruleset}{Diamond rule}
   \infrule{$\Diamond$}{
     \draw pic ["${\Gamma, \Diamond A}$"] {lstate} ;}{
     \draw[->] (0,0) pic ["${\Gamma, \Diamond A}$"] {lstate} -- (.5,0) pic ["$A$"] {rstate} ;}
-  \sepproof
+\end{infruleset}
+
+\begin{infruleset}{Propagation rules}
   \infrule{K}{
     \draw[->] (0,0)  pic ["${\Gamma, \Box A}$"] {lstate} --
               (.5,0) pic ["${\Delta}$"] {rstate} ;}{
@@ -129,7 +133,9 @@
               (.4,0) pic ["${\Delta_1, \Box A}$"] {ustate};
     \draw[->] (.6,0) --
               (1,0)  pic ["${\Delta_2, \Box A}$"] {rstate}; }
-  \sepline
+\end{infruleset}
+
+\begin{infruleset}{Structural rules}
   \infrule{D}{
     \draw pic ["${\Gamma}$"] {lstate} ;}{
     \draw[->] (0,0)  pic ["${\Gamma}$"] {lstate} --
@@ -164,7 +170,7 @@
               (.5,0) pic ["${\Delta}$"] {dstate} ;
     \draw[->] (.7,0)  --
               (1.2,0) pic ["${\emptyset}$"] {rstate} ;}
-\]
+\end{infruleset}
 
 \end{calculus}
 
@@ -175,33 +181,44 @@
 % do not look nice in a short entry.
 
 \begin{clarifications}
-  Rooted directed acyclic graphs with vertices labeled with set of formulas are constructed.
-  \tikz[baseline=-.7ex]{\draw pic ["${\Gamma}$"] {rstate};} denotes a vertex labeled with $\Gamma$.
-%  The obtained graphs correspond to Kripke models.
-  To prove $A$, graphs are constructed from the initial graph containing only one vertex
-  \tikz[baseline=-.7ex]{\draw pic ["${\neg A}$"] {rstate};} and no edges.
-  For the modal logic K only rules $(\bot)$, $(\mathord\wedge)$, $(\mathord\vee_i)$, $(\Diamond)$ and
+  The method constructs a collection of rooted directed acyclic graphs with vertices labeled with sets of formulas.
+  \tikz[baseline=-.7ex]{\draw pic ["${\Gamma}$"] {lstate};} denotes a vertex labeled with $\Gamma$.
+  To each branch of the tableau corresponds a graph.
+  The only branching rule is $(\vee)$, for which $i$ must be choosen among $\{1,2\}$.
+  A branch is closed if the corresponding graph contains a vertex of the form
+  \tikz[baseline=-.7ex]{\draw pic ["${\Gamma, \bot}$"] {lstate};}.
+%  To prove $A$, graphs are constructed from the initial graph containing only one vertex
+%  \tikz[baseline=-.7ex]{\draw pic ["${\neg A}$"] {lstate};} and no edges.
+  For modal logic K, only rules $(\bot)$, $(\mathord\wedge)$, $(\mathord\vee)$, $(\Diamond)$ and
   $(K)$ are used.
-  Then to each additional standart axiom T, 4, B, 5, D, De or C corresponds a set of rules with
-  corresponding names.
-%  For other normal modal logics, rules are added as follows:
-%
-%  \begin{tabular}{l l l}
-%    Axiom & Model's property & Rules \\
-%    \hline
-%    $T = \Box A \imp A$ & reflexivity & $(T)$ \\
-%    $4 = \Box A \imp \Box\Box A$ & transitivity & $(4)$ \\
-%    $B = \Diamond\Box A \imp A$ & symmetry & $(B)$ \\
-%    $5 = \Diamond\Box A \imp \Box A$ & euclideanity &
-%      $(5_{\mathord\rightarrow})$, $(5_{\mathord\uparrow})$, $(5_{\mathord\downarrow})$ \\
-%    $D = \Box A \imp \Diamond A$ & seriality & $(D)$ \\
-%    $De = \Diamond A \imp \Diamond\Diamond A$ & density & $(De)$ \\
-%    $C = \Diamond\Box A \imp \Box\Diamond A$ & confluence & $(C_0)$, $(C_1)$
-%  \end{tabular}
+  To each additional axiom T, 4, B, 5, D, De and C corresponds a set of rules
+  to add, as detailed in Table~\ref{tab:GraphTabK} below.
+
+  \begin{table}
+  \center
+  \begin{tabular}{l l l}
+    Axiom & Model's property & Rules \\
+    \hline
+    $T = \Box A \imp A$ & reflexivity & $(T)$ \\
+    $4 = \Box A \imp \Box\Box A$ & transitivity & $(4)$ \\
+    $B = \Diamond\Box A \imp A$ & symmetry & $(B)$ \\
+    $5 = \Diamond\Box A \imp \Box A$ & euclideanity &
+      $(5_{\mathord\rightarrow})$, $(5_{\mathord\uparrow})$, $(5_{\mathord\downarrow})$ \\
+    $D = \Box A \imp \Diamond A$ & seriality & $(D)$ \\
+    $De = \Diamond A \imp \Diamond\Diamond A$ & density & $(De)$ \\
+    $C = \Diamond\Box A \imp \Box\Diamond A$ & confluence & $(C_0)$, $(C_1)$
+  \end{tabular}
+  \caption{Correspondences between modal axioms and graph-based tableaux rules.}
+  \label{tab:GraphTabK}
+  \end{table}
 \end{clarifications}
 
 \begin{history}
-  Introduced in\cite{castilho-farinas-gasquet-herzig.1997}.
+  Tableaux methods for modal logics have a long history started by M. Fitting~\cite{fitting.1972}.
+%  F. Massacci~\cite{massacci.1994} provided labeled tableaux methods for a range of modal logics.
+  The present method, introduced in~\cite{castilho-farinas-gasquet-herzig.1997},
+  distingish itself by its ability to deal with properties like convergence or density.
+  The method has been enhanced and implemented in the LoTREC prover~\cite{gasquet-herzig-said-schwarzentruber.2014}.
 % ToDo: write here short historical remarks about this proof system,
 % especially if they relate to other proof systems. 
 % Use "\iref{OtherProofSystem}" to refer to another proof system 
@@ -211,7 +228,9 @@
 \end{history}
 
 \begin{technicalities}
-  The method terminates and is sound complete for any combination of axioms.
+  The method is sound and complete for any combination of axioms.
+  Termination is more problematic
+  and have been investigated in~\cite{gasquet-herzig-sahade.2006,gasquet-herzig-said-schwarzentruber.2014}.
 % ToDo: write here remarks about soundness, completeness, decidability...
 \end{technicalities}
 
