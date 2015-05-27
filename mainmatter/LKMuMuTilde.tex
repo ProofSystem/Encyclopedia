@@ -62,7 +62,7 @@
       {\Gamma ~|~ e : A_i \vdash \Delta}
 \qquad
 \infer[\wedge_R]
-      {\Gamma \vdash ~|~ (v_1,v_2) : A_1 \wedge A_2 ~|~ \Delta}
+      {\Gamma \vdash (v_1,v_2) : A_1 \wedge A_2 ~|~ \Delta}
       {\Gamma \vdash v_1:A_1 ~|~ \Delta & \Gamma \vdash v_2 : A_2 ~|~ \Delta}
 \]
 \[
@@ -95,7 +95,7 @@
 \[
 \infer[\forall_L]
       {\Gamma ~|~ t \cdot e : \forall x\, A[x] \vdash \Delta}
-      {\Gamma \vdash e: A[t] ~|~ \Delta}
+      {\Gamma ~|~ e: A[t] \vdash \Delta}
 \qquad
 \infer[\forall_R]
       {\Gamma \vdash \lambda x.v  : \forall x\,A[x] ~|~ \Delta}
