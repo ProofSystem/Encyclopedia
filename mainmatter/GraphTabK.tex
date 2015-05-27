@@ -2,7 +2,7 @@
 % If the calculus has an acronym, define it.
 % (e.g. \newcommand{\LK}{\ensuremath{\mathbf{LK}}\xspace})
 
-\calculusName{Graph-based tableaux method for modal logics}   % The name of the calculus
+\calculusName{Graph-based tableaux for modal logics}   % The name of the calculus
 \calculusAcronym{}    % The acronym if defined above, or empty otherwise. 
 \calculusLogic{modal logics}  % Specify the logic (e.g. classical, intuitionistic, ...) for which this calculus is intended.
 \calculusType{tableau}   % Specify the calculus type (e.g. Frege-Hilbert style, tableau, sequent calculus, hypersequent calculus, natural deduction, ...)
@@ -10,7 +10,7 @@
 \calculusAuthor{Marcos A. Castilho \and Luis Fari\~nas del Cerro \and Olivier Gasquet \and Andreas Herzig} % The name(s) of the author(s) of the calculus.
 
 
-\entryTitle{Graph-based tableaux method for modal logics}     % Title of the entry (usually coincides with the name of the calculus).
+\entryTitle{Graph-based tableaux for modal logics}     % Title of the entry (usually coincides with the name of the calculus).
 \entryAuthor{ToDo}    % Your name(s). Separate multiple names with "\and".
 
 
@@ -36,15 +36,24 @@
 % e.g. \newcommand{\possibly}{\Diamond}
 
 \newenvironment{infruleset}[1]{%
-  \sc{#1} \vspace{-1ex} \[ %
+%  \sc{#1} \vspace{-1ex} %
+  \[ %
+%  $$
 }{%
   \] %
+%  $$
 }
-\newcommand{\infrule}[3]{\infer[\mbox{\textit{(#1)}}]{\tikz{ #3 }}{\tikz{ #2 }}}
+\newcommand{\infrule}[3]{\vcenter{\infer[\mbox{\textit{(#1)}}]{\tikz{ #3 }}{\tikz{ #2 }}}}
+%\newcommand{\infrule}[3]{\centerAlignProof \AxiomC{\tikz{#2}} \RightLabel{\textit{(#1)}} \UnaryInfC{\tikz{#3}} \DisplayProof }
 \newcommand{\sepproof}{\hskip 2em plus 6em\relax}
-\newcommand{\sepline}{\]\[}
+%\newcommand{\sepline}{\]\[}
+\newcommand{\sepline}{$$ $$}
 
 \usetikzlibrary{backgrounds}
+\tikzset{ lstate/.pic={\draw[fill] (-.1,0) circle (1.5pt) node [left]  () {\tikzpictext};} }
+\tikzset{ rstate/.pic={\draw[fill] (.1,0)  circle (1.5pt) node [right] () {\tikzpictext};} }
+\tikzset{ ustate/.pic={\draw[fill] (.1,0)  circle (1.5pt) node [above] () {\tikzpictext};} }
+\tikzset{ dstate/.pic={\draw[fill] (.1,0)  circle (1.5pt) node [below] () {\tikzpictext};} }
 
 \begin{calculus}
 
@@ -52,15 +61,110 @@
 % The "proof.sty" and "bussproofs.sty" packages are available.
 % If you need any other package, please contact the editor (bruno@logic.at)
 
-\begin{infruleset}{Boolean and diamond rules}
+\[
   \infrule{$\bot$}{
-    \draw[fill] circle (1pt) node ["${\Gamma, A, \neg A}$" left] (a) {};}{
-    \draw[fill] circle (1pt) node ["${\Gamma, A, \neg A, \bot}$" left] (c) {};}
+    \draw pic ["${\Gamma, A, \neg A}$"] {lstate};}{
+    \draw pic ["${\Gamma, A, \neg A, \bot}$"] {lstate};}
   \sepproof
-  \infrule{$\neg$}{
-    \draw[fill] circle (1pt) node ["${\Gamma, \neg\neg A}$" left] (a) {};}{
-    \draw[fill] circle (1pt) node ["${\Gamma, \neg\neg A, A}$" left] (c) {};}
-\end{infruleset}
+%  \infrule{$\neg$}{
+%    \draw pic ["${\Gamma, \neg\neg A}$"] {lstate};}{
+%    \draw pic ["${\Gamma, \neg\neg A, A}$"] {lstate};}
+%  \sepproof
+  \infrule{$\wedge$}{
+    \draw pic ["${\Gamma, A \wedge B}$"] {lstate} ;}{
+    \draw pic ["${\Gamma, A \wedge B, A, B}$"] {lstate} ;}
+  \sepproof
+  \infrule{$\vee_i$}{
+    \draw pic ["${\Gamma, A_1 \vee A_2}$"] {lstate} ;}{
+    \draw pic ["${\Gamma, A_1 \vee A_2, A_i}$"] {lstate} ;}
+  \sepline
+  \infrule{$\Diamond$}{
+    \draw pic ["${\Gamma, \Diamond A}$"] {lstate} ;}{
+    \draw[->] (0,0) pic ["${\Gamma, \Diamond A}$"] {lstate} -- (.5,0) pic ["$A$"] {rstate} ;}
+  \sepproof
+  \infrule{K}{
+    \draw[->] (0,0)  pic ["${\Gamma, \Box A}$"] {lstate} --
+              (.5,0) pic ["${\Delta}$"] {rstate} ;}{
+    \draw[->] (0,0)  pic ["${\Gamma, \Box A}$"] {lstate} --
+              (.5,0) pic ["${\Delta, A}$"] {rstate} ;}
+  \sepline
+  \infrule{T}{
+    \draw pic ["${\Gamma, \Box A}$"] {lstate} ;}{
+    \draw pic ["${\Gamma, \Box A, A}$"] {lstate} ;}
+  \sepproof
+  \infrule{4}{
+    \draw[->] (0,0)  pic ["${\Gamma, \Box A}$"] {lstate} --
+              (.5,0) pic ["${\Delta}$"] {rstate} ;}{
+    \draw[->] (0,0)  pic ["${\Gamma, \Box A}$"] {lstate} --
+              (.5,0) pic ["${\Delta, \Box A}$"] {rstate} ;}
+  \sepproof
+  \infrule{B}{
+    \draw[->] (0,0)  pic ["${\Gamma}$"] {lstate} --
+              (.5,0) pic ["${\Delta, \Box A}$"] {rstate} ;}{
+    \draw[->] (0,0)  pic ["${\Gamma, A}$"] {lstate} --
+              (.5,0) pic ["${\Delta, \Box A}$"] {rstate} ;}
+  \sepline
+  \infrule{$5_{\mathord\rightarrow}$}{
+    \draw[->] (-.5,0) pic ["${\Gamma}$"] {lstate} --
+              (0, .2) pic ["${\Delta_1, \Box A}$"] {rstate} ;
+    \draw[->] (-.5,0) --
+              (0,-.2) pic ["${\Delta_2}$"] {rstate} ;}{
+    \draw[->] (-.5,0) pic ["${\Gamma}$"] {lstate} --
+              (0, .2) pic ["${\Delta_1, \Box A}$"] {rstate} ;
+    \draw[->] (-.5,0) --
+              (0,-.2) pic ["${\Delta_2, \Box A}$"] {rstate} ;}
+  \sepproof
+  \infrule{$5_{\mathord\uparrow}$}{
+    \draw[->] (0,0)  pic ["${\Gamma}$"] {lstate} --
+              (.4,0) pic ["${\Delta, \Box A}$"] {rstate} ;}{
+    \draw[->] (0,0)  pic ["${\Gamma, \Box A}$"] {lstate} --
+              (.4,0) pic ["${\Delta, \Box A}$"] {rstate} ;}
+  \sepproof
+  \infrule{$5_{\mathord\downarrow}$}{
+    \draw[->] (0,0)  pic ["${\Gamma}$"] {lstate} --
+              (.4,0) pic ["${\Delta_1, \Box A}$"] {ustate};
+    \draw[->] (.6,0) --
+              (1,0)  pic ["${\Delta_2}$"] {rstate}; }{
+    \draw[->] (0,0)  pic ["${\Gamma}$"] {lstate} --
+              (.4,0) pic ["${\Delta_1, \Box A}$"] {ustate};
+    \draw[->] (.6,0) --
+              (1,0)  pic ["${\Delta_2, \Box A}$"] {rstate}; }
+  \sepline
+  \infrule{D}{
+    \draw pic ["${\Gamma}$"] {lstate} ;}{
+    \draw[->] (0,0)  pic ["${\Gamma}$"] {lstate} --
+              (.5,0) pic ["${\emptyset}$"] {rstate};}
+  \sepproof
+  \infrule{De}{
+    \draw[->] (0,0) pic ["${\Gamma}$"] {lstate} --
+              (1.2,0) pic ["${\Delta}$"] {rstate} ;}{
+    \draw[->] (0,0) pic ["${\Gamma}$"] {lstate} --
+              (1.2,0) pic ["${\Delta}$"] {rstate} ;
+    \draw[->] (-.02,-.07) --
+              (.5,-.2) pic ["${\emptyset}$"] {dstate};
+    \draw[->] (.7,-.2) -- (1.22,-.07);}
+  \sepline
+  \infrule{$C_0$}{
+    \draw[->] (-.5,0) pic ["${\Gamma}$"] {lstate} --
+              (0, .2) pic ["${\Delta_1}$"] {rstate} ;
+    \draw[->] (-.5,0) --
+              (0,-.2) pic ["${\Delta_2}$"] {rstate} ;}{
+    \draw[->] (-.5,0) pic ["${\Gamma}$"] {lstate} --
+              (0, .2) pic ["${\Delta_1}$"] {ustate} ;
+    \draw[->] (-.5,0) --
+              (0,-.2) pic ["${\Delta_2}$"] {dstate} ;
+    \draw[->] (.2,.2) --
+              (.7,0)  pic ["${\emptyset}$"] {rstate};
+    \draw[->] (.2,-.2) -- (.7,0);}
+  \sepproof
+  \infrule{$C_1$}{
+    \draw[->] (0,0)  pic ["${\Gamma}$"] {lstate} --
+              (.5,0) pic ["${\Delta}$"] {rstate} ;}{
+    \draw[->] (0,0)  pic ["${\Gamma}$"] {lstate} --
+              (.5,0) pic ["${\Delta}$"] {dstate} ;
+    \draw[->] (.7,0)  --
+              (1.2,0) pic ["${\emptyset}$"] {rstate} ;}
+\]
 
 \end{calculus}
 
@@ -70,23 +174,46 @@
 % Try to have at most one paragraph per section, because line breaks 
 % do not look nice in a short entry.
 
-% \begin{clarifications}
-% ToDo: write here short remarks that may help the reader to understand 
-% the inference rules of the proof system.
-% \end{clarifications}
+\begin{clarifications}
+  Rooted directed acyclic graphs with vertices labeled with set of formulas are constructed.
+  \tikz[baseline=-.7ex]{\draw pic ["${\Gamma}$"] {rstate};} denotes a vertex labeled with $\Gamma$.
+%  The obtained graphs correspond to Kripke models.
+  To prove $A$, graphs are constructed from the initial graph containing only one vertex
+  \tikz[baseline=-.7ex]{\draw pic ["${\neg A}$"] {rstate};} and no edges.
+  For the modal logic K only rules $(\bot)$, $(\mathord\wedge)$, $(\mathord\vee_i)$, $(\Diamond)$ and
+  $(K)$ are used.
+  Then to each additional standart axiom T, 4, B, 5, D, De or C corresponds a set of rules with
+  corresponding names.
+%  For other normal modal logics, rules are added as follows:
+%
+%  \begin{tabular}{l l l}
+%    Axiom & Model's property & Rules \\
+%    \hline
+%    $T = \Box A \imp A$ & reflexivity & $(T)$ \\
+%    $4 = \Box A \imp \Box\Box A$ & transitivity & $(4)$ \\
+%    $B = \Diamond\Box A \imp A$ & symmetry & $(B)$ \\
+%    $5 = \Diamond\Box A \imp \Box A$ & euclideanity &
+%      $(5_{\mathord\rightarrow})$, $(5_{\mathord\uparrow})$, $(5_{\mathord\downarrow})$ \\
+%    $D = \Box A \imp \Diamond A$ & seriality & $(D)$ \\
+%    $De = \Diamond A \imp \Diamond\Diamond A$ & density & $(De)$ \\
+%    $C = \Diamond\Box A \imp \Box\Diamond A$ & confluence & $(C_0)$, $(C_1)$
+%  \end{tabular}
+\end{clarifications}
 
-% \begin{history}
+\begin{history}
+  Introduced in\cite{castilho-farinas-gasquet-herzig.1997}.
 % ToDo: write here short historical remarks about this proof system,
 % especially if they relate to other proof systems. 
 % Use "\iref{OtherProofSystem}" to refer to another proof system 
 % in the Encyclopedia (where "OtherProofSystem" is its ID). 
 % Use "\irefmissing{SuggestedIDForOtherProofSystem}" to refer to 
 % another proof system that is not yet available in the encyclopedia.
-% \end{history}
+\end{history}
 
-% \begin{technicalities}
+\begin{technicalities}
+  The method terminates and is sound complete for any combination of axioms.
 % ToDo: write here remarks about soundness, completeness, decidability...
-% \end{technicalities}
+\end{technicalities}
 
 
 % General Instructions:
