@@ -36,7 +36,39 @@
 % e.g. \newcommand{\possibly}{\Diamond}
 
 \begin{calculus}
-TODO
+\[
+\begin{array}{ccc}
+  \infer[ax]{A(n) \Rightarrow A/\{n\}}{}
+  & \quad &
+  \infer[\perp \Rightarrow]{\perp (n) \Rightarrow A_1/\{n\},\ldots,A_k/\{n\}}{}\\
+  \\[1pt]
+  \infer[cut]{\Gamma_1,\Gamma_1 \Rightarrow \Delta_1,\Delta^*_1}{\Gamma_1 \Rightarrow \Delta_1,A/S & A(n),\Gamma_1 \Rightarrow \Delta_1}
+  & \quad &
+  \infer[perm \Rightarrow]{\Gamma_1,B(n),A(m),\Gamma_1 \Rightarrow \Delta}{\Gamma_1,A(m),B(n),\Gamma_1 \Rightarrow \Delta}\\
+  \\[1pt]
+  \infer[\Rightarrow perm]{\Gamma \Rightarrow \Delta_1,B/S_1,A/S_1,\Delta_1}{\Gamma \Rightarrow \Delta_1,A/S_1,B/S_1,\Delta_1}
+  & \quad &
+  \infer[weak \Rightarrow]{A(n),\Gamma \Rightarrow \Delta^*}{\Gamma \Rightarrow \Delta}\\
+  \\[1pt]
+  \infer[\Rightarrow weak]{\Gamma \Rightarrow \Delta,A/\{\}}{\Gamma \Rightarrow \Delta}
+  & \quad &
+  \infer[cont \Rightarrow]{\Gamma,A(k) \Rightarrow \Delta^*}{\Gamma,A(n),A(m) \Rightarrow \Delta}\\
+  \\[1pt]
+  \infer[\Rightarrow cont]{\Gamma \Rightarrow \Delta,A/S_1 \cup S_1}{\Gamma \Rightarrow \Delta,A/S_1,A/S_1}
+  & \quad &
+  \infer[\lor \Rightarrow]{\Gamma_1,\Gamma_1,(A \lor B)(k) \Rightarrow \Delta^*_1,\Delta^*_1}{\Gamma_1,A(n) \Rightarrow \Delta_1 & \Gamma_1,B(m) \Rightarrow \Delta_1}\\
+  \\[1pt]
+  \infer[\Rightarrow \lor]{\Gamma \Rightarrow \Delta,(A \lor B)/S_1 \cup S_1}{\Gamma \Rightarrow \Delta,A/S_1,B/S_1}
+  & \quad &
+  \infer[\land \Rightarrow]{\Gamma,(A \land B)(k) \Rightarrow \Delta^*}{\Gamma,A(n),B(m) \Rightarrow \Delta}\\
+  \\[1pt]
+  \infer[\Rightarrow \land]{\Gamma \Rightarrow \Delta,(A \land B)/S_1 \cup S_1}{\Gamma \Rightarrow \Delta,A/S_1 & \Gamma \Rightarrow \Delta,B/S_1}
+  & \quad &
+  \infer[\to \Rightarrow]{(A \to B)(n),\Gamma_1,\Gamma_1 \Rightarrow \Delta_1,\Delta^*_1}{\Gamma_1 \Rightarrow \Delta_1,A/S & B(n),\Gamma_1 \Rightarrow \Delta_1}\\
+  \\[1pt]
+  \infer[\Rightarrow \to]{\Gamma \Rightarrow \Delta, (A \to B)/S - \{n\}}{\Gamma, A(n) \Rightarrow \Delta,B/S}\\
+\end{array}
+\]
 \end{calculus}
 
 % The following sections ("clarifications", "history", 
