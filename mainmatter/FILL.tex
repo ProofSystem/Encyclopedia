@@ -88,13 +88,13 @@
 % do not look nice in a short entry.
 
 \begin{clarifications}
-The left-hand side and right-hand side of sequents are multisets of
-formulas denoted $\Gamma$ and $\Delta$.  The terms annotating formulas
-are standard terms used in the simply typed $\lambda$-calculus.
-Capture avoiding substitution is denoted by $[t/x]t'$, and
-uniformly replaces every occurrence of $x$ in $t'$ with $t$.  The
-definition of the let-pattern function used in the rule $\parr_L$ is
-defined as follows:
+Both the left-hand and right-hand sides of sequents above are
+multisets of formulas, denoted $\Gamma$ and $\Delta$.  The terms
+annotating formulas are standard terms used in the simply typed
+$\lambda$-calculus.  Capture avoiding substitution is denoted by
+$[t/x]t'$, and uniformly replaces every occurrence of $x$ in $t'$ with
+$t$.  The definition of the let-pattern function used in the rule
+$\parr_L$ is defined as follows:
 \begin{center}
     \begin{math}
       \begin{array}{lll}      
@@ -127,11 +127,18 @@ variables in each term found in $\Delta$.
 %% in the Encyclopedia (where "OtherProofSystem" is its ID). 
 %% Use "\irefmissing{SuggestedIDForOtherProofSystem}" to refer to 
 %% another proof system that is not yet available in the encyclopedia.
-  The formulation of $\FILL$ given here was defined by Martin Hyland
-  and Valeria de Paiva \cite{Hyland:1993}.  This version was an
-  improvement over an early version first defined by Valeria de Paiva
-  in her thesis \cite{dePaiva:1990}.  The improvement was the addition
-  of the term assignment which was necessary to gain cut elimination.
+The original formulation of FILL by Valeria de Paiva in her
+thesis \cite{dePaiva:1990} did not satisfy cut-elimination, as shown
+by Schellinx.  Martin Hyland and Valeria de Paiva \cite{Hyland:1993}
+added a term assignment system to cope with the notion of dependency
+in the right implication rule and obtain cut-elimination. However,
+there was still a mistake in the par rule in \cite{Hyland:1993}, which
+was corrected independently, with different proof methods, by Bierman
+\cite{Bierman:1996}, Bellin \cite{Bellin:1997}, Brauner/dePaiva \cite{Brauner:1998}, 
+dePaiva/Ritter \cite{dePaiva:2006}. The version here is the minimal
+modification suggested by Bellin, (who used proofnets), but using a
+traditional term assignment, as described in
+Eades/dePaiva \cite{Eades:2015}.
 \end{history}
 
 %% \begin{technicalities}
