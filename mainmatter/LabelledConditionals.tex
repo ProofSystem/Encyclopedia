@@ -1,0 +1,174 @@
+
+\calculusName{Conditional Labelled Sequent Calculi SeqS}   % The name of the calculus
+\calculusAcronym{SeqS}    % The acronym if defined above, or empty otherwise. 
+\calculusLogic{Propositional Conditional Logics}  % Specify the logic (e.g. classical, intuitionistic, ...) for which this calculus is intended.
+\calculusType{Sequent Calculus}   % Specify the calculus type (e.g. Frege-Hilbert style, tableau, sequent calculus, hypersequent calculus, natural deduction, ...)
+\calculusYear{2003-2007}   % The year when the calculus was invented.
+\calculusAuthor{R\'egis Alenda, Nicola Olivetti, Gian Luca Pozzato} % The name(s) of the author(s) of the calculus.
+
+
+\entryTitle{Conditional Labelled Sequent Calculi SeqS}     % Title of the entry (usually coincides with the name of the calculus).
+\entryAuthor{Nicola Olivetti \and Gian Luca Pozzato \and Camilla Schwind}    % Your name(s). Separate multiple names with "\and".
+
+
+% If you wish, use tags to give any other information 
+% that might be helpful for classifying and grouping this entry:
+% e.g. \tag{Two-Sided Sequents}
+% e.g. \tag{Multiset Cedents}
+% e.g. \tag{List Cedents}
+% You are free to invent your own tags. 
+% The Encyclopedia's coordinator will take care of 
+% merging semantically similar tags in the future.
+
+
+\maketitle
+
+
+% If your files are called "MyProofSystem.tex" and "MyProofSystem.bib", 
+% then you should write "\begin{entry}{MyProofSystem}" in the line below
+\begin{entry}{LabelledConditionals}  
+
+% Define here any newcommands you may need:
+% e.g. \newcommand{\necessarily}{\Box}
+% e.g. \newcommand{\possibly}{\Diamond}
+\newcommand {\trans}[1]{\stackrel{#1}{\longrightarrow}}
+\newcommand {\prova} {\vdash}
+
+
+\begin{calculus}
+\begin{footnotesize}
+\[
+\begin{array}{clcrc}
+\ &
+({\bf AX}) \ \Gamma, x: P \prova \Delta, x: P \quad (P \ \mbox{atomic})
+& \ &
+({\bf A} \bot) \ \Gamma, x: \bot \prova \Delta & \ \\ \\
+& 
+\begin{prooftree}
+\Gamma, x \trans{A} y \prova \Delta, y: B
+\justifies \Gamma \prova \Delta, x: A \Rightarrow B \using (\Rightarrow {\bf R})  \quad (y \not\in \Gamma, \Delta)
+\end{prooftree} 
+& & \\ \\
+&
+\begin{prooftree}
+\Gamma, x: A \Rightarrow B \prova x \trans{A} y, \Delta \qquad \Gamma, x: A \Rightarrow B, y: B \prova \Delta
+\justifies \Gamma, x: A \Rightarrow B \prova \Delta \using (\Rightarrow {\bf L})
+\end{prooftree}
+& & \\ \\
+& 
+\begin{prooftree}
+u: A \prova u: B \qquad u: B \prova u: A
+\justifies \Gamma, x \trans{A} y \prova x \trans{B} y, \Delta \using ({\bf EQ})
+\end{prooftree}
+& & \\ \\
+& 
+\begin{prooftree}
+\Gamma, x \trans{A} y, y: A \prova \Delta
+\justifies \Gamma, x \trans{A} y \prova \Delta \using ({\bf ID})
+\end{prooftree}
+& &
+\begin{prooftree}
+\Gamma \prova  x \trans{A} x, x: A, \Delta
+\justifies \Gamma \prova  x \trans{A} x, \Delta \using ({\bf MP})
+\end{prooftree}
+\end{array}
+\] 
+\[
+\begin{array}{cl}
+\ & 
+\begin{prooftree}
+\Gamma, x \trans{A} y \prova \Delta, x: A \qquad \Gamma[x/u, y/u], u \trans{A} u \prova \Delta[x/u, y/u]
+\justifies \Gamma, x \trans{A} y \prova \Delta \using ({\bf CS}) \ (x \not= y, u \not\in \Gamma, \Delta)
+\end{prooftree} \\ \\
+& 
+\begin{prooftree}
+\Gamma x \trans{A} y \prova  \Delta, x \trans{A} z \qquad (\Gamma x \trans{A} y \prova  \Delta)[y/u, z/u]
+\justifies \Gamma x \trans{A} y \prova  \Delta \using ({\bf CEM})  \ (y \not= z, u \not\in \Gamma, \Delta)
+\end{prooftree} 
+\end{array}
+\]
+
+{\scriptsize Given a sequent $\Gamma$ and labels $x$ and $u$,  $\Gamma[x/u]$ is the sequent obtained by replacing in $\Gamma$ all occurrences of $x$ with $u$.}
+\end{footnotesize}
+\end{calculus}
+
+% The following sections ("clarifications", "history", 
+% "technicalities") are optional. If you use them, 
+% be very concise and objective. Nevertheless, do write full sentences. 
+% Try to have at most one paragraph per section, because line breaks 
+% do not look nice in a short entry.
+
+ \begin{clarifications}
+% ToDo: write here short remarks that may help the reader to understand 
+% the inference rules of the proof system.
+Conditional logics extend classical logic with formulas of the form $A \Rightarrow B$. SeqS considers the \emph{selection function} semantics:  $A \Rightarrow B$ is true in a world $w$ if $B$ is true in the set of worlds selected by the selection function $f$ for $A$ and $w$ (that are most similar to $w$). SeqS manipulate \emph{labelled} formulas, where labels represent worlds, of the form $x: A$ ($A$ is true in $x$) and $x \trans{A} y$ ($y$ belongs to $f(x,A)$).
+
+The calculi SeqS consider \emph{normal} conditional logics, such that if $A$ and $B$ are true in the same worlds, then $f(w,A)=f(w,B)$. The rule $({\bf EQ})$ takes care of normality.
+
+  Besides the rules shown, SeqS also include standard 
+   rules for propositional connectives.
+ \end{clarifications}
+
+ \begin{history}
+  The calculi SeqS have been introduced in 
+  \cite{toclpozz}. The theorem prover CondLean, implementing SeqS calculi in Prolog, has been presented in \cite{tab2003pozz,tab2005pozz}.
+ \end{history}
+
+ \begin{technicalities}
+Completeness is a consequence of the admissibility of cut. The calculi SeqS can be used to obtain a \textsc{PSpace} decision procedure for the respective conditional logics and to develop goal-directed proof procedures.
+ \end{technicalities}
+
+
+% General Instructions:
+% =====================
+
+% The preferred length of an entry is 1 page. 
+% Do the best you can to fit your proof system in one page.
+%
+% If you are finding it hard to fit what you want in one page, remember:
+%
+%   * Your entry needs to be neither self-contained nor fully understandable
+%     (the interested reader may consult the cited full paper for details)
+%
+%   * If you are describing several proof systems in one entry, 
+%     consider splitting your entry.
+%
+%   * You may reduce the size of your entry by ommitting inference rules
+%     that are already described in other entries.
+%
+%   * Cite parsimoniously (see detailed citation instructions below).
+%
+% 
+% If you do not manage to fit everything in one page, 
+% it is acceptable for an entry to have 2 pages.
+%
+% For aesthetical reasons, it is preferable for an entry to have
+% 1 full page or 2 full pages, in order to avoid unused blank space.
+
+
+
+% Citation Instructions:
+% ======================
+
+% Please cite the original paper where the proof system was defined.
+% To do so, you may use the \cite command within 
+% one of the optional environments above,
+% or use the \nocite command otherwise.
+
+% You may also cite a modern paper or book where the 
+% proof system is explained in greater depth or clarity.
+% Cite parsimoniously.
+
+% Do not cite related work. Instead, use the "\iref" or "\irefmissing" 
+% commands to make an internal reference to another entry, 
+% as explained within the "history" environment above.
+
+% You do not need to create the "References" section yourself. 
+% This is done automatically.
+
+
+
+
+% Leave an empty line above "\end{entry}".
+
+\end{entry}

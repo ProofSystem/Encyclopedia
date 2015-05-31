@@ -1,0 +1,197 @@
+
+
+\calculusName{Preferential Tableau Calculi \calcoloP}   % The name of the calculus
+\calculusAcronym{\calcoloP}    % The acronym if defined above, or empty otherwise. 
+\calculusLogic{KLM Preferential Logics}  % Specify the logic (e.g. classical, intuitionistic, ...) for which this calculus is intended.
+\calculusType{Tableau Calculus}   % Specify the calculus type (e.g. Frege-Hilbert style, tableau, sequent calculus, hypersequent calculus, natural deduction, ...)
+\calculusYear{2005-2009}   % The year when the calculus was invented.
+\calculusAuthor{Laura Giordano, Valentina Gliozzi, Nicola Olivetti, Gian Luca Pozzato} % The name(s) of the author(s) of the calculus.
+
+
+\entryTitle{Preferential Tableau Calculi \calcoloP}     % Title of the entry (usually coincides with the name of the calculus).
+\entryAuthor{Laura Giordano \and Valentina Gliozzi \and Nicola Olivetti \and Gian Luca Pozzato}    % Your name(s). Separate multiple names with "\and".
+
+
+% If you wish, use tags to give any other information 
+% that might be helpful for classifying and grouping this entry:
+% e.g. \tag{Two-Sided Sequents}
+% e.g. \tag{Multiset Cedents}
+% e.g. \tag{List Cedents}
+% You are free to invent your own tags. 
+% The Encyclopedia's coordinator will take care of 
+% merging semantically similar tags in the future.
+
+
+\maketitle
+
+
+% If your files are called "MyProofSystem.tex" and "MyProofSystem.bib", 
+% then you should write "\begin{entry}{MyProofSystem}" in the line below
+\begin{entry}{KLM}  
+
+% Define here any newcommands you may need:
+% e.g. \newcommand{\necessarily}{\Box}
+% e.g. \newcommand{\possibly}{\Diamond}
+\newcommand {\bbox} {\square}
+\newcommand {\ent} {\mathrel{{\scriptstyle\mid\!\sim}}}
+\newcommand {\freccia} {\downarrow}
+
+
+\begin{calculus}
+\begin{footnotesize}
+\[
+\begin{array}{clcrc}
+\quad &
+\Gamma, P, \lnot P \ ({\bf AX}) \quad  {\tiny \mbox{with} \ P \ \mbox{atomic}}
+& \quad &
+\begin{prooftree}
+   \Gamma, \lnot \bbox \lnot A; \Sigma
+   \justifies 
+   A, \bbox \lnot A, \Gamma^\bbox, \Gamma^{\bbox^{\freccia}}, \Gamma^{\ent\pm}, \Sigma; \emptyset \using (\bbox^-)
+\end{prooftree}
+& 
+\quad  \\ \\ 
+&
+\begin{prooftree}
+   \Gamma, \lnot (A \ent B); \Sigma
+   \justifies A, \bbox \lnot A, \lnot B, \Gamma^{\ent\pm}; \emptyset \using (\ent^-)
+\end{prooftree}
+& &
+\begin{prooftree}
+    \Gamma, A \ent B; \Sigma
+    \justifies
+    \Gamma, \lnot A; \Sigma, A \ent B
+    \qquad
+    \Gamma, \lnot \bbox \lnot A; \Sigma, A \ent B
+   \qquad
+    \Gamma, B; \Sigma, A \ent B   \using (\ent^+)
+\end{prooftree}
+&
+\end{array}
+\]
+\end{footnotesize}
+\end{calculus}
+
+% The following sections ("clarifications", "history", 
+% "technicalities") are optional. If you use them, 
+% be very concise and objective. Nevertheless, do write full sentences. 
+% Try to have at most one paragraph per section, because line breaks 
+% do not look nice in a short entry.
+
+ \begin{clarifications}
+% ToDo: write here short remarks that may help the reader to understand 
+% the inference rules of the proof system.
+  According to Kraus, Lehmann and
+Magidor (KLM) \cite{KrausLehmannMagidor:90}, defeasible knowledge is
+represented by a  (finite) set of nonmonotonic conditionals 
+$A \ent B$ (normally the $A$'s
+are $B$'s). 
+Models are possible-world structures
+equipped with a preference relation (irreflexive and transitive for {\bf P}) among worlds or states.  The meaning of  $A \ent B$ is that
+$B$ holds in the worlds/states where $A$
+holds and that are \emph{minimal} with respect to the preference relation.
+
+The calculus \calcoloP \ is based on the idea of interpreting the preference relation as an
+accessibility relation: a conditional $A \ent B$ holds in a model
+if  $B$ is true in all minimal $A$-worlds, where a world $w$ is an $A$-world if it satisfies $A$, and it is a minimal $A$-world if there is no $A$-world $w'$ preferred to $w$.  
+
+Nodes are pairs $\Gamma;
+\Sigma$, where $\Gamma$ is a set of formulas and $\Sigma$ is a set
+of conditional formulas $A \ent B$. $\Sigma$ is used to keep
+track of positive conditionals $A \ent B$ to which the rule
+$(\ent^{+})$ has already been applied: the idea
+is that one does not need to apply $(\ent^{+})$ on the same
+conditional formula $A \ent B$ \emph{more than once in the same
+world}. When $(\ent^{+})$ is applied to a formula $A \ent B \in \Gamma$, then $A \ent B$ is moved from $\Gamma$ to $\Sigma$ in the conclusions of the rule, so that it is no longer available for further applications in the current world.
+The dynamic rules re-introduce formulas from $\Sigma$ to $\Gamma$ in order to
+allow further applications of $(\ent^{+})$ in new  worlds.
+
+Given $\Gamma$, we define:
+\begin{itemize}
+   \item $\Gamma^{\bbox}=\{ \bbox \lnot A \mid \bbox \lnot A \in \Gamma
+    \}$
+    \item $\Gamma^{\bbox^{\freccia}}=\{ \lnot A \mid \bbox \lnot A \in \Gamma \}$
+  \item     $\Gamma^{\ent^{+}}=\{A \ent B \mid A \ent B \in
+    \Gamma\}$
+  \item     $\Gamma^{\ent^{-}}=\{\lnot(A \ent B) \mid \lnot(A \ent B) \in
+    \Gamma\}$
+  \item     $\Gamma^{\ent\pm}=\Gamma^{\ent^{+}} \cup \Gamma^{\ent^{-}}$
+  \end{itemize}
+
+Besides the rules shown above, the calculus \calcoloP \ also includes standard 
+   rules for propositional connectives.
+\end{clarifications}
+
+ \begin{history}
+ In \cite{KrausLehmannMagidor:90} Kraus, Lehmann and
+Magidor proposed a formalization of nonmonotonic
+reasoning that was early recognized as a landmark. According to their framework, defeasible knowledge is
+represented by a  (finite) set of nonmonotonic conditionals or
+assertions of the form
+$A \ent B$, whose reading is \emph{normally (or typically) the $A$'s
+are $B$'s}. The operator ``$\ent$'' is nonmonotonic, in the sense
+that $A \ent B$ does not imply $A \land C \ent B$. 
+ 
+  The calculus \calcoloP \ and extensions for all the logics of the KLM family are proposed in \cite{toclKLMpozz}. The theorem provers KLMLean and FreeP implementing the tableau calculi have been presented at \cite{tableaux2007pozz,aiia207pozz}.
+ \end{history}
+
+ \begin{technicalities}
+The calculus \calcoloP \ can be used to define a decision procedure and
+obtain  a complexity bound for the preferential logic {\bf P}, namely that it is
+ {\bf coNP}-complete.
+ \end{technicalities}
+
+
+% General Instructions:
+% =====================
+
+% The preferred length of an entry is 1 page. 
+% Do the best you can to fit your proof system in one page.
+%
+% If you are finding it hard to fit what you want in one page, remember:
+%
+%   * Your entry needs to be neither self-contained nor fully understandable
+%     (the interested reader may consult the cited full paper for details)
+%
+%   * If you are describing several proof systems in one entry, 
+%     consider splitting your entry.
+%
+%   * You may reduce the size of your entry by ommitting inference rules
+%     that are already described in other entries.
+%
+%   * Cite parsimoniously (see detailed citation instructions below).
+%
+% 
+% If you do not manage to fit everything in one page, 
+% it is acceptable for an entry to have 2 pages.
+%
+% For aesthetical reasons, it is preferable for an entry to have
+% 1 full page or 2 full pages, in order to avoid unused blank space.
+
+
+
+% Citation Instructions:
+% ======================
+
+% Please cite the original paper where the proof system was defined.
+% To do so, you may use the \cite command within 
+% one of the optional environments above,
+% or use the \nocite command otherwise.
+
+% You may also cite a modern paper or book where the 
+% proof system is explained in greater depth or clarity.
+% Cite parsimoniously.
+
+% Do not cite related work. Instead, use the "\iref" or "\irefmissing" 
+% commands to make an internal reference to another entry, 
+% as explained within the "history" environment above.
+
+% You do not need to create the "References" section yourself. 
+% This is done automatically.
+
+
+
+
+% Leave an empty line above "\end{entry}".
+
+\end{entry}
