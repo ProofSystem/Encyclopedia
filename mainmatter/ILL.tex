@@ -2,44 +2,27 @@
 % If the calculus has an acronym, define it.
 % (e.g. \newcommand{\LK}{\ensuremath{\mathbf{LK}}\xspace})
 
-\calculusName{Intuinistic Linear Logic Sequent Calculus}   % The name of the calculus
-\calculusAcronym{ILL}    % The acronym if defined above, or empty otherwise. 
-\calculusLogic{ILL}  % Specify the logic (e.g. classical, intuitionistic, ...) for which this calculus is intended.
-\calculusType{sequent calculus}   % Specify the calculus type (e.g. Frege-Hilbert style, tableau, sequent calculus, hypersequent calculus, natural deduction, ...)
-\calculusYear{1987}   % The year when the calculus was invented.
-\calculusAuthor{Jean-Yves Girard \and Yves Lafont} % The name(s) of the author(s) of the calculus.
+\calculusName{Intuitionistic Linear Logic}
+\calculusAcronym{\ILL}
+\calculusLogic{Intuitionistic Linear Logic}
+\calculusType{Sequent Calculus}
+\calculusYear{1987}
+\calculusAuthor{Jean-Yves Girard \and Yves Lafont}
 
 
-\entryTitle{Intuitionistic Linear Logic Sequent Calculus}     % Title of the entry (usually coincides with the name of the calculus).
-\entryAuthor{Joseph Boudou \and Sergei Soloviev}    % Your name(s). Separate multiple names with "\and".
-
-
-% If you wish, use tags to give any other information 
-% that might be helpful for classifying and grouping this entry:
-% e.g. \tag{Two-Sided Sequents}
-% e.g. \tag{Multiset Cedents}
-% e.g. \tag{List Cedents}
-% You are free to invent your own tags. 
-% The Encyclopedia's coordinator will take care of 
-% merging semantically similar tags in the future.
+\entryTitle{Intuitionistic Linear Logic (\ILL)}
+\entryAuthor{Joseph Boudou \and Sergei Soloviev}
 
 
 \maketitle
 
 
-% If your files are called "MyProofSystem.tex" and "MyProofSystem.bib", 
-% then you should write "\begin{entry}{MyProofSystem}" in the line below
 \begin{entry}{ILL} 
 
-% Define here any newcommands you may need:
-% e.g. \newcommand{\necessarily}{\Box}
-% e.g. \newcommand{\possibly}{\Diamond}
 \newcommand{\llaconj}{\binampersand}
 \newcommand{\lladisj}{\oplus}
 \newcommand{\llimp}{\multimap}
 \newcommand{\llmconj}{\otimes}
-\newcommand{\llmdisj}{\bindnasrepma}
-\newcommand{\llneg}[1]{{#1}^\bot}
 \newcommand{\llzero}{0}
 \newcommand{\llone}{1}
 
@@ -103,15 +86,6 @@
   \infer{\Gamma, !A \vdash B}{\Gamma, !A, !A \vdash B}
 \end{infruleset}
 
-%\begin{infruleset}{First order}
-%  \infer{\Gamma \vdash \exists x. A}{\Gamma \vdash A[t]}
-%  \sepproof
-%  \infer{\Gamma, \exists x. A[x] \vdash B}{\Gamma, A[y] \vdash B}
-%  \sepproof
-%  \infer{\Gamma \vdash \forall x. A}{\Gamma \vdash A[y]}
-%  \sepproof
-%  \infer{\Gamma, \forall x. A[x] \vdash B}{\Gamma, A[t] \vdash B}
-%\end{infruleset}
 \vspace{-1em}
 
 
@@ -121,71 +95,20 @@
   Succedents are sole formulas.
   Antecedents are ordered list of formulas.
   If $\Gamma$ is the list $A_1, \ldots, A_n$ of formulas, $!\Gamma$ denotes the list $!A_1, \ldots, !A_n$.
-  First order quantifier can be added with rules similar to LJ \iref{GentzenLJ}.
+  First order quantifier can be added with rules similar to \LJ \iref{GentzenLJ}.
   Conversely, removing the exponential rules leads to the intuitionistic multiplicative additive linear logic (IMALL).
   And by further removing the additive rules, the intuitionistic multiplicative linear logic (IMLL) \cite{mints1977closed} is obtained.
 \end{clarifications}
 
 \begin{history}
   Introduced by Girard and Lafont in~\cite{lafont1987tapsoft} as intuitionistic variant of LL~\irefmissing{LL}.
-  By contrast with the full intuitionistic linear logic~\iref{FILL}, there is no multiplicative disjunction in ILL.
+  \ILL has multiple applications in categorical logic.
+  By contrast with the full intuitionistic linear logic~\iref{FILL}, there is no multiplicative disjunction in \ILL.
 \end{history}
 
 \begin{technicalities}
   Enjoys cut elimination~\cite{lafont1987tapsoft}.
 \end{technicalities}
 
-
-% General Instructions:
-% =====================
-
-% The preferred length of an entry is 1 page. 
-% Do the best you can to fit your proof system in one page.
-%
-% If you are finding it hard to fit what you want in one page, remember:
-%
-%   * Your entry needs to be neither self-contained nor fully understandable
-%     (the interested reader may consult the cited full paper for details)
-%
-%   * If you are describing several proof systems in one entry, 
-%     consider splitting your entry.
-%
-%   * You may reduce the size of your entry by ommitting inference rules
-%     that are already described in other entries.
-%
-%   * Cite parsimoniously (see detailed citation instructions below).
-%
-% 
-% If you do not manage to fit everything in one page, 
-% it is acceptable for an entry to have 2 pages.
-%
-% For aesthetical reasons, it is preferable for an entry to have
-% 1 full page or 2 full pages, in order to avoid unused blank space.
-
-
-
-% Citation Instructions:
-% ======================
-
-% Please cite the original paper where the proof system was defined.
-% To do so, you may use the \cite command within 
-% one of the optional environments above,
-% or use the \nocite command otherwise.
-
-% You may also cite a modern paper or book where the 
-% proof system is explained in greater depth or clarity.
-% Cite parsimoniously.
-
-% Do not cite related work. Instead, use the "\iref" or "\irefmissing" 
-% commands to make an internal reference to another entry, 
-% as explained within the "history" environment above.
-
-% You do not need to create the "References" section yourself. 
-% This is done automatically.
-
-
-
-
-% Leave an empty line above "\end{entry}".
 
 \end{entry}
