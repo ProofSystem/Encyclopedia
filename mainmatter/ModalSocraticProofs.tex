@@ -1,0 +1,128 @@
+
+% If the calculus has an acronym, define it.
+\newcommand{\EL}{\mathbf{E}^\mathsf{L}}
+
+\calculusName{Socratic Proofs for Modal Propositional Logics}   % The name of the calculus
+\calculusAcronym{\EL}    % The acronym if defined above, or empty otherwise. 
+\calculusLogic{basic normal modal propositional logics}  % Specify the logic (e.g. classical, intuitionistic, ...) for which this calculus is intended.
+\calculusType{other}   % Specify the calculus type (e.g. Frege-Hilbert style, tableau, sequent calculus, hypersequent calculus, natural deduction, ...)
+\calculusYear{2004}   % The year when the calculus was invented.
+\calculusAuthor{Dorota Leszczy\'nska-Jasion} % The name(s) of the author(s) of the calculus.
+
+
+\entryTitle{Socratic Proofs for Modal Propositional Logics}     % Title of the entry (usually coincides with the name of the calculus).
+\entryAuthor{Dorota Leszczy\'nska-Jasion}    % Your name(s). Separate multiple names with "\and".
+
+
+\tag{Right-Sided Sequents}
+\tag{Sequence Cedents}
+\tag{Labelled System}
+
+
+\maketitle
+
+\begin{entry}{ModalSocraticProofs}  
+
+\begin{calculus}
+
+The rules of $\EL$ are the rules of $\EK$ (see \iref{ModalSocraticProofsK}), where the proviso of applicability of $\mathbf{R}_\mu$ depends on the logic $\mathsf{L}$ and is a combination of some of the following clauses:
+
+\begin{enumerate}
+\item\label{1} $\langle i, j \rangle$ is present in the premise sequent
+\item\label{2} $i = j$
+\item\label{3} $\langle j, i \rangle$ is present in the premise sequent
+\item\label{4} there is a sequence $i_1, \ldots, i_n$ such that $i_1 = i$, $i_n = j$ and each $\langle i_k, i_{k+1} \rangle$, where $1 \geq k \geq n-1$, is present in the premise sequent
+\item\label{5} there is a sequence $i_1, \ldots, i_n$ such that $i_1 = i$, $i_n = j$ and for each $\langle i_k, i_{k+1} \rangle$, where $1 \geq k \geq n-1$, $\langle i_k, i_{k+1} \rangle$ or $\langle i_{k+1}, i_{k} \rangle$ is present in the premise sequent
+\item\label{6} there are sequences $i_1, \ldots, i_n$ and $j_1, \ldots, j_m$ such that $i_1 = 1$, $i_n = i$, $j_1 = 1$, $j_m = j$ and for each $\langle i_k, i_{k+1} \rangle$, where $1 \geq k \geq n-1$, $\langle i_k, i_{k+1} \rangle$ is present in the premise sequent and for each $\langle j_l, j_{l+1} \rangle$, where $1 \geq l \geq m-1$, $\langle j_l, j_{l+1} \rangle$ is present in the premise sequent
+\end{enumerate}
+
+\smallskip
+
+%where the relevant proviso is:
+
+\begin{center}
+\begin{tabular}{c|l||c|l||c|l}
+$\mathsf{L}$ 				& proviso & $\mathsf{L}$ 		& proviso & $\mathsf{L}$ 		& proviso \\
+\hline
+$\mathsf{K}$,$\mathsf{KD}$	& (\ref{1}) & $\mathsf{K4}$, $\mathsf{KD4}$ & (\ref{4}) & $\mathsf{K5}$, $\mathsf{D5}$ & (\ref{6}) \\
+$\mathsf{KT}$				& (\ref{1}) or (\ref{2}) & $\mathsf{S4}$		& (\ref{2}) or (\ref{4}) & $\mathsf{K45}$, $\mathsf{D45}$ & (\ref{4}) or (\ref{6}) \\
+$\mathsf{KB}$, $\mathsf{KDB}$ & (\ref{1}) or (\ref{3}) & $\mathsf{KB4}$	& (\ref{5}) && \\
+$\mathsf{KTB}$				& (\ref{1}) or (\ref{2}) or (\ref{3}) & $\mathsf{S5}$	& (\ref{2}) or (\ref{5})
+\end{tabular}
+\end{center}
+
+\smallskip
+
+Calculi for logics: $\mathsf{KD}$, $\mathsf{KDB}$, $\mathsf{KD4}$, $\mathsf{KD5}$, $\mathsf{KD45}$ have also the following rule, where $j$ is new:
+
+$$
+\infer[\mathbf{R}_{\pi\mathsf{D}}]{?(\Phi ~;~ \vdash S ~'~ (\pi)^{\phi(i)} ~'~ (\pi_0)^{j} ~'~ T ~;~ \Psi)}{?(\Phi ~;~ \vdash S ~'~ (\pi)^{\phi(i)} ~'~ T ~;~ \Psi)}
+$$
+\end{calculus}
+
+\begin{clarifications}
+See \iref{ModalSocraticProofsK}, \iref{SocraticProofsCPL}, \iref{SocraticProofsFOL} for more comments.
+\end{clarifications}
+
+\begin{history}
+The proof system has been presented in \cite{DLJ:2004}, the completeness proof may be found in \cite{DLJ:2007}, and extensions to some non-basic modal logics in \cite{DLJ:2008}.
+\end{history}
+
+\begin{technicalities}
+A sequent $\vdash (A)^1$ has a Socratic proof in $\EL$ iff $A$ is $\mathsf{L}$-valid.
+\end{technicalities}
+
+
+% General Instructions:
+% =====================
+
+% The preferred length of an entry is 1 page. 
+% Do the best you can to fit your proof system in one page.
+%
+% If you are finding it hard to fit what you want in one page, remember:
+%
+%   * Your entry needs to be neither self-contained nor fully understandable
+%     (the interested reader may consult the cited full paper for details)
+%
+%   * If you are describing several proof systems in one entry, 
+%     consider splitting your entry.
+%
+%   * You may reduce the size of your entry by ommitting inference rules
+%     that are already described in other entries.
+%
+%   * Cite parsimoniously (see detailed citation instructions below).
+%
+% 
+% If you do not manage to fit everything in one page, 
+% it is acceptable for an entry to have 2 pages.
+%
+% For aesthetical reasons, it is preferable for an entry to have
+% 1 full page or 2 full pages, in order to avoid unused blank space.
+
+
+
+% Citation Instructions:
+% ======================
+
+% Please cite the original paper where the proof system was defined.
+% To do so, you may use the \cite command within 
+% one of the optional environments above,
+% or use the \nocite command otherwise.
+
+% You may also cite a modern paper or book where the 
+% proof system is explained in greater depth or clarity.
+% Cite parsimoniously.
+
+% Do not cite related work. Instead, use the "\iref" or "\irefmissing" 
+% commands to make an internal reference to another entry, 
+% as explained within the "history" environment above.
+
+% You do not need to create the "References" section yourself. 
+% This is done automatically.
+
+
+
+
+% Leave an empty line above "\end{entry}".
+
+\end{entry}

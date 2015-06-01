@@ -1,0 +1,139 @@
+
+\newcommand{\ESTAR}{\mathbf{E}^*}
+
+\calculusName{Socratic Proofs for CPL}   % The name of the calculus
+\calculusAcronym{\ESTAR}    % The acronym if defined above, or empty otherwise. 
+\calculusLogic{Classical Propositional Logic}  % Specify the logic (e.g. classical, intuitionistic, ...) for which this calculus is intended.
+\calculusType{other}   % Specify the calculus type (e.g. Frege-Hilbert style, tableau, sequent calculus, hypersequent calculus, natural deduction, ...)
+\calculusYear{2003}   % The year when the calculus was invented.
+\calculusAuthor{Andrzej Wi\'{s}niewski} % The name(s) of the author(s) of the calculus.
+
+
+\entryTitle{Socratic Proofs for CPL}     % Title of the entry (usually coincides with the name of the calculus).
+\entryAuthor{Dorota Leszczy\'nska-Jasion}    % Your name(s). Separate multiple names with "\and".
+
+
+\tag{Two-Sided Sequents}
+\tag{Single Conclusion}
+\tag{Sequence Cedents}
+\tag{Invertible Rules}
+
+\maketitle
+
+
+\begin{entry}{SocraticProofsCPL}  
+
+\begin{calculus}
+
+\[
+\begin{array}{ccc}
+
+\infer[\textbf{L}_\alpha]{?(\Phi ~;~  S ~'~ \alpha_{1} ~'~ \alpha_{2} ~'~ T\:\vdash\:C ~;~ \Psi)}{?(\Phi ~;~ S ~'~ \alpha ~'~ T\:\vdash\: C ~;~ \Psi)}
+
+&~~~~~~&
+
+\infer[\textbf{R}_{\alpha}]{?(\Phi ~;~  S\:\vdash\:\alpha_{1} ~;~ S\:\vdash\: \alpha_{2} ~;~ \Psi)}{?(\Phi ~;~ S\:\vdash\: \alpha ~;~ \Psi)}
+
+\\
+\end{array}
+\]
+
+$$
+\infer[\textbf{L}_{\beta}]{?(\Phi ~;~  S ~'~ \beta_{1} ~'~ T\:\vdash\: C ~;~ S ~'~ \beta_{2} ~'~ T\:\vdash\: C ~;~ \Psi)}{?(\Phi ~;~ S ~'~ \beta ~'~ T\:\vdash\: C ~;~ \Psi)}
+$$
+
+\[
+\begin{array}{ccc}
+
+\infer[\textbf{R}_{\beta}]{?(\Phi ~;~  S ~'~ \beta^{*}_{1}\:\vdash\:\beta_{2} ~;~ \Psi)}{?(\Phi ~;~    S\:\vdash\:\beta ~;~ \Psi)}
+
+&~~~~~~&
+
+\infer[\textbf{L}_{\lnot \lnot}]{?(\Phi ~;~  S ~'~ A ~'~ T\:\vdash\: C ~;~ \Psi)}{?(\Phi ~;~  S ~'~ \lnot \lnot A ~'~ T\:\vdash\: C ~;~ \Psi)}
+
+\\
+\end{array}
+\]
+
+Where:
+
+\begin{center}
+	\begin{tabular}{ccc|cccc}
+			\hline 
+		$\alpha$ & $\alpha_{1}$ & $\alpha_{2}$ & $\beta$ & $\beta_{1}$ & $\beta_{2}$ & $\beta^{*}_{1}$  \\ 
+			\hline
+		$\textit{A}\wedge B$ & $\textit{A}$ & $\textit{B}$ & $\neg(A\wedge B)$ & $\neg A$ & $\neg B$ & $A$ \\
+			
+		$\neg(A\vee B)$ & $\neg A$ & $\neg B$ & $\textit{A}\vee B$ & $\textit{A}$ & $\textit{B}$ & $\neg A$ \\
+			
+		$\neg(A \rightarrow B)$ & $\textit{A}$ & $\neg B$ & $\textit{A} \rightarrow B$ & $\neg A$ & $\textit{B}$ & $A$ \\
+	\end{tabular}
+\end{center}
+
+\end{calculus}
+
+\begin{clarifications}
+The method of Socratic proofs is a method of transforming questions, but these are based on sequences of two-sided, single-conclusion sequents with sequences of formulas in both cedents. $\Phi$, $\Psi$ are finite (possibly empty) sequences of sequents. $S$, $T$ are finite (possibly empty) sequences of formulas. The semicolon `;' is the concatenation sign for sequences of sequents, whereas `$'$' is the concatenation sign for sequences of formulas. A Socratic proof of sequent `$S \vdash A$' in $\ESTAR$ is a finite sequence of questions guided by the rules of $\ESTAR$, starting with `$? (S \vdash A)$' and ending with a question based on a sequence of basic sequents, where a \textit{basic sequent} is a sequent containing the same formula in both of its cedents or containing a formula and its negation in the antecedent.
+\end{clarifications}
+
+\begin{history}
+The method has been first presented in \cite{AW:2004}. Calculus $\ESTAR$ is called \textit{erotetic} calculus since it is a calculus of questions (\textit{erotema} means \textit{question} in Greek). Proof-theoretically, it may be viewed as a calculus of hypersequents with `;' understood conjunctively. It is grounded in Inferential Erotetic Logic (cf. \cite{AW:2013}).
+\end{history}
+
+\begin{technicalities}
+A sequent `$S \vdash A$' has a Socratic proof in $\ESTAR$ iff $A$ is CPL-entailed by the set of terms of $S$. The rules are invertible.
+\end{technicalities}
+
+% General Instructions:
+% =====================
+
+% The preferred length of an entry is 1 page. 
+% Do the best you can to fit your proof system in one page.
+%
+% If you are finding it hard to fit what you want in one page, remember:
+%
+%   * Your entry needs to be neither self-contained nor fully understandable
+%     (the interested reader may consult the cited full paper for details)
+%
+%   * If you are describing several proof systems in one entry, 
+%     consider splitting your entry.
+%
+%   * You may reduce the size of your entry by ommitting inference rules
+%     that are already described in other entries.
+%
+%   * Cite parsimoniously (see detailed citation instructions below).
+%
+% 
+% If you do not manage to fit everything in one page, 
+% it is acceptable for an entry to have 2 pages.
+%
+% For aesthetical reasons, it is preferable for an entry to have
+% 1 full page or 2 full pages, in order to avoid unused blank space.
+
+
+
+% Citation Instructions:
+% ======================
+
+% Please cite the original paper where the proof system was defined.
+% To do so, you may use the \cite command within 
+% one of the optional environments above,
+% or use the \nocite command otherwise.
+
+% You may also cite a modern paper or book where the 
+% proof system is explained in greater depth or clarity.
+% Cite parsimoniously.
+
+% Do not cite related work. Instead, use the "\iref" or "\irefmissing" 
+% commands to make an internal reference to another entry, 
+% as explained within the "history" environment above.
+
+% You do not need to create the "References" section yourself. 
+% This is done automatically.
+
+
+
+
+% Leave an empty line above "\end{entry}".
+
+\end{entry}
