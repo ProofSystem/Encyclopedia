@@ -1,4 +1,3 @@
-
 \calculusName{Sequent Calculus for Superintuitionistic Modal Logic KMlin}
 \calculusAcronym{\seqlcnxt}
 \calculusLogic{Superintuitionistic modal logic of linear Kripke frames}
@@ -213,7 +212,7 @@
    Explanations for the conditions:}
    \\[2px]
    \multicolumn{2}{l}{
-   ($\condzero$) there must be at least one $\nxt$- or $\iimp$-formula in the
+   ($\condzero$) there is at least one $\nxt$- or $\iimp$-formula in the
    succedent of the conclusion}
    \\[2px]
    \multicolumn{2}{l}{
@@ -222,7 +221,7 @@
        are applicable to the conclusion}
    \\[2px]
    \multicolumn{2}{l}{
-   ($\condtwo$) none of the rules $\orleftrulename,, \orrightrulename,
+   ($\condtwo$) none of the rules $\orleftrulename, \orrightrulename,
    \andleftrulename, \andrightrulename, \impleftrulename,
    \imprightrulename$ are applicable to the conclusion}
     \end{tabular}
@@ -253,36 +252,26 @@
   Kripke relation, which is irreflexive!  There is also a new
   connective $\iimp$ corresponding to an irreflexive version of
   intuitionistic implication, which can be defined as
-  $\nxt(\varphi\limp\psi)$.  The $\impleftrulename$ rule is
-  \LK-like \iref{GentzenLK} in that it is multi-conclusioned and has one branch
+  $\nxt(\varphi\limp\psi)$.  The $\impleftrulename$ rule is \LK-like
+  \iref{GentzenLK} in that it is multi-conclusioned and has one branch
   for each subformula of $\varphi\land\psi$, but it also converts
   $\varphi\limp\psi$ to $\varphi\iimp\psi$, read upwards, building in
   a form of contraction on such formulae.  The $\imprightrulename$
   rule is unusual in that it has two premises: the left one is LK-like
   in that it does not delete $\Delta$, read upwards, while the right
-  one also converts $\varphi\limp\psi$ to $\varphi\iimp\psi$ read
-  upwards building in a form of contraction on such formulae. The
-  $\steprulename$ rule has an indeterminate number of premises, one
-  for each $\varphi_i\iimp\psi_i \in \opset{\iimp}{\Delta}$, and one
-  for each $\varphi_i \in \opset{\nxt}{\Phi}$. For each such
-  ``eventuality'', the rule creates a premise that contains the
-  subformula on an appropriate side, but also creates a copy of the
-  principal formula in the antecedent of that premise, thus building
-  in aspects of the standard sequent calculus for G\"oedel-L\"ob
-  logic.
+  one converts $\varphi\limp\psi$ to
+  $\varphi\iimp\psi$ read upwards building in a form of contraction on
+  such formulae. The $\steprulename$ rule has an indeterminate number
+  of premises, one for each
+  $\varphi_i\iimp\psi_i \in \opset{\iimp}{\Delta}$, and one for each
+  $\varphi_i \in \opset{\nxt}{\Phi}$. For each such ``eventuality'',
+  the rule creates a premise that contains the subformula on an
+  appropriate side, but also creates a copy of the principal formula
+  in the antecedent of that premise, thus building in aspects of the
+  standard sequent calculus for G\"oedel-L\"ob logic.
 \end{clarifications}
 
 \begin{history}
-%
-  % Guarded recursion~\cite{Coquand:Infinite} on an infinite data
-  % structure requires that recursive calls be nested beneath
-  % constructors. Nakano~\cite{Nakano:Modality} showed that guarded
-  % recursion can be enforced through the \emph{type system} via an
-  % `approximation modality' inspired by G\"odel-L\"ob provability
-  % logic~\cite{boolos-provability-logic}. This modality is called
-  % \emph{later}, and we write it using the symbol $\nxt$. The meaning
-  % of the type $\nxt\tau$ is roughly ``$\tau$ one computation step
-  % later''. 
 The superintuitionistic modal logic KMlin is obtained from
 Kuznetsov-Muravitsky logic KM~\cite{Litak:Constructive} by demanding
 that the underlying Kripke frames be linear. The semantics of the
@@ -293,18 +282,11 @@ sequent calculus. Their rules are inspired by those of:
 Mauro Ferrarri, Camillo Fiorentini and Guido Fiorino for a sequent
 calculus with compartments for intuitionistic
 logic~\cite{DBLP:journals/jar/FerrariFF13}; Giovanna Corsi for her
-sequent calculus for G\"odel-Dummett logic
-LC~\cite{DBLP:journals/sLogica/Corsi92}\footnote{Need to confirm.};
+sequent calculus for (quantified) G\"odel-Dummett logic
+LC~\cite{Corsi89};
 and George
 Boolos for his sequent calculus for Go\"del-L\"ob logic
 GL~\cite{boolos-provability-logic}.
-
-% ToDo: write here short historical remarks about this proof system,
-% especially if they relate to other proof systems.
-% Use "\iref{OtherProofSystem}" to refer to another proof system
-% in the Encyclopedia (where "OtherProofSystem" is its ID).
-% Use "\irefmissing{SuggestedIDForOtherProofSystem}" to refer to
-% another proof system that is not yet available in the encyclopedia.
 
 \end{history}
 
@@ -312,37 +294,11 @@ GL~\cite{boolos-provability-logic}.
   Clouston and Gor\'e gave semantic proofs of soundness, cut-free
   completeness and the finite model property, thus giving
   decidability. They showed that the validity problem for this logic
-  is coNP-complete. The sequent calculus can be used for
-  backtrack-free and terminating backward proof search via the
-  following strategy for rule applications: apply any applicable rule
-  backwards, always preferring zero-premise rules if possible!
-
-% \begin{description}
-% \item[\rm \emph{Termination Rules:}] the rules 
-% $\idrulename,
-% \botleftrulename,
-% \toprightrulename$ 
-% \item[\rm \emph{Static Rules:}] the rules
-%       $\impleftrulename,
-%       \imprightrulename,
-%       \orleftrulename,
-%       \orrightrulename,
-%       \andleftrulename,
-%       \andrightrulename$
-% \item[\rm \emph{Transitional Rule:}] $\steprulename$.
-% \end{description}
-
-% The proof search strategy below starts at the leaf (end-sequent)
-% $\Gamma_0 \seq \Delta_0$: \vspace{2mm}
-% \\
-% \textbf{while} some rule is applicable to a leaf sequent \textbf{do} \\
-% \hphantom{11}\textbf{stop:} apply any applicable termination rule to that leaf \\
-% \hphantom{11}\textbf{saturate:}  else apply any applicable static rule to that leaf \\
-% \hphantom{11}\textbf{transition:} else apply the transitional rule to
-% that leaf
-
-
-% ToDo: write here remarks about soundness, completeness, decidability...
+  is coNP-complete. They also showed that all rules are invertible, so
+  the sequent calculus can be used for backtrack-free and terminating
+  backward proof search via the following strategy for rule
+  applications: apply any applicable rule backwards, always preferring
+  zero-premise rules if possible!
 \end{technicalities}
 
 \end{entry}
