@@ -1,0 +1,138 @@
+
+% If the calculus has an acronym, define it.
+\newcommand{\EmbC}{\mathbf{E}^\mathsf{mbC}_{res}}
+
+\calculusName{Erotetic Dual Resolution for mbC}   % The name of the calculus
+\calculusAcronym{\EmbC}    % The acronym if defined above, or empty otherwise. 
+\calculusLogic{paraconsistent logics mbC, CLuN}  % Specify the logic (e.g. classical, intuitionistic, ...) for which this calculus is intended.
+\calculusType{resolution, other}   % Specify the calculus type (e.g. Frege-Hilbert style, tableau, sequent calculus, hypersequent calculus, natural deduction, ...)
+\calculusYear{2014}   % The year when the calculus was invented.
+\calculusAuthor{Szymon Chlebowski, Dorota Leszczy\'nska-Jasion} % The name(s) of the author(s) of the calculus.
+
+
+\entryTitle{Erotetic Dual Resolution for mbC}     % Title of the entry (usually coincides with the name of the calculus).
+\entryAuthor{Dorota Leszczy\'nska-Jasion}    % Your name(s). Separate multiple names with "\and".
+
+
+\tag{resolution}
+\tag{non-clausal resolution}
+\tag{dual resolution}
+
+\maketitle
+
+
+% If your files are called "MyProofSystem.tex" and "MyProofSystem.bib", 
+% then you should write "\begin{entry}{MyProofSystem}" in the line below
+\begin{entry}{EDResolutionmbC}  
+
+% Define here any newcommands you may need:
+% e.g. \newcommand{\necessarily}{\Box}
+% e.g. \newcommand{\possibly}{\Diamond}
+
+
+\begin{calculus}
+
+% Add the inference rules of your proof system here.
+% The "proof.sty" and "bussproofs.sty" packages are available.
+% If you need any other package, please contact the editor (bruno@logic.at)
+The rules of $\Eres$ (see \iref{EDResolutionCPL}) and the following rules (`$\lnot$' is used for the classical negation and `$\sim$' for the paraconsistent one):
+
+\vspace{-0.3cm}
+
+$$
+\quad
+\infer[\textbf{R}_{\sim }]
+{?(\Phi;\:\dashv S\:'\:\neg A\:' T;\:\dashv S\:'\:\chi\sim A\:'\:T;\Psi)}
+{?(\Phi;\:\dashv S\:' \sim A\:'\:T;\Psi)}
+\qquad
+\infer[\textbf{R}_{\neg\sim}]
+{?(\Phi;\:\dashv S\:'\:A\:'\:\neg\chi\sim A\:'\:T;\Psi)}
+{?(\Phi;\:\dashv S\:'\:\neg\sim A\:'\:T;\Psi)}$$
+
+\vspace{-0.5cm}
+
+$$\infer[\textbf{R}_{\circ}]
+{?(\Phi\:;\:\dashv S\:'\:\neg A\:'\:\chi\!\circ A\:'\:T\:;\:\dashv S\:'\:\neg\sim A\:'\:\chi\!\circ A\:'\:T\:;\:\Psi)}
+{?(\Phi\:;\:\dashv S\:'\:\circ A\:'\:T\:;\:\Psi)}$$
+
+\vspace{-0.3cm}
+
+$$\infer[\textbf{R}_{\neg\circ}]
+{?(\Phi\:;\:\dashv S\:'\:A\:'\:\sim A\:'\:T\:;\:\dashv S\:'\:\neg\chi\!\circ A\:'\:T\:;\:\Psi)}
+{?(\Phi\:;\:\dashv S\:'\:\neg\circ A\:'\:T\:;\:\Psi)}$$
+\end{calculus}
+
+% The following sections ("clarifications", "history", 
+% "technicalities") are optional. If you use them, 
+% be very concise and objective. Nevertheless, do write full sentences. 
+% Try to have at most one paragraph per section, because line breaks 
+% do not look nice in a short entry.
+
+\begin{clarifications}
+See \iref{EDResolutionCPL} for notational conventions.
+
+The calculus is worded in a language being an extension of the language of $\mathsf{mbC}$, where the role of the additional $\chi$ operator is to syntactically express the fact that certain formulas (e.g. of the form `$\sim A$', `$\circ A$') may have a logical value independent of the value of $A$.
+\end{clarifications}
+
+\begin{history}
+The calculus $\EmbC$ has been presented in \cite{SzChDLJ:LFI} together with similar calculi for $\mathsf{CLuN}$, $\mathsf{CLuNs}$ and for Classical Propositional Logic. The idea to use $\chi$ operator was taken from \cite{WVL:2005}, where the authors presented erotetic calculi for logics $\mathsf{CLuN}$ and $\mathsf{CLuNs}$ in a non-resolution account.
+\end{history}
+
+\begin{technicalities}
+A formula $A$ is $\mathsf{mbC}$-valid iff $\dashv A$ has a Socratic refutation in $\EmbC$. A formula $A$ is $\mathsf{CLuN}$-valid iff $\dashv A$ has a Socratic refutation constructed without the use of rules $\mathbf{R}_\circ$, $\mathbf{R}_{\lnot \circ}$. Similar results are obtained with respect to $\mathsf{CLuNs}$ and the classical case.
+\end{technicalities}
+
+
+% General Instructions:
+% =====================
+
+% The preferred length of an entry is 1 page. 
+% Do the best you can to fit your proof system in one page.
+%
+% If you are finding it hard to fit what you want in one page, remember:
+%
+%   * Your entry needs to be neither self-contained nor fully understandable
+%     (the interested reader may consult the cited full paper for details)
+%
+%   * If you are describing several proof systems in one entry, 
+%     consider splitting your entry.
+%
+%   * You may reduce the size of your entry by ommitting inference rules
+%     that are already described in other entries.
+%
+%   * Cite parsimoniously (see detailed citation instructions below).
+%
+% 
+% If you do not manage to fit everything in one page, 
+% it is acceptable for an entry to have 2 pages.
+%
+% For aesthetical reasons, it is preferable for an entry to have
+% 1 full page or 2 full pages, in order to avoid unused blank space.
+
+
+
+% Citation Instructions:
+% ======================
+
+% Please cite the original paper where the proof system was defined.
+% To do so, you may use the \cite command within 
+% one of the optional environments above,
+% or use the \nocite command otherwise.
+
+% You may also cite a modern paper or book where the 
+% proof system is explained in greater depth or clarity.
+% Cite parsimoniously.
+
+% Do not cite related work. Instead, use the "\iref" or "\irefmissing" 
+% commands to make an internal reference to another entry, 
+% as explained within the "history" environment above.
+
+% You do not need to create the "References" section yourself. 
+% This is done automatically.
+
+
+
+
+% Leave an empty line above "\end{entry}".
+
+\end{entry}

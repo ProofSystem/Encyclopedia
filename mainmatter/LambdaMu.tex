@@ -1,0 +1,222 @@
+
+\newcommand{\dest}[4]{\mathsf{dest}~#1~\mathsf{as}~(#2,#3)~\mathsf{in}~#4}
+\newcommand{\Case}[5]{\mathsf{case}~#1~\mathsf{of}~[#2\,\Rightarrow\,#3~|~#4\,\Rightarrow\,#5]}
+\newcommand{\efq}[1]{\texttt{efq}~{#1}}
+\newcommand{\lmu}{\lambda\mu}
+
+\calculusName{LambdaMu} % The name of the calculus
+\calculusAcronym{$\lmu$} % The acronym if defined above, or empty otherwise.
+\calculusLogic{Classical} % Specify the logic (e.g. classical, intuitionistic, ...) for which this calculus is intended.
+\calculusType{natural deduction} % Specify the calculus type (e.g. Frege-Hilbert style, tableau, sequent calculus, hypersequent calculus, natural deduction, ...)
+\calculusYear{1992} % The year when the calculus was invented.
+\calculusAuthor{Parigot} % The name(s) of the author(s) of the calculus.
+\entryTitle{Classical Natural Deduction ($\lmu$-calculus)} % Title of the entry (usually coincides with the name of the calculus).
+\entryAuthor{Hugo Herbelin} % Your name(s). Separate multiple names with "\and".
+% If you wish, use tags to give any other information
+% that might be helpful for classifying and grouping this entry:
+\tag{Multi-Conclusion Sequents}
+% e.g. \tag{Multiset Cedents}
+%\tag{List Cedents}
+\tag{Term-annotated}
+% You are free to invent your own tags.
+% The Encyclopedia's coordinator will take care of
+% merging semantically similar tags in the future.
+\maketitle
+% If your files are called "MyProofSystem.tex" and "MyProofSystem.bib",
+% then you should write "\begin{entry}{MyProofSystem}" in the line below
+\begin{entry}{LambdaMu}
+% Define here any newcommands you may need:
+% e.g. \newcommand{\necessarily}{\Box}
+% e.g. \newcommand{\possibly}{\Diamond}
+\begin{calculus}
+% Add the inference rules of your proof system here.
+% The "proof.sty" and "bussproofs.sty" packages are available.
+% If you need any other package, please cpontact the editor (bruno@logic.at)
+
+{\sc Structural subsystem}
+\[
+\infer[\mathit{Ax}]
+      {a : \Gamma \vdash A ~|~ \Delta}
+      {A^a \in \Gamma}
+\]
+\[
+\infer[\mathit{Focus}]
+      {\mu\alpha.c : \Gamma \vdash A ~|~ \Delta}
+      {c : \Gamma \vdash A^\alpha, \Delta}
+\qquad
+\infer[\mathit{Unfocus}]
+      {[\alpha]p : \Gamma \vdash \Delta}
+      {p : \Gamma \vdash A ~|~ \Delta \qquad A^\alpha \in \Delta}
+\]
+{\sc Introduction rules}
+\[
+\infer[\wedge_E^i]
+      {\pi_1(p) : \Gamma \vdash A_i ~|~ \Delta}
+      {p : \Gamma \vdash A_1 \wedge A_2 ~|~ \Delta}
+\qquad
+\infer[\wedge_I]
+      {(p_1,p_2) : \Gamma \vdash A_1 \wedge A_2 ~|~ \Delta}
+      {p_1 : \Gamma \vdash A_1 ~|~ \Delta & p_2 : \Gamma \vdash A_2 ~|~ \Delta}
+\]
+\[
+\infer[\vee_E]
+      {\Case{p}{a_1}{p_1}{a_2}{p_2} : \Gamma \vdash C ~|~ \Delta}
+      {p : \Gamma \vdash A_1 \vee A_2 ~|~ \Delta & p_1 : \Gamma, A_1^{a_1} \vdash C ~|~ \Delta & p_2 : \Gamma, A_2^{a_2} \vdash C ~|~ \Delta}
+\]
+\[
+\infer[\vee_I^i]
+      {\iota_i(q) : \Gamma \vdash A_1 \vee A_2 ~|~ \Delta}
+      {q : \Gamma \vdash A_i ~|~ \Delta}
+\]
+\[
+\infer[\rightarrow_E]
+      {p\,q: \Gamma \vdash B ~|~ \Delta}
+      {p : \Gamma \vdash A\rightarrow B ~|~ \Delta & q : \Gamma \vdash A ~|~ \Delta}
+\qquad
+\infer[\rightarrow_I]
+      {\lambda a.p : \Gamma \vdash A \rightarrow B ~|~\Delta}
+      {p : \Gamma, A^a \vdash B ~|~ \Delta}
+\]
+\[
+\infer[\exists_E]
+      {\dest{p}{y}{a}{q} : \Gamma \vdash C ~|~ \Delta}
+      {p : \Gamma \vdash \exists x\,A ~|~ \Delta & q : \Gamma, A[y/x]^a \vdash C~|~ \Delta}
+\qquad
+\infer[\exists_I]
+      {(t,p) : \Gamma \vdash \exists x\,A ~|~ \Delta}
+      {p :  \Gamma \vdash A[t/x] ~|~ \Delta}
+\]
+\[
+\infer[\forall_E]
+      {p\,t : \Gamma \vdash A[t/x] ~|~ \Delta}
+      {p: \Gamma \vdash \forall x\, A ~|~ \Delta}
+\qquad
+\infer[\forall_I]
+      {\lambda y.p : \Gamma \vdash \forall x\,A ~|~ \Delta}
+      {p : \Gamma \vdash A[y/x] ~|~ \Delta}
+\]
+\[
+\infer[\bot_E]
+      {\efq{p} : \Gamma \vdash C ~|~ \Delta}
+      {p : \Gamma \vdash \bot ~|~ \Delta}
+\qquad
+\infer[\top_I]
+      {\Gamma \vdash () : \top ~|~ \Delta}
+      {}
+\]
+
+\end{calculus}
+% The following sections ("clarifications", "history",
+% "technicalities") are optional. If you use them,
+% be very concise and objective. Nevertheless, do write full sentences.
+% Try to have at most one paragraph per section, because line breaks
+% do not look nice in a short entry.
+\begin{clarifications}
+There are two kinds of sequents: first $p: \Gamma \vdash A ~|~
+\Delta$ with a distinguished formula on the right for typing the
+so-called {\em unnamed} term $p$, second $c : \Gamma \vdash \Delta$ with no
+distinguished formula for typing the so-called {\em named} term $c$.
+The syntax of the underlying $\lambda\mu$-calculus 
+is:
+$$
+\begin{array}{lll}
+c & ::= & [\alpha]p\\
+p,q  & ::= & a ~|~ \mu\alpha.c ~|~ (p,p) ~|~ \pi_i(p) ~|~ \iota_i(p) ~|~ \Case{p}{a_1}{p_1}{a_2}{p_2} \\
+& ~|~ & \lambda a.p ~|~ p\,q 
+~|~ \lambda x.p ~|~ p\,t 
+~|~ (t,p) ~|~ \dest{p}{x}{a}{q}
+ ~|~ () ~|~ \efq{p}\\
+\end{array}
+$$ The variables used for referring to assumptions in $\Gamma$ and to
+conclusions in $\Delta$ range over distinct classes (denoted by Latin
+and Greek letters respectively). In the rules
+$\exists_E$ (resp. $\forall_I$), $y$ is assumed fresh in $\Gamma$,
+$\Delta$ and $\exists x\, A$ (resp. $\forall x\, A$).
+\end{clarifications}
+
+\begin{history}
+This system, defined in Parigot~\cite{Parigot92},
+% and derived from free deduction~\cite{Parigot91},
+highlights that classical logic in natural deduction can be obtained
+from allowing several conclusions with contraction and weakening on
+the right of the sequent, as in Gentzen's LK.  Additionally, the
+system assigns to this form of classical reasoning a computational
+content, based on the $\mu$ and bracket operator which provides with a
+fine-grained decomposition
+%~\cite{AriolaHerbelin07}
+of the operators {\tt call-cc} (from Scheme/ML) or ${\cal C}$
+(from~\cite{FelFriKohDub86}) that were known at this time to provide
+computational content to classical logic~\cite{Griffin90}, as well as
+a decomposition of Prawitz's classical elimination rule of
+negation~\cite{Prawitz65}.
+
+The original presentation~\cite{Parigot92} only contains implication
+as well as first-order and second-order universal quantification \`a
+la Curry (i.e. without leaving trace of the quantification in the
+proof-term, what corresponds to computationally interpreting
+quantification as an intersection type). The presentation above has
+quantification \`a la Church (i.e. with an explicit trace in the proof
+term) what makes the calculus compatible with several reduction
+strategies such as both call-by-name or call-by-value (see
+e.g.~\cite{HerbelinHdR}). Variants with multiplicative disjunctions
+can be found in~\cite{Selinger01} or \cite{PymRitter01}, or
+multiplicative conjunctions in \cite{HerbelinHdR}.
+
+A standard variant originating in~\cite{deGroote94} uses only one kind
+of sequents, interpreting $c : \Gamma \vdash \Delta$ as $c : \Gamma
+\vdash \bot ~|~ \Delta$ (and hence removing $\bot_E$ and merging the
+syntactic categories $c$ and $p$ into one). This variant is logically
+equivalent to the original presentation (in the presence of $\bot$),
+but not computationally equivalent~\cite{HerbelinSaurin10}.
+
+\end{history}
+
+% Use "\irefmissing{SuggestedIDForOtherProofSystem}" to refer to
+% another proof system that is not yet available in the encyclopedia.
+% \end{history}
+%\begin{technicalities}
+%The system is obviously logically equivalent to Gentzen's $\LK$ when
+%equipped with the corresponding connectives and observed through the
+%sequents of the form $\Gamma \vdash \Delta$. 
+%\end{technicalities}
+
+% General Instructions:
+% =====================
+% The preferred length of an entry is 1 page.
+% Do the best you can to fit your proof system in one page.
+%
+% If you are finding it hard to fit what you want in one page, remember:
+%
+% * Your entry needs to be neither self-contained nor fully understandable
+% (the interested reader may consult the cited full paper for details)
+%
+% * If you are describing several proof systems in one entry,
+% consider splitting your entry.
+%
+% * You may reduce the size of your entry by ommitting inference rules
+% that are already described in other entries.
+%
+% * Cite parsimoniously (see detailed citation instructions below).
+%
+%
+% If you do not manage to fit everything in one page,
+% it is acceptable for an entry to have 2 pages.
+%
+% For aesthetical reasons, it is preferable for an entry to have
+% 1 full page or 2 full pages, in order to avoid unused blank space.
+% Citation Instructions:
+% ======================
+% Please cite the original paper where the proof system was defined.
+% To do so, you may use the \cite command within
+% one of the optional environments above,
+% or use the \nocite command otherwise.
+% You may also cite a modern paper or book where the
+% proof system is explained in greater depth or clarity.
+% Cite parsimoniously.
+% Do not cite related work. Instead, use the "\iref" or "\irefmissing"
+% commands to make an internal reference to another entry,
+% as explained within the "history" environment above.
+% You do not need to create the "References" section yourself.
+% This is done automatically.
+% Leave an empty line above "\end{entry}".
+\end{entry}

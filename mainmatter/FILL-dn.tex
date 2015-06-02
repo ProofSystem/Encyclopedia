@@ -1,0 +1,403 @@
+
+% If the calculus has an acronym, define it.
+% (e.g. \newcommand{\LK}{\ensuremath{\mathbf{LK}}\xspace})
+
+\calculusName{Full Intuitionistic Linear Logic - Deep Nested Sequent Calculus}   % The name of the calculus
+\calculusAcronym{FILL$_{dn}$}    % The acronym if defined above, or empty otherwise. 
+\calculusLogic{Full Intuitionistic Linear Logic}  % Specify the logic (e.g. classical, intuitionistic, ...) for which this calculus is intended.
+\calculusType{nested sequent calculus}   % Specify the calculus type (e.g. Frege-Hilbert style, tableau, sequent calculus, hypersequent calculus, natural deduction, ...)
+\calculusYear{2013}   % The year when the calculus was invented.
+\calculusAuthor{Alwen Tiu} % The name(s) of the author(s) of the calculus.
+
+
+\entryTitle{FILL Deep Nested Sequent Calculus}     % Title of the entry (usually coincides with the name of the calculus).
+\entryAuthor{Rajeev Gor\'e}    % Your name(s). Separate multiple names with "\and".
+
+
+% If you wish, use tags to give any other information 
+% that might be helpful for classifying and grouping this entry:
+% e.g. \tag{Two-Sided Sequents}
+\tag{Two-Sided Nested Sequents}
+\tag{Deep Nested Sequents}
+\tag{Multiset Cedents}
+% e.g. \tag{List Cedents}
+% You are free to invent your own tags. 
+% The Encyclopedia's coordinator will take care of 
+% merging semantically similar tags in the future.
+
+
+\maketitle
+
+
+% If your files are called "MyProofSystem.tex" and "MyProofSystem.bib", 
+% then you should write "\begin{entry}{MyProofSystem}" in the line below
+\begin{entry}{FILL-dn}  
+
+% Define here any newcommands you may need:
+% e.g. \newcommand{\necessarily}{\Box}
+% e.g. \newcommand{\possibly}{\Diamond}
+
+% \renewcommand{\labelenumi}{(\roman{enumi})}
+
+\def\punit{\bot}
+\def\tunit{\mathrm{I}}
+% %\def\sunit{\Phi}
+% \def\sunit{\cdot}
+\def\limp{\multimap}
+%\def\excl{\leftY}
+\def\excl{{-\!\!\!<}}
+\def\ltens{\otimes}
+\def\merge{\bullet}
+
+\def\seq{\Rightarrow}
+% %\def\seq{>}
+
+% \def\fill{\mathrm{FILL}}
+% \def\biill{\mathrm{BiILL}}
+% \def\biilldc{\mathrm{BiILL}{\scriptstyle dc}}
+% %\def\fbills{\mathrm{BiILL}^{sn}}
+% \def\biillsn{\mathrm{BiILL}{\scriptstyle sn}}
+% %\def\fbilld{\mathrm{BiILL}^{dn}}
+\def\biilldn{\mathrm{BiILL}{\scriptstyle dn}}
+% \def\filldc{\mathrm{FILL}{\scriptstyle dc}}
+% %\def\filld{\mathrm{FILL}^{dn}}
+% \def\filldn{\mathrm{FILL}{\scriptstyle dn}}
+% \def\impl{\supset}
+% \def\dimpl{\subset}
+% \def\bang{!}
+% \def\qm{?}
+
+% \def\drp{\mathit{drp}}
+% \def\rp{\mathit{rp}}
+
+% \newcommand{\binop}{\heartsuit}
+
+% \newcommand \seqtodisp[1]{\ulcorner{#1}\urcorner}
+% \newcommand\disptoseq[1]{\llcorner{#1}\lrcorner}
+% \def\Pc{\mathcal{P}}
+% \def\Qc{\mathcal{Q}}
+\def\Sc{\mathcal{S}}
+\def\Tc{\mathcal{T}}
+\def\Uc{\mathcal{U}}
+\def\Vc{\mathcal{V}}
+\def\Xc{\mathcal{X}}
+\def\Yc{\mathcal{Y}}
+% \def\Zc{\mathcal{Z}}
+
+% \def\turn{\vdash}
+% %\newcommand{\comment}[1]{}
+
+% \usepackage{color}
+% \definecolor{darkred}{cmyk}{0.0,1.0,1.0,0.3}
+% \newcommand\tc[2]{\textcolor{#1}{#2}}
+% \newcommand\tcr[1]{\tc{darkred}{#1}}
+
+% %%%%
+% %%%% Raj's defs. Need to be merged but want to chat with Ranald first
+% %%%%
+
+% %\def\fill{FILL}
+% \def\ill{ILL}
+% \def\mill{MILL}
+% \def\bill{BILL}
+% %\def\biill{BiILL}
+% \def\jill{JILL}
+% \def\gill{GILL}
+% \def\dill{DILL}
+
+% \def\gnab{?}
+% \def\adcn{\wedge}
+% \def\addn{\vee}
+% \def\adim{\to}
+% \def\adtp{\top}
+% \def\adbt{\bot}
+% \def\mldn{\parr}
+% \def\mlcn{\otimes}
+% \def\mltp{\mathbf{1}}
+% \def\mlbt{\bot}
+% \def\mlim{\multimap}
+% \def\mlli{\multimap^{-1}}
+% \def\mlri{\multimap}
+% \def\mlrx{
+%        \mbox{\,\raisebox{0.14ex}{$\scriptstyle>$}\!\!\raisebox{0.14ex}{$\scriptstyle -$}\,}}
+% \def\mllx{\excl}
+% %\def\mllx{
+% %       \mbox{\,\raisebox{0.13ex}{$\scriptstyle-$}\!\!\raisebox{0.13ex}{$\scriptstyle <$}\,}}
+
+% \def\sequent{\vdash}
+
+\begin{calculus}
+
+% \begin{figure}[t]
+{\small
+Propagation rules:
+$$
+\infer[pl_1]
+{X[\Sc, A \seq (\Sc' \seq \Tc'), \Tc]}
+{
+ X[\Sc \seq (A, \Sc' \seq \Tc'), \Tc]
+}
+\qquad
+\infer[pr_1]
+{X[(\Sc \seq \Tc), \Sc' \seq A, \Tc']}
+{X[(\Sc \seq \Tc, A), \Sc' \seq \Tc']}
+$$
+$$
+\infer[pl_2]
+{X[\Sc, (\Sc', A \seq \Tc') \seq \Tc]}
+{X[\Sc, A, (\Sc' \seq \Tc') \seq \Tc]}
+\qquad
+\infer[pr_2]
+{X[\Sc \seq \Tc, (\Sc' \seq \Tc', A)]}
+{X[\Sc \seq \Tc, A, (\Sc' \seq \Tc')]}
+$$
+
+Identity and logical rules: In branching rules, $X[~] \in X_1[~] \merge X_2[~]$,
+$\Sc \in \Sc_1 \merge \Sc_2$ and $\Tc \in \Tc_1 \merge \Tc_2$.
+$$
+\infer[id^d]
+{X[\Uc, p \seq p, \Vc]}
+{\mbox{$X[~]$, $\Uc$ and $\Vc$ are hollow.}}
+\qquad
+\infer[\punit_l^d]
+{X[\punit, \Uc \seq \Vc]}
+{\mbox{$X[~]$, $\Uc$ and $\Vc$ are hollow. }}
+\qquad
+\infer[\punit_r^d]
+{X[\Sc \seq \Tc, \punit]}
+{X[\Sc \seq \Tc]}
+$$
+$$
+\infer[\tunit_l^d]
+{X[\Sc, \tunit \seq \Tc]}
+{X[\Sc \seq \Tc]}
+\qquad
+\infer[\tunit_r^d]
+{X[\Uc \seq \tunit, \Vc]}
+{\mbox{$X[~]$, $\Uc$ and $\Vc$ are hollow. }}
+$$
+$$
+\infer[\ltens_l^d]
+{X[\Sc, A \ltens B \seq \Tc]}
+{X[\Sc, A, B \seq \Tc]}
+\qquad
+\infer[\ltens_r^d]
+{X[\Sc \seq A \ltens B, \Tc]}
+{X_1[\Sc_1 \seq A, \Tc_1] & X_2[\Sc_2 \seq B, \Tc_2]}
+$$
+$$
+\infer[\limp_l^d]
+{X[\Sc, A \limp B \seq \Tc]}
+{
+X_1[\Sc_1 \seq A, \Tc_1] & X_2[\Sc_2, B \seq \Tc_2]
+}
+\qquad
+\infer[\limp_r^d]
+{X[\Sc \seq \Tc, A \limp B]}
+{X[\Sc \seq \Tc, (A \seq B)]}
+$$
+$$
+\infer[\parr_l^d]
+{X[\Sc, A \parr B \seq \Tc]}
+{
+ X_1[\Sc_1, A \seq \Tc_1]
+ &
+ X_2[\Sc_2, B \seq \Tc_2]
+}
+\qquad
+\infer[\parr_r^d]
+{X[\Sc \seq A \parr B, \Tc]}
+{X[\Sc \seq A, B, \Tc]}
+$$
+$$
+\infer[\excl_l^d]
+{X[\Sc, A \excl B \seq \Tc]}
+{X[\Sc, (A \seq B) \seq \Tc]}
+\qquad
+\infer[\excl_r^d]
+{X[\Sc \seq A \excl B, \Tc]}
+{X_1[\Sc_1 \seq A, \Tc_1] 
+&
+ X_2[\Sc_2, B \seq \Tc_2]
+}
+$$
+}
+% \caption{The deep inference system $\biilldn$. }
+% % \caption{The deep inference system $\biilldn$. In branching rules, $X[~] \in X_1[~] \merge X_2[~]$,
+% % $\Sc \in \Sc_1 \merge \Sc_2$ and $\Tc \in \Tc_1 \merge \Tc_2$.}
+% \label{fig:fbilld}
+% \end{figure}
+
+\end{calculus}
+
+% The following sections ("clarifications", "history", 
+% "technicalities") are optional. If you use them, 
+% be very concise and objective. Nevertheless, do write full sentences. 
+% Try to have at most one paragraph per section, because line breaks 
+% do not look nice in a short entry.
+
+\begin{clarifications}
+Following Kashima~\cite{DBLP:journals/sLogica/Kashima94}, nested sequents
+  are defined as below where $A_i$ and $B_j$ are
+  formulae~\cite{DBLP:conf/csl/CloustonDGT13}:
+$$
+S~~T ::= S_1,\dots,S_k,A_1,\dots,A_m \seq B_1,\dots, B_n, T_1, \dots,T_l
+$$
+$\Gamma$ and $\Delta$ are multisets of formulae and 
+$P$, $Q$, $S$, $T$, $X$, $Y$, etc., are nested
+sequents, and $\Sc$, $\Xc$, etc., are
+multisets of nested sequents and formulae.
+
+Inference rules in $\biilldn$ are applied in a {\em context}, i.e., a
+nested sequent with a hole $[~]$. Notice that 
+$\biilldn$ contain no structural rules. The branching rules require operations to merge contexts
+and nested sequents, which are explained below. The zero-premise rules
+require that certain sequents or contexts are {\em hollow}, i.e., containing
+no occurrences of formulae.
+
+The {\em merge set} $X_1 \merge X_2$ of two sequents $X_1$ and $X_2$
+is defined as:
+\begin{center}
+\begin{tabular}[c]{l@{\extracolsep{1cm}}cl}
+% $X_1 \merge X_2 = $
+ \multicolumn{3}{l}{
+  $X_1 \merge X_2 = \{~ 
+   (\Gamma_1, \Gamma_2, Y_1, \dots, Y_m \seq \Delta_1, \Delta_2, Z_1,
+    \dots, Z_n) ~\mid$
+ }
+\\
+  & & $X_1 = (\Gamma_1, P_1, \dots, P_m \seq \Delta_1, Q_1,\dots,Q_n)$
+  \mbox{ and }
+\\
+  & & 
+  $X_2 = (\Gamma_2, S_1, \dots, S_m \seq \Delta_2, T_1, \dots, T_n)$
+ \mbox{ and }
+\\
+ & &
+  $Y_i \in P_i \merge S_i$ for $1 \leq i \leq m$ 
+  and $Z_j \in Q_j \merge T_j$ for $1 \leq j \leq n$
+  $~\}$
+\end{tabular}
+\end{center}
+When
+$X \in X_1 \merge X_2$, we say that $X_1$ and $X_2$ are a {\em
+  partition} of $X.$ 
+
+The merge set $X_1[~] \merge X_2[~]$ of 
+two contexts $X_1[~]$ and $X_2[~]$ is defined in \cite{DBLP:conf/ifipTCS/DawsonCGT14}.
+If $X[~] = X_1[~] \merge X_2[~]$ we say $X_1[~]$ and $X_2[~]$
+are a {\em partition} of $X[~]$.
+The notion of a merge set between multisets of formulae and sequents
+is as follows. Given 
+$
+\Xc = \Gamma \cup \{X_1,\dots,X_n\}
+$
+and
+$
+\Yc = \Delta \cup \{Y_1,\dots,Y_n\} 
+$
+their merge set contains all multisets of the form:
+$
+\Gamma \cup \Delta \cup \{Z_1,\dots,Z_n\}
+$
+where $Z_i \in X_i \merge Y_i.$
+
+
+\end{clarifications}
+
+\begin{history}
+% ToDo: write here short historical remarks about this proof system,
+% especially if they relate to other proof systems. 
+% Use "\iref{OtherProofSystem}" to refer to another proof system 
+% in the Encyclopedia (where "OtherProofSystem" is its ID). 
+% Use "\irefmissing{SuggestedIDForOtherProofSystem}" to refer to 
+% another proof system that is not yet available in the encyclopedia.
+  The sequent calculus arose from an attempt to give a display
+  calculus for full intuitionistic linear logic (FILL). As usual for
+  display calculi, a detour is necessary through an extension of FILL
+  with an ``exclusion'' connective $\excl$ which forms an adjunction
+  with $\parr$. The resulting logic is called Bi-intuitionistic Linear
+  Logic (BiILL). Although sound and complete for BiILL, the resulting
+  display calculus is bad for backward proof search. Following
+  Kashima~\cite{DBLP:journals/sLogica/Kashima94}, Alwen Tiu first
+  obtained a shallow nested sequent calculus for BiILL, and then
+  refined that into a deep nested sequent calculus for BiILL. The
+  proof of cut-elimination for the shallow calculus, and the
+  equivalence of the shallow and deep calculi requires over 615
+  different cases!
+\end{history}
+
+\begin{technicalities}
+  The calculus shown is for Bi-Intuitionistic Linear
+  Logic~\cite{DBLP:conf/csl/CloustonDGT13}. It is sound and
+  complete. The soundness w.r.t.\ the categorical semantics is via
+  the shallow nested sequent calculus
+%\iref{BiILL-sn} 
+  for BiILL. A nested sequent is a (nested) \emph{FILL-sequent} if it
+  has no nesting of sequents on the left of $\seq$, and no occurrences
+  of $\excl$ at all. Only in the deep nested sequent calculus is it
+  obvious that a derivation of a FILL-sequent encounters FILL-sequents
+  only. The deep sequent calculus enjoys the subformula property and
+  terminating backward-proof search. The validity problem for FILL is
+  co-NP complete and BiILL is conservative over
+  FILL~\cite{DBLP:conf/csl/CloustonDGT13}. All of these proofs were
+  eventually formalised in
+  Isabelle~\cite{DBLP:conf/ifipTCS/DawsonCGT14} by Jeremy Dawson. As
+  far as is known, it is the only sequent calculus for FILL
+  (\iref{FILL}) that does not require (type) annotations.
+\end{technicalities}
+
+
+% General Instructions:
+% =====================
+
+% The preferred length of an entry is 1 page. 
+% Do the best you can to fit your proof system in one page.
+%
+% If you are finding it hard to fit what you want in one page, remember:
+%
+%   * Your entry needs to be neither self-contained nor fully understandable
+%     (the interested reader may consult the cited full paper for details)
+%
+%   * If you are describing several proof systems in one entry, 
+%     consider splitting your entry.
+%
+%   * You may reduce the size of your entry by ommitting inference rules
+%     that are already described in other entries.
+%
+%   * Cite parsimoniously (see detailed citation instructions below).
+%
+% 
+% If you do not manage to fit everything in one page, 
+% it is acceptable for an entry to have 2 pages.
+%
+% For aesthetical reasons, it is preferable for an entry to have
+% 1 full page or 2 full pages, in order to avoid unused blank space.
+
+
+
+% Citation Instructions:
+% ======================
+
+% Please cite the original paper where the proof system was defined.
+% To do so, you may use the \cite command within 
+% one of the optional environments above,
+% or use the \nocite command otherwise.
+
+% You may also cite a modern paper or book where the 
+% proof system is explained in greater depth or clarity.
+% Cite parsimoniously.
+
+% Do not cite related work. Instead, use the "\iref" or "\irefmissing" 
+% commands to make an internal reference to another entry, 
+% as explained within the "history" environment above.
+
+% You do not need to create the "References" section yourself. 
+% This is done automatically.
+
+
+
+
+% Leave an empty line above "\end{entry}".
+
+\end{entry}

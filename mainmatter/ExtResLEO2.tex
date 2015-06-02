@@ -1,0 +1,420 @@
+% If the calculus has an acronym, define it.
+% (e.g. \newcommand{\LK}{\ensuremath{\mathbf{LK}}\xspace})
+
+\newcommand{\ttrue}{{\mathrm{t}\!\mathrm{t}}}
+\newcommand{\ffalse}{{\mathrm{f}\!\mathrm{f}}}
+\newcommand{\rl}[1]{\textsf{#1}} %typeface for rules
+\newcommand{\unify}[2]{#1 \neq^? #2} %unification problem
+\newcommand{\ChoiceFuns}{\textsf{CFs}}
+
+
+\calculusName{Extensional HO RUE-Resolution}   % The name of the calculus
+\calculusAcronym{LEO-II}    % The acronym if defined above, or empty otherwise. 
+\calculusLogic{classical higher-order logic}  % Specify the logic (e.g. classical, intuitionistic, ...) for which this calculus is intended.
+\calculusType{resolution}   % Specify the calculus type (e.g. Frege-Hilbert style, tableau, sequent calculus, hypersequent calculus, natural deduction, ...)
+\calculusYear{1999-2013}   % The year when the calculus was invented.
+\calculusAuthor{Christoph Benzm{\"u}ller} % The name(s) of the author(s) of the calculus.
+
+
+\entryTitle{Extensional HO RUE-Resolution}     % Title of the entry (usually coincides with the name of the calculus).
+\entryAuthor{Christoph Benzm{\"u}ller}    % Your name(s). Separate multiple names with "\and".
+
+
+% If you wish, use tags to give any other information 
+% that might be helpful for classifying and grouping this entry:
+% e.g. \tag{Two-Sided Sequents}
+% e.g. \tag{Multiset Cedents}
+% e.g. \tag{List Cedents}
+% You are free to invent your own tags. 
+% The Encyclopedia's coordinator will take care of 
+% merging semantically similar tags in the future.
+
+
+\maketitle
+
+
+% If your files are called "MyProofSystem.tex" and "MyProofSystem.bib", 
+% then you should write "\begin{entry}{MyProofSystem}" in the line below
+\begin{entry}{ExtResLEO2}  
+
+% Define here any newcommands you may need:
+% e.g. \newcommand{\necessarily}{\Box}
+% e.g. \newcommand{\possibly}{\Diamond}
+
+
+\begin{calculus}
+
+% Add the inference rules of your proof system here.
+% The "proof.sty" and "bussproofs.sty" packages are available.
+% If you need any other package, please contact the editor (bruno@logic.at)
+Normalisation Rules
+
+\quad
+\begin{prooftree}
+\mathbf{C} \vee [\mathbf{A} \vee \mathbf{B}]^\ttrue
+\justifies
+\mathbf{C} \vee [\mathbf{A}]^\ttrue \vee [\mathbf{B}]^\ttrue
+\thickness=0.08em
+\using{\vee^\ttrue}
+\label{extcnf-or-pos}
+\end{prooftree}
+\quad
+\begin{prooftree}
+\mathbf{C} \vee [\mathbf{A} \vee \mathbf{B}]^\ffalse
+\justifies
+\begin{array}{c}
+\mathbf{C} \vee [\mathbf{A}]^\ffalse \\
+\mathbf{C} \vee [\mathbf{B}]^\ffalse
+\end{array}
+\thickness=0.08em
+\using{\vee^\ffalse}
+\label{extcnf-or-neg}
+\end{prooftree}
+\quad
+\begin{prooftree}
+\mathbf{C} \vee [\neg\mathbf{A}]^\ttrue
+\justifies
+\mathbf{C} \vee [\mathbf{A}]^\ffalse
+\thickness=0.08em
+\using{\neg^\ttrue}
+\label{extcnf-not-pos}
+\end{prooftree}
+\quad 
+\begin{prooftree}
+\mathbf{C} \vee [\neg\mathbf{A}]^\ffalse
+\justifies
+\mathbf{C} \vee [\mathbf{A}]^\ttrue
+\thickness=0.08em
+\using{\neg^\ffalse}
+\label{extcnf-not-neg}
+\end{prooftree}
+
+\vskip.2em
+
+\quad 
+\begin{prooftree}
+\mathbf{C} \vee [\Pi^\tau \mathbf{A}]^\ttrue
+\quad
+X^\tau \textrm{ fresh variable}
+\justifies
+\mathbf{C} \vee [\mathbf{A} \, X]^\ttrue
+\thickness=0.08em
+\using{\Pi^\ttrue}
+\label{extcnf-forall-pos}
+\end{prooftree}
+\quad
+\begin{prooftree}
+\mathbf{C} \vee [\Pi^\tau \mathbf{A}]^\ffalse
+\quad
+\mathtt{sk}^\tau \textrm{ Skolem term}
+\justifies
+\mathbf{C} \vee [\mathbf{A} \, \mathtt{sk}^\tau]^\ffalse
+\thickness=0.08em
+\using{\Pi^\ffalse}
+\label{extcnf-forall-neg}
+\end{prooftree}
+
+\vskip.3em
+
+Resolution, Factorisation and Primitive Substitution
+
+\vskip.2em
+
+\quad 
+\begin{prooftree}
+[\mathbf{A}]^{p_1} \vee \mathbf{C}
+\quad
+[\mathbf{B}]^{p_2} \vee \mathbf{D}
+\quad
+p_1\not=p_2
+\justifies
+\mathbf{C} \vee \mathbf{D} \vee [\mathbf{A}=\mathbf{B}]^\ffalse
+\thickness=0.08em
+\using{\mathrm{\rl{res}}}
+\end{prooftree}
+\quad 
+\begin{prooftree}
+\mathbf{C} \vee [\mathbf{A}]^p \vee [\mathbf{B}]^p
+\justifies
+\mathbf{C} \vee [\mathbf{A}]^p \vee [\mathbf{A}=\mathbf{B}]^\ffalse
+\thickness=0.08em
+\using{\mathrm{\rl{fac}}}
+\end{prooftree}
+
+\vskip.2em
+
+\qquad \qquad
+\begin{prooftree}
+[Q_\tau \overline{\mathbf{A}}^n]^p \vee \mathbf{C}
+\quad
+\mathbf{P}\in\mathcal{AB}_\tau^{(k)} \textrm{ for logic connective }  k 
+\justifies
+([Q_\tau \overline{\mathbf{A}}^n]^p \vee \mathbf{C}) [\mathbf{P}/Q]
+\thickness=0.08em
+\using{\mathrm{\rl{prim\_subst}}}
+\end{prooftree}
+\vfill
+
+\vskip.3em
+
+Extensionality and Pre-unification
+
+\vskip.2em
+
+\quad
+\begin{prooftree}
+\mathbf{C} \vee [\mathbf{A}^{\sigma\tau} = \mathbf{B}^{\sigma\tau}]^\ttrue
+\quad
+X^\tau \textrm{ fresh variable}
+\justifies
+\mathbf{C} \vee [\mathbf{A} \, X = \mathbf{B} \, X]^\ttrue
+\thickness=0.08em
+\using{\textsc{FuncPos}}
+\label{func-pos}
+\end{prooftree}
+\quad
+\begin{prooftree}
+\mathbf{C} \vee [\mathbf{A}^o = \mathbf{B}^o]^\ttrue
+\justifies
+\mathbf{C} \vee [\mathbf{A}^o \longleftrightarrow \mathbf{B}^o]^\ttrue
+\thickness=0.08em
+\using{\textsc{BoolPos}}
+\end{prooftree}
+
+\vskip.2em
+
+\quad 
+\begin{prooftree}
+\mathbf{C} \vee [\mathbf{A}^{\sigma\tau} = \mathbf{B}^{\sigma\tau}]^\ffalse
+\quad
+\mathtt{sk}^\tau \textrm{ Skol. term}
+\justifies
+\mathbf{C} \vee [\mathbf{A} \, \mathtt{sk} = \mathbf{B} \, \mathtt{sk}]^\ffalse
+\thickness=0.08em
+\using{\textsc{FuncNeg}}
+\end{prooftree}
+\quad
+\begin{prooftree}
+\mathbf{C} \vee [\mathbf{A}^o = \mathbf{B}^o]^\ffalse
+\justifies
+\mathbf{C} \vee [\mathbf{A}^o \longleftrightarrow \mathbf{B}^o]^\ffalse
+\thickness=0.08em
+\using{\textsc{BoolNeg}}
+\end{prooftree}
+
+\vskip.2em
+
+\quad 
+\begin{prooftree}
+\mathbf{C} \vee [h^{\sigma\tau}\overline{\mathbf{A}^\alpha}^k \; = \; h^{\sigma\tau}\overline{\mathbf{B}^\alpha}^k]^\ffalse
+\justifies
+\mathbf{C} \vee \overline{[\mathbf{A}_i \; = \; \mathbf{B}_i]^\ffalse}^{i\leq k}
+\thickness=0.08em
+\using{\textsc{Dec}}
+\end{prooftree}
+\quad 
+\begin{prooftree}
+\mathbf{C} \vee [X=\mathbf{A}]^\ffalse
+\quad
+X \not\in \mathrm{FV}(\mathbf{A})
+\justifies
+\mathbf{C}[\mathbf{A}/X]
+\thickness=0.08em
+\using{\textsc{Subst}}
+\end{prooftree}
+
+\vskip.2em
+
+\quad
+\begin{prooftree}
+\mathbf{C} \vee [\mathbf{A}=\mathbf{A}]^\ffalse
+\justifies
+\mathbf{C}
+\thickness=0.08em
+\using{\textsc{Triv}}
+\end{prooftree}
+\quad 
+\begin{prooftree}
+\mathbf{C} \vee [F^\tau\overline{\mathbf{A}}^n \; = \; h\overline{\mathbf{B}}^m]^\ffalse
+\quad
+\mathbf{G} \in \mathcal{AB}^{(h)}_\tau
+\justifies
+\mathbf{C} \vee [F = \mathbf{G}]^\ffalse \;\vee\; [F\overline{\mathbf{A}}^n = h\overline{\mathbf{B}}^m]^\ffalse
+\thickness=0.08em
+\using{\textsc{FlexRigid}}
+\end{prooftree}
+
+\vskip.3em
+
+Choice 
+
+\vskip.2em
+
+\quad
+\begin{prooftree}
+\begin{array}{c}
+\\
+C:= \mathbf{C'} \vee [\mathbf{A}[E_{(\alpha\rightarrow o)\rightarrow \alpha} \mathbf{B}]]^p
+\end{array}
+ \quad
+\begin{array}{c}
+\epsilon\in\ChoiceFuns, \; E = \epsilon \textit{ or } E \in \textit{freeVars(C)},
+\\ \textit{freeVars}(\mathbf{B})\subseteq \textit{freeVars}(C), Y\,\textit{fresh}
+\end{array}
+\justifies
+  [\mathbf{B} \; Y]^\ffalse \vee [\mathbf{B} \; (\epsilon_{\alpha (\alpha o)}
+  \mathbf{B})]^\ttrue
+\thickness=0.08em
+\using{\rl{choice}}
+\label{choice}
+\end{prooftree}
+
+\vskip.2em
+
+\qquad \qquad \qquad \qquad 
+\begin{prooftree}
+[P X]^\ffalse \vee [P (f_{(\alpha\rightarrow o)\rightarrow \alpha} P)]^\ttrue
+\justifies
+ \ChoiceFuns \longleftarrow \ChoiceFuns\cup\{f_{(\alpha\rightarrow o)\rightarrow \alpha}\}
+\thickness=0.08em
+\using{\rl{detectChoiceFn}}
+\label{detectChoiceFn}
+\end{prooftree}
+
+
+ \vskip.3em
+
+Optional additional rules include (a) exhaustive universal instantion rule for (selective) finite domains, (b) detection and removal of Leibniz equations and Andrews equations, and (c) splitting.  Like \rl{detectChoiceFn} these rules are admissible. 
+
+% \vskip.2em
+
+% \quad
+% \begin{prooftree}
+% \mathbf{C} \vee [\Pi^\tau \mathbf{A}]^\ttrue
+% \quad
+% \textrm{canonical } \overline{\mathbf{B}^\tau}^n
+% \quad
+% n = \mathrm{Card}(\tau)
+% \quad
+% n \in \omega
+% \justifies
+% \mathbf{C} \vee \overline{[\mathbf{A} \, \mathbf{B}]^\ttrue}^n
+% \thickness=0.08em
+% \using{\Pi^\ttrue_\textrm{special}}
+% \label{extcnf-forall-special-pos}
+% \end{prooftree}
+
+% \begin{prooftree}
+% \[
+% \mathbf{C} \vee [\mathbf{A}_1 \circ \ldots \circ \mathbf{A}_n]^p
+% \using {\rl{split\_conjecture}}
+% \justifies
+%  \[
+%  \[
+%  \mathbf{C} \vee [\mathbf{A}_1]^p
+%  \justifies
+%  \vdots
+%  \]
+%  \justifies
+% [\ffalse]^\ttrue
+%  \]
+%  \quad
+%  \ldots
+%  \quad
+%  \[
+%  \[
+%  \mathbf{C} \vee [\mathbf{A}_n]^p
+%  \justifies
+%  \vdots
+%  \]
+%  \justifies
+% [\ffalse]^\ttrue
+%  \]
+% \]
+% \justifies
+% [\ffalse]^\ttrue
+% \using {\rl{solved\_all\_splits}}
+% \end{prooftree}
+
+\end{calculus}
+
+% The following sections ("clarifications", "history", 
+% "technicalities") are optional. If you use them, 
+% be very concise and objective. Nevertheless, do write full sentences. 
+% Try to have at most one paragraph per section, because line breaks 
+% do not look nice in a short entry.
+
+ \begin{clarifications} 
+ $\mathbf{A}$ and $\mathbf{B}$ are metavariables ranging over terms of HOL \cite{sep-type-theory-church}; see also \iref{GBetaFB}). The logical connectives are $\neg$, $\vee$, $\Pi^\tau$ (universal quantification over variables of type $\tau$), and $=^\tau$ (equality on terms of type $\tau$). Types are shown only if unclear in context. For example, in  rule choice the variable $E^{\alpha (\alpha o)}$ is of function type, also written as ${(\alpha \rightarrow o) \rightarrow \alpha}$. Variables like $F$ are presented as upper case symbols and constant symbols like $h$  are lower case. $\alpha$ equality and $\beta\eta$-normalisation are treated implicit, meaning that all clauses are implicitly normalised. $\mathbf{C}$ and $\mathbf{D}$ are metavariables ranging over clauses, which are disjunctions of literals. These disjunctions are implicitly assumed associative and commutative; the latter also applies to all equations. Literals are formulas shown in square brackets and labelled with a \emph{polarity} (either $\ttrue$ or $\ffalse$), e.g. $[\neg X]^\ffalse$ denotes the negation of $\neg X$.  $\mathrm{FV}(\mathbf{A})$ denotes the free variables of term $\mathbf{A}$. $\mathcal{AB}^{(h)}_\tau$ is the set of approximating bindings for head $h$ and type $\tau$. $\epsilon_{\alpha (\alpha o)}$ is a choice operator and $\ChoiceFuns$ is a set of dynamically collected choice functions symbols; $\ChoiceFuns$ is initialised with a single choice function.
+\end{clarifications}
+
+
+ \begin{history}
+The original calculus (without choice) has been presented in \cite{C5} and \cite{J5}. Recent modifications and extensions (e.g. choice) are discussed in  \cite{W47} and \cite{EasyChair:215}.
+The calculus is inspired by and extends Huet's constrained resolution \cite{Huet:amott73,Huet:cracmfhol72} and the extensional resolution calculus in \cite{C2}.
+% ToDo: write here short historical remarks about this proof system,
+% especially if they relate to other proof systems. 
+% Use "\iref{OtherProofSystem}" to refer to another proof system 
+% in the Encyclopedia (where "OtherProofSystem" is its ID). 
+% Use "\irefmissing{SuggestedIDForOtherProofSystem}" to refer to 
+% another proof system that is not yet available in the encyclopedia.
+ \end{history}
+
+\begin{technicalities} 
+The calculus works for classical higher-order logic with Henkin semantics and choice. Soundness and completeness has been discussed in  \cite{C5} and \cite{J5}. In the prover LEO-II, the factorisation rule is for performance reasons restricted to binary clauses and a (parametrisable) depth limit is employed for pre-unification. Such restrictions are a (deliberate) source for incompleteness.
+ \end{technicalities}
+
+
+% General Instructions:
+% =====================
+
+% The preferred length of an entry is 1 page. 
+% Do the best you can to fit your proof system in one page.
+%
+% If you are finding it hard to fit what you want in one page, remember:
+%
+%   * Your entry needs to be neither self-contained nor fully understandable
+%     (the interested reader may consult the cited full paper for details)
+%
+%   * If you are describing several proof systems in one entry, 
+%     consider splitting your entry.
+%
+%   * You may reduce the size of your entry by ommitting inference rules
+%     that are already described in other entries.
+%
+%   * Cite parsimoniously (see detailed citation instructions below).
+%
+% 
+% If you do not manage to fit everything in one page, 
+% it is acceptable for an entry to have 2 pages.
+%
+% For aesthetical reasons, it is preferable for an entry to have
+% 1 full page or 2 full pages, in order to avoid unused blank space.
+
+
+
+% Citation Instructions:
+% ======================
+
+% Please cite the original paper where the proof system was defined.
+% To do so, you may use the \cite command within 
+% one of the optional environments above,
+% or use the \nocite command otherwise.
+
+% You may also cite a modern paper or book where the 
+% proof system is explained in greater depth or clarity.
+% Cite parsimoniously.
+
+% Do not cite related work. Instead, use the "\iref" or "\irefmissing" 
+% commands to make an internal reference to another entry, 
+% as explained within the "history" environment above.
+
+% You do not need to create the "References" section yourself. 
+% This is done automatically.
+
+
+
+
+% Leave an empty line above "\end{entry}".
+
+\end{entry}

@@ -1,0 +1,304 @@
+\calculusName{Sequent Calculus for Superintuitionistic Modal Logic KMlin}
+\calculusAcronym{\seqlcnxt}
+\calculusLogic{Superintuitionistic modal logic of linear Kripke frames}
+\calculusType{Sequent Calculus} 
+\calculusYear{2014} 
+\calculusAuthor{Ranald Clouston \and Rajeev Gor\'e}
+\entryTitle{Sequent Calculus $\seqlcnxt$ for Superintuitionistic Modal Logic KMlin} 
+\entryAuthor{Rajeev Gor\'e}
+\tag{Two-Sided Sequents}
+\tag{Set Cedents}
+\tag{Multi-Conclusion Succedent}
+\maketitle
+\begin{entry}{SKMlin}
+
+\newcommand{\iimp}{\twoheadrightarrow}
+\newcommand{\limp}{\rightarrow}
+\newcommand{\opset}[2]{{#2}^{#1}}
+\newcommand{\nxt}{\rhd}
+\newcommand{\nxtlist}[2]{\nxt {#1}_{1} , \cdots ,  \nxt {#1}_{#2}}
+\newcommand{\opsetmi}[3]{\opset{#1}{#2}_{-#3}}
+\newcommand{\implist}[5]{#2_{#4} #1 {#3}_{#4} , \cdots ,  #2_{#5}
+  #1 {#3}_{#5}}
+\newcommand{\condzero}{\mathrm{C0}}
+\newcommand{\condone}{\mathrm{C1}}
+\newcommand{\condtwo}{\mathrm{C2}}
+\newcommand{\oplist}[4]{#1 {#2}_{#3} , \cdots ,  #1 #2_{#4}}
+
+\newcommand{\idrulename}{\small id}
+\newcommand{\idrule}{
+\AxiomC{}
+\LeftLabel{\idrulename}
+\UnaryInfC{$\Gamma, \varphi \seq \varphi, \Delta $}
+\DisplayProof
+}
+
+\newcommand{\toprightrulename}{\small \top \mathrm{R}}
+\newcommand{\toprule}{
+\AxiomC{}
+\LeftLabel{$\toprightrulename$}
+\UnaryInfC{$\Gamma \seq \top, \Delta $}
+\DisplayProof
+}
+\newcommand{\botleftrulename}{\small \bot \mathrm{L}}
+\newcommand{\botrule}{
+\AxiomC{}
+\LeftLabel{$\botleftrulename$}
+\UnaryInfC{$\Gamma , \bot \seq \Delta $}
+\DisplayProof
+}
+\newcommand{\orleftrulename}{\small \lor \mathrm{L}}
+\newcommand{\orleftrule}{
+\AxiomC{$\Gamma , \varphi \seq \Delta $}
+\AxiomC{$\Gamma , \psi \seq  \Delta $}
+\LeftLabel{$\orleftrulename$}
+\BinaryInfC{$\Gamma, \varphi \lor \psi \seq \Delta $}
+\DisplayProof
+}
+
+\newcommand{\orrightrulename}{\small \lor \mathrm{R}}
+\newcommand{\orrightrule}{
+\AxiomC{$\Gamma \seq  \varphi, \psi , \Delta $}
+\LeftLabel{$\orrightrulename$}
+\UnaryInfC{$\Gamma  \seq \varphi\lor\psi , \Delta $}
+\DisplayProof
+}
+
+\newcommand{\andrightrulename}{\small \land \mathrm{R}}
+\newcommand{\andrightrule}{
+\AxiomC{$\Gamma  \seq \varphi, \Delta $}
+\AxiomC{$\Gamma  \seq \psi,  \Delta $}
+\LeftLabel{$\andrightrulename$}
+\BinaryInfC{$\Gamma \seq \varphi\land\psi , \Delta $}
+\DisplayProof
+}
+
+\newcommand{\andleftrulename}{\small \land \mathrm{L}}
+\newcommand{\andleftrule}{
+\AxiomC{$\Gamma , \varphi , \psi \seq \Delta $}
+\LeftLabel{$\andleftrulename$}
+\UnaryInfC{$\Gamma , \varphi\land\psi \seq \Delta $}
+\DisplayProof
+}
+\newcommand{\impleftrulename}{\small \limp\!\!\mathrm{L}}
+\newcommand{\impleftrule}{
+\AxiomC{$\Gamma  , \varphi\iimp\psi  \seq \varphi, \Delta $}
+\AxiomC{$\Gamma , \varphi\iimp\psi, \psi \seq  \Delta $}
+\LeftLabel{$\impleftrulename$}
+\BinaryInfC{$\Gamma , \varphi\limp\psi \seq \Delta $}
+\DisplayProof
+}
+
+\newcommand{\imprightrulename}{\small \limp\!\!\mathrm{R}}
+\newcommand{\imprightrule}{
+\AxiomC{$\Gamma , \varphi \seq \psi ,  \Delta$}
+\AxiomC{$\Gamma  \seq \varphi\iimp\psi ,\Delta$}
+\LeftLabel{$\imprightrulename$}
+\BinaryInfC{$\Gamma \seq \varphi\limp\psi , \Delta$}
+\DisplayProof
+}
+
+\newcommand{\steprulename}{\textsc{step}}
+\newcommand{\newsteprulenewversion}{
+   \begin{tabular}[c]{l@{\extracolsep{2cm}}l}
+   \multicolumn{2}{c}{
+   \AxiomC{$\mathrm{Prem}_1 
+         \quad \cdots \quad 
+         \mathrm{Prem}_k 
+         \quad 
+         \mathrm{Prem}_{k+1} 
+         \quad \cdots
+         \quad \mathrm{Prem}_{k+n}$}
+   \LeftLabel{$\steprulename$}
+%   \RightLabel{$\opset{\iimp}{\Delta} \cup \opset{\nxt}{\Phi}  \neq
+%   \emptyset$}
+   \RightLabel{$\dagger$}
+   \UnaryInfC{$\Sigma_l, \opset{\nxt}{\Theta} ,\opset{\iimp}{\Gamma} 
+         \seq 
+        \opset{\iimp}{\Delta},
+        \opset{\nxt}{\Phi},
+         \Sigma_r$}
+   \noLine
+   \UnaryInfC{
+     \begin{tabular}[c]{lll}
+     \\%[5px]
+      $\qquad\qquad
+      \mathrm{Prem}_{1 \leq i \leq k}$ 
+      & $=$
+      & $\Sigma_l, 
+     \Theta , 
+     \opset{\nxt}{\Theta},
+     \opset{\limp}{\Gamma} ,
+     \varphi_i \iimp \psi_i , 
+     \varphi_i 
+     \seq
+     \psi_i,
+     \opsetmi{\limp}{\Delta}{i},
+     \Phi$
+   \\[5px]
+   $\qquad\qquad
+    \mathrm{Prem}_{k+1 \leq i \leq k+n}$
+   & $=$
+   & $\Sigma_l, 
+    \Theta, 
+     \opset{\nxt}{\Theta},
+    \opset{\limp}{\Gamma},
+    \nxt \phi_{i-k} 
+    \seq
+    \opset{\limp}{\Delta},
+    \Phi$
+   \end{tabular}
+}
+\DisplayProof
+}
+%\end{tabular}
+ \\%[5px]
+%    \begin{tabular}[c]{ll}
+ \\%[5px]
+%  --$\quad$
+  $\opset{\nxt}{\Theta} = \nxtlist{\theta}{j}$
+    &
+  $\opset{}{\Theta} = \oplist{}{\theta}{1}{j}$
+   \\[2px]
+%    --$\quad$
+  $\opset{\iimp}{\Gamma} = \{\implist{\iimp}{\alpha}{\beta}{1}{l}\}$
+      &
+  $\opset{\limp}{\Gamma} = \{\implist{\limp}{\alpha}{\beta}{1}{l}\}$
+   \\[2px]
+%    --$\quad$
+  $\opset{\iimp}{\Delta} = \{\implist{\iimp}{\varphi}{\psi}{1}{k}\}$
+      &
+  $\opset{\limp}{\Delta} = \{\implist{\limp}{\varphi}{\psi}{1}{k}\}$
+\\[2px]
+%   --$\quad$
+%   $\opset{\iimp}{\Delta} \cup \opset{\nxt}{\Phi}  \neq \emptyset$
+%    &
+  $\opsetmi{\limp}{\Delta}{i} = 
+     \opset{\limp}{\Delta}\setminus 
+     \{\varphi_i\limp\psi_i\}
+  $
+   \\[2px]
+%    --$\quad$
+  $\opset{\nxt}{\Phi} = \nxt\phi_1 , \cdots , \nxt\phi_n$
+    &
+  $\opset{}{\Phi} = \phi_1 , \cdots , \phi_n $
+   \\[5px]
+   \multicolumn{2}{l}{
+   where $\dagger$ means that the conditions $\condzero$, $\condone$ 
+   and $\condtwo$ below must hold
+  }
+\\[2px]
+   \multicolumn{2}{l}{
+($\condzero$)   $\opset{\iimp}{\Delta} \cup \opset{\nxt}{\Phi}  \neq \emptyset$
+  }
+\\[2px]
+   \multicolumn{2}{l}{
+($\condone$)    
+    $\bot \not\in\Sigma_l$ and $\top\not\in\Sigma_r$ and 
+    $(\Sigma_l \cup \opset\nxt\Theta \cup \Gamma^\iimp ) \cap 
+       (\opset{\iimp}{\Delta} 
+        \cup 
+        \opset{\nxt}{\Phi} 
+        \cup 
+        \Sigma_r)  = \emptyset$
+   }
+   \\[2px]
+   \multicolumn{2}{l}{
+($\condtwo$) 
+    $\Sigma_l$ and $\Sigma_r$ each contain atomic formulae only 
+   }
+  \\[5px]
+   \multicolumn{2}{l}{
+   Explanations for the conditions:}
+   \\[2px]
+   \multicolumn{2}{l}{
+   ($\condzero$) there is at least one $\nxt$- or $\iimp$-formula in the
+   succedent of the conclusion}
+   \\[2px]
+   \multicolumn{2}{l}{
+   ($\condone$) none of the rules
+       $\botleftrulename, \toprightrulename, \idrulename$ 
+       are applicable to the conclusion}
+   \\[2px]
+   \multicolumn{2}{l}{
+   ($\condtwo$) none of the rules $\orleftrulename, \orrightrulename,
+   \andleftrulename, \andrightrulename, \impleftrulename,
+   \imprightrulename$ are applicable to the conclusion}
+    \end{tabular}
+}
+
+\begin{calculus}
+% Add the inference rules of your proof system here.
+% The "proof.sty" and "bussproofs.sty" packages are available.
+% If you need any other package, please contact the editor (bruno@logic.at)
+  \begin{tabular}[c]{l@{\extracolsep{0.5cm}}l}
+    \multicolumn{2}{l}{
+      $\quad\toprule \qquad\qquad \idrule \qquad\qquad \botrule$}
+\\[15px]
+    \orleftrule &  \orrightrule
+\\[15px]
+    \andleftrule  & \andrightrule
+\\[15px]
+    \impleftrule & \imprightrule
+\\[15px]
+    \multicolumn{2}{l}{
+    \newsteprulenewversion
+    }
+  \end{tabular}
+\end{calculus}
+\begin{clarifications}
+  There is a unary modal connective $\nxt$ to be read as ``later''.
+  Its semantics are box-like in terms of the underlying intuitionistic
+  Kripke relation, which is irreflexive!  There is also a new
+  connective $\iimp$ corresponding to an irreflexive version of
+  intuitionistic implication, which can be defined as
+  $\nxt(\varphi\limp\psi)$.  The $\impleftrulename$ rule is \LK-like
+  \iref{GentzenLK} in that it is multi-conclusioned and has one branch
+  for each subformula of $\varphi\land\psi$, but it also converts
+  $\varphi\limp\psi$ to $\varphi\iimp\psi$, read upwards, building in
+  a form of contraction on such formulae.  The $\imprightrulename$
+  rule is unusual in that it has two premises: the left one is LK-like
+  in that it does not delete $\Delta$, read upwards, while the right
+  one converts $\varphi\limp\psi$ to
+  $\varphi\iimp\psi$ read upwards building in a form of contraction on
+  such formulae. The $\steprulename$ rule has an indeterminate number
+  of premises, one for each
+  $\varphi_i\iimp\psi_i \in \opset{\iimp}{\Delta}$, and one for each
+  $\varphi_i \in \opset{\nxt}{\Phi}$. For each such ``eventuality'',
+  the rule creates a premise that contains the subformula on an
+  appropriate side, but also creates a copy of the principal formula
+  in the antecedent of that premise, thus building in aspects of the
+  standard sequent calculus for G\"oedel-L\"ob logic.
+\end{clarifications}
+
+\begin{history}
+The superintuitionistic modal logic KMlin is obtained from
+Kuznetsov-Muravitsky logic KM~\cite{Litak:Constructive} by demanding
+that the underlying Kripke frames be linear. The semantics of the
+unary modality $\nxt$ becomes ``true in all strict successors''.
+
+Clouston and Gor\'e~\cite{DBLP:conf/fossacs/CloustonG15} defined this
+sequent calculus. Their rules are inspired by those of:
+Mauro Ferrarri, Camillo Fiorentini and Guido Fiorino for a sequent
+calculus with compartments for intuitionistic
+logic~\cite{DBLP:journals/jar/FerrariFF13}; Giovanna Corsi for her
+sequent calculus for (quantified) G\"odel-Dummett logic
+LC~\cite{Corsi89};
+and George
+Boolos for his sequent calculus for Go\"del-L\"ob logic
+GL~\cite{boolos-provability-logic}.
+
+\end{history}
+
+\begin{technicalities}
+  Clouston and Gor\'e gave semantic proofs of soundness, cut-free
+  completeness and the finite model property, thus giving
+  decidability. They showed that the validity problem for this logic
+  is coNP-complete. They also showed that all rules are invertible, so
+  the sequent calculus can be used for backtrack-free and terminating
+  backward proof search via the following strategy for rule
+  applications: apply any applicable rule backwards, always preferring
+  zero-premise rules if possible!
+\end{technicalities}
+
+\end{entry}

@@ -1,7 +1,9 @@
 
-% When adding an entry for a proof system "X" to the encyclopedia, 
+\part{\emph{Proof Systems}}
+
+% When adding an entry for a proof system "X" to the encyclopedia,
 % an "\includeProofSystem" statement with the following
-% format should be added in this file : 
+% format should be added in this file :
 
 %   \includeProofSystem{X}
 
@@ -10,20 +12,35 @@
 % Acronyms of Proof Systems in Chronological Order
 
 
+
 \newcommand{\NJ}{\ensuremath{\mathbf{NJ}}\xspace} % GentzenNJ 1935
 \newcommand{\LK}{\ensuremath{\mathbf{LK}}\xspace} % GentzenLK 1935
 \newcommand{\LJ}{\ensuremath{\mathbf{LJ}}\xspace} % GentzenLJ 1935
 \newcommand{\LJmc}{\ensuremath{\mathbf{LJ'}}\xspace} % MultiConclusionLJ 1954
 \newcommand{\SystemF}{\ensuremath{\mathbf{F}}\xspace} % fc 1971
+\newcommand{\Bledsoe}{\ensuremath{\mathbf{Prover}}\xspace} % Bledsoe 1984
 \newcommand{\Muscadet}{\ensuremath{\mathbf{Muscadet}}\xspace} % Muscadet 1984
+\renewcommand{\LL}{\ensuremath{\mathbf{LL}}\xspace} % LL 1986
 \newcommand{\TLL}{\ensuremath{\mathbf{TLL}}\xspace} % TLL 1987
+\newcommand{\ILL}{\ensuremath{\mathbf{ILL}}\xspace} % ILL 1987
+\newcommand{\LC}{\ensuremath{\mathbf{LC}}\xspace} % LC 1991
 \newcommand{\LF}{\ensuremath{\mathbf{LF}}\xspace} % LuoLF 1994
+\renewcommand{\lambdabar}{\overline{\lambda}} % LambdaBar 1994
+\newcommand{\LJT}{\ensuremath{\mathbf{LJT}}\xspace} % LambdaBar 1994
 \newcommand{\Gtc}{\ensuremath{\mathbf{G3c}}\xspace} % G3c 1996
+\newcommand{\LLP}{\ensuremath{\mathbf{LLP}}\xspace} % LLP 2000
+\newcommand{\LKmumutilde}{\ensuremath{\mathbf{LK}_{\mu\tilde\mu}}\xspace} % LKMuMuTilde 2000
+\newcommand{\LKT}{\ensuremath{\mathbf{LKT}\xspace}} % LKMuMuTilde 2000
+\newcommand{\LKQ}{\ensuremath{\mathbf{LKQ}\xspace}} % LKMuMuTilde 2000
+\newcommand{\LKmumutildetree}{\ensuremath{\mathbf{LK}_{\mu\tilde\mu}-\mathbf{tree}}\xspace} % LKMuMuTildeTree 2005
+\newcommand{\calcoloP}{{\bf $\mathcal{T}P^{\bf T}$}} % KLM 2005
 \newcommand{\LKF}{\ensuremath{\mathbf{LKF}}\xspace} % LKF 2007
 \newcommand{\LJF}{\ensuremath{\mathbf{LJF}}\xspace} % LJF 2007
 \newcommand{\FILL}{\ensuremath{\mathbf{FILL}}\xspace} % FILL 1990
 \newcommand{\FIL}{\ensuremath{\mathbf{FIL}}\xspace} % FIL 2005
 \newcommand{\NDc}{\ensuremath{\mathbf{ND}^\mathbf{c}}\xspace} % ContextualND 2013
+\newcommand{\seqlcnxt}{\ensuremath{\mathrm{SKMlin}}\xspace} % SKMlin 2014
+
 
 % ======================================================
 % Proof Systems in Chronological Order
@@ -34,15 +51,44 @@
 \includeProofSystem{MultiConclusionLJ} % 1954
 \includeProofSystem{fc} % 1971
 \includeProofSystem{ExpansionProofs} % 1983
+\includeProofSystem{Bledsoe} % 1984
 \includeProofSystem{Muscadet} % 1984
+\includeProofSystem{LL} % 1986
 \includeProofSystem{TLL} % 1987
+\includeProofSystem{ILL} % 1987
+\includeProofSystem{PureTypeSystems} % 1989
 \includeProofSystem{FILL} % 1990
+\includeProofSystem{LC} % 1991
+\includeProofSystem{LambdaMu} % 1992
 \includeProofSystem{LuoLF} % 1994
+\includeProofSystem{LambdaBar} % 1994
 \includeProofSystem{G3c} % 1996
+\includeProofSystem{GraphTabK} %1997
+\includeProofSystem{SyntheticTableaux} % 2000
+\includeProofSystem{LLP} %2000
+\includeProofSystem{LKMuMuTilde} % 2000
+\includeProofSystem{SocraticProofsCPL} % 2003
+\includeProofSystem{SocraticProofsFOL} % 2004
+\includeProofSystem{ModalSocraticProofsK} % 2004
+\includeProofSystem{ModalSocraticProofs} % 2004
+\includeProofSystem{LKMuMuTildeTree} % 2005
+\includeProofSystem{LabelledConditionals} % 2003-2007
+\includeProofSystem{KLM} % 2005-2009
+\includeProofSystem{GBetaFB} % 2004-2009
+
+\mathversion{mathhungry}
+\includeProofSystem{ExtResLEO2} % 2006-2013
+\mathversion{normal}
+
 \includeProofSystem{FIL} % 2005
 \includeProofSystem{LKF} % 2007
 \includeProofSystem{LJF} % 2007
 \includeProofSystem{Counterfactual} % 1983-2013
 \includeProofSystem{Counterfactual2} % 2012-2013
+\includeProofSystem{NestedConditionals} % 2012-2014
+\includeProofSystem{FILL-dn} % 2013
 \includeProofSystem{ContextualND} % 2013
 \includeProofSystem{IR} % 2014
+\includeProofSystem{SKMlin} % 2014
+\includeProofSystem{EDResolutionCPL} % 2014
+\includeProofSystem{EDResolutionmbC} % 2014

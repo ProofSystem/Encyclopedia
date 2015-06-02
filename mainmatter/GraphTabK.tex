@@ -1,0 +1,191 @@
+\calculusName{Graph-based tableaux for modal logics}
+\calculusAcronym{}
+\calculusLogic{Modal logics}
+\calculusType{Tableau Calculus}
+\calculusYear{1997}
+\calculusAuthor{Marcos A. Castilho \and Luis Fari\~nas del Cerro \and Olivier Gasquet \and Andreas Herzig}
+
+
+
+%
+\entryTitle{Graph-based tableaux for modal logics}
+\entryAuthor{Joseph Boudou \and Olivier Gasquet}
+
+\maketitle
+
+\begin{entry}{GraphTabK}
+
+\newenvironment{infruleset}[1]{%
+  \sc{#1}
+  \[ %
+}{%
+  \] %
+}
+\newcommand{\infrule}[3]{\vcenter{\infer[\mbox{\textit{(#1)}}]{\tikz{ #3 }}{\tikz{ #2 }}}}
+\newcommand{\sepproof}{\hskip 2em plus 6em\relax}
+\newcommand{\sepline}{$$ $$}
+
+\usetikzlibrary{backgrounds}
+\tikzset{ lstate/.pic={\draw[fill] (-.1,0) circle (1.5pt) node [left]  () {\tikzpictext};} }
+\tikzset{ rstate/.pic={\draw[fill] (.1,0)  circle (1.5pt) node [right] () {\tikzpictext};} }
+\tikzset{ ustate/.pic={\draw[fill] (.1,0)  circle (1.5pt) node [above] () {\tikzpictext};} }
+\tikzset{ dstate/.pic={\draw[fill] (.1,0)  circle (1.5pt) node [below] () {\tikzpictext};} }
+
+\begin{calculus}
+
+\begin{infruleset}{Boolean rules}
+  \infrule{$\bot$}{
+    \draw pic ["${\Gamma, A, \neg A}$"] {lstate};}{
+    \draw pic ["${\Gamma, A, \neg A, \bot}$"] {lstate};}
+  \sepproof
+  \infrule{$\wedge$}{
+    \draw pic ["${\Gamma, A \wedge B}$"] {lstate} ;}{
+    \draw pic ["${\Gamma, A \wedge B, A, B}$"] {lstate} ;}
+  \sepproof
+  \infrule{$\vee$}{
+    \draw pic ["${\Gamma, A_1 \vee A_2}$"] {lstate} ;}{
+    \draw pic ["${\Gamma, A_1 \vee A_2, A_i}$"] {lstate} ;}
+\end{infruleset}
+
+\begin{infruleset}{Diamond rule}
+  \infrule{$\Diamond$}{
+    \draw pic ["${\Gamma, \Diamond A}$"] {lstate} ;}{
+    \draw[->] (0,0) pic ["${\Gamma, \Diamond A}$"] {lstate} -- (.5,0) pic ["$A$"] {rstate} ;}
+\end{infruleset}
+
+\begin{infruleset}{Propagation rules}
+  \infrule{K}{
+    \draw[->] (0,0)  pic ["${\Gamma, \Box A}$"] {lstate} --
+              (.5,0) pic ["${\Delta}$"] {rstate} ;}{
+    \draw[->] (0,0)  pic ["${\Gamma, \Box A}$"] {lstate} --
+              (.5,0) pic ["${\Delta, A}$"] {rstate} ;}
+  \sepline
+  \infrule{T}{
+    \draw pic ["${\Gamma, \Box A}$"] {lstate} ;}{
+    \draw pic ["${\Gamma, \Box A, A}$"] {lstate} ;}
+  \sepproof
+  \infrule{4}{
+    \draw[->] (0,0)  pic ["${\Gamma, \Box A}$"] {lstate} --
+              (.5,0) pic ["${\Delta}$"] {rstate} ;}{
+    \draw[->] (0,0)  pic ["${\Gamma, \Box A}$"] {lstate} --
+              (.5,0) pic ["${\Delta, \Box A}$"] {rstate} ;}
+  \sepproof
+  \infrule{B}{
+    \draw[->] (0,0)  pic ["${\Gamma}$"] {lstate} --
+              (.5,0) pic ["${\Delta, \Box A}$"] {rstate} ;}{
+    \draw[->] (0,0)  pic ["${\Gamma, A}$"] {lstate} --
+              (.5,0) pic ["${\Delta, \Box A}$"] {rstate} ;}
+  \sepline
+  \infrule{$5_{\mathord\rightarrow}$}{
+    \draw[->] (-.5,0) pic ["${\Gamma}$"] {lstate} --
+              (0, .2) pic ["${\Delta_1, \Box A}$"] {rstate} ;
+    \draw[->] (-.5,0) --
+              (0,-.2) pic ["${\Delta_2}$"] {rstate} ;}{
+    \draw[->] (-.5,0) pic ["${\Gamma}$"] {lstate} --
+              (0, .2) pic ["${\Delta_1, \Box A}$"] {rstate} ;
+    \draw[->] (-.5,0) --
+              (0,-.2) pic ["${\Delta_2, \Box A}$"] {rstate} ;}
+  \sepproof
+  \infrule{$5_{\mathord\uparrow}$}{
+    \draw[->] (0,0)  pic ["${\Gamma}$"] {lstate} --
+              (.4,0) pic ["${\Delta, \Box A}$"] {rstate} ;}{
+    \draw[->] (0,0)  pic ["${\Gamma, \Box A}$"] {lstate} --
+              (.4,0) pic ["${\Delta, \Box A}$"] {rstate} ;}
+  \sepproof
+  \infrule{$5_{\mathord\downarrow}$}{
+    \draw[->] (0,0)  pic ["${\Gamma}$"] {lstate} --
+              (.4,0) pic ["${\Delta_1, \Box A}$"] {ustate};
+    \draw[->] (.6,0) --
+              (1,0)  pic ["${\Delta_2}$"] {rstate}; }{
+    \draw[->] (0,0)  pic ["${\Gamma}$"] {lstate} --
+              (.4,0) pic ["${\Delta_1, \Box A}$"] {ustate};
+    \draw[->] (.6,0) --
+              (1,0)  pic ["${\Delta_2, \Box A}$"] {rstate}; }
+\end{infruleset}
+
+\begin{infruleset}{Structural rules}
+  \infrule{D}{
+    \draw pic ["${\Gamma}$"] {lstate} ;}{
+    \draw[->] (0,0)  pic ["${\Gamma}$"] {lstate} --
+              (.5,0) pic ["${\emptyset}$"] {rstate};}
+  \sepproof
+  \infrule{De}{
+    \draw[->] (0,0) pic ["${\Gamma}$"] {lstate} --
+              (1.2,0) pic ["${\Delta}$"] {rstate} ;}{
+    \draw[->] (0,0) pic ["${\Gamma}$"] {lstate} --
+              (1.2,0) pic ["${\Delta}$"] {rstate} ;
+    \draw[->] (-.02,-.07) --
+              (.5,-.2) pic ["${\emptyset}$"] {dstate};
+    \draw[->] (.7,-.2) -- (1.22,-.07);}
+  \sepline
+  \infrule{$C_0$}{
+    \draw[->] (-.5,0) pic ["${\Gamma}$"] {lstate} --
+              (0, .2) pic ["${\Delta_1}$"] {rstate} ;
+    \draw[->] (-.5,0) --
+              (0,-.2) pic ["${\Delta_2}$"] {rstate} ;}{
+    \draw[->] (-.5,0) pic ["${\Gamma}$"] {lstate} --
+              (0, .2) pic ["${\Delta_1}$"] {ustate} ;
+    \draw[->] (-.5,0) --
+              (0,-.2) pic ["${\Delta_2}$"] {dstate} ;
+    \draw[->] (.2,.2) --
+              (.7,0)  pic ["${\emptyset}$"] {rstate};
+    \draw[->] (.2,-.2) -- (.7,0);}
+  \sepproof
+  \infrule{$C_1$}{
+    \draw[->] (0,0)  pic ["${\Gamma}$"] {lstate} --
+              (.5,0) pic ["${\Delta}$"] {rstate} ;}{
+    \draw[->] (0,0)  pic ["${\Gamma}$"] {lstate} --
+              (.5,0) pic ["${\Delta}$"] {dstate} ;
+    \draw[->] (.7,0)  --
+              (1.2,0) pic ["${\emptyset}$"] {rstate} ;}
+\end{infruleset}
+
+\end{calculus}
+
+\begin{clarifications}
+  The method constructs a collection of rooted directed acyclic graphs with vertices labeled with sets of formulas.
+  \tikz[baseline=-.7ex]{\draw pic ["${\Gamma}$"] {lstate};} denotes a vertex labeled with $\Gamma$.
+  To each branch of the tableau corresponds a graph.
+  The only branching rule is $(\vee)$, for which $i$ must be choosen among $\{1,2\}$.
+  A branch is closed if the corresponding graph contains a vertex of the form
+  \tikz[baseline=-.7ex]{\draw pic ["${\Gamma, \bot}$"] {lstate};}.
+  For modal logic K, only rules $(\bot)$, $(\mathord\wedge)$, $(\mathord\vee)$, $(\Diamond)$ and
+  $(K)$ are used.
+  To each additional axiom T, 4, B, 5, D, De and C corresponds a set of rules
+  to add, as detailed in Table~\ref{tab:GraphTabK} below.
+
+  \begin{table}
+  \center
+  \begin{tabular}{l l l}
+    Axiom & Model's property & Rules \\
+    \hline
+    $T = \Box A \imp A$ & reflexivity & $(T)$ \\
+    $4 = \Box A \imp \Box\Box A$ & transitivity & $(4)$ \\
+    $B = \Diamond\Box A \imp A$ & symmetry & $(B)$ \\
+    $5 = \Diamond\Box A \imp \Box A$ & euclideanity &
+      $(5_{\mathord\rightarrow})$, $(5_{\mathord\uparrow})$, $(5_{\mathord\downarrow})$ \\
+    $D = \Box A \imp \Diamond A$ & seriality & $(D)$ \\
+    $De = \Diamond A \imp \Diamond\Diamond A$ & density & $(De)$ \\
+    $C = \Diamond\Box A \imp \Box\Diamond A$ & confluence & $(C_0)$, $(C_1)$
+  \end{tabular}
+  \caption{Correspondences between modal axioms and graph-based tableaux rules.}
+  \label{tab:GraphTabK}
+  \end{table}
+\end{clarifications}
+
+\begin{history}
+  Tableaux methods for modal logics have a long history started by M. Fitting~\cite{fitting.1972}.
+  The present method, introduced in~\cite{castilho-farinas-gasquet-herzig.1997} and extended in~\cite{farinas-gasquet.2002},
+  distinguish itself by its ability to deal with properties like confluence or density.
+  Moreover, it can be easily adapted to multimodal logics.
+  The method has been enhanced and implemented in the LoTREC prover~\cite{gasquet-herzig-said-schwarzentruber.2014}.
+\end{history}
+
+\begin{technicalities}
+  The method is sound and complete for any combination of axioms.
+  Termination is more problematic
+  and has been investigated in~\cite{farinas-gasquet.2002,gasquet-herzig-sahade.2006,gasquet-herzig-said-schwarzentruber.2014}.
+\end{technicalities}
+
+
+\end{entry}
