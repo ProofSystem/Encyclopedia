@@ -147,6 +147,10 @@
 }
 
 
+%\newenvironment{entry}[1]
+%{\label{entry:#1}\begin{refsection}[bibliographies/#1.bib]}
+%{\updateindex\myline\printbibliography[heading=none]\end{refsection}}
+
 \newenvironment{entry}[1]
 {\label{entry:#1}\begin{refsection}[#1]}
 {\updateindex\myline\printbibliography[heading=none]\end{refsection}}
