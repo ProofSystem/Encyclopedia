@@ -23,6 +23,7 @@
 \newcommand{\lladisj}{\oplus}
 \newcommand{\llimp}{\multimap}
 \newcommand{\llmconj}{\otimes}
+\newcommand{\llmdisj}{\bindnasrepma}
 \newcommand{\llzero}{0}
 \newcommand{\llone}{1}
 
@@ -92,18 +93,19 @@
 \end{calculus}
 
 \begin{clarifications}
-  Succedents are sole formulas.
+  Succedents are single formulas.
   Antecedents are ordered list of formulas.
   If $\Gamma$ is the list $A_1, \ldots, A_n$ of formulas, $!\Gamma$ denotes the list $!A_1, \ldots, !A_n$.
-  First order quantifier can be added with rules similar to \LJ \iref{GentzenLJ}.
+  First order quantifiers can be added with rules similar to \LJ \iref{GentzenLJ}.
   Conversely, removing the exponential rules leads to the intuitionistic multiplicative additive linear logic (IMALL).
   And by further removing the additive rules, the intuitionistic multiplicative linear logic (IMLL) \cite{mints1977closed} is obtained.
 \end{clarifications}
 
 \begin{history}
-  Introduced by Girard and Lafont in~\cite{lafont1987tapsoft} as intuitionistic variant of LL~\irefmissing{LL}.
+  Introduced by Girard and Lafont in~\cite{lafont1987tapsoft} as intuitionistic variant of \LL~\iref{LL}.
   \ILL has multiple applications in categorical logic.
-  By contrast with the full intuitionistic linear logic~\iref{FILL}, there is no multiplicative disjunction in \ILL.
+  By contrast with \FILL~\iref{FILL},
+  \ILL does not include the multiplicative disjunction~$\llmdisj$.
 \end{history}
 
 \begin{technicalities}
