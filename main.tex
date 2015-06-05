@@ -1,48 +1,69 @@
 \documentclass[graybox, envcountchap]{svmult}
 
-
+% Font Packages
+% =============
 \usepackage{mathptmx}        % selects Times Roman as basic font
 \usepackage{helvet}          % selects Helvetica as sans-serif font
 \usepackage{courier}         % selects Courier as typewriter font
-
-\usepackage{xspace}
-\usepackage{multind}         % allows multiple index generation
-\usepackage{graphicx}        % standard LaTeX graphics tool
-                             % when including figure files
-\usepackage{multicol}        % used for the two-column index
-\usepackage[bottom]{footmisc}% places footnotes at page bottom
-
-\usepackage{hyperref}
-
-\usepackage{amssymb}
 \usepackage{txfonts}
-\usepackage{cmll}
 
+
+% LaTeX Layout and Functionality Packages and Commands
+% ====================================================
+\usepackage{hyperref}         % standard LaTeX hyperreferencing package
+\usepackage{graphicx}         % standard LaTeX graphics package
+
+\usepackage{xspace}           % fixes spacing after LaTeX commands
+
+\usepackage{multicol}         % used for the two-column index
+\usepackage[bottom]{footmisc} % places footnotes at page bottom
+\DeclareMathVersion{mathhungry} % for entries that need too many math alphabets        
+
+
+% General Mathematical Symbols
+% ============================
+\usepackage{ded,stmaryrd}
+\usepackage{amssymb}
+
+
+% Logical Symbols
+% ===============
+\usepackage{cmll} % symbols for linear logic
+
+
+% Proof Drawing Packages
+% ======================
 \usepackage{proof}
 \usepackage{bussproofs} \EnableBpAbbreviations
 \usepackage{qtree}
-
-
-
-\usepackage[sorting=ydnt,maxnames=99]{biblatex}
-\usepackage{bibliographies}
-
-\usepackage{commands}
-\usepackage{logicalsymbols}
-
 \usepackage{prooftree}
-\usepackage{ded,stmaryrd}
-\usepackage{acronyms}       % Acronyms for proof systems
 
-\usepackage{tikz}
-\usetikzlibrary{quotes,arrows.meta}
 
-% makeindex should use "svind.ist" 
-\makeindex{logics} % index for logics
-\makeindex{ctypes} % index for calculus types
+% Packages and Commands for Indexes
+% =================================
+\usepackage{multind} % allows multiple index generation
+\makeindex{logics}   % index for logics
+\makeindex{ctypes}   % index for calculus types
                
-% this is needed by entries that use too many math alphabets        
-\DeclareMathVersion{mathhungry}
+
+% Packages and Commands for Bibliographies
+% ========================================
+\usepackage[sorting=ydnt,maxnames=99]{biblatex}
+
+
+% Custom Packages of the Encyclopedia
+% ===================================
+\usepackage{commands}       % Commands for the entry template
+\usepackage{logicalsymbols} % LaTeX commands for logical symbols
+\usepackage{acronyms}       % Acronyms for proof systems
+\usepackage{bibliographies} % BibLaTeX inclusion statements for entry bibliographies
+
+
+% Other Packages
+% ==============
+\usepackage{tikz} \usetikzlibrary{quotes,arrows.meta}
+\usepackage{microtype} 
+
 
 
 \begin{document}
