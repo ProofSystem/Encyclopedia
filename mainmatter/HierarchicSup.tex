@@ -1,0 +1,163 @@
+
+% If the calculus has an acronym, define it.
+% (e.g. \newcommand{\LK}{\ensuremath{\mathbf{LK}}\xspace})
+
+\calculusName{Hierarchic Superposition}   % The name of the calculus
+\calculusAcronym{}    % The acronym if defined above, or empty otherwise. 
+\calculusLogic{classical}  % Specify the logic (e.g. classical, intuitionistic, ...) for which this calculus is intended.
+\calculusType{saturation}   % Specify the calculus type (e.g. Frege-Hilbert style, tableau, sequent calculus, hypersequent calculus, natural deduction, ...)
+\calculusYear{1992/2013}   % The year when the calculus was invented.
+\calculusAuthor{Leo Bachmair, Harald Ganzinger, Uwe Waldmann} % The name(s) of the author(s) of the calculus.
+
+
+\entryTitle{Hierarchic Superposition}     % Title of the entry (usually coincides with the name of the calculus).
+\entryAuthor{Uwe Waldmann}    % Your name(s). Separate multiple names with "\and".
+
+
+% If you wish, use tags to give any other information 
+% that might be helpful for classifying and grouping this entry:
+% e.g. \tag{Two-Sided Sequents}
+% e.g. \tag{Multiset Cedents}
+% e.g. \tag{List Cedents}
+% You are free to invent your own tags. 
+% The Encyclopedia's coordinator will take care of 
+% merging semantically similar tags in the future.
+
+
+\maketitle
+
+
+% If your files are called "MyProofSystem.tex" and "MyProofSystem.bib", 
+% then you should write "\begin{entry}{MyProofSystem}" in the line below
+\begin{entry}{HierarchicSup}
+
+% Define here any newcommands you may need:
+% e.g. \newcommand{\necessarily}{\Box}
+% e.g. \newcommand{\possibly}{\Diamond}
+
+
+\begin{calculus}
+
+% Add the inference rules of your proof system here.
+% The "proof.sty" and "bussproofs.sty" packages are available.
+% If you need any other package, please contact the editor (bruno@logic.at)
+
+Abstraction
+\[
+\infer[\textit{Abstraction}]
+{C[x] \lor \neg x \approx t}{C[t]\vphantom{[]}}
+\]
+applied exhaustively until no literal contains operator symbols
+from both $\Sigma_{\mathrm{Base}}$ and $\Sigma_{\mathrm{Ext}}$,
+followed by saturation under
+\[
+\infer[\textit{Constraint Refutation}]
+{\bot}{M & M \models_{\mathrm{Base}} \bot}
+\]
+and the rules of the standard superposition calculus~\iref{Superposition},
+where the latter are restricted in such a way that only extension
+literals participate in inferences and that all unifying substitutions
+must be simple.
+
+$C$ is an equational clause,
+$t$ is a term,
+$x$ is a fresh variable,
+$M$ is a finite set of clauses over $\Sigma_{\mathrm{Base}}$.
+\end{calculus}
+
+% The following sections ("clarifications", "history", 
+% "technicalities") are optional. If you use them, 
+% be very concise and objective. Nevertheless, do write full sentences. 
+% Try to have at most one paragraph per section, because line breaks 
+% do not look nice in a short entry.
+
+\begin{clarifications}
+Hierarchic superposition is a refutational saturation calculus for
+first-order clauses with equality
+modulo a base specification
+(e.\,g., some kind of arithmetic),
+for which a decision procedure is available
+that can be used as a ``black-box''
+in the \textit{Constraint Refutation} rule.
+The inference rules are supplemented by a redundancy criterion
+that permits to delete clauses that are unnecessary for
+deriving a contradiction during the saturation, see \iref{SaturationWithRed}.
+\end{clarifications}
+
+\begin{history}
+The hierarchic superposition calculus~\cite{BachmairGanzingerWaldmann1992ALP,BachmairGanzingerWaldmann1994AAECC}
+works in the framework of hierarchic specifications
+consisting of a base part and an extension,
+where the models of the hierarchic specification
+are those models of the extension clauses that
+are conservative extensions of some base model.
+The calculus is refutationally complete,
+provided that the set of clauses is sufficiently
+complete after abstraction and that the base specification is compact.
+An improved variant of the calculus
+was given in \cite{BaumgartnerWaldmann2013CADE};
+this calculus uses a weaker form of abstraction that is
+guaranteed to preserve sufficient completeness
+\looseness=-1
+but requires an additional abstraction step after each inference.
+
+\end{history}
+
+% \begin{technicalities}
+% ToDo: write here remarks about soundness, completeness, decidability...
+% \end{technicalities}
+
+
+% General Instructions:
+% =====================
+
+% The preferred length of an entry is 1 page. 
+% Do the best you can to fit your proof system in one page.
+%
+% If you are finding it hard to fit what you want in one page, remember:
+%
+%   * Your entry needs to be neither self-contained nor fully understandable
+%     (the interested reader may consult the cited full paper for details)
+%
+%   * If you are describing several proof systems in one entry, 
+%     consider splitting your entry.
+%
+%   * You may reduce the size of your entry by ommitting inference rules
+%     that are already described in other entries.
+%
+%   * Cite parsimoniously (see detailed citation instructions below).
+%
+% 
+% If you do not manage to fit everything in one page, 
+% it is acceptable for an entry to have 2 pages.
+%
+% For aesthetical reasons, it is preferable for an entry to have
+% 1 full page or 2 full pages, in order to avoid unused blank space.
+
+
+
+% Citation Instructions:
+% ======================
+
+% Please cite the original paper where the proof system was defined.
+% To do so, you may use the \cite command within 
+% one of the optional environments above,
+% or use the \nocite command otherwise.
+
+% You may also cite a modern paper or book where the 
+% proof system is explained in greater depth or clarity.
+% Cite parsimoniously.
+
+% Do not cite related work. Instead, use the "\iref" or "\irefmissing" 
+% commands to make an internal reference to another entry, 
+% as explained within the "history" environment above.
+
+% You do not need to create the "References" section yourself. 
+% This is done automatically.
+
+
+
+
+% Leave an empty line above "\end{entry}".
+
+\end{entry}
