@@ -1,0 +1,106 @@
+
+% If the calculus has an acronym, define it.
+% (e.g. \newcommand{\LK}{\ensuremath{\mathbf{LK}}\xspace})
+
+\calculusName{Constructive Modal Logic S4}
+\calculusAcronym{\CSFour}
+\calculusLogic{Constructive Modal Logic}
+\calculusType{Sequent Calculus}
+\calculusYear{2000}
+\calculusAuthor{Gavin Bierman \and Valeria de Paiva}
+
+
+\entryTitle{Constructive Modal Logic S4 (\CSFour)}
+\entryAuthor{Harley Eades III \and Valeria de Paiva}
+
+
+\maketitle
+
+
+\begin{entry}{CSFour} 
+
+\newcommand{\llaconj}{\binampersand}
+\newcommand{\lladisj}{\oplus}
+\newcommand{\llimp}{\multimap}
+\newcommand{\llmconj}{\otimes}
+\newcommand{\llzero}{0}
+\newcommand{\llone}{1}
+
+\newcommand{\sepproof}{\hskip 2em plus 6em\relax}
+\newcommand{\sepseq}{\quad}
+\newcommand{\sepline}{\]\[}
+
+\newenvironment{infruleset}[1]{%
+  \sc{#1} \vspace{-1ex} \[ %
+}{%
+  \] %
+}
+
+\begin{calculus}
+\[
+\begin{array}{ccccccc}
+
+  \infer[ax]{\Delta,A \vdash A}{}
+  &
+  \quad
+  &
+  \infer[cut]{\Gamma, \Delta \vdash B}{\Gamma \vdash A & A, \Delta \vdash B}
+  &
+  \quad
+  &
+  \infer[\perp\mathcal{L}]{\Gamma,\perp \vdash A}{}\\
+  \\
+  \infer[\lor\mathcal{L}]{\Gamma,A \lor B \vdash C}{\Gamma, A \vdash C & \Gamma, B \vdash C}
+  &
+  \quad
+  &
+  \infer[\lor\mathcal{R}]{\Gamma \vdash A \lor B}{\Gamma \vdash A}
+  &
+  \quad
+  &
+  \infer[\lor\mathcal{R}]{\Gamma \vdash A \lor B}{\Gamma \vdash B}\\
+  \\
+  \infer[\land\mathcal{L}]{\Gamma, A \land B \vdash C}{\Gamma, A \vdash C}
+  &
+  \quad
+  &
+  \infer[\land\mathcal{L}]{\Gamma, A \land B \vdash C}{\Gamma, B \vdash C}
+  &
+  \quad
+  &
+  \infer[\land\mathcal{R}]{\Gamma \vdash A \land B}{\Gamma \vdash A & \Gamma \vdash B}\\
+  \\
+  \infer[\to\mathcal{L}]{\Gamma, A \to B \vdash C}{\Gamma \vdash A & \Gamma, B \vdash C}
+  &
+  \quad
+  &
+  \infer[\to\mathcal{R}]{\Gamma \vdash A \to B}{\Gamma, A \vdash B}
+  &
+  \quad
+  &
+  \infer[\Box\mathcal{L}]{\Gamma, \Box A \vdash B}{\Gamma, A \vdash B}\\
+  \\
+  \infer[\Box\mathcal{R}]{\Box \Gamma,\Delta \vdash A}{\Box \Gamma \vdash \Box A}
+  &
+  \quad
+  &
+  \infer[\Diamond\mathcal{L}]{\Delta,\Box\Gamma, \Diamond A \vdash \Diamond B}{\Box \Gamma, A \vdash \Diamond B}
+  &
+  \quad
+  &
+  \infer[\Diamond\mathcal{R}]{\Gamma \vdash \Diamond A}{\Gamma \vdash A}\\
+\end{array}
+\]
+\vspace{-1em}
+
+\end{calculus}
+
+\begin{clarifications}
+  Left contexts, denoted $\Gamma$, are multisets of formulas.
+\end{clarifications}
+
+\begin{history}
+ TODO
+\end{history}
+
+\end{entry}
