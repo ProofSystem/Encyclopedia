@@ -1,9 +1,5 @@
 
-% If the calculus has an acronym, define it.
-% (e.g. \newcommand{\LK}{\ensuremath{\mathbf{LK}}\xspace})
-
-
-\calculusName{Polarized Linear Logic}   % The name of the calculus
+\calculusName{Polarized Linear Sequent Calculus}   % The name of the calculus
 \calculusAcronym{\LLP}    % The acronym if defined above, or empty otherwise. 
 \calculusLogic{Polarized Linear Logic}  % Specify the logic (e.g. classical, intuitionistic, ...) for which this calculus is intended.
 \calculusType{sequent calculus}   % Specify the calculus type (e.g. Frege-Hilbert style, tableau, sequent calculus, hypersequent calculus, natural deduction, ...)
@@ -11,7 +7,7 @@
 \calculusAuthor{Olivier Laurent} % The name(s) of the author(s) of the calculus.
 
 
-\entryTitle{Polarized Linear Logic}     % Title of the entry (usually coincides with the name of the calculus).
+\entryTitle{Polarized Linear Sequent Calculus \LLP}     % Title of the entry (usually coincides with the name of the calculus).
 \entryAuthor{Olivier Laurent}    % Your name(s). Separate multiple names with "\and".
 
 
@@ -146,7 +142,7 @@ $\sigma$ is a permutation.
 % ToDo: write here short remarks that may help the reader to understand 
 % the inference rules of the proof system.
 Negation is not a connective. It is defined using De Morgan's laws so that $(A^\bot)^\bot=A$.
-Negative connectives which turn negative formulas into negative formulas ($\parr$, $\bot$, $\with$ and $\top$) are the reversible connectives of \LL\iref{LL}.
+Negative connectives which turn negative formulas into negative formulas ($\parr$, $\bot$, $\with$ and $\top$) are the reversible connectives of \LL~\iref{LL}.
 Their dual, the positive connectives ($\otimes$, $1$, $\oplus$, $0$) have the focusing property~\cite{focal}, related here with the ``at most one positive formula'' property of sequents.
 \end{clarifications}
 
@@ -157,13 +153,13 @@ Their dual, the positive connectives ($\otimes$, $1$, $\oplus$, $0$) have the fo
 % in the Encyclopedia (where "OtherProofSystem" is its ID). 
 % Use "\irefmissing{SuggestedIDForOtherProofSystem}" to refer to 
 % another proof system that is not yet available in the encyclopedia.
-\LLP~\cite{phdlaurent} comes from the natural embedding of Girard's \LC\iref{LC} into linear logic~\iref{LL}. It is obtained by restricting \LL{} to polarized formulas and then by generalizing the structural rules (contraction, weakening and context of promotion) to arbitrary negative formulas, not only those starting with a $\wn$-connective.
+\LLP~\cite{phdlaurent} comes from the natural embedding of Girard's \LC~\iref{LC} into linear logic~\iref{LL}. It is obtained by restricting \LL{} to polarized formulas and then by generalizing the structural rules (contraction, weakening and context of promotion) to arbitrary negative formulas, not only those starting with a $\wn$-connective.
 \end{history}
 
 \begin{technicalities}
 % ToDo: write here remarks about soundness, completeness, decidability...
 Cut elimination holds.
-In the categorical models of \LL, positive formulas are interpreted as $\otimes$-comonoids while negative formulas are interpreted as $\parr$-monoids.
+In the categorical models of \LLP, positive formulas are interpreted as $\otimes$-comonoids while negative formulas are interpreted as $\parr$-monoids.
 \end{technicalities}
 
 
