@@ -1,12 +1,12 @@
-\calculusName{Two-sided Linear Logic}   % The name of the calculus
+\calculusName{Two-sided Linear Sequent Calculus}   % The name of the calculus
 \calculusAcronym{\TLL}    % The acronym if defined above, or empty otherwise. 
 \calculusLogic{classical, linear}  % Specify the logic (e.g. classical, intuitionistic, ...) for which this calculus is intended.
 \calculusType{Sequent Calculus}   % Specify the calculus type (e.g. Frege-Hilbert style, tableau, sequent calculus, hypersequent calculus, natural deduction, ...)
 \calculusYear{1987}   % The year when the calculus was invented.
 \calculusAuthor{Jean-Yves Girard} % The name(s) of the author(s) of the calculus.
 
-\entryTitle{Two-sided Linear Logic}        % Title of the entry (usually coincides with the name of the calculus).
-\entryAuthor{Elaine Pimentel} % Your name(s). Separate multiple names with "\and".
+\entryTitle{Two-sided Linear Sequent Calculus}        % Title of the entry (usually coincides with the name of the calculus).
+\entryAuthor{Elaine Pimentel \and Harley Eades III} % Your name(s). Separate multiple names with "\and".
 
 % If you wish, use tags to give any other information 
 % that might be helpful for classifying and grouping this entry:
@@ -38,6 +38,7 @@
 
 
 \begin{calculus}
+\small
 \begin{center}
  \textsc{\bf Identity rules}
 \end{center}
@@ -54,7 +55,7 @@
 \begin{center}
  \textsc{\bf Multiplicative rules}
 \end{center}
-\vspace{-5px}
+\vspace{-7px}
 \[
 \begin{array}{cccc}
 \infer[\one_L]{\Gamma,\one \vdash\Delta}{\Gamma \vdash \Delta}\quad
@@ -80,7 +81,7 @@
 \begin{center}
  \textsc{\bf Additive rules}
 \end{center}
-\vspace{-5px}
+\vspace{-7px}
 \[
 \begin{array}{cc}
 \infer[\zero_L]{\Gamma,\zero \vdash\Delta}{}&
@@ -98,7 +99,7 @@
 \begin{center}
  \textsc{\bf Quantifier rules}
 \end{center}
-\vspace{-5px}
+\vspace{-7px}
 \[
 \begin{array}{cc}
 \infer[\forall_L]{\Gamma,\forall x.B\vdash \Delta}{\Gamma,B[t/x]\vdash \Delta}\quad
@@ -114,7 +115,7 @@
 \begin{center}
  \textsc{\bf Exponential rules}
 \end{center}
-\vspace{-5px}
+\vspace{-7px}
 \[
 \begin{array}{cc}
 \infer[\quest_L]{\bang\Gamma,\quest B\vdash \quest\Delta}{\bang\Gamma,B\vdash \quest\Delta}\quad
@@ -150,18 +151,26 @@
 % do not look nice in a short entry.
 
 \begin{clarifications}
-$\Gamma$ and $\Delta$ are multi-sets of formulas.
+This is an alternate formalization of the sequent style formalization
+of Linear Logic \iref{LL}.
 \end{clarifications}
 
-\begin{history}
+%% \begin{history}
 %% ToDo: write here short historical remarks about this proof system,
 %% especially if they relate to other proof systems. 
 %% Use "\iref{OtherProofSystem}" to refer to another proof system 
 %% in the Encyclopedia (where "OtherProofSystem" is its ID). 
 %% Use "\irefmissing{SuggestedIDForOtherProofSystem}" to refer to 
 %% another proof system that is not yet available in the encyclopedia.
-  Linear logic was introduced by Jean-Yves Girard in~\cite{girard87tcs} from a semantical analysis of the models of System F.  It is  a refinement of classical and intuitionistic logic, joining the  beauty and symmetry of the former with the constructive nature of the latter~\cite{sep-logic-linear}. In Linear Logic, the  use of structural rules (contraction and weakening) are carefully controlled via exponentials.
-\end{history}
+%% 
+%% Linear logic was introduced by Jean-Yves Girard
+%% in~\cite{girard87tcs} from a semantical analysis of the models of
+%% System F.  It is a refinement of classical and intuitionistic
+%% logic, joining the beauty and symmetry of the former with the
+%% constructive nature of the latter~\cite{sep-logic-linear}. In
+%% Linear Logic, the use of structural rules (contraction and
+%% weakening) are carefully controlled via exponentials.
+%\end{history}
 
 %% \begin{technicalities}
 %%   $\FILL$ enjoys cut elimination.  It also has a categorical model in
