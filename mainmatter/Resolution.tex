@@ -1,0 +1,164 @@
+
+% If the calculus has an acronym, define it.
+% (e.g. \newcommand{\LK}{\ensuremath{\mathbf{LK}}\xspace})
+
+\calculusName{Resolution}   % The name of the calculus
+\calculusAcronym{}    % The acronym if defined above, or empty otherwise. 
+\calculusLogic{classical}  % Specify the logic (e.g. classical, intuitionistic, ...) for which this calculus is intended.
+\calculusType{saturation}   % Specify the calculus type (e.g. Frege-Hilbert style, tableau, sequent calculus, hypersequent calculus, natural deduction, ...)
+\calculusYear{1965}   % The year when the calculus was invented.
+\calculusAuthor{John Alan Robinson} % The name(s) of the author(s) of the calculus.
+
+
+\entryTitle{Resolution}     % Title of the entry (usually coincides with the name of the calculus).
+\entryAuthor{Uwe Waldmann}    % Your name(s). Separate multiple names with "\and".
+
+
+% If you wish, use tags to give any other information 
+% that might be helpful for classifying and grouping this entry:
+% e.g. \tag{Two-Sided Sequents}
+% e.g. \tag{Multiset Cedents}
+% e.g. \tag{List Cedents}
+% You are free to invent your own tags. 
+% The Encyclopedia's coordinator will take care of 
+% merging semantically similar tags in the future.
+
+
+\maketitle
+
+
+% If your files are called "MyProofSystem.tex" and "MyProofSystem.bib", 
+% then you should write "\begin{entry}{MyProofSystem}" in the line below
+\begin{entry}{Resolution}  
+
+% Define here any newcommands you may need:
+% e.g. \newcommand{\necessarily}{\Box}
+% e.g. \newcommand{\possibly}{\Diamond}
+
+
+\begin{calculus}
+
+% Add the inference rules of your proof system here.
+% The "proof.sty" and "bussproofs.sty" packages are available.
+% If you need any other package, please contact the editor (bruno@logic.at)
+
+\[
+\infer[\textit{Resolution}]
+{(D \lor C)\sigma}{D \lor B_1 \lor \dots \lor B_m
+& C \lor \neg A_1 \lor \dots \lor \neg A_n}
+\]
+$C,D$ are (possibly empty) clauses,
+$A_i,B_j$ are atoms.
+
+$A_1,\dots,A_n,B_1,\dots,B_m$ are unifiable with most general unifier $\sigma$.
+
+% \bigskip
+% 
+% \textbf{Saturation}
+% \[
+% \infer
+% {N \cup \{C\}}{N & C \textrm{~is the conclusion of a Resolution inference
+% from clauses in~} N}
+% \]
+% \mbox{}\quad $N$ is a finite set of clauses,
+% $C$ is a clause.
+\end{calculus}
+
+% The following sections ("clarifications", "history", 
+% "technicalities") are optional. If you use them, 
+% be very concise and objective. Nevertheless, do write full sentences. 
+% Try to have at most one paragraph per section, because line breaks 
+% do not look nice in a short entry.
+
+\begin{clarifications}
+Resolution is a refutational saturation calculus for
+first-order clauses (disjunctions of possibly negated atoms).
+It works on a set $N$ of clauses that is saturated
+by successively computing \textit{Resolution} inferences
+with premises in $N$ and adding the conclusion of the inference to $N$,
+until the empty clause (i.\,e., false) is derived.
+\end{clarifications}
+
+\begin{history}
+The ground version of the \textit{Resolution} rule appeared already
+as ``Rule for Eliminating Atomic Formulas'' in
+\cite{DavisPutnam1960JACM}.
+To refute a set of non-ground clauses,
+the rule was combined with a na{\"i}ve enumeration of ground instances.
+Robinson's fundamental achievement~\cite{Robinson1965JACM}
+was to extend the inference rule
+to non-ground clauses in such a way that
+the computation of useful instances became a by-product of the rule
+application.
+Many refinements were developed in the sequel,
+aiming on the one hand at reducing the number of possible inferences
+(e.\,g., using atom orderings, selection functions, set-of-support strategies)
+and on the other hand at integrating particular axioms
+into the calculus
+(e.\,g., the equality axioms, yielding paramodulation~\iref{Paramodulation}).
+Note that the factoring step (i.\,e., unification of literals
+within the same clause) that is built into Robinson's original
+\textit{Resolution} rule is usually given as a separate inference
+rule in later publications, e.\,g.,~\iref{Paramodulation}.
+
+\end{history}
+
+\begin{technicalities}
+The resolution calculus is refutationally complete for
+sets of first-order clauses.
+\end{technicalities}
+
+
+% General Instructions:
+% =====================
+
+% The preferred length of an entry is 1 page. 
+% Do the best you can to fit your proof system in one page.
+%
+% If you are finding it hard to fit what you want in one page, remember:
+%
+%   * Your entry needs to be neither self-contained nor fully understandable
+%     (the interested reader may consult the cited full paper for details)
+%
+%   * If you are describing several proof systems in one entry, 
+%     consider splitting your entry.
+%
+%   * You may reduce the size of your entry by ommitting inference rules
+%     that are already described in other entries.
+%
+%   * Cite parsimoniously (see detailed citation instructions below).
+%
+% 
+% If you do not manage to fit everything in one page, 
+% it is acceptable for an entry to have 2 pages.
+%
+% For aesthetical reasons, it is preferable for an entry to have
+% 1 full page or 2 full pages, in order to avoid unused blank space.
+
+
+
+% Citation Instructions:
+% ======================
+
+% Please cite the original paper where the proof system was defined.
+% To do so, you may use the \cite command within 
+% one of the optional environments above,
+% or use the \nocite command otherwise.
+
+% You may also cite a modern paper or book where the 
+% proof system is explained in greater depth or clarity.
+% Cite parsimoniously.
+
+% Do not cite related work. Instead, use the "\iref" or "\irefmissing" 
+% commands to make an internal reference to another entry, 
+% as explained within the "history" environment above.
+
+% You do not need to create the "References" section yourself. 
+% This is done automatically.
+
+
+
+
+% Leave an empty line above "\end{entry}".
+
+\end{entry}
