@@ -6,7 +6,7 @@
 \calculusAcronym{\FIL}    % The acronym if defined above, or empty otherwise. 
 \calculusLogic{Intuitionistic}  % Specify the logic (e.g. classical, intuitionistic, ...) for which this calculus is intended.
 \calculusType{Sequent Calculus}   % Specify the calculus type (e.g. Frege-Hilbert style, tableau, sequent calculus, hypersequent calculus, natural deduction, ...)
-\calculusYear{2005} % The year when the calculus was invented.
+\calculusYear{1995} % The year when the calculus was invented.
 \calculusAuthor{Valeria de Paiva \and Luiz Pereira} % The name(s) of the author(s) of the calculus.
 
 \entryTitle{Full Intuitionistic Logic (FIL)}        % Title of the entry (usually coincides with the name of the calculus).
@@ -41,31 +41,31 @@
   \infer[ax]{A(n) \Rightarrow A/\{n\}}{}
   & \quad &
   \infer[\perp \Rightarrow]{\perp (n) \Rightarrow A_1/\{n\},\ldots,A_k/\{n\}}{}\\
-  \\[1pt]
+  \\[-5pt]
   \infer[cut]{\Gamma_1,\Gamma_1 \Rightarrow \Delta_1,\Delta^*_1}{\Gamma_1 \Rightarrow \Delta_1,A/S & A(n),\Gamma_1 \Rightarrow \Delta_1}
   & \quad &
   \infer[perm \Rightarrow]{\Gamma_1,B(n),A(m),\Gamma_1 \Rightarrow \Delta}{\Gamma_1,A(m),B(n),\Gamma_1 \Rightarrow \Delta}\\
-  \\[1pt]
+  \\[-5pt]
   \infer[\Rightarrow perm]{\Gamma \Rightarrow \Delta_1,B/S_1,A/S_1,\Delta_1}{\Gamma \Rightarrow \Delta_1,A/S_1,B/S_1,\Delta_1}
   & \quad &
   \infer[weak \Rightarrow]{A(n),\Gamma \Rightarrow \Delta^*}{\Gamma \Rightarrow \Delta}\\
-  \\[1pt]
+  \\[-0.5pt]
   \infer[\Rightarrow weak]{\Gamma \Rightarrow \Delta,A/\{\}}{\Gamma \Rightarrow \Delta}
   & \quad &
   \infer[cont \Rightarrow]{\Gamma,A(k) \Rightarrow \Delta^*}{\Gamma,A(n),A(m) \Rightarrow \Delta}\\
-  \\[1pt]
+  \\[-0.5pt]
   \infer[\Rightarrow cont]{\Gamma \Rightarrow \Delta,A/S_1 \cup S_1}{\Gamma \Rightarrow \Delta,A/S_1,A/S_1}
   & \quad &
   \infer[\lor \Rightarrow]{\Gamma_1,\Gamma_1,(A \lor B)(k) \Rightarrow \Delta^*_1,\Delta^*_1}{\Gamma_1,A(n) \Rightarrow \Delta_1 & \Gamma_1,B(m) \Rightarrow \Delta_1}\\
-  \\[1pt]
+  \\[-0.5pt]
   \infer[\Rightarrow \lor]{\Gamma \Rightarrow \Delta,(A \lor B)/S_1 \cup S_1}{\Gamma \Rightarrow \Delta,A/S_1,B/S_1}
   & \quad &
   \infer[\land \Rightarrow]{\Gamma,(A \land B)(k) \Rightarrow \Delta^*}{\Gamma,A(n),B(m) \Rightarrow \Delta}\\
-  \\[1pt]
+  \\[-0.5pt]
   \infer[\Rightarrow \land]{\Gamma \Rightarrow \Delta,(A \land B)/S_1 \cup S_1}{\Gamma \Rightarrow \Delta,A/S_1 & \Gamma \Rightarrow \Delta,B/S_1}
   & \quad &
   \infer[\to \Rightarrow]{(A \to B)(n),\Gamma_1,\Gamma_1 \Rightarrow \Delta_1,\Delta^*_1}{\Gamma_1 \Rightarrow \Delta_1,A/S & B(n),\Gamma_1 \Rightarrow \Delta_1}\\
-  \\[1pt]
+  \\[-0.5pt]
   \infer[\Rightarrow \to]{\Gamma \Rightarrow \Delta, (A \to B)/S - \{n\}}{\Gamma, A(n) \Rightarrow \Delta,B/S}\\
 \end{array}
 \]
@@ -78,7 +78,14 @@
 % do not look nice in a short entry.
 
 \begin{clarifications}
-TODO
+Sequents are of the form $\Gamma \Rightarrow \Delta$ where $\Gamma$ is
+a multiset of pairs of formulas and natural number indicies, and
+$\Delta$ is a multiset of pairs of formulas and sets of natural number
+indicies.  The set of natural number indicies for a particular
+conclusion, formula on the right, indicates which hypotheses the
+conclusion depends on.  This dependency tracking is used to enforce
+intuitionism in the rule $\Rightarrow \to$.  See \cite{dePaiva:2005}
+for more details.
 \end{clarifications}
 
 \begin{history}
@@ -88,13 +95,16 @@ TODO
 %% in the Encyclopedia (where "OtherProofSystem" is its ID). 
 %% Use "\irefmissing{SuggestedIDForOtherProofSystem}" to refer to 
 %% another proof system that is not yet available in the encyclopedia.
-TODO
+The system FIL was announced in the abstract \cite{dePaiva:1995} but
+only published officially ten years later in \cite{dePaiva:2005}.  The
+system was conceived after the remark in the paper describing
+FILL \iref{FILL} that intuitionism is about proofs that resemble
+functions, not about a cardinality constraint in the sequent
+calculus. The system shows we can use a notion of {\em{dependency
+between formulae}} to enforce the constructive character of
+derivations. This is similar to an impoverished Curry-Howard term
+assignment.
 \end{history}
-
-%% \begin{technicalities}
-%%   $\FILL$ enjoys cut elimination.  It also has a categorical model in
-%%   dialectica categories \cite{dePaiva:1990}.
-%% \end{technicalities}
 
 % General Instructions:
 % =====================

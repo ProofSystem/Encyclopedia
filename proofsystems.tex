@@ -9,60 +9,35 @@
 
 
 % ======================================================
-% Acronyms of Proof Systems in Chronological Order
-
-
-
-\newcommand{\NJ}{\ensuremath{\mathbf{NJ}}\xspace} % GentzenNJ 1935
-\newcommand{\LK}{\ensuremath{\mathbf{LK}}\xspace} % GentzenLK 1935
-\newcommand{\LJ}{\ensuremath{\mathbf{LJ}}\xspace} % GentzenLJ 1935
-\newcommand{\LJmc}{\ensuremath{\mathbf{LJ'}}\xspace} % MultiConclusionLJ 1954
-\newcommand{\SystemF}{\ensuremath{\mathbf{F}}\xspace} % fc 1971
-\newcommand{\RK}{\ensuremath{\mathbf{RK}}\xspace} % RK 1982
-\newcommand{\Bledsoe}{\ensuremath{\mathbf{Prover}}\xspace} % Bledsoe 1984
-\newcommand{\Muscadet}{\ensuremath{\mathbf{Muscadet}}\xspace} % Muscadet 1984
-\renewcommand{\LL}{\ensuremath{\mathbf{LL}}\xspace} % LL 1986
-\newcommand{\ILL}{\ensuremath{\mathbf{ILL}}\xspace} % ILL 1987
-\newcommand{\LC}{\ensuremath{\mathbf{LC}}\xspace} % LC 1991
-\newcommand{\LF}{\ensuremath{\mathbf{LF}}\xspace} % LuoLF 1994
-\renewcommand{\lambdabar}{\overline{\lambda}} % LambdaBar 1994
-\newcommand{\LJT}{\ensuremath{\mathbf{LJT}}\xspace} % LambdaBar 1994
-\newcommand{\Gtc}{\ensuremath{\mathbf{G3c}}\xspace} % G3c 1996
-\newcommand{\LLP}{\ensuremath{\mathbf{LLP}}\xspace} % LLP 2000
-\newcommand{\LKmumutilde}{\ensuremath{\mathbf{LK}_{\mu\tilde\mu}}\xspace} % LKMuMuTilde 2000
-\newcommand{\LKT}{\ensuremath{\mathbf{LKT}\xspace}} % LKMuMuTilde 2000
-\newcommand{\LKQ}{\ensuremath{\mathbf{LKQ}\xspace}} % LKMuMuTilde 2000
-\newcommand{\LKmumutildetree}{\ensuremath{\mathbf{LK}_{\mu\tilde\mu}-\mathbf{tree}}\xspace} % LKMuMuTildeTree 2005
-\newcommand{\calcoloP}{{\bf $\mathcal{T}P^{\bf T}$}} % KLM 2005
-\newcommand{\LKF}{\ensuremath{\mathbf{LKF}}\xspace} % LKF 2007
-\newcommand{\LJF}{\ensuremath{\mathbf{LJF}}\xspace} % LJF 2007
-\newcommand{\FILL}{\ensuremath{\mathbf{FILL}}\xspace} % FILL 1990
-\newcommand{\FIL}{\ensuremath{\mathbf{FIL}}\xspace} % FIL 2005
-\newcommand{\NDc}{\ensuremath{\mathbf{ND}^\mathbf{c}}\xspace} % ContextualND 2013
-\newcommand{\seqlcnxt}{\ensuremath{\mathrm{SKMlin}}\xspace} % SKMlin 2014
-
-
-% ======================================================
 % Proof Systems in Chronological Order
 
 \includeProofSystem{GentzenNJ} % 1935
 \includeProofSystem{GentzenLK} % 1935
 \includeProofSystem{GentzenLJ} % 1935
 \includeProofSystem{MultiConclusionLJ} % 1954
+\includeProofSystem{Resolution} % 1965
+\includeProofSystem{Paramodulation} % 1969 
 \includeProofSystem{fc} % 1971
 \includeProofSystem{RK} % 1982
 \includeProofSystem{ExpansionProofs} % 1983
 \includeProofSystem{Bledsoe} % 1984
 \includeProofSystem{Muscadet} % 1984
 \includeProofSystem{LL} % 1986
+\includeProofSystem{TLL} % 1987
 \includeProofSystem{ILL} % 1987
 \includeProofSystem{PureTypeSystems} % 1989
 \includeProofSystem{FILL} % 1990
+\includeProofSystem{Superposition} % 1990/1994
+\includeProofSystem{SaturationWithRed} % 1991 
 \includeProofSystem{LC} % 1991
+\includeProofSystem{ConstraintSup} % 1992/1995
+\includeProofSystem{HierarchicSup} % 1992/2013
 \includeProofSystem{LambdaMu} % 1992
 \includeProofSystem{LuoLF} % 1994
 \includeProofSystem{LambdaBar} % 1994
+\includeProofSystem{FIL} % 1995
 \includeProofSystem{G3c} % 1996
+\includeProofSystem{CancellativeSup} % 1996
 \includeProofSystem{GraphTabK} %1997
 \includeProofSystem{SyntheticTableaux} % 2000
 \includeProofSystem{LLP} %2000
@@ -80,7 +55,6 @@
 \includeProofSystem{ExtResLEO2} % 2006-2013
 \mathversion{normal}
 
-\includeProofSystem{FIL} % 2005
 \includeProofSystem{LKF} % 2007
 \includeProofSystem{LJF} % 2007
 \includeProofSystem{Counterfactual} % 1983-2013
