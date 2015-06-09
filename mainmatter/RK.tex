@@ -2,7 +2,7 @@
 % If the calculus has an acronym, define it.
 % (e.g. \newcommand{\LK}{\ensuremath{\mathbf{LK}}\xspace})
 
-\calculusName{Resolution for Modal Logics}   % The name of the calculus
+\calculusName{Resolution for Modal Logic K}   % The name of the calculus
 \calculusAcronym{\RK}    % The acronym if defined above, or empty otherwise. 
 \calculusLogic{Modal logics}  % Specify the logic (e.g. classical, intuitionistic, ...) for which this calculus is intended.
 \calculusType{Resolution}   % Specify the calculus type (e.g. Frege-Hilbert style, tableau, sequent calculus, hypersequent calculus, natural deduction, ...)
@@ -10,7 +10,7 @@
 \calculusAuthor{Luis Fari\~nas del Cerro} % The name(s) of the author(s) of the calculus.
 
 
-\entryTitle{Resolution for Modal Logics (\RK)}     % Title of the entry (usually coincides with the name of the calculus).
+\entryTitle{Resolution for Modal Logic K (\RK)}     % Title of the entry (usually coincides with the name of the calculus).
 \entryAuthor{Joseph Boudou \and Luis Fari\~nas del Cerro}    % Your name(s). Separate multiple names with "\and".
 
 
@@ -29,12 +29,19 @@
 
 % If your files are called "MyProofSystem.tex" and "MyProofSystem.bib", 
 % then you should write "\begin{entry}{MyProofSystem}" in the line below
-\begin{entry}{ToDo}  
+\begin{entry}{RK}  
 
-% Define here any newcommands you may need:
-% e.g. \newcommand{\necessarily}{\Box}
-% e.g. \newcommand{\possibly}{\Diamond}
+\newcommand{\sepproof}{\hskip 2em plus 6em\relax}
+\newcommand{\sepline}{\]\[}
 
+\def\fCenter{\longrightarrow}
+\newenvironment{infruleset}[1]{%
+  \sc{#1} \[
+%  \begin{center}
+}{%
+  \]
+%  \end{center}
+}
 
 \begin{calculus}
 
@@ -42,7 +49,79 @@
 % The "proof.sty" and "bussproofs.sty" packages are available.
 % If you need any other package, please contact the editor (bruno@logic.at)
 
-ToDo
+\begin{infruleset}{Rules for computing resolvents}
+    \AxiomC{}
+    \LeftLabel{(A1)}
+    \UnaryInfC{$\Sigma(p, \neg p) \fCenter \bot$}
+    \DisplayProof
+  \sepproof
+    \AxiomC{}
+    \LeftLabel{(A2)}
+    \UnaryInfC{$\Sigma(\bot, A) \fCenter \bot$}
+    \DisplayProof
+  \sepline
+    \Axiom$\Sigma(A, B) \fCenter C$
+    \LeftLabel{($\Sigma\vee$)}
+    \UnaryInf$\Sigma(A \vee D_1, B \vee D_2) \fCenter C \vee D_1 \vee D_2$
+    \DisplayProof
+  \sepline
+    \Axiom$\Sigma(A, B) \fCenter C$
+    \LeftLabel{($\Sigma\Box\Diamond$)}
+    \UnaryInf$\Sigma(\Box A, \Diamond(B \wedge E)) \fCenter \Diamond(B \wedge C \wedge E)$
+    \DisplayProof
+  \sepproof
+    \Axiom$\Sigma(A, B) \fCenter C$
+    \LeftLabel{($\Sigma\Box\Box$)}
+    \UnaryInf$\Sigma(\Box A, \Box B) \fCenter \Box C$
+    \DisplayProof
+  \sepline
+    \Axiom$\Gamma(A) \fCenter B$
+    \LeftLabel{($\Gamma\vee$)}
+    \UnaryInf$\Gamma(A \vee C) \fCenter B \vee C$
+    \DisplayProof
+  \sepproof
+    \Axiom$\Gamma(A) \fCenter B$
+    \LeftLabel{($\Gamma\Box$)}
+    \UnaryInf$\Gamma(\Box A) \fCenter \Box B$
+    \DisplayProof
+  \sepline
+    \Axiom$\Sigma(A, B) \fCenter C$
+    \LeftLabel{($\Gamma\Diamond1$)}
+    \UnaryInf$\Gamma(\Diamond(A \wedge B \wedge E)) \fCenter \Diamond(A \wedge B \wedge C \wedge E)$
+    \DisplayProof
+  \sepline
+    \Axiom$\Gamma(A) \fCenter B$
+    \LeftLabel{($\Gamma\Diamond2$)}
+    \UnaryInf$\Gamma(\Diamond(A \wedge E)) \fCenter \Diamond(A \wedge B \wedge E)$
+    \DisplayProof
+\end{infruleset}
+
+\sc{Simplification rules}
+
+\begin{center}
+\begin{tabular}{rlrl}
+  $(S_1)$ &~ $\Diamond\bot \approx \bot       $ ~&\quad
+  $(S_3)$ &~ $\bot \wedge E \approx \bot      $ \\
+  $(S_2)$ &~ $\bot \vee A \approx A           $ ~&\quad
+  $(S_4)$ &~ $A \vee A \vee B \approx A \vee B$ 
+\end{tabular}
+\end{center}
+\vspace{2ex}
+
+\begin{infruleset}{Inference rules}
+    \AxiomC{$C$}
+    \LeftLabel{(R1)}
+    \RightLabel{if $\Gamma(C) \Rightarrow D$}
+    \UnaryInfC{$D$}
+    \DisplayProof
+  \sepline
+    \AxiomC{$C_1$}
+    \AxiomC{$C_2$}
+    \LeftLabel{(R2)}
+    \RightLabel{if $\Sigma(C_1, C_2) \Rightarrow D$}
+    \BinaryInfC{$D$}
+    \DisplayProof
+\end{infruleset}
 
 \end{calculus}
 
@@ -52,19 +131,27 @@ ToDo
 % Try to have at most one paragraph per section, because line breaks 
 % do not look nice in a short entry.
 
-% \begin{clarifications}
-% ToDo: write here short remarks that may help the reader to understand 
-% the inference rules of the proof system.
-% \end{clarifications}
+\begin{clarifications}
+  $A, B, C$ and $D$ denote formulas in disjunctive normal form (DNF)
+  whereas $E$ denotes a formula in conjunctive normal form (CNF).
+  A formula is in DNF if it has the general form
+  $ L_1 \vee \ldots \vee L_n \vee
+    \Box A_1 \vee \ldots \vee \Box A_p \vee
+    \Diamond E_1 \vee \ldots \vee \Diamond E_q $,
+  where $L_i$ are literals, $A_i$ are in DNF and $E_i$ are in CNF.
+  A formula is in CNF if it is a conjunction of formulas in DNF.
+  The relation $\approx$ is the least congruence satisfying all the simplification rules.
+  The normal form $A$ of a formula $A'$ is the least formula such that $A' \approx A$.
+  We write $\Sigma(A,B) \Rightarrow C$ (respectively $\Gamma(A) \Rightarrow C$)
+  if there exist $C'$ such that $\Sigma(A,B) \fCenter C'$ (respectively $\Gamma(A) \fCenter C$)
+  and $C$ is the normal form of $C'$.
+\end{clarifications}
 
-% \begin{history}
-% ToDo: write here short historical remarks about this proof system,
-% especially if they relate to other proof systems. 
-% Use "\iref{OtherProofSystem}" to refer to another proof system 
-% in the Encyclopedia (where "OtherProofSystem" is its ID). 
-% Use "\irefmissing{SuggestedIDForOtherProofSystem}" to refer to 
-% another proof system that is not yet available in the encyclopedia.
-% \end{history}
+\begin{history}
+  Introduced in~\cite{farinas.1982}.
+  The current presentation is inspired by~\cite{enjalbert-farinas.1989}.
+  Variants exist for other modal logics like S4 or S5.
+\end{history}
 
 % \begin{technicalities}
 % ToDo: write here remarks about soundness, completeness, decidability...
