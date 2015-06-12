@@ -1,12 +1,12 @@
-\calculusName{Two-sided Linear Logic}   % The name of the calculus
+\calculusName{Two-sided Linear Sequent Calculus}   % The name of the calculus
 \calculusAcronym{\TLL}    % The acronym if defined above, or empty otherwise. 
 \calculusLogic{classical, linear}  % Specify the logic (e.g. classical, intuitionistic, ...) for which this calculus is intended.
 \calculusType{Sequent Calculus}   % Specify the calculus type (e.g. Frege-Hilbert style, tableau, sequent calculus, hypersequent calculus, natural deduction, ...)
 \calculusYear{1987}   % The year when the calculus was invented.
 \calculusAuthor{Jean-Yves Girard} % The name(s) of the author(s) of the calculus.
 
-\entryTitle{Two-sided Linear Logic}        % Title of the entry (usually coincides with the name of the calculus).
-\entryAuthor{Elaine Pimentel} % Your name(s). Separate multiple names with "\and".
+\entryTitle{Two-sided Linear Sequent Calculus}        % Title of the entry (usually coincides with the name of the calculus).
+\entryAuthor{Elaine Pimentel \and Harley Eades III} % Your name(s). Separate multiple names with "\and".
 
 % If you wish, use tags to give any other information 
 % that might be helpful for classifying and grouping this entry:
@@ -35,112 +35,77 @@
 % Define here any newcommands you may need:
 % e.g. \newcommand{\necessarily}{\Box}
 % e.g. \newcommand{\possibly}{\Diamond}
-
+\newcommand{\llimp}{\multimap}
 
 \begin{calculus}
-\begin{center}
- \textsc{\bf Identity rules}
-\end{center}
-\vspace{-5px}
+\small
 \[
-\begin{array}{ccc}
-\infer[Init]{B \vdash B}{}
-&
-\quad
-&
-\infer[Cut]{\Gamma, \Gamma' \vdash \Delta,\Delta'}{\Gamma \vdash B \mid \Delta & \Gamma', B \vdash \Delta'}
-\end{array}
-\]
-\begin{center}
- \textsc{\bf Multiplicative rules}
-\end{center}
-\vspace{-5px}
-\[
-\begin{array}{cccc}
-\infer[\one_L]{\Gamma,\one \vdash\Delta}{\Gamma \vdash \Delta}\quad
-&
-\infer[\one_R]{ \vdash \one}{}\quad
-&
-\infer[\bot_L]{\bot\vdash}{}\quad
-&
-\infer[\bot_R]{\Gamma\vdash\bot, \Delta}{\Gamma \vdash  \Delta}
-\end{array}
-\]
-\[
-\begin{array}{cc}
-\infer[\otimes_L]{\Gamma,B\otimes C\vdash \Delta}{\Gamma,B,C\vdash \Delta}
-& 
-\infer[\otimes_R]{\Gamma_1,\Gamma_2 \vdash B\otimes C, \Delta_1,\Delta_2}{\Gamma_1 \vdash B,\Delta_1\quad\Gamma_2 \vdash C,\Delta_2}
-\\[8pt]
+\begin{array}{cccccccc}
+  \infer[Init]{B \vdash B}{}
+  &
+  \quad
+  &
+  \infer[Cut]{\Gamma, \Gamma' \vdash \Delta,\Delta'}{\Gamma \vdash B \mid \Delta & \Gamma', B \vdash \Delta'}
+  &
+  \quad
+  &
+  \infer[\one_L]{\Gamma,\one \vdash\Delta}{\Gamma \vdash \Delta}\\
+  \\
+  \infer[\one_R]{ \vdash \one}{}
+  &&
+  \infer[\bot_L]{\bot\vdash}{}
+  &&
+  \infer[\bot_R]{\Gamma\vdash\bot, \Delta}{\Gamma \vdash  \Delta}\\
+  \\
+  \infer[\llimp_L]{\Gamma, A \llimp B, \Delta \vdash C}{\Gamma \vdash A \vdash B, \Delta \vdash C}
+  &&
+  \infer[\llimp_R]{\Gamma \vdash A \llimp B}{\Gamma, A \vdash B}
+  &&
+  \infer[\otimes_L]{\Gamma,B\otimes C\vdash \Delta}{\Gamma,B,C\vdash \Delta}\\
+  \\
+  \infer[\otimes_R]{\Gamma_1,\Gamma_2 \vdash B\otimes C, \Delta_1,\Delta_2}{\Gamma_1 \vdash B,\Delta_1\quad\Gamma_2 \vdash C,\Delta_2}
+  &&
   \infer[\bindnasrepma_L]{\Gamma_1,\Gamma_2,B\bindnasrepma C \vdash \Delta_1,\Delta_2}{\Gamma_1,B\vdash \Delta_1 \quad \Gamma_2,C\vdash \Delta_2}
-  &
-  \infer[\bindnasrepma_R]{\Gamma \vdash B \bindnasrepma C, \Delta}{\Gamma \vdash B,C,\Delta}
+  &&
+  \infer[\bindnasrepma_R]{\Gamma \vdash B \bindnasrepma C, \Delta}{\Gamma \vdash B,C,\Delta}\\
+  \\
+  \infer[\zero_L]{\Gamma,\zero \vdash\Delta}{}
+  &&
+  \infer[\top_R]{\Gamma \vdash\top, \Delta}{}
+  &&
+  \infer[\with_L\;(i=1,2)]{\Gamma,B_1\with B_2\vdash \Delta}{\Gamma,B_i\vdash \Delta}\\
+  \\
+  \infer[\with_R]{\Gamma \vdash B\with C, \Delta}{\Gamma \vdash B,\Delta\quad\Gamma \vdash C,\Delta}
+  &&
+  \infer[\oplus_L]{\Gamma,B\oplus C \vdash \Delta}{\Gamma,B\vdash \Delta \quad \Gamma,C\vdash \Delta}
+  &&
+  \infer[\oplus_R\;(i=1,2)]{\Gamma \vdash B_1\oplus B_2, \Delta}{\Gamma \vdash B_i,\Delta}\\
+  \\
+  \infer[\forall_L]{\Gamma,\forall x.B\vdash \Delta}{\Gamma,B[t/x]\vdash \Delta}\quad
+  &&
+  \infer[\forall_R]{\Gamma \vdash \forall x.B, \Delta}{\Gamma \vdash B[y/x],\Delta}
+  &&
+  \infer[\exists_L]{\Gamma,\exists x.B\vdash \Delta}{\Gamma,B[y/x]\vdash \Delta}\quad\\
+  \\
+  \infer[\exists_R]{\Gamma \vdash \exists x.B, \Delta}{\Gamma \vdash B[t/x],\Delta}
+  &&
+  \infer[\quest_L]{\bang\Gamma,\quest B\vdash \quest\Delta}{\bang\Gamma,B\vdash \quest\Delta}\quad
+  &&
+  \infer[\bang_R]{\bang\Gamma\vdash \bang B,\quest\Delta}{\bang\Gamma\vdash B, \quest\Delta}\\
+  \\
+  \infer[\quest_W]{\Gamma\vdash \quest B,\Delta}{\Gamma\vdash \Delta}\quad
+  &&
+  \infer[\quest_C]{\Gamma\vdash \quest B,\Delta}{\Gamma\vdash \quest B,\quest B, \Delta}\quad
+  &&
+  \infer[\quest_D]{\Gamma\vdash \quest B,\Delta}{\Gamma\vdash B, \Delta}\\
+  \\
+  \infer[\bang_W]{\Gamma,\bang B\vdash \Delta}{\Gamma\vdash \Delta}\quad
+  &&
+  \infer[\bang_C]{\Gamma,\bang B\vdash \Delta}{\Gamma,\bang B,\bang B\vdash \Delta}\quad
+  &&
+  \infer[\bang_D]{\Gamma,\bang B\vdash \Delta}{\Gamma, B\vdash \Delta}
 \end{array}
 \]
-\begin{center}
- \textsc{\bf Additive rules}
-\end{center}
-\vspace{-5px}
-\[
-\begin{array}{cc}
-\infer[\zero_L]{\Gamma,\zero \vdash\Delta}{}&
-\infer[\top_R]{\Gamma \vdash\top, \Delta}{}
-  \\[8pt]
-\infer[\with_L\;(i=1,2)]{\Gamma,B_1\with B_2\vdash \Delta}{\Gamma,B_i\vdash \Delta}
-& 
-\infer[\with_R]{\Gamma \vdash B\with C, \Delta}{\Gamma \vdash B,\Delta\quad\Gamma \vdash C,\Delta}
-\\[8pt]
- \infer[\oplus_L]{\Gamma,B\oplus C \vdash \Delta}{\Gamma,B\vdash \Delta \quad \Gamma,C\vdash \Delta}
-  &
-  \infer[\oplus_R\;(i=1,2)]{\Gamma \vdash B_1\oplus B_2, \Delta}{\Gamma \vdash B_i,\Delta}
-\end{array}
-\]
-\begin{center}
- \textsc{\bf Quantifier rules}
-\end{center}
-\vspace{-5px}
-\[
-\begin{array}{cc}
-\infer[\forall_L]{\Gamma,\forall x.B\vdash \Delta}{\Gamma,B[t/x]\vdash \Delta}\quad
-& 
-\infer[\forall_R]{\Gamma \vdash \forall x.B, \Delta}{\Gamma \vdash B[y/x],\Delta}
-\\[8pt]
-\infer[\exists_L]{\Gamma,\exists x.B\vdash \Delta}{\Gamma,B[y/x]\vdash \Delta}\quad
-& 
-\infer[\exists_R]{\Gamma \vdash \exists x.B, \Delta}{\Gamma \vdash B[t/x],\Delta}
-\\[8pt]
-\end{array}
-\]
-\begin{center}
- \textsc{\bf Exponential rules}
-\end{center}
-\vspace{-5px}
-\[
-\begin{array}{cc}
-\infer[\quest_L]{\bang\Gamma,\quest B\vdash \quest\Delta}{\bang\Gamma,B\vdash \quest\Delta}\quad
-& 
-\infer[\bang_R]{\bang\Gamma\vdash \bang B,\quest\Delta}{\bang\Gamma\vdash B, \quest\Delta}
-\end{array}
-\]
-\[
-\begin{array}{ccc}
-\infer[\quest_W]{\Gamma\vdash \quest B,\Delta}{\Gamma\vdash \Delta}\quad
-& 
-\infer[\quest_C]{\Gamma\vdash \quest B,\Delta}{\Gamma\vdash \quest B,\quest B, \Delta}\quad
-& 
-\infer[\quest_D]{\Gamma\vdash \quest B,\Delta}{\Gamma\vdash B, \Delta}
-\end{array}
-\]
-\[
-\begin{array}{ccc}
-\infer[\bang_W]{\Gamma,\bang B\vdash \Delta}{\Gamma\vdash \Delta}\quad
-& 
-\infer[\bang_C]{\Gamma,\bang B\vdash \Delta}{\Gamma,\bang B,\bang B\vdash \Delta}\quad
-& 
-\infer[\bang_D]{\Gamma,\bang B\vdash \Delta}{\Gamma, B\vdash \Delta}
-\end{array}
-\]
-
 \end{calculus}
 
 % The following sections ("clarifications", "history", 
@@ -150,17 +115,12 @@
 % do not look nice in a short entry.
 
 \begin{clarifications}
-$\Gamma$ and $\Delta$ are multi-sets of formulas.
+This is an alternate formalization of the sequent style formalization
+of Linear Logic \iref{LL}.
 \end{clarifications}
 
 \begin{history}
-%% ToDo: write here short historical remarks about this proof system,
-%% especially if they relate to other proof systems. 
-%% Use "\iref{OtherProofSystem}" to refer to another proof system 
-%% in the Encyclopedia (where "OtherProofSystem" is its ID). 
-%% Use "\irefmissing{SuggestedIDForOtherProofSystem}" to refer to 
-%% another proof system that is not yet available in the encyclopedia.
-  Linear logic was introduced by Jean-Yves Girard in~\cite{girard87tcs} from a semantical analysis of the models of System F.  It is  a refinement of classical and intuitionistic logic, joining the  beauty and symmetry of the former with the constructive nature of the latter~\cite{sep-logic-linear}. In Linear Logic, the  use of structural rules (contraction and weakening) are carefully controlled via exponentials.
+This formalization first appeared in \cite{Troelstra:1992}.
 \end{history}
 
 %% \begin{technicalities}

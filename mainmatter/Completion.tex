@@ -1,16 +1,13 @@
 
-% If the calculus has an acronym, define it.
-% (e.g. \newcommand{\LK}{\ensuremath{\mathbf{LK}}\xspace})
-
-\calculusName{Resolution}   % The name of the calculus
+\calculusName{(Unfailing) Completion}   % The name of the calculus
 \calculusAcronym{}    % The acronym if defined above, or empty otherwise. 
 \calculusLogic{classical}  % Specify the logic (e.g. classical, intuitionistic, ...) for which this calculus is intended.
 \calculusType{saturation}   % Specify the calculus type (e.g. Frege-Hilbert style, tableau, sequent calculus, hypersequent calculus, natural deduction, ...)
-\calculusYear{1965}   % The year when the calculus was invented.
-\calculusAuthor{John Alan Robinson} % The name(s) of the author(s) of the calculus.
+\calculusYear{1970/1986}   % The year when the calculus was invented.
+\calculusAuthor{Donald E. Knuth, Peter B. Bendix, Leo Bachmair, Nachum Dershowitz, Jieh Hsiang} % The name(s) of the author(s) of the calculus.
 
 
-\entryTitle{Resolution}     % Title of the entry (usually coincides with the name of the calculus).
+\entryTitle{(Unfailing) Completion}     % Title of the entry (usually coincides with the name of the calculus).
 \entryAuthor{Uwe Waldmann}    % Your name(s). Separate multiple names with "\and".
 
 
@@ -29,12 +26,12 @@
 
 % If your files are called "MyProofSystem.tex" and "MyProofSystem.bib", 
 % then you should write "\begin{entry}{MyProofSystem}" in the line below
-\begin{entry}{Resolution}  
+\begin{entry}{Completion}
 
 % Define here any newcommands you may need:
 % e.g. \newcommand{\necessarily}{\Box}
 % e.g. \newcommand{\possibly}{\Diamond}
-
+\newcommand{\deq}{\buildrel{\mbox{\Large.}}\over\approx}
 
 \begin{calculus}
 
@@ -42,26 +39,70 @@
 % The "proof.sty" and "bussproofs.sty" packages are available.
 % If you need any other package, please contact the editor (bruno@logic.at)
 
+Standard Completion:
 \[
-\infer[\textit{Resolution}]
-{(D \lor C)\sigma}{D \lor B_1 \lor \dots \lor B_m
-& C \lor \neg A_1 \lor \dots \lor \neg A_n}
+\begin{array}{l@{\qquad}l}
+\begin{array}{ll}
+\infer[\textit{Orient}]
+  {\strut E, \ \  R \cup \{ s \to t \}}
+  {E \cup \{ s \deq t \}, \ \  R} \\
+\mbox{if $s \succ t$\rule[-3ex]{0ex}{6ex}}
+\end{array}
+&
+\begin{array}{ll}
+\infer[\textit{Simplify-Equation}]
+  {\strut E \cup \{ u \deq t \}, \ \  R}
+  {E \cup \smash{\{ s \deq t \}}, \ \  R} \\
+\mbox{if $s \to_R u$\rule[-3ex]{0ex}{6ex}}
+\end{array}
+\\
+\begin{array}{ll}
+\infer[\textit{Deduce}]
+  {\strut E \cup \{ s \approx t \}, \ \  R}
+  {E, \ \  R} \\
+\mbox{if $\langle s,t \rangle \in \mathrm{CP}(R)$\rule[-3ex]{0ex}{6ex}}
+\end{array}
+&
+\begin{array}{ll}
+\infer[\textit{Left-Simplify-Rule}]
+  {\strut E \cup \{ u \approx t \}, \ \  R}
+  {E, \ \  R \cup \{ s \to t \}} \\
+\mbox{if $s \to_R u$ using a rule $l \to r \in R$ such that $s \sqsupset l$\rule[-3ex]{0ex}{6ex}}
+\end{array}
+\\
+\begin{array}{ll}
+\infer[\textit{Delete}]
+  {\strut E, \ \  R}
+  {E \cup \{ s \approx s \}, \ \  R} \\
+\mbox{\rule[-3ex]{0ex}{4ex}}
+\end{array}
+&
+\begin{array}{ll}
+\infer[\textit{Right-Simplify-Rule}]
+  {\strut E, \ \  R \cup \{ s \to u \}}
+  {E, \ \  R \cup \{ s \to t \}} \\
+\mbox{if $t \to_R u$\rule[-2ex]{0ex}{5ex}}
+\end{array}
+\end{array}
 \]
-$C,D$ are (possibly empty) clauses,
-$A_i,B_j$ are atoms.
+plus, for Unfailing Completion:
+\[
+\begin{array}{ll}
+\infer[\textit{UC-Deduce}]
+  {\strut E \cup \{ s \approx t \}, \ \  R}
+  {E, \ \  R} \\
+\mbox{if $\langle s,t \rangle \in \mathrm{CP}(E \cup R)$\rule[-3ex]{0ex}{6ex}}
+\end{array}
+\]
 
-$A_1,\dots,A_n,B_1,\dots,B_m$ are unifiable with most general unifier $\sigma$.
+$E$ is a set of equations,
+$R$ is a set of rewrite rules,
+$s,t,u,l,r$ are terms,
+$s \deq t$ represents $s \approx t$ or $t \approx s$,
+$\mathrm{CP}(\dots)$ denotes the set of (ordered) critical
+pairs of a set of (equations and) rules,
+$\succ$ is a reduction ordering that is total on ground terms.
 
-% \bigskip
-% 
-% \textbf{Saturation}
-% \[
-% \infer
-% {N \cup \{C\}}{N & C \textrm{~is the conclusion of a Resolution inference
-% from clauses in~} N}
-% \]
-% \mbox{}\quad $N$ is a finite set of clauses,
-% $C$ is a clause.
 \end{calculus}
 
 % The following sections ("clarifications", "history", 
@@ -71,46 +112,33 @@ $A_1,\dots,A_n,B_1,\dots,B_m$ are unifiable with most general unifier $\sigma$.
 % do not look nice in a short entry.
 
 \begin{clarifications}
-Resolution is a refutational saturation calculus for
-first-order clauses (disjunctions of possibly negated atoms).
-It works on a set $N$ of clauses that is saturated
-by successively computing \textit{Resolution} inferences
-with premises in $N$ and adding the conclusion of the inference to $N$,
-until the empty clause (i.\,e., false) is derived.
+Standard completion tries to convert a set of equations into
+an equivalent terminating and confluent set of rewrite rules;
+it may fail, however, for certain inputs $E$ and $\succ$.
+Adding the \textit{UC-Deduce} rule turns standard completion into
+a refutationally complete calculus for equational theories.
 \end{clarifications}
 
 \begin{history}
-The ground version of the \textit{Resolution} rule appeared already
-as ``Rule for Eliminating Atomic Formulas'' in
-\cite{DavisPutnam1960JACM}.
-To refute a set of non-ground clauses,
-the rule was combined with a na{\"i}ve enumeration of ground instances.
-Robinson's fundamental achievement~\cite{Robinson1965JACM}
-was to extend the inference rule
-to non-ground clauses in such a way that
-the computation of useful instances became a by-product of the rule
-application.
-It was later detected that resolution can also be described
-as the dual form of a special case of Maslov's
-\textit{inverse method}~\cite{Maslov1964,Maslov1971}\irefmissing{Maslov}.
-
-Many refinements of resolution were developed in the sequel,
-aiming on the one hand at reducing the number of possible inferences
-(e.\,g., using atom orderings~\iref{OrderedRes},
-selection functions, set-of-support strategies)
-and on the other hand at integrating particular axioms
-into the calculus
-(e.\,g., the equality axioms, yielding paramodulation~\iref{Paramodulation}).
-Note that the factoring step (i.\,e., unification of literals
-within the same clause) that is built into Robinson's original
-\textit{Resolution} rule is usually given as a separate inference
-rule in later publications, e.\,g.,~\iref{Paramodulation}.
+Standard completion was developed by Knuth and Bendix~\cite{KnuthBendix1970};
+the presentation as an inference system given here
+and the extension to unfailing completion
+are due to
+Bachmair, Dershowitz, and Hsiang~\cite{BachmairDershowitzHsiang1986LICS},
+see also~\cite{Bachmair1991}.
+An approach to extend completion to completion modulo
+associativity and/or commutativity was presented in~\cite{PetersonStickel1981}.
 
 \end{history}
 
 \begin{technicalities}
-The resolution calculus is refutationally complete for
-sets of first-order clauses.
+To prove that an equation $s \approx t$ is entailed by $E$,
+unfailing completion is
+applied to $E \cup \{\mathit{eq}(x,x) \approx \mathit{true}$,
+$\mathit{eq}(\hat{s},\hat{t}) \approx \mathit{false}\}$,
+where $\hat{s}$ and $\hat{t}$ are skolemized versions of $s$ and $t$.
+Unfailing completion derives $\mathit{true} \approx \mathit{false}$
+if and only if $E \models s \approx t$.
 \end{technicalities}
 
 
