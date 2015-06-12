@@ -1,0 +1,197 @@
+
+\calculusName{(Unfailing) Completion}   % The name of the calculus
+\calculusAcronym{}    % The acronym if defined above, or empty otherwise. 
+\calculusLogic{classical}  % Specify the logic (e.g. classical, intuitionistic, ...) for which this calculus is intended.
+\calculusType{saturation}   % Specify the calculus type (e.g. Frege-Hilbert style, tableau, sequent calculus, hypersequent calculus, natural deduction, ...)
+\calculusYear{1970/1986}   % The year when the calculus was invented.
+\calculusAuthor{Donald E. Knuth, Peter B. Bendix, Leo Bachmair, Nachum Dershowitz, Jieh Hsiang} % The name(s) of the author(s) of the calculus.
+
+
+\entryTitle{(Unfailing) Completion}     % Title of the entry (usually coincides with the name of the calculus).
+\entryAuthor{Uwe Waldmann}    % Your name(s). Separate multiple names with "\and".
+
+
+% If you wish, use tags to give any other information 
+% that might be helpful for classifying and grouping this entry:
+% e.g. \tag{Two-Sided Sequents}
+% e.g. \tag{Multiset Cedents}
+% e.g. \tag{List Cedents}
+% You are free to invent your own tags. 
+% The Encyclopedia's coordinator will take care of 
+% merging semantically similar tags in the future.
+
+
+\maketitle
+
+
+% If your files are called "MyProofSystem.tex" and "MyProofSystem.bib", 
+% then you should write "\begin{entry}{MyProofSystem}" in the line below
+\begin{entry}{Completion}
+
+% Define here any newcommands you may need:
+% e.g. \newcommand{\necessarily}{\Box}
+% e.g. \newcommand{\possibly}{\Diamond}
+\newcommand{\deq}{\buildrel{\mbox{\Large.}}\over\approx}
+
+\begin{calculus}
+
+% Add the inference rules of your proof system here.
+% The "proof.sty" and "bussproofs.sty" packages are available.
+% If you need any other package, please contact the editor (bruno@logic.at)
+
+Standard Completion:
+\[
+\begin{array}{l@{\qquad}l}
+\begin{array}{ll}
+\infer[\textit{Orient}]
+  {\strut E, \ \  R \cup \{ s \to t \}}
+  {E \cup \{ s \deq t \}, \ \  R} \\
+\mbox{if $s \succ t$\rule[-3ex]{0ex}{6ex}}
+\end{array}
+&
+\begin{array}{ll}
+\infer[\textit{Simplify-Equation}]
+  {\strut E \cup \{ u \deq t \}, \ \  R}
+  {E \cup \smash{\{ s \deq t \}}, \ \  R} \\
+\mbox{if $s \to_R u$\rule[-3ex]{0ex}{6ex}}
+\end{array}
+\\
+\begin{array}{ll}
+\infer[\textit{Deduce}]
+  {\strut E \cup \{ s \approx t \}, \ \  R}
+  {E, \ \  R} \\
+\mbox{if $\langle s,t \rangle \in \mathrm{CP}(R)$\rule[-3ex]{0ex}{6ex}}
+\end{array}
+&
+\begin{array}{ll}
+\infer[\textit{Left-Simplify-Rule}]
+  {\strut E \cup \{ u \approx t \}, \ \  R}
+  {E, \ \  R \cup \{ s \to t \}} \\
+\mbox{if $s \to_R u$ using a rule $l \to r \in R$ such that $s \sqsupset l$\rule[-3ex]{0ex}{6ex}}
+\end{array}
+\\
+\begin{array}{ll}
+\infer[\textit{Delete}]
+  {\strut E, \ \  R}
+  {E \cup \{ s \approx s \}, \ \  R} \\
+\mbox{\rule[-3ex]{0ex}{4ex}}
+\end{array}
+&
+\begin{array}{ll}
+\infer[\textit{Right-Simplify-Rule}]
+  {\strut E, \ \  R \cup \{ s \to u \}}
+  {E, \ \  R \cup \{ s \to t \}} \\
+\mbox{if $t \to_R u$\rule[-2ex]{0ex}{5ex}}
+\end{array}
+\end{array}
+\]
+plus, for Unfailing Completion:
+\[
+\begin{array}{ll}
+\infer[\textit{UC-Deduce}]
+  {\strut E \cup \{ s \approx t \}, \ \  R}
+  {E, \ \  R} \\
+\mbox{if $\langle s,t \rangle \in \mathrm{CP}(E \cup R)$\rule[-3ex]{0ex}{6ex}}
+\end{array}
+\]
+
+$E$ is a set of equations,
+$R$ is a set of rewrite rules,
+$s,t,u,l,r$ are terms,
+$s \deq t$ represents $s \approx t$ or $t \approx s$,
+$\mathrm{CP}(\dots)$ denotes the set of (ordered) critical
+pairs of a set of (equations and) rules,
+$\succ$ is a reduction ordering that is total on ground terms.
+
+\end{calculus}
+
+% The following sections ("clarifications", "history", 
+% "technicalities") are optional. If you use them, 
+% be very concise and objective. Nevertheless, do write full sentences. 
+% Try to have at most one paragraph per section, because line breaks 
+% do not look nice in a short entry.
+
+\begin{clarifications}
+Standard completion tries to convert a set of equations into
+an equivalent terminating and confluent set of rewrite rules;
+it may fail, however, for certain inputs $E$ and $\succ$.
+Adding the \textit{UC-Deduce} rule turns standard completion into
+a refutationally complete calculus for equational theories.
+\end{clarifications}
+
+\begin{history}
+Standard completion was developed by Knuth and Bendix~\cite{KnuthBendix1970};
+the presentation as an inference system given here
+and the extension to unfailing completion
+are due to
+Bachmair, Dershowitz, and Hsiang~\cite{BachmairDershowitzHsiang1986LICS},
+see also~\cite{Bachmair1991}.
+An approach to extend completion to completion modulo
+associativity and/or commutativity was presented in~\cite{PetersonStickel1981}.
+
+\end{history}
+
+\begin{technicalities}
+To prove that an equation $s \approx t$ is entailed by $E$,
+unfailing completion is
+applied to $E \cup \{\mathit{eq}(x,x) \approx \mathit{true}$,
+$\mathit{eq}(\hat{s},\hat{t}) \approx \mathit{false}\}$,
+where $\hat{s}$ and $\hat{t}$ are skolemized versions of $s$ and $t$.
+Unfailing completion derives $\mathit{true} \approx \mathit{false}$
+if and only if $E \models s \approx t$.
+\end{technicalities}
+
+
+% General Instructions:
+% =====================
+
+% The preferred length of an entry is 1 page. 
+% Do the best you can to fit your proof system in one page.
+%
+% If you are finding it hard to fit what you want in one page, remember:
+%
+%   * Your entry needs to be neither self-contained nor fully understandable
+%     (the interested reader may consult the cited full paper for details)
+%
+%   * If you are describing several proof systems in one entry, 
+%     consider splitting your entry.
+%
+%   * You may reduce the size of your entry by ommitting inference rules
+%     that are already described in other entries.
+%
+%   * Cite parsimoniously (see detailed citation instructions below).
+%
+% 
+% If you do not manage to fit everything in one page, 
+% it is acceptable for an entry to have 2 pages.
+%
+% For aesthetical reasons, it is preferable for an entry to have
+% 1 full page or 2 full pages, in order to avoid unused blank space.
+
+
+
+% Citation Instructions:
+% ======================
+
+% Please cite the original paper where the proof system was defined.
+% To do so, you may use the \cite command within 
+% one of the optional environments above,
+% or use the \nocite command otherwise.
+
+% You may also cite a modern paper or book where the 
+% proof system is explained in greater depth or clarity.
+% Cite parsimoniously.
+
+% Do not cite related work. Instead, use the "\iref" or "\irefmissing" 
+% commands to make an internal reference to another entry, 
+% as explained within the "history" environment above.
+
+% You do not need to create the "References" section yourself. 
+% This is done automatically.
+
+
+
+
+% Leave an empty line above "\end{entry}".
+
+\end{entry}
