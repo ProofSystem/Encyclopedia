@@ -65,7 +65,7 @@
 \[ \infer[abstraction]{\Gamma \entails \lambda x: A. M : \Pi x : A. B}{\Gamma, x : A \entails M : B \qquad \Gamma \entails \Pi x : A. B : s} \]
 \[ \infer[application]{\Gamma \entails M~N : B[x \coloneqq N]}{\Gamma \entails M : \Pi x : A. B \qquad \Gamma \entails N : A} \]
 \[ \infer[conversion]{\Gamma \entails M : B}{\Gamma \entails M : A \qquad \Gamma \entails B : s \qquad A \equiv_\beta B} \]
-
+\vskip
 \end{calculus}
 
 % The following sections ("clarifications", "history",
@@ -95,7 +95,7 @@ $\rules \subseteq \sorts \times \sorts \times \sorts$ is the set of \emph{rules}
 % in the Encyclopedia (where "OtherProofSystem" is its ID).
 % Use "\irefmissing{SuggestedIDForOtherProofSystem}" to refer to
 % another proof system that is not yet available in the encyclopedia.
-Pure type systems were independently introduced by Berardi and Terlouw as a generalization of systems of the $\lambda$ cube, and further developed and popularized by Barendregt, Geuvers, Nederhof \cite{geuvers_modular_1991,barendregt_introduction_1991,barendregt_lambda_1992,geuvers_logics_1993}. Many important systems can be expressed as PTSs, including simply typed $\lambda$ calculus ($\lambda{\rightarrow}$), $\lambda\Pi$ calculus \iref{LuoLF} ($\lambda{P}$), system F \iref{fc} ($\lambda{2}$), and the calculus of constructions ($\lambda{C}$):
+Pure type systems were independently introduced by Berardi and Terlouw as a generalization of systems of the $\lambda$ cube, and further developed and popularized by Barendregt, Geuvers, Nederhof \cite{barendregt_introduction_1991,geuvers_modular_1991,barendregt_lambda_1992,geuvers_logics_1993}. Many important systems can be expressed as PTSs, including simply typed $\lambda$ calculus ($\lambda{\rightarrow}$), $\lambda\Pi$ calculus \iref{LuoLF} ($\lambda{P}$), system F \iref{fc} ($\lambda{2}$), and the calculus of constructions ($\lambda{C}$):
 \negvspace\[
   \begin{array}{cc}
     \sorts = \{\Prop, \Type\} \qquad \axioms = \{(\Prop, \Type)\} \qquad \rules_{\rightarrow} = \{(\Prop, \Prop, \Prop)\} \\[1ex]
