@@ -14,7 +14,7 @@
 
 \begin{entry}{ExpansionProofs}  
 
-\newcommand{\Dp}[1]{\mathsf{Dp}(#1)}
+\newcommand{\Deep}[1]{\mathsf{Dp}(#1)}
 \newcommand{\Sh}[1]{\mathsf{Sh}(#1)}
 \newcommand{\calE}{\mathcal{E}}
 
@@ -62,15 +62,15 @@ node of that node in the tree.
 
 \medskip
 
-For an expansion tree $E$, the quantifier-free formula $\Dp{E}$, 
+For an expansion tree $E$, the quantifier-free formula $\Deep{E}$, 
 called the \emph{deep formula of} $E$, is defined as:
 \begin{itemize}
-\item $\Dp{E} = E$ if $E$ is $\top$, $\bot$, or a literal;
-\item $\Dp{E_1 \circ E_2} = \Dp{E_1} \circ \Dp{E_2}$ for
+\item $\Deep{E} = E$ if $E$ is $\top$, $\bot$, or a literal;
+\item $\Deep{E_1 \circ E_2} = \Deep{E_1} \circ \Deep{E_2}$ for
       $\circ\in\{\land, \lor \}$; 
-\item $\Dp{\ALLx x. A +^y E} = \Dp{E}$; and
-\item $\Dp{\EX x. A +^{t_1} E_1 \cdots +^{t_n} E_n} = 
-       \Dp{E_1}\lor\ldots\lor \Dp{E_n}$ if $n > 0$, and $\Dp{\EX
+\item $\Deep{\ALLx x. A +^y E} = \Deep{E}$; and
+\item $\Deep{\EX x. A +^{t_1} E_1 \cdots +^{t_n} E_n} = 
+       \Deep{E_1}\lor\ldots\lor \Deep{E_n}$ if $n > 0$, and $\Deep{\EX
   x. A} = \bot$. 
 \end{itemize}
 
@@ -84,7 +84,7 @@ transitive closure of $<^0_{\calE}$, is called the
 \medskip
 
 An expansion tree $\calE$ is said to be an \emph{expansion proof} if
-$<_\calE$ is acyclic and $\Dp{\calE}$ is a tautology; in particular,
+$<_\calE$ is acyclic and $\Deep{\calE}$ is a tautology; in particular,
 $\calE$ is an \emph{expansion proof of} $\Sh{\calE}$.
 \end{calculus}
 
