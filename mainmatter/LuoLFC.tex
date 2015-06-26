@@ -9,7 +9,7 @@
 	\calculusAuthor{Zhaohui Luo} % The name(s) of the author(s) of the calculus.
 	
 	
-	\entryTitle{T[C] (extension of LF with Coercive Subtyping)} 
+	\entryTitle{T[C] (LF with Coercive Subtyping)} 
 % Title of the entry (usually coincides with the name of the calculus).
 	\entryAuthor{Zhaohui Luo \and Sergei Soloviev} % Your name(s). Separate multiple names with "\and".
 	
@@ -62,7 +62,17 @@ $$\infer{\Gamma\seq f(k_0)=f'(k'_0):[c(k_0)/x]K'}
 Coercive definition rule
 $$\infer{\Gamma\seq f(k_0):[c(k_0)/x]K'}
 {\Gamma\seq f:(x:K)K'\!\quad\!\Gamma\seq k_0:K_0\!\quad\!\Gamma\seq K_0<_cK}$$
-
+Structural rules
+$$
+\infer{\Gamma\seq A'<_{c'}B'}{\Gamma\seq A<_cB\!\quad\!\Gamma\seq A=A':Type
+\!\quad\!\Gamma\seq B=B'\!\quad\!\Gamma\seq c=c':(El(A))El(B)}
+$$
+$$\infer{\Gamma\seq A_{c'\circ c}A''}{\Gamma\seq A<_cA'\!\quad\!\Gamma\seq A'<_{c'}A''}$$
+$$\infer{\Gamma, [k/x]\Gamma'\seq [k/x]A<_{[k/x]c}[k/x]B}{\Gamma, x:K, \Gamma'\seq A<_c B
+\!\quad\!\Gamma\seq k:K}\,\,\,\,\,\infer{\Gamma, \Gamma'',\Gamma'\seq A<_cB}{\Gamma, \Gamma'\seq A<_cB\!\quad\!\Gamma, 
+\Gamma''\seq {\bf valid}}$$
+$$\infer{\Gamma, x:K', \Gamma'\seq A<_c B}{\Gamma, x:K, \Gamma'\seq A<_c B
+\!\quad\!\Gamma \seq K=K'}$$
 	
 	\end{calculus}
 	
@@ -98,29 +108,7 @@ as the syntax of $T$ ({\em i.e.}, type theory specified in $\LuoLF$). The rule
 and the structural subtyping rules
 given below.  They state that the subtyping relation $<$ (annotated
 by coercion terms $c$) is congruent, transitive, and closed under
-substitution, and satisfies the rules of weakening and contextual equality.
-
-{\bf Remark.} Similar structural rules are included in the subkinding level 
-above. 
- 
-\end{clarifications}
-	
-\begin{calculus}
-	
-\centering
-Structural rules
-$$
-\infer{\Gamma\seq A'<_{c'}B'}{\Gamma\seq A<_cB\!\quad\!\Gamma\seq A=A':Type
-\!\quad\!\Gamma\seq B=B'\!\quad\!\Gamma\seq c=c':(El(A))El(B)}
-$$
-$$\infer{\Gamma\seq A_{c'\circ c}A''}{\Gamma\seq A<_cA'\!\quad\!\Gamma\seq A'<_{c'}A''}$$
-$$\infer{\Gamma, [k/x]\Gamma'\seq [k/x]A<_{[k/x]c}[k/x]B}{\Gamma, x:K, \Gamma'\seq A<_c B
-\!\quad\!\Gamma\seq k:K}\,\,\,\,\,\infer{\Gamma, \Gamma'',\Gamma'\seq A<_cB}{\Gamma, \Gamma'\seq A<_cB\!\quad\!\Gamma, 
-\Gamma''\seq {\bf valid}}$$
-$$\infer{\Gamma, x:K', \Gamma'\seq A<_c B}{\Gamma, x:K, \Gamma'\seq A<_c B
-\!\quad\!\Gamma \seq K=K'}$$
-	
-	\end{calculus}
+substitution, and satisfies the rules of weakening and contextual equality. Similar structural rules are included in the subkinding level above. 
 
 Main requirement to the set $C$ (expressed in terms of $T[C]_0$) is {\em coherence}:
 \begin{itemize}
@@ -128,6 +116,8 @@ Main requirement to the set $C$ (expressed in terms of $T[C]_0$) is {\em coheren
 \item $\Gamma\not\seq A<_cA:Type$ for any $\Gamma, A, c$.
 \item If $\Gamma\seq A<_c B:Type$ and $\Gamma\seq A<_{c'}B:Type$ then $\Gamma\seq c=c':(El(A))El(B)$.
 \end{itemize}
+
+\end{clarifications}
 
 	\begin{history}
 Coercive subtiping as an abbreviation mechanism
@@ -147,11 +137,11 @@ developed in~\cite{jls:TYPES96, Luo:99, SolLuo:02, LuoSolXue:13}.
 	 \end{history}
 	
 	\begin{technicalities}
-	Main result
-(that justifies the view of coercive
+	The main theorem
+(justifying the view of coercive
 subtyping as an abbreviation mechanism)
-is the conservativity theorem (conservativity of $T[C]$ w.r.t. the
-type theory $T$), see~\cite{Luo:99, SolLuo:02, LuoSolXue:13}.
+is the conservativity of $T[C]$ w.r.t. the
+type theory $T$. %(cf.~\cite{Luo:99, SolLuo:02, LuoSolXue:13}).
 	\end{technicalities}	
 	
 	% Please cite the original paper where the proof system was defined.
