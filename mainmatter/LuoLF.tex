@@ -1,7 +1,7 @@
 % If the calculus has an acronym, define it.
 	% (e.g. \newcommand{\LK}{\ensuremath{\mathbf{LK}}\xspace})
-	
-	\calculusName{Z. Luo's LF} % The name of the calculus
+	\newcommand{\LuoLF}{\ensuremath{\mathbf{LF}}\xspace}
+	\calculusName{Typed LF for Type Theories} % The name of the calculus
 	\calculusAcronym{LF} % The acronym if defined above, or empty otherwise.
 	\calculusLogic{Type Theory} % Specify the logic (e.g. classical, intuitionistic, ...) for which this calculus is intended.
 	\calculusType{Logical Framework} % Specify the calculus type (e.g. Frege-Hilbert style, tableau, sequent calculus, hypersequent calculus, natural deduction, ...)
@@ -9,7 +9,7 @@
 	\calculusAuthor{Zhaohui Luo} % The name(s) of the author(s) of the calculus.
 	
 	
-	\entryTitle{Z. Luo's LF} % Title of the entry (usually coincides with the name of the calculus).
+	\entryTitle{Typed LF for Type Theories} % Title of the entry (usually coincides with the name of the calculus).
 	\entryAuthor{Zhaohui Luo \and Sergei Soloviev} % Your name(s). Separate multiple names with "\and".
 	
 	
@@ -29,7 +29,6 @@
 	% If your files are called "<ID>.tex" and "<ID>.bib",
 	% then you should write "\begin{entry}{<ID>}" in the line below
 	\begin{entry}{LuoLF}
-        %\begin{entry}{LF_Luo_bib}
 	
 	% Define here any newcommands you may need:
 	% e.g. \newcommand{\necessarily}{\Box}
@@ -41,7 +40,7 @@
 	% Add the inference rules of your proof system here
 \centering
 $$
-\infer{<>\seq {\bf valid}}{}\!\quad\!\infer{\Gamma, x:K\seq {\bf valid}}{\Gamma\seq K{\bf kind} & x\notin FV(\Gamma)}\quad\!\infer{\Gamma, x:K, \Gamma'\seq x:K}{\Gamma, x:K, \Gamma'\seq {\bf valid}}\!\quad\! (1)
+\infer{<>\seq {\bf valid}}{}\!\quad\!\infer{\Gamma, x:K\seq {\bf valid}}{\Gamma\seq K\,{\bf kind} & x\notin FV(\Gamma)}\quad\!\infer{\Gamma, x:K, \Gamma'\seq x:K}{\Gamma, x:K, \Gamma'\seq {\bf valid}}\!\quad\! (1)
 $$
 $$
 \infer{\Gamma\seq k:K'}{\Gamma\seq k:K & \Gamma\seq K=K'}\!\quad\!
@@ -50,32 +49,30 @@ $$
 $$\infer{\Gamma, [k/x]\Gamma'\seq [k/x]J}{\Gamma, x:K, \Gamma'\seq J & 
 \Gamma\seq k:K}\!\quad\! (3)^{**}$$
 $$
-\infer{\Gamma\seq (x:K)K'{\bf kind}}{\Gamma\seq K{\bf kind} & 
-\Gamma, x:K\seq K'{\bf kind}}\!\quad\!
+\infer{\Gamma\seq (x:K)K' \, {\bf kind}}{\Gamma\seq K \,{\bf kind} & 
+\Gamma, x:K\seq K'\,{\bf kind}}\!\quad\!
 \infer{\Gamma\seq (x:K_1)K_1'=(x:K_2)K_2'}{\Gamma\seq K_1=K_2 & 
 \Gamma, x:K_1\seq K_1'=K_2'}
 $$
 $$
-\infer{\Gamma\seq (x:K)K'{\bf kind}}{\Gamma\seq K{\bf kind} & 
-\Gamma, x:K\seq K'{\bf kind}}\!\quad\!
-\infer{\Gamma\seq (x:K_1)K_1'=(x:K_2)K_2'}{\Gamma\seq K_1=K_2 & 
-\Gamma, x:K_1\seq K_1'=K_2'}
+\infer{\Gamma\seq [x:K]k:(x:K)K'}{\Gamma, x:K\seq k:K'}\!\quad\!
+\infer{\Gamma\seq [x:K_1]k_1=[x:K_2]k_2:(x:K_1)K}{\Gamma\seq K_1=K_2 & 
+\Gamma, x:K_1\seq k_1=k_2:K}
 $$
 $$
-\infer{\Gamma\seq (x:K)K'{\bf kind}}{\Gamma\seq K{\bf kind} & 
-\Gamma, x:K\seq K'{\bf kind}}\!\quad\!
-\infer{\Gamma\seq (x:K_1)K_1'=(x:K_2)K_2'}{\Gamma\seq K_1=K_2 & 
-\Gamma, x:K_1\seq K_1'=K_2'}
+\infer{\Gamma\seq f(k):[k/x]K'}{\Gamma\seq f:(x:K)K' & 
+\Gamma\seq k:K}\!\quad\!
+\infer{\Gamma\seq f(k_1) = f'(k_2):[k_1/x]K'}{\Gamma\seq f=f':(x:K)K' & 
+\Gamma\seq k_1=k_2:K}$$ 
 $$
-$$
-\infer{\Gamma\seq (x:K)K'{\bf kind}}{\Gamma\seq K{\bf kind} & 
-\Gamma, x:K\seq K'{\bf kind}}\!\quad\!
-\infer{\Gamma\seq (x:K_1)K_1'=(x:K_2)K_2'}{\Gamma\seq K_1=K_2 & 
-\Gamma, x:K_1\seq K_1'=K_2'}\!\quad\! (4)
+\infer{\Gamma\seq ([x:K]k')(k)=[k/x]k':[k/x]K'}{\Gamma, x:K\seq k': K'& 
+\Gamma\seq k:K}\!\quad\!
+\infer{\Gamma\seq [x:K]f(x)=f:(x:K)K'}{\Gamma\seq f:(x:K)K' & 
+x\notin FV(f)}\!\quad\!(4)
 $$
 $$
 \infer{\Gamma\seq {\bf Type\, kind}}{\Gamma\seq{\bf valid}}\!\quad
-\!\infer{\Gamma\seq El(A){\bf kind}}{\Gamma\seq A:{\bf Type}}\!\quad\! (5)
+\!\infer{\Gamma\seq El(A)\,{\bf kind}}{\Gamma\seq A:{\bf Type}}\!\quad\! (5)
 $$
 
 
@@ -92,17 +89,17 @@ $$
 	
 	\begin{clarifications}
 We follow~\cite{Luo:94}.  
-Terms of $\LF$ are of the forms ${\bf Type}, El(A)$, $(x:K)K'$
+Terms of $\LuoLF$ are of the forms ${\bf Type}, El(A)$, $(x:K)K'$
 (dependent product), $[x:K]K'$ (abstraction), $f(k)$, and judgements
 of the forms $\Gamma\seq{\bf valid}$ (validity of context),
-$\Gamma\seq K{\bf kind}$, $\Gamma\seq k:K$, $\Gamma\seq k=k':K$, $\Gamma\seq K=K'$. 
+$\Gamma\seq K {\bf kind}$, $\Gamma\seq k:K$, $\Gamma\seq k=k':K$, $\Gamma\seq K=K'$. 
 Rule groups: (1) rules for contexts and assumptions; (2)* equality rules (reflexivity, symmetry and transitivity rules are ommitted); (3)** substitution rules ($J$ denotes the right side of any of the five forms of judgement); (4) rules for dependent product kinds; (5) and the kind {\bf Type}. 
 	\end{clarifications}
 	
 	\begin{history}
-The calculus was defined in~\cite{Luo:94}, ch. 9. LF is a typed version of Martin-L\"of's logical framework~\cite{NPS:90}\irefmissing{Martin-L\"of's LF}. Type theories specified in $\LF$ were used as basis of proof-assistants Lego and Plastic. Later
-the system was extended to include coercive subtyping~\cite{SolLuo:02,
-LuoSolXue:14}\irefmissing{LF with coercive subtyping}.
+First defined in~\cite{Luo:94}, ch. 9, $\LuoLF$ is a typed version of Martin-L\"of's logical framework~\cite{NPS:90}\irefmissing{Martin-L\"of's LF}. In difference
+from Edinburgh LF\irefmissing{Edinburgh LF} it may be used to specify type theories.
+{\em E.g.}, theories specified in $\LuoLF$ were used as basis of proof-assistants Lego and Plastic. Later the system was extended to include coercive subtyping~\cite{Luo:99, SolLuo:02, LuoSolXue:13}\irefmissing{LF with coercive subtyping}.
 	% ToDo: write here short historical remarks about this proof system,
 	% especially if they relate to other proof systems.
 	% Use "\iref{OtherProofSystem}" to refer to another proof system
@@ -112,10 +109,7 @@ LuoSolXue:14}\irefmissing{LF with coercive subtyping}.
 	 \end{history}
 	
 	\begin{technicalities}
-	The proof-theoretical analysis of LF above was used in meta-theoretical studies of larger theories defined on its basis, {\em e.g.}, UTT (Universal Type Theory) that includes inductive schemata, second order logic SOL with impredicative type $Prop$ and a hierarchy of predicative universes~\cite{Luo:94}. H. Goguen defined a typed operational
-semantics for UTT and proved strong normalization theorem~\cite{HG:94}. For $\LF$
-with coercive subtyping conservativity results were obtained~\cite{SolLuo:02,
-LuoSolXue:14}.
+	The proof-theoretical analysis of $\LuoLF$ above was used in meta-theoretical studies of larger theories defined on its basis, {\em e.g.}, UTT (Unifying Theory of dependent Types) that includes inductive schemata, second order logic SOL with impredicative type $Prop$ and a hierarchy of predicative universes~\cite{Luo:94}. H. Goguen defined a typed operational semantics for UTT and proved strong normalization theorem~\cite{HG:94}. For $\LuoLF$ with coercive subtyping conservativity results were obtained~\cite{Luo:99, SolLuo:02, LuoSolXue:14}.
 	\end{technicalities}
 	
 	
