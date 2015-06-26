@@ -2,7 +2,8 @@
 
 \newcommand{\myline}{\noindent\makebox[\linewidth]{\rule{\textwidth}{0.4pt}}}
 
-
+\newcommand{\pagenumberingstyle}{empty}
+%\newcommand{\pagenumberingstyle}{plain}
 
 \newcommand{\includeProofSystem}[1]{\input{mainmatter/#1}}
 
@@ -146,17 +147,12 @@
 }
 }
 
-
-%\newenvironment{entry}[1]
-%{\label{entry:#1}\begin{refsection}[bibliographies/#1.bib]}
-%{\updateindex\myline\printbibliography[heading=none]\end{refsection}}
-
 \newenvironment{entry}[1]
-{\label{entry:#1}\begin{refsection}[#1]}
+{\thispagestyle{\pagenumberingstyle}\label{entry:#1}\begin{refsection}[#1]}
 {\updateindex\myline\printbibliography[heading=none]\end{refsection}}
 
 \newenvironment{calculus}
-{\begin{center}\begin{Sbox}\begin{minipage}{0.98\textwidth}}
+{\begin{center}\begin{Sbox}\begin{minipage}[b]{0.98\textwidth}}
 {\end{minipage}\end{Sbox}\fbox{\TheSbox}\end{center}}
 
 \newenvironment{clarifications}
