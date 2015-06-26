@@ -1,0 +1,160 @@
+
+% If the calculus has an acronym, define it.
+% (e.g. \newcommand{\LK}{\ensuremath{\mathbf{LK}}\xspace})
+% \newcommand{\ME}{\ensuremath{\mathbf{ME}}\xspace}
+
+\calculusName{Model Evolution}   % The name of the calculus
+%\calculusAcronym{\ME}    % The acronym if defined above, or empty otherwise. 
+\calculusLogic{classical}  % Specify the logic (e.g. classical, intuitionistic, ...) for which this calculus is intended.
+\calculusType{instance based}   % Specify the calculus type (e.g. Frege-Hilbert style, tableau, sequent calculus, hypersequent calculus, natural deduction, ...)
+\calculusYear{2003}   % The year when the calculus was invented.
+\calculusAuthor{Peter Baumgartner, Cesare Tinelli} % The name(s) of the author(s) of the calculus.
+
+
+\entryTitle{Model Evolution}     % Title of the entry (usually coincides with the name of the calculus).
+\entryAuthor{Peter Baumgartner}    % Your name(s). Separate multiple names with "\and".
+
+
+% If you wish, use tags to give any other information 
+% that might be helpful for classifying and grouping this entry:
+% e.g. \tag{Two-Sided Sequents}
+% e.g. \tag{Multiset Cedents}
+% e.g. \tag{List Cedents}
+% You are free to invent your own tags. 
+% The Encyclopedia's coordinator will take care of 
+% merging semantically similar tags in the future.
+
+
+\maketitle
+
+
+% If your files are called "MyProofSystem.tex" and "MyProofSystem.bib", 
+% then you should write "\begin{entry}{MyProofSystem}" in the line below
+\begin{entry}{ModelEvolution}
+
+% Define here any newcommands you may need:
+% e.g. \newcommand{\necessarily}{\Box}
+% e.g. \newcommand{\possibly}{\Diamond}
+
+
+\begin{calculus}
+
+% Add the inference rules of your proof system here.
+% The "proof.sty" and "bussproofs.sty" packages are available.
+% If you need any other package, please contact the editor (bruno@logic.at)
+
+\[
+  \begin{array}{cc}
+\multicolumn{2}{c}{
+\infer[\textit{Split}]
+{\Lambda, L\sigma\: \vdash\: \Phi,\: L \lor C\qquad \Lambda, (\overline{L}\sigma)^{\mathrm{sko}}\: \vdash\:  \Phi,\: L \lor C}
+{\Lambda\: \vdash\:  \Phi,\: L \lor C}
+}
+    \\[3ex]
+\multicolumn{2}{c}{
+\infer[\textit{Commit}]
+{{\Lambda, K, L, L\sigma}\:\vdash\:{\Phi} \qquad {\Lambda, K, L, \overline{L}\sigma}\:\vdash\:{\Phi}}
+{{\Lambda, K, L}\:\vdash\:{\Phi}}
+} \\[3ex]
+\infer[\textit{Assert}]
+{{\Lambda, L}\:\vdash\:{\Phi,\: L}}
+{{\Lambda}\:\vdash\:{\Phi,\: L}}
+&
+\infer[\textit{Close}]
+{{\Lambda}\:\vdash\:{\Box}}
+{{\Lambda}\:\vdash\:{\Phi,\: C}}
+  \end{array}
+\]
+\end{calculus}
+
+% The following sections ("clarifications", "history", 
+% "technicalities") are optional. If you use them, 
+% be very concise and objective. Nevertheless, do write full sentences. 
+% Try to have at most one paragraph per section, because line breaks 
+% do not look nice in a short entry.
+
+\begin{clarifications}
+Model Evolution is a refutationally complete calculus for first-order clause
+logic. The inference rules operate on sequents of the form $\Lambda\:\vdash\:\Phi$ where $\Lambda$ is a
+set of literals and $\Phi$ is a clause set. Derivation trees are constructed top-down
+and start with the sequent $\neg v\:\vdash\:\psi$, where $\neg v$ is a pseudo-literal, representing
+the set of all negative literals, and $\psi$ is the given clause set. The calculus
+derives (in the limit) a sequent $\Lambda\:\vdash\:\Phi$ such that the interpretation induced by $\Lambda$ is a model
+of $\Phi$ unless $\psi$ is unsatisfiable. All inference rules above are subject
+to certain applicability conditions,
+see~\cite{Baumgartner:Tinelli:ModelEvolutionCalculus:CADE:2003}.
+Additional optional inference rules, not shown here, help improve performance in practice.
+\end{clarifications}
+
+\begin{history}
+Model Evolution~\cite{Baumgartner:Tinelli:ModelEvolutionCalculus:CADE:2003}
+is an improved version of the earlier FDPLL
+calculus~\cite{Baumgartner:FDPLL:CADE:00}, a lifiting of the core of the
+propositional DPLL method to the first-order level. Model Evolution has been extended by
+ordered paramodulation inference rules for equality
+reasoning~\cite{Baumgartner:Tinelli:ModelEvolutionCalculusEquality:CADE:2005}, by lemma
+learning techniques inspired by modern CDCL SAT
+solvers~\cite{Baumgartner:etal:ModelEvolutionLearning:LPAR:2006} and by 
+reasoning modulo background
+theories~\cite{Baumgartner:Fuchs:Tinelli:MELIA:LPAR:2008,Baumgartner:Tinelli:MEET:CADE:2011}. 
+It has been combined with the superposition calculus in~\cite{Baumgartner:Waldmann:MESUP:CADE:2009}.
+\end{history}
+
+% \begin{technicalities}
+% ToDo: write here remarks about soundness, completeness, decidability...
+% \end{technicalities}
+
+
+% General Instructions:
+% =====================
+
+% The preferred length of an entry is 1 page. 
+% Do the best you can to fit your proof system in one page.
+%
+% If you are finding it hard to fit what you want in one page, remember:
+%
+%   * Your entry needs to be neither self-contained nor fully understandable
+%     (the interested reader may consult the cited full paper for details)
+%
+%   * If you are describing several proof systems in one entry, 
+%     consider splitting your entry.
+%
+%   * You may reduce the size of your entry by ommitting inference rules
+%     that are already described in other entries.
+%
+%   * Cite parsimoniously (see detailed citation instructions below).
+%
+% 
+% If you do not manage to fit everything in one page, 
+% it is acceptable for an entry to have 2 pages.
+%
+% For aesthetical reasons, it is preferable for an entry to have
+% 1 full page or 2 full pages, in order to avoid unused blank space.
+
+
+
+% Citation Instructions:
+% ======================
+
+% Please cite the original paper where the proof system was defined.
+% To do so, you may use the \cite command within 
+% one of the optional environments above,
+% or use the \nocite command otherwise.
+
+% You may also cite a modern paper or book where the 
+% proof system is explained in greater depth or clarity.
+% Cite parsimoniously.
+
+% Do not cite related work. Instead, use the "\iref" or "\irefmissing" 
+% commands to make an internal reference to another entry, 
+% as explained within the "history" environment above.
+
+% You do not need to create the "References" section yourself. 
+% This is done automatically.
+
+
+
+
+% Leave an empty line above "\end{entry}".
+
+\end{entry}
