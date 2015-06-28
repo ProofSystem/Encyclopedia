@@ -1,7 +1,3 @@
-
-% If the calculus has an acronym, define it.
-% (e.g. \newcommand{\LK}{\ensuremath{\mathbf{LK}}\xspace})
-
 \calculusName{Resolution for Modal Logic K}   % The name of the calculus
 \calculusAcronym{\RK}    % The acronym if defined above, or empty otherwise. 
 \calculusLogic{Modal logics}  % Specify the logic (e.g. classical, intuitionistic, ...) for which this calculus is intended.
@@ -11,24 +7,12 @@
 
 
 \entryTitle{Resolution for Modal Logic K (\RK)}     % Title of the entry (usually coincides with the name of the calculus).
-\entryAuthor{Joseph Boudou}    % Your name(s). Separate multiple names with "\and".
-
-
-% If you wish, use tags to give any other information 
-% that might be helpful for classifying and grouping this entry:
-% e.g. \tag{Two-Sided Sequents}
-% e.g. \tag{Multiset Cedents}
-% e.g. \tag{List Cedents}
-% You are free to invent your own tags. 
-% The Encyclopedia's coordinator will take care of 
-% merging semantically similar tags in the future.
+\entryAuthor{Joseph Boudou \and Luis Fari\~nas del Cerro}    % Your name(s). Separate multiple names with "\and".
 
 
 \maketitle
 
 
-% If your files are called "MyProofSystem.tex" and "MyProofSystem.bib", 
-% then you should write "\begin{entry}{MyProofSystem}" in the line below
 \begin{entry}{RK}  
 
 \newcommand{\sepproof}{\hskip 2em plus 6em\relax}
@@ -37,17 +21,11 @@
 \def\fCenter{\longrightarrow}
 \newenvironment{infruleset}[1]{%
   \sc{#1} \[
-%  \begin{center}
 }{%
   \]
-%  \end{center}
 }
 
 \begin{calculus}
-
-% Add the inference rules of your proof system here.
-% The "proof.sty" and "bussproofs.sty" packages are available.
-% If you need any other package, please contact the editor (bruno@logic.at)
 
 \begin{infruleset}{Rules for computing resolvents}
     \AxiomC{}
@@ -125,12 +103,6 @@
 
 \end{calculus}
 
-% The following sections ("clarifications", "history", 
-% "technicalities") are optional. If you use them, 
-% be very concise and objective. Nevertheless, do write full sentences. 
-% Try to have at most one paragraph per section, because line breaks 
-% do not look nice in a short entry.
-
 \begin{clarifications}
   $A, B, C$ and $D$ denote formulas in disjunctive normal form (DNF)
   whereas $E$ denotes a formula in conjunctive normal form (CNF).
@@ -150,64 +122,14 @@
 \begin{history}
   Introduced in~\cite{farinas.1982}.
   The current presentation is inspired by~\cite{enjalbert-farinas.1989}.
-  Variants exist for other modal logics like S4 or S5.
+  The method is at the core of the MOLOG language~\cite{bieber-farinas-herzig.1988}.
+  With slight variations of the rules, some other modal logics like S4 or S5 can be obtained~\cite{enjalbert-farinas.1989}.
+  The method has been adaptated to first-order modal logic~\cite{cialdea.1991}.
+  An alternative non-clausal resolution method is presented in~\cite{abadi-manna.1985} (for LTL).
 \end{history}
 
-% \begin{technicalities}
-% ToDo: write here remarks about soundness, completeness, decidability...
-% \end{technicalities}
-
-
-% General Instructions:
-% =====================
-
-% The preferred length of an entry is 1 page. 
-% Do the best you can to fit your proof system in one page.
-%
-% If you are finding it hard to fit what you want in one page, remember:
-%
-%   * Your entry needs to be neither self-contained nor fully understandable
-%     (the interested reader may consult the cited full paper for details)
-%
-%   * If you are describing several proof systems in one entry, 
-%     consider splitting your entry.
-%
-%   * You may reduce the size of your entry by ommitting inference rules
-%     that are already described in other entries.
-%
-%   * Cite parsimoniously (see detailed citation instructions below).
-%
-% 
-% If you do not manage to fit everything in one page, 
-% it is acceptable for an entry to have 2 pages.
-%
-% For aesthetical reasons, it is preferable for an entry to have
-% 1 full page or 2 full pages, in order to avoid unused blank space.
-
-
-
-% Citation Instructions:
-% ======================
-
-% Please cite the original paper where the proof system was defined.
-% To do so, you may use the \cite command within 
-% one of the optional environments above,
-% or use the \nocite command otherwise.
-
-% You may also cite a modern paper or book where the 
-% proof system is explained in greater depth or clarity.
-% Cite parsimoniously.
-
-% Do not cite related work. Instead, use the "\iref" or "\irefmissing" 
-% commands to make an internal reference to another entry, 
-% as explained within the "history" environment above.
-
-% You do not need to create the "References" section yourself. 
-% This is done automatically.
-
-
-
-
-% Leave an empty line above "\end{entry}".
+\begin{technicalities}
+  The method is sound and complete with respect to the classical modal logic K.
+\end{technicalities}
 
 \end{entry}
