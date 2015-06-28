@@ -49,10 +49,16 @@
 % Proof Drawing Packages
 % ======================
 \usepackage{proof}
-\usepackage{bussproofs} \EnableBpAbbreviations
 \usepackage{qtree}
 \usepackage{prooftree}
 \usepackage[all]{xypic}
+\usepackage{bussproof} \EnableBpAbbreviations 
+% "bussproof" is a modified version of "bussproofs". 
+% it avoids conflict with the "prooftree" package, 
+% by defining the "bussprooftree" environment instead of "prooftree".
+
+
+
 
 
 % Packages and Commands for Indexes
