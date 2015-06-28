@@ -1,5 +1,20 @@
 \documentclass[graybox, envcountchap]{svmult}
 
+
+% Poster Production
+% =================
+% The following commands should be enabled for poster production only.
+% Posters should be printed with 125% scale to trim margins.
+\usepackage[hmarginratio=1:1,vmarginratio=1:1]{geometry}
+\pagestyle{empty} % removes page numbers
+
+
+% Book Production
+% ===============
+% The following commands should be enabled for book production only.
+% \newcommand{\pagenumberingstyle}{plain} % centers page numbers
+
+
 % Font Packages
 % =============
 \usepackage{mathptmx}        % selects Times Roman as basic font
@@ -67,7 +82,7 @@
 
 
 
-\pagestyle{\pagenumberingstyle} % "\pagenumberingstyle" is defined in commands.sty
+
 
 \begin{document}
 \frontmatter
