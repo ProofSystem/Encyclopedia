@@ -6,7 +6,7 @@
     <title>Encyclopedia of Proof Systems by ProofSystem</title>
 
     <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -30,8 +30,7 @@
       <section>
         <p>In this jubilee edition of CADE, we shall commemorate the multitude of
 proof systems that form the theoretical foundations for automated
-deduction. To achieve this goal, this alternative workshop proposes to
-bring the whole community together in a task-force to produce a concise
+deduction. To achieve this goal, we are starting a task-force to produce a concise
 encyclopedia of proof systems. Every entry in this encyclopedia will
 follow a given template and will preferably be exactly one page long,
 displaying the inference rules of the proof system and possibly a few
@@ -54,7 +53,7 @@ is encouraged, but not required.</p>
 
 <p>Except for the file extension, both files should have the same name. This common name should also be the same as the unique ID of your entry chosen by you and specified inside your LaTeX source file.</p>
 
-<p>When compiled, your entry should have exactly one page. If your proof system has too many inference rules and does not fit in one page, please <a href="mailto:bruno@logic.at">contact the coordinator</a>, send him a paper containing your proof system and ask for an exception.</p>
+<p>When compiled, your entry should have exactly one page. If your proof system has too many inference rules and does not fit in one page, please <a href="mailto:eps-coordinators@googlegroups.com">contact the coordinators</a>, send him a paper containing your proof system and ask for an exception.</p>
 
 <p><a href="https://github.com/ProofSystem/Encyclopedia/tree/master/mainmatter">Examples of entries</a> can be found in the <a href="https://github.com/ProofSystem/Encyclopedia/blob/master/main.pdf?raw=true">current version of the encyclopedia</a>.
 Please conform to the examples.</p>
@@ -81,7 +80,7 @@ Please conform to the examples.</p>
 <li><p>link your ".tex" file to the rest of the encyclopedia by writing an <code>\includeProofSystem</code> statement in the <a href="https://github.com/ProofSystem/Encyclopedia/blob/master/proofsystems.tex">proofsystems.tex</a> file;</p></li>
 <li><p>link your ".bib" file to the rest of the encyclopedia by writing an <code>\addbibresource</code> statement in the <a href="https://github.com/ProofSystem/Encyclopedia/blob/master/bibliographies.sty">bibliographies.sty</a> file;</p></li>
 <li><p>compile (see instructions below) and check that everything is fine (e.g. no overfull hboxes);</p></li>
-<li><p><a href="mailto:bruno@logic.at">Send to the coordinator</a> your ".tex" and ".bib" files. </p></li>
+<li><p><a href="mailto:eps-coordinators@googlegroups.com">Send to the coordinators</a> your ".tex" and ".bib" files. </p></li>
 </ol>
 
 <h2>
@@ -94,49 +93,24 @@ Please conform to the examples.</p>
 
 <p>This will automatically execute <em>pdflatex</em> and <a href="http://biblatex-biber.sourceforge.net">biber</a> for you. </p>
 
-<p>If you use Windows, you may need to install <a href="http://gnuwin32.sourceforge.net/packages/make.htm">make</a> first. Alternatively, you may execute <em>pdflatex</em> and <em>biber</em> yourself.</p>
+<p><em>biber</em> is a modern alternative to <em>bibtex</em>. When used in conjunction with <em>biblatex</em>, it is more convenient for handling multiple bibliographies. It comes pre-installed in most modern distributions of <em>LaTeX</em>. If your <em>LaTeX</em> distribution is too old, it might not contain <em>biber</em> and you might see error messages. In this case, the easiest solution is to install a newer LaTeX distribution, such as <a href="https://www.tug.org/texlive/">TeX-Live</a> or <a href="https://www.tug.org/mactex/">MacTeX</a>.</p>
 
-<p><em>biber</em> is a modern alternative to <em>bibtex</em>. When used in conjunction with <em>biblatex</em>, it is more convenient for handling multiple bibliographies. It comes pre-installed in most modern distributions of <em>LaTeX</em>. However, if your <em>LaTeX</em> distribution does not contain <em>biber</em> and you see error messages, you may use one of the alternative commands below:</p>
-
-<pre><code>$ make withBiberForWindows
-
-$ make withBiberForLinux32
-
-$ make withBiberForLinux64
-
-$ make withBiberForMac
-</code></pre>
-
-<p>The commands above will use one of the pre-compiled <em>biber</em> executables distributed together with the encyclopedia.</p>
-
-<p>If you face any difficulties to compile, <a href="mailto:bruno@logic.at">contact the coordinator</a>.</p>
+<p>If you face any difficulties to compile, <a href="mailto:eps-coordinators@googlegroups.com">contact the coordinators</a>.</p>
 
 <h2>
 <a id="criteria-for-acceptance" class="anchor" href="#criteria-for-acceptance" aria-hidden="true"><span class="octicon octicon-link"></span></a>Criteria for Acceptance</h2>
 
 <ol>
-<li><p>In the spirit of encyclopedias, every entry 
-must be about a proof system that has either already been 
-published in a conference or in a journal or that is already 
-used as the theoretical basis for well-established 
-automated reasoning tools.</p></li>
-<li><p>Every entry should be factually and historically correct.</p></li>
-<li><p>An entry written by the original author of a proof system is preferred.
-If you are planning to submit an entry about a proof system invented by somebody else, we advise you to seek his/her permission first.</p></li>
+<li><p>the proof system must have been published in a journal or conference proceedings.</p></li>
+<li><p>the entry should be factually and historically correct.</p></li>
 </ol>
+
+<p>If you are planning to submit an entry about a proof system invented by somebody else, we advise you to seek his/her permission first.</p>
 
 <h2>
 <a id="important-dates" class="anchor" href="#important-dates" aria-hidden="true"><span class="octicon octicon-link"></span></a>Important Dates</h2>
 
-<p>Submission to the online repository is always open. 
-But the following deadline should be respected if you would like your entry to be displayed at CADE.</p>
-
-<ul>
-<li>Extended Submission Deadline: 31st of May 2015</li>
-<li>Notification: 15th of June 2015</li>
-</ul>
-
-<p>(Please submit early in order to reduce the probability of duplicates.)</p>
+<p>Submission to the online repository is currently open. </p>
 
 <h2>
 <a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
