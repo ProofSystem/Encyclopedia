@@ -5,7 +5,6 @@
 \calculusYear{1965}   % The year when the calculus was invented.
 \calculusAuthor{John Alan Robinson} % The name(s) of the author(s) of the calculus.
 
-
 \entryTitle{Syntactic First-order Unification}     % Title of the entry (usually coincides with the name of the calculus).
 \entryAuthor{Tomer Libal}    % Your name(s). Separate multiple names with "\and".
 
@@ -13,12 +12,10 @@
 
 \begin{entry}{FolUnif}
 
-
 \newcommand{\upair}[2]{\langle#1, #2\rangle}
 \newcommand{\spair}[2]{\langle\langle#1, #2\rangle\rangle}
 
 \begin{calculus}
-
 \[
 \infer[delete] {S}
                {\{\upair u u\} \cup S}
@@ -32,21 +29,28 @@
 Where $x$ does not occur in $v$ and $\sigma = [v/x]$.
 \end{calculus}
 
- \begin{clarifications}
-  $\upair v u$ and $\spair v u$ are unsolved and solved, respectively, pairs of first-order terms,
+\begin{clarifications}
+  $x$ is a variable. $v_1,\ldots,v_n, u_1,\ldots, u_n$ are terms.
+  $\upair v u$ and $\spair v u$ are unsolved and solved, respectively, pairs of first-order terms.
   $S$ is a set of such pairs and $\sigma$ is a substitution.
+\end{clarifications}
+
+\begin{history}
+   The unification principle was first presented independently by Robinson
+   in his paper about Resolution \cite{Robinson1965JACM} (see \iref{Resolution})
+   and by Gould \cite{guard1964automated} (where it is called matching).
+   The above set of rules is taken from Snyder and Gallier \cite{Snyder1989101}.
+\end{history}
+
+\begin{technicalities}
    The set $S$ is considered
    solved if it contains only solved pairs. The application of the above rules always terminates on a given set of pairs of terms
    and if, in addition, the set is unifiable, then it terminates in a set $S'$ containing only solved pairs.
    The set $S'$ contains the substitution components \cite{Robinson1965JACM} of a most general unifier of $S$.
-\end{clarifications}
+  The application of the above rules and the choice
+ of which equation to process are deterministic (up to renaming of free variables).
+ \end{technicalities}
 
-
- \begin{history}
-   The unification principle was first presented by Robinson, in an algorithmtic form,
-   in his paper about Resolution \cite{Robinson1965JACM} (see \iref{Resolution}).
-   The above set of rules is taken from Snyder and Gallier paper about unification
-   as a set of transformation rules \cite{Snyder1989101}.
- \end{history}
+% Leave an empty line above "\end{entry}".
 
 \end{entry}
