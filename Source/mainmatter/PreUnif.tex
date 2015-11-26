@@ -19,6 +19,8 @@
 % e.g. \newcommand{\possibly}{\Diamond}
 \newcommand{\upair}[2]{\langle#1, #2\rangle}
 \newcommand{\spair}[2]{\langle\langle#1, #2\rangle\rangle}
+\newcommand{\vco}[2]{#1_1,\ldots,#1_{#2}}
+\newcommand{\vc}[2]{\overline{#1_{#2}}}
 
 \begin{calculus}
 
@@ -30,37 +32,71 @@
 \infer[delete] {S}
                {\{\upair u u\} \cup S}
 \qquad
-\infer[decomp] {\{\upair {v_1} {u_1} ,\ldots, \upair {v_n} {u_n}\}  \cup S}
-               {\{\upair {f(v_1,\ldots,v_n)} {f(u_1,\ldots,u_n)}\} \cup S}
-\qquad
-\infer[varelim]{\{\spair x v\} \cup \sigma(S)}
-               {\{\upair x v\} \cup S}
+\infer[varelim]{\{\spair z {{\lambda \vc x k}.v}\} \cup \sigma(S)\downarrow_\beta}
+               {\{\upair {{\lambda\vc x k.z(\vc x k)}} {\lambda\vc x k.v}\} \cup S}
 \]
-Where $x$ does not occur in $v$ and $\sigma = [v/x]$.
+\[
+\infer[decomp] {\{\upair {{\lambda\vc x k}.v_1} {{\lambda\vc x k}.u_1} ,\ldots,
+                  \upair {{\lambda\vc x k}.v_n} {{\lambda\vc x k}.u_n}\}  \cup S}
+               {\{\upair {{\lambda\vc x k}.a(\vc v n)}
+                         {{\lambda\vc x k}.a(\vc u n}\} \cup S}
+\]
+\[
+\infer[imitate]{\{\upair {y\uparrow_\eta} {t\uparrow_\eta}, \upair {\lambda\vc x k.y(\vc u n)}
+                 {\lambda\vc x k.b(\vc v m)}\} \cup S}
+               {\{\upair {\lambda\vc x k.y(\vc u n)}
+               {\lambda\vc x k.b(\vc v m)}\} \cup S}
+\qquad
+\infer[project]{\{\upair {y\uparrow_\eta} {s\uparrow_\eta}, \upair {\lambda\vc x k.y(\vc u n)}
+                 {\lambda\vc x k.a(\vc v m)}\} \cup S}
+               {\{\upair {\lambda\vc x k.y(\vc u n)}
+               {\lambda\vc x k.a(\vc v m)}\} \cup S}
+\]
+Where $a\in\Sigma$ or $a\in{\vc x k}$; $b\in\Sigma$; $z$ does not occur in $v$;
+$\sigma = [\lambda\vc x k.v/x]$; $t = \lambda\vc x n.b(\overline{y_m(\vc x n)})$;
+$s = \lambda\vc x n.x_i(\overline{y_l(\vc x n)})$ for $0<i\leq n$ and $l = \texttt{ar}(x_i)$.
 \end{calculus}
 
-% The following sections ("clarifications", "history",
-% "technicalities") are optional. If you use them,
-% be very concise and objective. Nevertheless, do write full sentences.
-% Try to have at most one paragraph per section, because line breaks
-% do not look nice in a short entry.
-
  \begin{clarifications}
-  $\upair v u$ and $\spair v u$ are unsolved and solved, respectively, pairs of first-order terms,
+  $\Sigma$ is the term signature. $\vc o p = \vco o p$. $z,x,\vc x k$ and $y,\vc y m$ are variables.
+  $v,\vc v n$ and $u,\vc u n$ are terms.
+  $\upair v u$ and $\spair v u$ are unsolved and solved, respectively, pairs of $\lambda$-terms.
   $S$ is a set of such pairs and $\sigma$ is a substitution.
-   The set $S$ is considered
-   solved if it contains only solved pairs. The application of the above rules always terminates on a given set of pairs of terms
-   and if, in addition, the set is unifiable, then it terminates in a set $S'$ containing only solved pairs.
-   The set $S'$ contains the substitution components \cite{Robinson1965JACM} of a most general unifier of $S$.
-\end{clarifications}
+  $\downarrow_\beta$ denotes $\beta$-normalization and $\uparrow_\eta$ denotes $\eta$-expansion.
+  $\texttt{ar}(a)$ denotes the arity of the symbol $a$.
+  The set $S$ must originaly contain terms in $\beta$-normalized and $\eta$-expanded form.
+   \end{clarifications}
 
 
  \begin{history}
-   The unification principle was first presented by Robinson, in an algorithmtic form,
-   in his paper about Resolution \cite{Robinson1965JACM} (see \iref{Resolution}).
+   In contrary to the first-order case,
+   the question whether higher-order terms are unifiable is
+   undecidable already for second-order logic \cite{goldfarb81tcs}.
+   The first complete procedure for higher-order unification was given by
+   Jensen and Pietrzykowski \cite{jensen76tcs}.
+   The use of pre-unifiers, introduced by Huet, enabled the search to
+   be non-redundant and more efficient.
    The above set of rules is taken from Snyder and Gallier paper about unification
    as a set of transformation rules \cite{Snyder1989101}.
  \end{history}
+
+\begin{technicalities}
+  Huet \cite{huet75tcs} introduced the procedure without assuming
+  the axiom of functional extensionality and showed that assuming this axiom
+  makes the procedure simpler.
+  The above set of rules is taken from Snyder and Gallier \cite{Snyder1989101}
+  and assumes extensionality.
+The set $S$ is considered
+   solved if it contains only solved pairs.
+   The application of the above rules always terminates on a unifiable set of pairs of terms
+   and results in a set $S'$ containing only solved pairs and unsolved ``flex-flex"
+  pairs which are always unifiable .
+   The solved pairs in $S'$ are the substitution components \cite{Robinson1965JACM} of a pre-unifier of $S$.
+   The procedure (with extensionality) enumerates a complete and minimal set of pre-unifiers.
+  The application of the first three rules is deterministic, that of the last two rules is
+  a ``dont-know" non-determinism and  the choice of which equation to choose
+  is a ``dont-care" non-determinism.
+ \end{technicalities}
 
 
 % General Instructions:
@@ -106,10 +142,5 @@ Where $x$ does not occur in $v$ and $\sigma = [v/x]$.
 % Do not cite related work. Instead, use the "\iref" or "\irefmissing"
 % commands to make an internal reference to another entry,
 % as explained within the "history" environment above.
-
-% You do not need to create the "References" section yourself.
-% This is done automatically.
-
-% Leave an empty line above "\end{entry}".
 
 \end{entry}
