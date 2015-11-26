@@ -54,7 +54,7 @@
 \]
 Where $a\in\Sigma$ or $a\in{\vc x k}$; $b\in\Sigma$; $z$ does not occur in $v$;
 $\sigma = [\lambda\vc x k.v/x]$; $t = \lambda\vc x n.b(\overline{y_m(\vc x n)})$;
-$s = \lambda\vc x n.x_i(\overline{y_l(\vc x n)})$ for $0<i\leq n$ and $l = \texttt{ar}(x_i)$.
+$s = \lambda\vc x n.x_i(\overline{y_l(\vc x n)})$ for $0<i\leq n$ and $l = \texttt{ty}(x_i)$.
 \end{calculus}
 
  \begin{clarifications}
@@ -63,7 +63,7 @@ $s = \lambda\vc x n.x_i(\overline{y_l(\vc x n)})$ for $0<i\leq n$ and $l = \text
   $\upair v u$ and $\spair v u$ are unsolved and solved, respectively, pairs of $\lambda$-terms.
   $S$ is a set of such pairs and $\sigma$ is a substitution.
   $\downarrow_\beta$ denotes $\beta$-normalization and $\uparrow_\eta$ denotes $\eta$-expansion.
-  $\texttt{ar}(a)$ denotes the arity of the symbol $a$.
+  $\texttt{ty}(a) = n$ for a symbol $a$ of type $\beta_1\rightarrow\ldots\rightarrow \beta_n\rightarrow \gamma$.
   The set $S$ must originaly contain terms in $\beta$-normalized and $\eta$-expanded form.
    \end{clarifications}
 
@@ -75,7 +75,7 @@ $s = \lambda\vc x n.x_i(\overline{y_l(\vc x n)})$ for $0<i\leq n$ and $l = \text
    The first complete procedure for higher-order unification was given by
    Jensen and Pietrzykowski \cite{jensen76tcs}.
    The use of pre-unifiers, introduced by Huet, enabled the search to
-   be non-redundant and more efficient.
+   be less redundant and more efficient.
    The above set of rules is taken from Snyder and Gallier paper about unification
    as a set of transformation rules \cite{Snyder1989101}.
  \end{history}
@@ -93,7 +93,8 @@ The set $S$ is considered
   pairs which are always unifiable .
    The solved pairs in $S'$ are the substitution components \cite{Robinson1965JACM} of a pre-unifier of $S$.
    The procedure (with extensionality) enumerates a complete and minimal set of pre-unifiers.
-  The application of the first three rules is deterministic, that of the last two rules is
+  The application of the first three rules is deterministic (up to renaming of free variables),
+  that of the last two rules is
   a ``dont-know" non-determinism and  the choice of which equation to choose
   is a ``dont-care" non-determinism.
  \end{technicalities}
