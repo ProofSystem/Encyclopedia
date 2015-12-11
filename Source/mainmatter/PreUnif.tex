@@ -1,0 +1,143 @@
+\calculusName{Syntactic Higher-order Pre-unification}   % The name of the calculus
+\calculusAcronym{}    % The acronym if defined above, or empty otherwise.
+\calculusLogic{higher-order}  % Specify the logic (e.g. classical, intuitionistic, ...) for which this calculus is intended.
+\calculusType{unification}   % Specify the calculus type (e.g. Frege-Hilbert style, tableau, sequent calculus, hypersequent calculus, natural deduction, ...)
+\calculusYear{1975}   % The year when the calculus was invented.
+\calculusAuthor{Gérard Pierre Huet} % The name(s) of the author(s) of the calculus.
+
+
+\entryTitle{Syntactic Higher-order Pre-unification}
+\entryAuthor{Tomer Libal}    % Your name(s). Separate multiple names with "\and".
+
+\maketitle
+
+\begin{entry}{PreUnif}
+
+
+% Define here any newcommands you may need:
+% e.g. \newcommand{\necessarily}{\Box}
+% e.g. \newcommand{\possibly}{\Diamond}
+\newcommand{\upair}[2]{\langle#1, #2\rangle}
+\newcommand{\spair}[2]{\langle\langle#1, #2\rangle\rangle}
+\newcommand{\vco}[2]{#1_1,\ldots,#1_{#2}}
+\newcommand{\vc}[2]{\overline{#1_{#2}}}
+
+\begin{calculus}
+
+% Add the inference rules of your proof system here.
+% The "proof.sty" and "bussproofs.sty" packages are available.
+% If you need any other package, please contact the editor (bruno@logic.at)
+
+\[
+\infer[delete] {S}
+               {\{\upair u u\} \cup S}
+\qquad
+\infer[varelim]{\{\spair z {{\lambda \vc x k}.v}\} \cup \sigma(S)\downarrow_\beta}
+               {\{\upair {{\lambda\vc x k.z(\vc x k)}} {\lambda\vc x k.v}\} \cup S}
+\]
+\[
+\infer[decomp] {\{\upair {{\lambda\vc x k}.v_1} {{\lambda\vc x k}.u_1} ,\ldots,
+                  \upair {{\lambda\vc x k}.v_n} {{\lambda\vc x k}.u_n}\}  \cup S}
+               {\{\upair {{\lambda\vc x k}.a(\vc v n)}
+                         {{\lambda\vc x k}.a(\vc u n}\} \cup S}
+\]
+\[
+\infer[imitate]{\{\upair {y\uparrow_\eta} {t\uparrow_\eta}, \upair {\lambda\vc x k.y(\vc u n)}
+                 {\lambda\vc x k.b(\vc v m)}\} \cup S}
+               {\{\upair {\lambda\vc x k.y(\vc u n)}
+               {\lambda\vc x k.b(\vc v m)}\} \cup S}
+\qquad
+\infer[project]{\{\upair {y\uparrow_\eta} {s\uparrow_\eta}, \upair {\lambda\vc x k.y(\vc u n)}
+                 {\lambda\vc x k.a(\vc v m)}\} \cup S}
+               {\{\upair {\lambda\vc x k.y(\vc u n)}
+               {\lambda\vc x k.a(\vc v m)}\} \cup S}
+\]
+Where $a\in\Sigma$ or $a\in{\vc x k}$; $b\in\Sigma$; $z$ does not occur in $v$;
+$\sigma = [\lambda\vc x k.v/x]$; $t = \lambda\vc x n.b(\overline{y_m(\vc x n)})$;
+$s = \lambda\vc x n.x_i(\overline{y_l(\vc x n)})$ for $0<i\leq n$ and $l = \texttt{ty}(x_i)$.
+\end{calculus}
+
+ \begin{clarifications}
+  $\Sigma$ is the term signature. $\vc o p = \vco o p$. $z,x,\vc x k$ and $y,\vc y m$ are variables.
+  $v,\vc v n$ and $u,\vc u n$ are terms.
+  $\upair v u$ and $\spair v u$ are unsolved and solved, respectively, pairs of $\lambda$-terms.
+  $S$ is a set of such pairs and $\sigma$ is a substitution.
+  $\downarrow_\beta$ denotes $\beta$-normalization and $\uparrow_\eta$ denotes $\eta$-expansion.
+  $\texttt{ty}(a) = n$ for a symbol $a$ of type $\beta_1\rightarrow\ldots\rightarrow \beta_n\rightarrow \gamma$.
+  The set $S$ must originaly contain terms in $\beta$-normalized and $\eta$-expanded form.
+   \end{clarifications}
+
+
+ \begin{history}
+   In contrary to the first-order case,
+   the question whether higher-order terms are unifiable is
+   undecidable already for second-order logic \cite{goldfarb81tcs}.
+   The first complete procedure for higher-order unification was given by
+   Jensen and Pietrzykowski \cite{jensen76tcs}.
+   The use of pre-unifiers, introduced by Huet, enabled the search to
+   be less redundant and more efficient.
+ \end{history}
+
+\begin{technicalities}
+  Huet \cite{huet75tcs} introduced the procedure without assuming
+  the axiom of functional extensionality and showed that assuming this axiom
+  makes the procedure simpler.
+  The above set of rules is taken from Snyder and Gallier \cite{Snyder1989101}
+  and assumes extensionality.
+   The application of the above rules always terminates on a unifiable set of pairs of terms
+   and results in a set $S'$ containing only solved pairs and unsolved ``flex-flex"
+  pairs which are always unifiable .
+   The solved pairs in $S'$ are the substitution components \cite{Robinson1965JACM} of a pre-unifier of $S$.
+   The procedure (with extensionality) enumerates a complete and minimal set of pre-unifiers.
+  The application of the first three rules is deterministic (up to renaming of free variables),
+  that of the last two rules is
+  a ``dont-know" non-determinism and  the choice of which equation to choose
+  is a ``dont-care" non-determinism.
+ \end{technicalities}
+
+
+% General Instructions:
+% =====================
+
+% The preferred length of an entry is 1 page.
+% Do the best you can to fit your proof system in one page.
+%
+% If you are finding it hard to fit what you want in one page, remember:
+%
+%   * Your entry needs to be neither self-contained nor fully understandable
+%     (the interested reader may consult the cited full paper for details)
+%
+%   * If you are describing several proof systems in one entry,
+%     consider splitting your entry.
+%
+%   * You may reduce the size of your entry by ommitting inference rules
+%     that are already described in other entries.
+%
+%   * Cite parsimoniously (see detailed citation instructions below).
+%
+%
+% If you do not manage to fit everything in one page,
+% it is acceptable for an entry to have 2 pages.
+%
+% For aesthetical reasons, it is preferable for an entry to have
+% 1 full page or 2 full pages, in order to avoid unused blank space.
+
+
+
+% Citation Instructions:
+% ======================
+
+% Please cite the original paper where the proof system was defined.
+% To do so, you may use the \cite command within
+% one of the optional environments above,
+% or use the \nocite command otherwise.
+
+% You may also cite a modern paper or book where the
+% proof system is explained in greater depth or clarity.
+% Cite parsimoniously.
+
+% Do not cite related work. Instead, use the "\iref" or "\irefmissing"
+% commands to make an internal reference to another entry,
+% as explained within the "history" environment above.
+
+\end{entry}
