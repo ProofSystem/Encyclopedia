@@ -38,7 +38,9 @@ Where $x$ does not occur in $v$ and $\sigma = [v/x]$.
 \begin{history}
    The unification principle was first presented independently by Robinson
    in his paper about Resolution \cite{Robinson1965JACM} (see \iref{Resolution})
-   and by Gould \cite{guard1964automated} (where it is called matching).
+   and by Gould \cite{guard1964automated} (where it is called matching, not to
+   be confused with the modern notion of matching - the unification of a term
+   with a ground term).
    The above set of rules is taken from Snyder and Gallier \cite{Snyder1989101}.
 \end{history}
 
@@ -47,8 +49,9 @@ Where $x$ does not occur in $v$ and $\sigma = [v/x]$.
    solved if it contains only solved pairs. The application of the above rules always terminates on a given set of pairs of terms
    and if, in addition, the set is unifiable, then it terminates in a set $S'$ containing only solved pairs.
    The set $S'$ contains the substitution components \cite{Robinson1965JACM} of a most general unifier of $S$.
-  The application of the above rules and the choice
- of which equation to process are deterministic (up to renaming of free variables).
+  The choice
+ of which equation to process is a "dont-care" non-determinism, which means
+that the resulted substitutions, if exist, are identical up to the renaming of free variables.
  \end{technicalities}
 
 % Leave an empty line above "\end{entry}".
