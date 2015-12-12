@@ -81,18 +81,18 @@ $s = \lambda\vc x n.x_i(\overline{y_l(\vc x n)})$ for $0<i\leq n$ and $l = \text
 \begin{technicalities}
   Huet \cite{huet75tcs} introduced the procedure without assuming
   the axiom of functional extensionality and showed that assuming this axiom
-  makes the procedure simpler.
-  The above set of rules is taken from Snyder and Gallier \cite{Snyder1989101}
-  and assumes extensionality.
-   The application of the above rules always terminates on a unifiable set of pairs of terms
-   and results in a set $S'$ containing only solved pairs and unsolved ``flex-flex"
-  pairs which are always unifiable .
-   The solved pairs in $S'$ are the substitution components \cite{Robinson1965JACM} of a pre-unifier of $S$.
-   The procedure (with extensionality) enumerates a complete and minimal set of pre-unifiers.
-  The application of the first three rules is deterministic (up to renaming of free variables),
-  that of the last two rules is
-  a ``dont-know" non-determinism and  the choice of which equation to choose
-  is a ``dont-care" non-determinism.
+  makes the procedure non-redundant.
+  The above set of rules assumes extensionality.
+The set $S$ is considered
+   pre-solved if it contains only solved or ``flex-flex" pairs where a ``flex" term
+   is a term whose head is a free variable.
+   The solved pairs in $S'$ are the substitution components \cite{Robinson1965JACM} of a
+   pre-unifier of $S$ which can always be extended into a unifier.
+  The application of the last two rules is
+  a ``dont-know" non-determinism, while the choice of which equation to choose
+  is a ``dont-care" non-determinism. Nevertheless, by choosing an appropriate strategy,
+   the application of the above rules always terminates on a unifiable set of pairs of terms
+   and enumerates (with extensionality) a complete and minimal set of pre-unifiers.
  \end{technicalities}
 
 
