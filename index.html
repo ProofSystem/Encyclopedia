@@ -1,43 +1,41 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
+
   <head>
-    <meta charset="utf-8">
+    <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Encyclopedia of Proof Systems by ProofSystem</title>
+    <meta name="description" content="Encyclopedia of Proof Systems : ">
 
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/github-light.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Encyclopedia of Proof Systems</title>
   </head>
+
   <body>
-    <div class="wrapper">
-      <header>
-        <h1>Encyclopedia of Proof Systems</h1>
-        <p>Task-Force for the Jubilee Edition of CADE (the Conference on Automated Deduction).</p>
 
-        <p class="view"><a href="https://github.com/ProofSystem/Encyclopedia">View the Project on GitHub <small>ProofSystem/Encyclopedia</small></a></p>
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/ProofSystem/Encyclopedia">View on GitHub</a>
 
+          <h1 id="project_title">Encyclopedia of Proof Systems</h1>
+          <h2 id="project_tagline"></h2>
 
-        <ul>
-          <li><a href="https://github.com/ProofSystem/Encyclopedia/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/ProofSystem/Encyclopedia/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/ProofSystem/Encyclopedia">View On <strong>GitHub</strong></a></li>
-        </ul>
-      </header>
-      <section>
-        <p>In this jubilee edition of CADE, we shall commemorate the multitude of
-proof systems that form the theoretical foundations for automated
-deduction. To achieve this goal, we are starting a task-force to produce a concise
-encyclopedia of proof systems. Every entry in this encyclopedia will
-follow a given template and will preferably be exactly one page long,
-displaying the inference rules of the proof system and possibly a few
-clarifying remarks. The one-page encyclopedia entries will be
-displayed as posters during <a href="http://conference.mi.fu-berlin.de/cade-25/home">CADE</a>. 
-If you have an entry accepted at the Encyclopedia, participation at CADE 
-is encouraged, but not required.</p>
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/ProofSystem/Encyclopedia/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/ProofSystem/Encyclopedia/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>Our goal is to produce a concise
+encyclopaedia of proof systems. Every entry in this encyclopaedia
+follows a given template and is preferably exactly one page (and no more than two pages) long,
+displaying the inference rules of the proof system and a few
+clarifications and technical or historical remarks.</p>
 
 <p>This project is currently coordinated and maintained by <a href="http://paleo.woltzenlogel.org">Bruno Woltzenlogel Paleo</a>.</p>
 
@@ -51,7 +49,7 @@ is encouraged, but not required.</p>
 <li><p>A bibliography (e.g. "SequentCalculus.bib") file containing only the bibitems cited in your entry.</p></li>
 </ul>
 
-<p>Except for the file extension, both files should have the same name. This common name should also be the same as the unique ID of your entry chosen by you and specified inside your LaTeX source file.</p>
+<p>Except for the file extensions (".tex", ".bib"), both files should have the same name. This common name should also be the same as the unique ID of your entry chosen by you and specified inside your LaTeX source file.</p>
 
 <p>When compiled, your entry should have exactly one page. If your proof system has too many inference rules and does not fit in one page, please <a href="mailto:eps-coordinators@googlegroups.com">contact the coordinators</a>, send him a paper containing your proof system and ask for an exception.</p>
 
@@ -88,7 +86,8 @@ Please conform to the examples.</p>
 
 <p>To compile, run:</p>
 
-<pre><code>$ make
+<pre><code>$ make clean
+$ make
 </code></pre>
 
 <p>This will automatically execute <em>pdflatex</em> and <a href="http://biblatex-biber.sourceforge.net">biber</a> for you. </p>
@@ -101,11 +100,24 @@ Please conform to the examples.</p>
 <a id="criteria-for-acceptance" class="anchor" href="#criteria-for-acceptance" aria-hidden="true"><span class="octicon octicon-link"></span></a>Criteria for Acceptance</h2>
 
 <ol>
-<li><p>the proof system must have been published in a journal or conference proceedings.</p></li>
+<li><p>the proof system must have been published in journals or conference proceedings.</p></li>
 <li><p>the entry should be factually and historically correct.</p></li>
 </ol>
 
 <p>If you are planning to submit an entry about a proof system invented by somebody else, we advise you to seek his/her permission first.</p>
+
+<h2>
+<a id="peer-reviewing" class="anchor" href="#peer-reviewing" aria-hidden="true"><span class="octicon octicon-link"></span></a>Peer-Reviewing</h2>
+
+<p>All entries are reviewed by the <a href="mailto:eps-coordinators@googlegroups.com">coordinators</a>.</p>
+
+<p>Additionally, peer-reviewing is open: everyone is encouraged to review entries within his/her domain of expertise. If you have improvement suggestions for an existing entry, please contact the authors of the entry directly, including the <a href="mailto:eps-coordinators@googlegroups.com">coordinators</a> in "cc:". Your peer-reviewing will be acknowledged. Moreover, if your suggestions lead to a substantial modification of the entry, the coordinators will ensure co-authorship of the entry for you.</p>
+
+<p>We kindly ask (but do not require) all entry authors to review a few entries authored by others.</p>
+
+<p>Anonymous peer-reviewing is also allowed. You may send your suggestions to the <a href="mailto:eps-coordinators@googlegroups.com">coordinators</a>, who will then contact the authors on your behalf.</p>
+
+<p><a href="https://github.com/ProofSystem/Encyclopedia/issues">https://github.com/ProofSystem/Encyclopedia/issues</a></p>
 
 <h2>
 <a id="important-dates" class="anchor" href="#important-dates" aria-hidden="true"><span class="octicon octicon-link"></span></a>Important Dates</h2>
@@ -119,12 +131,16 @@ Please conform to the examples.</p>
 
 <p><a href="http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US"><img src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" alt="License"></a>.</p>
       </section>
-      <footer>
-        <p>This project is maintained by <a href="https://github.com/ProofSystem">ProofSystem</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Encyclopedia of Proof Systems maintained by <a href="https://github.com/ProofSystem">ProofSystem</a></p>
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
       </footer>
     </div>
-    <script src="javascripts/scale.fix.js"></script>
+
               <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
             document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
@@ -135,6 +151,7 @@ Please conform to the examples.</p>
             pageTracker._trackPageview();
             } catch(err) {}
           </script>
+
 
   </body>
 </html>
