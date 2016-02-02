@@ -6,14 +6,14 @@
 % The following commands should be enabled for poster production only.
 % Posters should be printed with 125% scale to trim margins.
 \usepackage[hmarginratio=1:1,vmarginratio=1:1]{geometry}
-\pagestyle{empty} % removes page numbers
+%\pagestyle{empty} % removes page numbers
 
 
 % Book Production
 % ===============
 % The following commands should be enabled for book production only.
-% \newcommand{\pagenumberingstyle}{plain} % centers page numbers
-
+\newcommand{\pagenumberstyle}{plain} % centers page numbers
+\pagestyle{\pagenumberstyle}
 
 % Font Packages
 % =============
@@ -64,9 +64,11 @@
 
 % Packages and Commands for Indexes
 % =================================
-\usepackage{multind} % allows multiple index generation
-\makeindex{logics}   % index for logics
-\makeindex{ctypes}   % index for calculus types
+\usepackage{multind}         % allows multiple index generation
+\makeindex{logics}           % index for logics
+\makeindex{calculusTypes}    % index for calculus types
+\makeindex{authors}          % index for entry authors
+\makeindex{calculusAuthors}  % index for calculus authors
                
 
 % Packages and Commands for Bibliographies
@@ -117,15 +119,17 @@
 
   \appendix
 
-  \include{backmatter/cblist}
-  \include{backmatter/acronym}
+  %\include{backmatter/cblist}
+  %\include{backmatter/acronym}
   %\include{backmatter/glossary}
 
   \newpage
 
   \begin{scriptsize}
-  \printindex{logics}{Logics}
-  \printindex{ctypes}{Proof Systems Grouped by Type}
+  \printindex{logics}{Proof Systems Grouped by Logics}
+  \printindex{calculusTypes}{Proof Systems Grouped by Type}
+  \printindex{authors}{Entry Authors}
+  \printindex{calculusAuthors}{Proof Systems' Authors}
   \end{scriptsize}
 
 \end{document}

@@ -32,6 +32,10 @@
 \newcommand{\entryAuthor}[1]{\gdef\@entryAuthor{#1}}
 \newcommand{\entryReviewer}[1]{}
 
+\newcommand{\iA}[1]{#1\index{authors}{#1}}
+\newcommand{\iCA}[1]{#1\index{calculusAuthors}{#1}}
+
+
 % ToDo: this is the command for open tags. 
 % Right now it does nothing. Eventually is should update indexes.
 \newcommand{\tag}[1]{}
@@ -151,7 +155,7 @@
 }
 
 \newenvironment{entry}[1]
-{\thispagestyle{\pagenumberingstyle}\label{entry:#1}\begin{refsection}[#1]}
+{\thispagestyle{\pagenumberstyle}\label{entry:#1}\begin{refsection}[#1]}
 {\updateindex\myline\printbibliography[heading=none]\end{refsection}}
 
 \newenvironment{calculus}
@@ -170,8 +174,10 @@
 {\noindent\textbf{Remarks:}}
 {\smallskip}
 
+\newcommand{\nothing}[1]{#1}
 
 \newcommand{\updateindex}{
   \index{logics}{\@calculusLogic!\@calculusLogicOrder!\@calculusName} 
-  \index{ctypes}{\@calculusType!\@calculusName} 
+  \index{calculusTypes}{\@calculusType!\@calculusName} 
+  \nothing{\@calculusAuthor}
 }
