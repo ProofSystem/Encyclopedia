@@ -13,6 +13,7 @@
 \let\@calculusName\@empty
 \let\@calculusAcronym\@empty
 \let\@calculusLogic\@empty
+\let\@calculusLogicOrder\@empty
 \let\@calculusType\@empty
 \let\@calculusAuthor\@empty
 \let\@calculusYear\@empty
@@ -22,6 +23,7 @@
 \newcommand{\calculusName}[1]{\gdef\@calculusName{#1}}
 \newcommand{\calculusAcronym}[1]{{\gdef\@calculusAcronym{#1}}}
 \newcommand{\calculusLogic}[1]{{\gdef\@calculusLogic{#1}}}
+\newcommand{\calculusLogicOrder}[1]{{\gdef\@calculusLogicOrder{#1}}}
 \newcommand{\calculusType}[1]{{\gdef\@calculusType{#1}}}
 \newcommand{\calculusAuthor}[1]{\gdef\@calculusAuthor{#1}}
 \newcommand{\calculusYear}[1]{\gdef\@calculusYear{#1}}
@@ -170,6 +172,6 @@
 
 
 \newcommand{\updateindex}{
-  \index{logics}{\@calculusLogic} 
+  \index{logics}{\@calculusLogic!\@calculusLogicOrder!\@calculusName} 
   \index{ctypes}{\@calculusType!\@calculusName} 
 }
