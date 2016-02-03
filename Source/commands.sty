@@ -1,5 +1,6 @@
 \RequirePackage{fancybox}
-
+\RequirePackage{etoolbox}
+\RequirePackage{forloop}
 
 \newcommand{\myline}{\noindent\makebox[\linewidth]{\rule{\textwidth}{0.4pt}}}
 
@@ -34,15 +35,40 @@
   \global\let\@entryAuthors\@empty
   \global\let\@entryTitle\@empty
   \global\togglefalse{alreadyHasAuthors}
+  \global\setcounter{cacounter}{0}
 }
 
 % =================
+
+
+% Commands to Handle Calculus Authors
+% ===================================
+
+% Calculus authors are stored in an array,
+% which is then read by "\updateIndexes" at the end of the "entry" environment
+
+\newcounter{cacounter}
+\newcommand\setauthor[2]{
+  \csdef{calculusAuthor#1}{#2}
+}
+\newcommand\addauthor[1]{
+  \csdef{calculusAuthor\thecacounter}{#1}
+  \stepcounter{cacounter}
+}
+\newcommand\getauthor[1]{
+  \csuse{calculusAuthor#1}
+}
+
+% ===================================
+
 
 
 % Indexing Commands
 % =================
 
 \newcommand{\indexAuthor}[1]{\index{authors}{#1}}
+
+\newcommand{\indexCalculusAuthor}[1]{\index{calculusAuthors}{#1}}
 
 
 % =================
@@ -69,7 +95,12 @@
 \newcommand{\calculusLogic}[1]{{\gdef\@calculusLogic{#1}}}
 \newcommand{\calculusLogicOrder}[1]{{\gdef\@calculusLogicOrder{#1}}}
 \newcommand{\calculusType}[1]{{\gdef\@calculusType{#1}}}
-\newcommand{\calculusAuthor}[1]{\gdef\@calculusAuthor{#1}}
+
+%\newcommand{\calculusAuthor}[1]{\gdef\@calculusAuthor{#1}}
+
+\newcommand{\calculusAuthor}[1]{\addauthor{#1}}
+
+
 \newcommand{\calculusYear}[1]{\gdef\@calculusYear{#1}}
 
 
@@ -220,8 +251,13 @@
 
 \newcommand{\nothing}[1]{}
 
+
+\newcounter{i} % Generic counter used for forloops
+
 \newcommand{\updateindex}{
   \index{logics}{\@calculusLogic!\@calculusLogicOrder!\@calculusName} 
   \index{calculusTypes}{\@calculusType!\@calculusName} 
   \nothing{\@calculusAuthor}
+
+  \forloop{i}{0}{\value{i} < \value{cacounter}}{\indexCalculusAuthor{\getauthor{\thei}}}
 }
