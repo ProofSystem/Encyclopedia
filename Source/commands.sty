@@ -1,24 +1,69 @@
 \RequirePackage{fancybox}
 
-\newcommand{\myline}{\noindent\makebox[\linewidth]{\rule{\textwidth}{0.4pt}}}
 
-\newcommand{\pagenumberingstyle}{empty}
-%\newcommand{\pagenumberingstyle}{plain}
+\newcommand{\myline}{\noindent\makebox[\linewidth]{\rule{\textwidth}{0.4pt}}}
 
 \newcommand{\includeProofSystem}[1]{\input{mainmatter/#1}}
 
 \newcommand{\iref}[1]{\{\ref{entry:#1}\}}
 \newcommand{\irefmissing}[1]{}
 
+
+% Global Variables
+% ================
+
 \let\@calculusName\@empty
 \let\@calculusAcronym\@empty
 \let\@calculusLogic\@empty
 \let\@calculusLogicOrder\@empty
 \let\@calculusType\@empty
-\let\@calculusAuthor\@empty
 \let\@calculusYear\@empty
-\let\@entryAuthor\@empty
+\let\@entryAuthors\@empty
 \let\@entryTitle\@empty
+
+\newtoggle{alreadyHasAuthors}
+\togglefalse{alreadyHasAuthors}
+
+\newcommand{\resetGlobals}{
+  \global\let\@calculusName\@empty
+  \global\let\@calculusAcronym\@empty
+  \global\let\@calculusLogic\@empty
+  \global\let\@calculusLogicOrder\@empty
+  \global\let\@calculusType\@empty
+  \global\let\@calculusYear\@empty
+  \global\let\@entryAuthors\@empty
+  \global\let\@entryTitle\@empty
+  \global\togglefalse{alreadyHasAuthors}
+}
+
+% =================
+
+
+% Indexing Commands
+% =================
+
+\newcommand{\indexAuthor}[1]{\index{authors}{#1}}
+
+\newcommand{\iCA}[1]{#1\index{calculusAuthors}{#1}}
+
+% =================
+
+\newcommand{\entryTitle}[1]{\gdef\@entryTitle{#1}}
+
+\newcommand{\entryAuthor}[1]{
+  \iftoggle{alreadyHasAuthors}{
+    \g@addto@macro{\@entryAuthors}{, #1\indexAuthor{#1} }
+  }{
+    \g@addto@macro{\@entryAuthors}{#1\indexAuthor{#1}}
+  }
+  \toggletrue{alreadyHasAuthors}
+}
+
+%\newcommand{\entryAuthor}[1]{\gdef\@entryAuthors{#1}}
+
+\newcommand{\entryReviewer}[1]{}
+
+
 
 \newcommand{\calculusName}[1]{\gdef\@calculusName{#1}}
 \newcommand{\calculusAcronym}[1]{{\gdef\@calculusAcronym{#1}}}
@@ -28,12 +73,12 @@
 \newcommand{\calculusAuthor}[1]{\gdef\@calculusAuthor{#1}}
 \newcommand{\calculusYear}[1]{\gdef\@calculusYear{#1}}
 
-\newcommand{\entryTitle}[1]{\gdef\@entryTitle{#1}}
-\newcommand{\entryAuthor}[1]{\gdef\@entryAuthor{#1}}
-\newcommand{\entryReviewer}[1]{}
 
-\newcommand{\iA}[1]{#1\index{authors}{#1}}
-\newcommand{\iCA}[1]{#1\index{calculusAuthors}{#1}}
+
+
+
+%ToDo: to make the index for calculus authors work, \iCA should be called outside \calculusAuthor and inside the entry environment.
+
 
 
 % ToDo: this is the command for open tags. 
@@ -42,7 +87,7 @@
 
 \renewcommand\maketitle{\par
   \title{\@entryTitle}
-  \author{\@entryAuthor}
+  \author{\@entryAuthors}
 
   \stepcounter{section}%
   \setcounter{section}{0}%
@@ -141,7 +186,7 @@
   \chapsize
   \chapstyle
   \@entryTitle \hfill (\@calculusYear) 
-  \footnote[0]{\hspace{-13pt} Entry {\thechapter} by: \@entryAuthor} 
+  \footnote[0]{\hspace{-13pt} Entry {\thechapter} by: \@entryAuthors} 
   \par}
  \setbox0=\vbox{\setcounter{@auth}{1}\def\and{\stepcounter{@auth}}%
  \def\thanks##1{}\@author}%
@@ -156,7 +201,7 @@
 
 \newenvironment{entry}[1]
 {\thispagestyle{\pagenumberstyle}\label{entry:#1}\begin{refsection}[#1]}
-{\updateindex\myline\printbibliography[heading=none]\end{refsection}}
+{\updateindex\myline\printbibliography[heading=none]\end{refsection}\resetGlobals}
 
 \newenvironment{calculus}
 {\begin{center}\begin{Sbox}\begin{minipage}[b]{0.98\textwidth}}
@@ -174,7 +219,7 @@
 {\noindent\textbf{Remarks:}}
 {\smallskip}
 
-\newcommand{\nothing}[1]{#1}
+\newcommand{\nothing}[1]{}
 
 \newcommand{\updateindex}{
   \index{logics}{\@calculusLogic!\@calculusLogicOrder!\@calculusName} 
