@@ -1,13 +1,12 @@
-\calculusName{First-Order Unification}   
-\calculusAcronym{}    
-\calculusLogic{Unification}  
-\calculusLogicOrder{First-Order}
-\calculusType{Unification}   
-\calculusYear{1965}   
-\calculusAuthor{John Alan Robinson} 
+\calculusName{First-Order Unification}   % The name of the calculus
+\calculusAcronym{}    % The acronym if defined above, or empty otherwise.
+\calculusLogic{first-order}  % Specify the logic (e.g. classical, intuitionistic, ...) for which this calculus is intended.
+\calculusType{unification}   % Specify the calculus type (e.g. Frege-Hilbert style, tableau, sequent calculus, hypersequent calculus, natural deduction, ...)
+\calculusYear{1965}   % The year when the calculus was invented.
+\calculusAuthor{John Alan Robinson} % The name(s) of the author(s) of the calculus.
 
-\entryTitle{First-Order Unification}     
-\entryAuthor{Tomer Libal}     
+\entryTitle{First-Order Unification}     % Title of the entry (usually coincides with the name of the calculus).
+\entryAuthor{Tomer Libal}    % Your name(s). Separate multiple names with "\and".
 
 \entryReviewer{Bruno Woltzenlogel Paleo}
 
@@ -39,11 +38,12 @@ Where $x$ does not occur in $v$ and $\sigma = [v/x]$.
 \end{clarifications}
 
 \begin{history}
-   The unification principle was first presented independently by Robinson
-   in his paper about Resolution \cite{Robinson1965JACM} (see \iref{Resolution})
-   and by Gould \cite{guard1964automated} (where it is called matching, not to
+   The unification principle was first described by Herbrand in his thesis \cite{herbrand1930recherches}
+   but was overlooked until rediscovered independently by Prawitz \cite{Prawitz1960}
+   and Gould \cite{guard1964automated} (where it is called matching, not to
    be confused with the modern notion of matching - the unification of a term
    with a ground term).
+   These findings helped pave the way for Robinson's seminal work on Resolution \cite{Robinson1965JACM} (see \iref{Resolution}).
    The above set of rules is taken from Snyder and Gallier \cite{Snyder1989101}.
 \end{history}
 
@@ -56,6 +56,6 @@ Where $x$ does not occur in $v$ and $\sigma = [v/x]$.
    that the resulting substitutions, if they exist, are identical up to the renaming of free variables.
  \end{technicalities}
 
-
+% Leave an empty line above "\end{entry}".
 
 \end{entry}
