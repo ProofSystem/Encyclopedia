@@ -1,0 +1,75 @@
+
+
+
+\calculusName{Lambek Calculus}   
+\calculusAcronym{\LambekCalc}     
+\calculusLogic{Substructural Logics} 
+\calculusLogicOrder{Propositional}
+\calculusType{Sequent Calculus}   
+\calculusYear{1958}   
+\calculusAuthor{Joachim Lambek}
+
+\entryTitle{Lambek Calculus}        
+\entryAuthor{Harley Eades III} \entryAuthor{Valeria de Paiva}  
+
+
+\tag{Non-commutative}
+
+\maketitle
+
+\begin{entry}{Lambek}  
+
+\newcommand{\llimp}[0]{\leftharpoonup}
+\newcommand{\rlimp}[0]{\rightharpoonup}    
+  
+\begin{calculus}
+\[
+\begin{array}{ccccc}
+  \infer[ax]{A \vdash A}{}
+  & \quad &
+  \infer[cut]{\Gamma_1,\Gamma_2,\Gamma_3 \vdash C}{\Gamma_1 \vdash A & \Gamma_2,A,\Gamma_3 \vdash C}
+  \\[8pt]
+  \infer[I_r]{\cdot \vdash I}{}
+  & \quad & 
+  \infer[I_l]
+        {\Gamma_1,I,\Gamma_2 \vdash A}
+        {\Gamma_1,\Gamma_2 \vdash A}
+  \\[8pt]
+  \infer[\otimes_r]
+        {\Gamma_1,\Gamma_2 \vdash A \otimes B}
+        {\Gamma_1 \vdash A & \Gamma_2 \vdash B}
+  & \quad &
+  \infer[\otimes_l]
+        {\Gamma_1,A \otimes B,\Gamma_2 \vdash C}
+        {\Gamma_1,A,B,\Gamma_2 \vdash C}
+  \\[8pt]
+  \infer[\rlimp_r]{\Gamma \vdash A \rlimp B}{\Gamma,A \vdash B}
+  & \quad &
+  \infer[\rlimp_l]{\Gamma_1,A \rlimp B,\Gamma_2,\Gamma_3 \vdash C}{\Gamma_1 \vdash A & \Gamma_2, B, \Gamma_3 \vdash C}
+  \\[8pt]
+  \infer[\llimp_r]{\Gamma \vdash B \llimp A}{A,\Gamma \vdash B}
+  & \quad &
+  \infer[\rlimp_l]{\Gamma_1,B \llimp A,\Gamma_2,\Gamma_3 \vdash C}{\Gamma_1 \vdash A & \Gamma_2, B, \Gamma_3 \vdash C}
+\end{array}
+\]
+\end{calculus}
+
+\begin{clarifications}
+...
+\end{clarifications}
+
+\begin{history}
+%% ToDo: write here short historical remarks about this proof system,
+%% especially if they relate to other proof systems. 
+%% Use "\iref{OtherProofSystem}" to refer to another proof system 
+%% in the Encyclopedia (where "OtherProofSystem" is its ID). 
+%% Use "\irefmissing{SuggestedIDForOtherProofSystem}" to refer to 
+%% another proof system that is not yet available in the encyclopedia.
+...
+\end{history}
+
+%% \begin{technicalities}
+%% ...
+%% \end{technicalities}
+
+\end{entry}
