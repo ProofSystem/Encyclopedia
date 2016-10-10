@@ -1,18 +1,26 @@
 \documentclass[graybox, envcountchap]{svmult}
 
+\usepackage[hmarginratio=1:1,vmarginratio=1:1]{geometry}
+
 % Poster Production
 % =================
 % The following commands should be enabled for poster production only.
 % Posters should be printed with 125% scale to trim margins.
-\usepackage[hmarginratio=1:1,vmarginratio=1:1]{geometry}
 %\pagestyle{empty} % removes page numbers
-
 
 % Book Production
 % ===============
 % The following commands should be enabled for book production only.
 \newcommand{\pagenumberstyle}{plain} % centers page numbers
 \pagestyle{\pagenumberstyle}
+
+% College Publications Book Production
+% ====================================
+% The following commands are required by College Publications.
+%\usepackage[paper=a4paper,layoutheight=200mm,layoutwidth=120mm,layoutvoffset=48.9mm,layouthoffset=45mm,centering,margin=0pt,includeheadfoot,footskip=0mm,% showframe=true, showcrop=true
+%]{geometry}
+
+
 
 % Font Packages
 % =============
@@ -107,7 +115,7 @@
 
 \mainmatter
 
-  \include{intros}
+  %\include{intros}
 
   \include{proofsystems}
 
