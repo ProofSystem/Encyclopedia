@@ -40,12 +40,12 @@ clarifications and technical or historical remarks.</p>
 <p>This project is currently coordinated and maintained by <a href="http://paleo.woltzenlogel.org">Bruno Woltzenlogel Paleo</a>.</p>
 
 <h2>
-<a id="submission-instructions" class="anchor" href="#submission-instructions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Submission Instructions</h2>
+<a id="submission-instructions" class="anchor" href="#submission-instructions" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Submission Instructions</h2>
 
 <p>You must produce two files:</p>
 
 <ul>
-<li><p>A LaTeX source file (e.g. "SequentCalculus.tex") following the <a href="https://github.com/ProofSystem/Encyclopedia/blob/master//mainmatter/Template.tex">template</a>. </p></li>
+<li><p>A LaTeX source file (e.g. "SequentCalculus.tex") following the <a href="https://github.com/ProofSystem/Encyclopedia/blob/master/Source/Template.tex">template</a>. </p></li>
 <li><p>A bibliography (e.g. "SequentCalculus.bib") file containing only the bibitems cited in your entry.</p></li>
 </ul>
 
@@ -53,17 +53,17 @@ clarifications and technical or historical remarks.</p>
 
 <p>When compiled, your entry should have exactly one page. If your proof system has too many inference rules and does not fit in one page, please <a href="mailto:eps-coordinators@googlegroups.com">contact the coordinators</a>, send him a paper containing your proof system and ask for an exception.</p>
 
-<p><a href="https://github.com/ProofSystem/Encyclopedia/tree/master/mainmatter">Examples of entries</a> can be found in the <a href="https://github.com/ProofSystem/Encyclopedia/blob/master/main.pdf?raw=true">current version of the encyclopedia</a>.
+<p><a href="https://github.com/ProofSystem/Encyclopedia/tree/master/Source/mainmatter">Examples of entries</a> can be found in the <a href="https://github.com/ProofSystem/Encyclopedia/blob/master/main.pdf?raw=true">current version of the encyclopedia</a>.
 Please conform to the examples.</p>
 
 <p><strong>If you have a Github account and are familiarised with git</strong>, you should:</p>
 
 <ol>
 <li><p><a href="https://github.com/ProofSystem/Encyclopedia/fork">fork the repository</a> to your own account and clone it to your local machine;</p></li>
-<li><p>add your ".tex" file to the <a href="https://github.com/ProofSystem/Encyclopedia/blob/master/mainmatter">/mainmatter</a> folder;</p></li>
-<li><p>add your ".bib" file to the <a href="https://github.com/ProofSystem/Encyclopedia/blob/master/bibliographies">/bibliographies</a> folder;</p></li>
-<li><p>link your ".tex" file to the rest of the encyclopedia by writing an <code>\includeProofSystem</code> statement in the <a href="https://github.com/ProofSystem/Encyclopedia/blob/master/proofsystems.tex">proofsystems.tex</a> file;</p></li>
-<li><p>link your ".bib" file to the rest of the encyclopedia by writing an <code>\addbibresource</code> statement in the <a href="https://github.com/ProofSystem/Encyclopedia/blob/master/bibliographies.sty">bibliographies.sty</a> file;</p></li>
+<li><p>add your ".tex" file to the <a href="https://github.com/ProofSystem/Encyclopedia/blob/master/Source/mainmatter">/mainmatter</a> folder;</p></li>
+<li><p>add your ".bib" file to the <a href="https://github.com/ProofSystem/Encyclopedia/blob/master/Source/bibliographies">/bibliographies</a> folder;</p></li>
+<li><p>link your ".tex" file to the rest of the encyclopedia by writing an <code>\includeProofSystem</code> statement in the <a href="https://github.com/ProofSystem/Encyclopedia/blob/master/Source/proofsystems.tex">proofsystems.tex</a> file;</p></li>
+<li><p>link your ".bib" file to the rest of the encyclopedia by writing an <code>\addbibresource</code> statement in the <a href="https://github.com/ProofSystem/Encyclopedia/blob/master/Source/bibliographies.sty">bibliographies.sty</a> file;</p></li>
 <li><p>compile (see instructions below) and check that everything is fine (e.g. no overfull hboxes);</p></li>
 <li><p>commit your changes and push them to your forked repository;</p></li>
 <li><p>Make a <em>pull request</em> of your changes. (The coordinator will then merge your changes back into this repository); </p></li>
@@ -73,16 +73,16 @@ Please conform to the examples.</p>
 
 <ol>
 <li><p><a href="https://github.com/ProofSystem/Encyclopedia/zipball/master">download the encyclopedia</a></p></li>
-<li><p>add your ".tex" file to the <a href="https://github.com/ProofSystem/Encyclopedia/blob/master/mainmatter">/mainmatter</a> folder;</p></li>
-<li><p>add your ".bib" file to the <a href="https://github.com/ProofSystem/Encyclopedia/blob/master/bibliographies">/bibliographies</a> folder;</p></li>
-<li><p>link your ".tex" file to the rest of the encyclopedia by writing an <code>\includeProofSystem</code> statement in the <a href="https://github.com/ProofSystem/Encyclopedia/blob/master/proofsystems.tex">proofsystems.tex</a> file;</p></li>
-<li><p>link your ".bib" file to the rest of the encyclopedia by writing an <code>\addbibresource</code> statement in the <a href="https://github.com/ProofSystem/Encyclopedia/blob/master/bibliographies.sty">bibliographies.sty</a> file;</p></li>
+<li><p>add your ".tex" file to the <a href="https://github.com/ProofSystem/Encyclopedia/blob/master/Source/mainmatter">/mainmatter</a> folder;</p></li>
+<li><p>add your ".bib" file to the <a href="https://github.com/ProofSystem/Encyclopedia/blob/master/Source/bibliographies">/bibliographies</a> folder;</p></li>
+<li><p>link your ".tex" file to the rest of the encyclopedia by writing an <code>\includeProofSystem</code> statement in the <a href="https://github.com/ProofSystem/Encyclopedia/blob/master/Source/proofsystems.tex">proofsystems.tex</a> file;</p></li>
+<li><p>link your ".bib" file to the rest of the encyclopedia by writing an <code>\addbibresource</code> statement in the <a href="https://github.com/ProofSystem/Encyclopedia/blob/master/Source/bibliographies.sty">bibliographies.sty</a> file;</p></li>
 <li><p>compile (see instructions below) and check that everything is fine (e.g. no overfull hboxes);</p></li>
 <li><p><a href="mailto:eps-coordinators@googlegroups.com">Send to the coordinators</a> your ".tex" and ".bib" files. </p></li>
 </ol>
 
 <h2>
-<a id="compilation-instructions" class="anchor" href="#compilation-instructions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Compilation Instructions</h2>
+<a id="compilation-instructions" class="anchor" href="#compilation-instructions" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Compilation Instructions</h2>
 
 <p>To compile, run:</p>
 
@@ -92,12 +92,12 @@ $ make
 
 <p>This will automatically execute <em>pdflatex</em> and <a href="http://biblatex-biber.sourceforge.net">biber</a> for you. </p>
 
-<p><em>biber</em> is a modern alternative to <em>bibtex</em>. When used in conjunction with <em>biblatex</em>, it is more convenient for handling multiple bibliographies. It comes pre-installed in most modern distributions of <em>LaTeX</em>. If your <em>LaTeX</em> distribution is too old, it might not contain <em>biber</em> and you might see error messages. In this case, the easiest solution is to install a newer LaTeX distribution, such as <a href="https://www.tug.org/texlive/">TeX-Live</a> or <a href="https://www.tug.org/mactex/">MacTeX</a>.</p>
+<p><em>biber</em> is a modern alternative to <em>bibtex</em>. When used in conjunction with <em>biblatex</em>, it is more convenient for handling multiple bibliographies. It comes pre-installed in most modern distributions of <em>LaTeX</em>. If your <em>LaTeX</em> distribution is too old, it might not contain <em>biber</em> and you might see error messages. In this case, the easiest solution is to install a newer LaTeX distribution, such as <a href="https://www.tug.org/texlive/">TeX-Live</a> or <a href="https://www.tug.org/mactex/">MacTeX</a>. The Encyclopaedia is known to compile well with Tex-Live 2015.</p>
 
 <p>If you face any difficulties to compile, <a href="mailto:eps-coordinators@googlegroups.com">contact the coordinators</a>.</p>
 
 <h2>
-<a id="criteria-for-acceptance" class="anchor" href="#criteria-for-acceptance" aria-hidden="true"><span class="octicon octicon-link"></span></a>Criteria for Acceptance</h2>
+<a id="criteria-for-acceptance" class="anchor" href="#criteria-for-acceptance" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Criteria for Acceptance</h2>
 
 <ol>
 <li><p>the proof system must have been published in journals or conference proceedings.</p></li>
@@ -107,7 +107,7 @@ $ make
 <p>If you are planning to submit an entry about a proof system invented by somebody else, we advise you to seek his/her permission first.</p>
 
 <h2>
-<a id="peer-reviewing" class="anchor" href="#peer-reviewing" aria-hidden="true"><span class="octicon octicon-link"></span></a>Peer-Reviewing</h2>
+<a id="peer-reviewing" class="anchor" href="#peer-reviewing" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Peer-Reviewing</h2>
 
 <p>All entries are reviewed by the <a href="mailto:eps-coordinators@googlegroups.com">coordinators</a>.</p>
 
@@ -120,12 +120,12 @@ $ make
 <p>Technical issues related to layout and organization of the encyclopaedia can be reported in the <a href="https://github.com/ProofSystem/Encyclopedia/issues">Repository's Issues Page</a></p>
 
 <h2>
-<a id="important-dates" class="anchor" href="#important-dates" aria-hidden="true"><span class="octicon octicon-link"></span></a>Important Dates</h2>
+<a id="important-dates" class="anchor" href="#important-dates" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Important Dates</h2>
 
 <p>Submission to the online repository is currently open. </p>
 
 <h2>
-<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>License</h2>
 
 <p>By submitting an entry to the encyclopedia, you agree to the following Creative Commons license, and you additionally license your entry for publication as a chapter of the encyclopedia as a book in the future.</p>
 
