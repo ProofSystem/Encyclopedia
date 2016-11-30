@@ -57,11 +57,11 @@
 % If you need any other package, please contact the editor (bruno@logic.at)
 \negvspace
 \[ \infer[axiom\quad (c : s) \in \axioms]{\entails c : s}{ } \qquad
-   \infer[start\quad (x \not\in \Gamma)]{\Gamma, x : A \entails x : A}{\Gamma \entails A : s} \]
-\[ \infer[weakening\quad (x\not\in\Gamma)]{\Gamma, x : A \entails M : B}{\Gamma \entails M : B \qquad \Gamma \entails A : s} \]
+   \infer[start\quad (x \not\in \Gamma)]{\Gamma, x : A \entails x : A}{\Gamma \entails A : s} \qquad
+ \infer[weakening\quad (x\not\in\Gamma)]{\Gamma, x : A \entails M : B}{\Gamma \entails M : B \qquad \Gamma \entails A : s} \]
 \[ \infer[product\quad (s_1,s_2,s_3)\in\rules]{\Gamma \entails \Pi x : A. B : s_3}{\Gamma \entails A : s_1 \qquad \Gamma, x : A \entails B : s_2} \]
-\[ \infer[abstraction]{\Gamma \entails \lambda x: A. M : \Pi x : A. B}{\Gamma, x : A \entails M : B \qquad \Gamma \entails \Pi x : A. B : s} \]
-\[ \infer[application]{\Gamma \entails M~N : B[x \coloneqq N]}{\Gamma \entails M : \Pi x : A. B \qquad \Gamma \entails N : A} \]
+\[ \infer[abstraction]{\Gamma \entails \lambda x: A. M : \Pi x : A. B}{\Gamma, x : A \entails M : B \qquad \Gamma \entails \Pi x : A. B : s} \qquad
+\infer[application]{\Gamma \entails M~N : B[x \coloneqq N]}{\Gamma \entails M : \Pi x : A. B \qquad \Gamma \entails N : A} \]
 \[ \infer[conversion]{\Gamma \entails M : B}{\Gamma \entails M : A \qquad \Gamma \entails B : s \qquad A \equiv_\beta B} \]
 
 \vspace{5pt}

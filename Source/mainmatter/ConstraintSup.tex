@@ -36,23 +36,21 @@
 \[
 \infer[\textit{Equality Resolution}]
 {C\co{T \land T''}}{C \lor \neg u \approx v\co{T}}
-\]
-\[
-\infer[\textit{Negative Superposition}]
-{D \lor C \lor \neg t[u'] \approx t'\co{T \land T' \land T''}}
-{D \lor u \approx u'\co{T'}
-& C \lor \neg t[v] \approx t'\co{T}}
-\]
-\[
-\infer[\textit{Positive Superposition}]
-{D \lor C \lor t[u'] \approx t'\co{T \land T' \land T''}}
-{D \lor u \approx u'\co{T'}
-& C \lor t[v] \approx t'\co{T}}
-\]
-\[
+\qquad
 \infer[\textit{Equality Factoring}]
 {C \lor \neg u' \approx v' \lor u \approx u'\co{T \land T''}}
 {C \lor v \approx v' \lor u \approx u'\co{T}}
+\]
+\[
+\infer[\textit{Neg. Sup.}]
+{D \lor C \lor \neg t[u'] \approx t'\co{T \land T' \land T''}}
+{D \lor u \approx u'\co{T'}
+& C \lor \neg t[v] \approx t'\co{T}}
+\qquad
+\infer[\textit{Pos. Sup.}]
+{D \lor C \lor t[u'] \approx t'\co{T \land T' \land T''}}
+{D \lor u \approx u'\co{T'}
+& C \lor t[v] \approx t'\co{T}}
 \]
 $C,D$ are (possibly empty) equational clauses,
 $T,T',T''$ are constraints (i.\,e., first-order formulas over
@@ -99,7 +97,7 @@ the initially given clauses are supposed to have a trivial
 constraint, that is, $C\co{\mathit{true}}$.
 The inference rules are supplemented by a redundancy criterion
 that permits to delete constrained clauses that are unnecessary for
-deriving a contradiction during the saturation, see \iref{SaturationWithRed}.
+deriving a contradiction during the saturation (cf. \iref{SaturationWithRed}).
 In particular, every constrained clause with an unsatisfiable
 constraint is redundant.
 \end{clarifications}
@@ -128,7 +126,7 @@ unifiers compactly.
 \end{history}
 
 \begin{technicalities}
-The constraint superposition calculus is refutationally complete for
+This calculus is refutationally complete for
 first-order logic with equality,
 provided that the initially given clauses have only trivial constraints
 (for ordering constraints, this requirement can be relaxed slightly).

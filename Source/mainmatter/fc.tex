@@ -41,6 +41,8 @@
 	
 	\begin{calculus}
 	
+\vspace{-5pt}
+
 	% Add the inference rules of your proof system here
 
 \centering
@@ -82,13 +84,8 @@ $$
 	% be very concise and objective.
 	
 	\begin{clarifications}
-	 The presentation from~\cite{AspLongo:91} with minor corrections is used. Below $X, Y, Z...$ are type-variables and $x, y, ...$ term variables. 
-
-	Type expressions: 
-$T:= X | (T\rightarrow S)|(\forall X:Tp.T)$. 
-
-Term expressions: $e:= x|(ee)|(eT)|(\lambda x:T.e)|(\Lambda X:Tp.e)$.  
-
+	 The presentation from~\cite{AspLongo:91} with minor corrections is used. $X, Y, Z...$ are type-variables and $x, y, ...$ term variables. Expressions are type ($T:= X | (T\rightarrow S)|(\forall X:Tp.T)$) or terms ($e:= x|(ee)|(eT)|(\lambda x:T.e)|(\Lambda X:Tp.e)$).  
+%
 $\forall, \Lambda$ and $\lambda$ are variable binders. All expressions are considered up to renaming of bound variables
 ($\alpha$-conversion). An unbound variable is free. $FV(R)$ is the set of free
 variables for any (type or term) expression; $[e/x]$, $[S/X]$ mean capture-avoiding substitution in term- and type-expressions respectively (defined by induction). 
@@ -96,10 +93,10 @@ A context is a finite set $\Gamma$ of type variables; $\Gamma X$ stands for $\Ga
 $FV(T)\subseteq FV(\Gamma)$. A type assignment in $\Gamma$ is a finite list
 $E = (x_1:T_1),..., (x_n:T_n)$ where any $T_i$ is legal in $\Gamma$. 
 The typing
-relation $\Gamma; E\seq e:T$, where $E$ is a type assignmentlegal in $\Gamma$,
-$e$ is a term expression and $T$ is a type expression, is defined by the rules
+relation $\Gamma; E\seq e:T$, where $E$ is a type assignment legal in $\Gamma$,
+$e$ is a term and $T$ is a type, is defined by the rules
 above.
-
+%
 The {\em conversion relation} between well-typed 
 terms is very important. It is defined
 by the following axioms: ($\beta$) $(\lambda x:T.f)e = [e/x]f$; 
@@ -113,13 +110,7 @@ The system $\SystemF_c$ is obtained if one more equality axiom is added:
 	\end{clarifications}
 	
 	\begin{history}
-Introduced by Girard~\cite{Gir:71} and Reynolds~\cite{Rey:74}. Inspired works on higher order type systems. Included by Barendregt in his $\lambda$-cube~\cite{Bar:91}. Various extensions were considered, for example, $\SystemF_c$~\cite{LMS:93}, $\SystemF$ with subtyping~\cite{CMMS:91, LMS:00}. Important for functional programming languages.
-	% ToDo: write here short historical remarks about this proof system,
-	% especially if they relate to other proof systems.
-	% Use "\iref{OtherProofSystem}" to refer to another proof system
-	% in the Encyclopedia (where "OtherProofSystem" is its ID).
-	% Use "\irefmissing{SuggestedIDForOtherProofSystem}" to refer to
-	% another proof system that is not yet available in the encyclopedia.
+It was introduced in~\cite{Gir:71,Rey:74} and included in the $\lambda$-cube~\cite{Bar:91}. It is important for functional programming and inspired works on higher order type systems and many extensions (e.g. $\SystemF_c$~\cite{LMS:93}, $\SystemF$ with subtyping~\cite{CMMS:91, LMS:00}).
 	\end{history}
 	
 	\begin{technicalities}
@@ -129,23 +120,7 @@ order arithmetic $PA_2$. For $\SystemF_c$, a {\em genericity theorem} holds~\cit
 	% ToDo: write here remarks about soundness, completeness, decidability...
 	\end{technicalities}
 	
-	
-	
-	% Please cite the original paper where the proof system was defined.
-	% To do so, you may use the \cite command within
-	% one of the optional environments above,
-	% or use the \nocite command otherwise.
-	
-	% You may also cite a modern paper or book where the
-	% proof system is explained in greater depth or clarity.
-	% Cite parsimoniously.
-	
-	% Do not cite related work. Instead, use the "\iref" or "\irefmissing"
-	% commands to make an internal reference to another entry,
-	% as explained within the "history" environment above.
-	
-	% You do not need to create the "References" section yourself.
-	% This is done automatically.
+\vspace{-10pt}
 	
 	
 	

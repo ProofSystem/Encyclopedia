@@ -39,20 +39,10 @@
     \LeftLabel{(A2)}
     \UnaryInfC{$\Sigma(\bot, A) \fCenter \bot$}
     \DisplayProof
-  \sepline
+  \sepproof
     \Axiom$\Sigma(A, B) \fCenter C$
     \LeftLabel{($\Sigma\vee$)}
     \UnaryInf$\Sigma(A \vee D_1, B \vee D_2) \fCenter C \vee D_1 \vee D_2$
-    \DisplayProof
-  \sepline
-    \Axiom$\Sigma(A, B) \fCenter C$
-    \LeftLabel{($\Sigma\Box\Diamond$)}
-    \UnaryInf$\Sigma(\Box A, \Diamond(B \wedge E)) \fCenter \Diamond(B \wedge C \wedge E)$
-    \DisplayProof
-  \sepproof
-    \Axiom$\Sigma(A, B) \fCenter C$
-    \LeftLabel{($\Sigma\Box\Box$)}
-    \UnaryInf$\Sigma(\Box A, \Box B) \fCenter \Box C$
     \DisplayProof
   \sepline
     \Axiom$\Gamma(A) \fCenter B$
@@ -66,10 +56,20 @@
     \DisplayProof
   \sepline
     \Axiom$\Sigma(A, B) \fCenter C$
+    \LeftLabel{($\Sigma\Box\Diamond$)}
+    \UnaryInf$\Sigma(\Box A, \Diamond(B \wedge E)) \fCenter \Diamond(B \wedge C \wedge E)$
+    \DisplayProof
+  \sepproof
+    \Axiom$\Sigma(A, B) \fCenter C$
+    \LeftLabel{($\Sigma\Box\Box$)}
+    \UnaryInf$\Sigma(\Box A, \Box B) \fCenter \Box C$
+    \DisplayProof
+  \sepline
+    \Axiom$\Sigma(A, B) \fCenter C$
     \LeftLabel{($\Gamma\Diamond1$)}
     \UnaryInf$\Gamma(\Diamond(A \wedge B \wedge E)) \fCenter \Diamond(A \wedge B \wedge C \wedge E)$
     \DisplayProof
-  \sepline
+  \sepproof
     \Axiom$\Gamma(A) \fCenter B$
     \LeftLabel{($\Gamma\Diamond2$)}
     \UnaryInf$\Gamma(\Diamond(A \wedge E)) \fCenter \Diamond(A \wedge B \wedge E)$
@@ -77,11 +77,12 @@
 \end{infruleset}
 
 \sc{Simplification rules}
+\vspace{5pt}
 
 \begin{center}
-\begin{tabular}{rlrl}
+\begin{tabular}{rlrlrlrl}
   $(S_1)$ &~ $\Diamond\bot \approx \bot       $ ~&\quad
-  $(S_3)$ &~ $\bot \wedge E \approx \bot      $ \\
+  $(S_3)$ &~ $\bot \wedge E \approx \bot      $ ~&\quad
   $(S_2)$ &~ $\bot \vee A \approx A           $ ~&\quad
   $(S_4)$ &~ $A \vee A \vee B \approx A \vee B$ 
 \end{tabular}
@@ -94,7 +95,9 @@
     \RightLabel{if $\Gamma(C) \Rightarrow D$}
     \UnaryInfC{$D$}
     \DisplayProof
-  \sepline
+  \quad
+  \sepproof
+  \quad
     \AxiomC{$C_1$}
     \AxiomC{$C_2$}
     \LeftLabel{(R2)}
@@ -102,7 +105,7 @@
     \BinaryInfC{$D$}
     \DisplayProof
 \end{infruleset}
-
+\vspace{-10pt}
 \end{calculus}
 
 \begin{clarifications}

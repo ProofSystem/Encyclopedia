@@ -32,6 +32,7 @@
 
 
 \begin{calculus}
+\begin{small}
 \[
   \vcenter{\infer[R_{n,m}]{\Gamma,(C_1\cless D_1),\dots,(C_m\cless
     D_m)\seq\Delta,(A_1\cless B_1),\dots,(A_n\cless B_n)}
@@ -40,6 +41,8 @@
   }}
 \]
 
+\vspace{-5pt}
+
 \[
 \infer[T_{m}]{\Gamma, (C_1\cless D_1),\dots, (C_m\cless D_m) \seq \Delta
 }
@@ -47,6 +50,8 @@
   \Delta, D_1,\dots, D_m
 }
 \]
+
+\vspace{-5pt}
 
 \[
   \vcenter{\infer[W_{n,m}]{\Gamma,(C_1\cless
@@ -57,15 +62,13 @@
     \Gamma\seq\Delta,A_1,\dots,A_n,D_1,\dots,D_m}} 
 \]
 
-\[
-\vcenter{\infer[R_{C1}]{\Gamma\seq\Delta,(A\cless
-    B)}{\Gamma\seq\Delta,A}} \quad 
- \vcenter{\infer[R_{C2}]{\Gamma,(A\cless
-     B)\seq\Delta}{\Gamma,A\seq\Delta \quad&\quad \Gamma\seq \Delta,
-     B}}
-\]
+\vspace{-5pt}
 
 \[
+\vcenter{\infer[R_{C1}]{\Gamma\seq\Delta,(A\cless
+    B)}{\Gamma\seq\Delta,A}}
+%$
+\quad
 \infer[A_{n,m}]{\Gamma, (C_1\cless D_1), \dots,
   (C_m\cless D_m) \seq \Delta, ( A_1,\cless B_1), \dots,
   (A_n\cless B_n)
@@ -73,8 +76,13 @@
 {\begin{array}{c}\{\;\Gamma^\cless,B_k\seq \Delta^\cless, A_1,\dots,A_n,D_1,\dots,D_m\mid k\leq n\;\} \\\;\cup\;
     \{\; \Gamma^\cless,C_k\seq \Delta^\cless, A_1,\dots,A_n,D_1,\dots,D_{k-1}\mid k\leq m\;\}\end{array}
 }
+\quad
+%$
+ \vcenter{\infer[R_{C2}]{\Gamma,(A\cless
+     B)\seq\Delta}{\Gamma,A\seq\Delta \quad&\quad \Gamma\seq \Delta,
+     B}}
 \]
-\bigskip
+%\smallskip
 
 \begin{center}
 \begin{tabular}{c@{\qquad}c}
@@ -94,7 +102,7 @@ $\Rules_{\VNA_\cless}$ & = & $\{ A_{n,m} \mid n + m\geq 1 \}$
 \end{tabular}
 \end{center}
 
-
+\end{small}
 \end{calculus}
 
 
@@ -124,6 +132,8 @@ $\Rules_{\VNA_\cless}$ & = & $\{ A_{n,m} \mid n + m\geq 1 \}$
   $\VNA_\cless$) and, in most cases, enjoy Craig Interpolation. 
   Contraction can be made admissible. %\nocite{Lellmann:2012fk,Lellmann:2013}
 \end{technicalities}
+
+\vspace{-5pt}
 
 \end{entry}
 

@@ -43,12 +43,15 @@
 \centering
 $$
 \infer{<>\seq {\bf valid}}{}\!\quad\!\infer{\Gamma, x:K\seq {\bf valid}}{\Gamma\seq K\,{\bf kind} & x\notin FV(\Gamma)}\quad\!\infer{\Gamma, x:K, \Gamma'\seq x:K}{\Gamma, x:K, \Gamma'\seq {\bf valid}}\!\quad\! (1)
+\qquad
+\infer{\Gamma\seq {\bf Type\, kind}}{\Gamma\seq{\bf valid}}\!\quad
+\!\infer{\Gamma\seq El(A)\,{\bf kind}}{\Gamma\seq A:{\bf Type}}\!\quad\! (5)
 $$
 $$
 \infer{\Gamma\seq k:K'}{\Gamma\seq k:K & \Gamma\seq K=K'}\!\quad\!
 \infer{\Gamma\seq k=k':K'}{\Gamma\seq k=k':K & \Gamma\seq K=K'}\!\quad\! (2)^*
-$$
-$$\infer{\Gamma, [k/x]\Gamma'\seq [k/x]J}{\Gamma, x:K, \Gamma'\seq J & 
+\qquad
+\infer{\Gamma, [k/x]\Gamma'\seq [k/x]J}{\Gamma, x:K, \Gamma'\seq J & 
 \Gamma\seq k:K}\!\quad\! (3)^{**}$$
 $$
 \infer{\Gamma\seq (x:K)K' \, {\bf kind}}{\Gamma\seq K \,{\bf kind} & 
@@ -72,10 +75,7 @@ $$
 \infer{\Gamma\seq [x:K]f(x)=f:(x:K)K'}{\Gamma\seq f:(x:K)K' & 
 x\notin FV(f)}\!\quad\!(4)
 $$
-$$
-\infer{\Gamma\seq {\bf Type\, kind}}{\Gamma\seq{\bf valid}}\!\quad
-\!\infer{\Gamma\seq El(A)\,{\bf kind}}{\Gamma\seq A:{\bf Type}}\!\quad\! (5)
-$$
+
 
 
 	% The "proof.sty" and "bussproofs.sty" packages are available.

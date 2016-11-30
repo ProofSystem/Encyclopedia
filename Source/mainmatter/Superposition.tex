@@ -29,41 +29,52 @@
 % The "proof.sty" and "bussproofs.sty" packages are available.
 % If you need any other package, please contact the editor (bruno@logic.at)
 
+\newcommand{\myspace}{10pt}
+\vspace{\myspace}
 \[
 \infer[\textit{Equality Resolution}]
 {C\sigma}{C \lor \neg u \approx v\vphantom{[]}}
 \]
+\vspace{\myspace}
 \[
 \infer[\textit{Negative Superposition}]
 {(D \lor C \lor \neg t[u'] \approx t')\sigma}{D \lor u \approx u'
 & C \lor \neg t[v] \approx t'}
 \]
+\vspace{\myspace}
 \[
 \infer[\textit{Positive Superposition}]
 {(D \lor C \lor t[u'] \approx t')\sigma}{D \lor u \approx u'
 & C \lor t[v] \approx t'}
 \]
+\vspace{\myspace}
 plus either
 \[
 \infer[\textit{Merging Paramodulation}]
 {(D \lor C \lor s \approx s' \lor t \approx t'[u'])\sigma}{D \lor u \approx u'
 & C \lor s \approx s' \lor t \approx t'[v]}
 \]
+\vspace{\myspace}
 \[
 \infer[\textit{Ordered Factoring}]
 {(C \lor s \approx u)\sigma}{C \lor s \approx u \lor t \approx v}
 \]
+\vspace{\myspace}
 or
+\vspace{\myspace}
 \[
 \infer[\textit{Equality Factoring}]
 {(C \lor \neg u' \approx v' \lor v \approx v')\sigma}{C \lor v \approx v' \lor u \approx u'\vphantom{[]}}
 \]
+\vspace{\myspace}
 $C,D$ are (possibly empty) equational clauses,
 $s,s',t,t',u,u',v,v'$ are terms,
 $u$ and $v$ (and, for \textit{Ordered Factoring}
 and \textit{Merging Paramodulation}, $s$ and $t$)
 are unifiable with most general unifier~$\sigma$.
 In all binary inferences, $v$ is not a variable.
+
+\vspace{\myspace}
 
 Except for the last but one literal in
 \textit{Equality Factoring} and \textit{Merging Paramodulation} inferences,
@@ -75,6 +86,8 @@ In every literal involved in some inference
 the lhs is strictly maximal.
 Optionally,
 ordering restrictions can be overridden by \emph{selection functions}.
+
+\vspace{\myspace}
 
 For simplicity, it is assumed that the equality predicate $\approx$
 is the only predicate symbol in the signature.

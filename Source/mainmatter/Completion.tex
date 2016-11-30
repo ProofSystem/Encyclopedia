@@ -36,8 +36,9 @@
 % If you need any other package, please contact the editor (bruno@logic.at)
 
 Standard Completion:
+\begin{small}
 \[
-\begin{array}{l@{\qquad}l}
+\begin{array}{l@{\qquad}l@{\qquad}l}
 \begin{array}{ll}
 \infer[\textit{Orient}]
   {\strut E, \ \  R \cup \{ s \to t \}}
@@ -46,13 +47,6 @@ Standard Completion:
 \end{array}
 &
 \begin{array}{ll}
-\infer[\textit{Simplify-Equation}]
-  {\strut E \cup \{ u \deq t \}, \ \  R}
-  {E \cup \smash{\{ s \deq t \}}, \ \  R} \\
-\mbox{if $s \to_R u$\rule[-3ex]{0ex}{6ex}}
-\end{array}
-\\
-\begin{array}{ll}
 \infer[\textit{Deduce}]
   {\strut E \cup \{ s \approx t \}, \ \  R}
   {E, \ \  R} \\
@@ -60,28 +54,38 @@ Standard Completion:
 \end{array}
 &
 \begin{array}{ll}
-\infer[\textit{Left-Simplify-Rule}]
-  {\strut E \cup \{ u \approx t \}, \ \  R}
-  {E, \ \  R \cup \{ s \to t \}} \\
-\mbox{if $s \to_R u$ using a rule $l \to r \in R$ such that $s \sqsupset l$\rule[-3ex]{0ex}{6ex}}
-\end{array}
-\\
-\begin{array}{ll}
 \infer[\textit{Delete}]
   {\strut E, \ \  R}
   {E \cup \{ s \approx s \}, \ \  R} \\
 \mbox{\rule[-3ex]{0ex}{4ex}}
+\end{array}
+\\
+\begin{array}{ll}
+\infer[\textit{Simplify-Equation}]
+  {\strut E \cup \{ u \deq t \}, \ \  R}
+  {E \cup \smash{\{ s \deq t \}}, \ \  R} \\
+\mbox{if $s \to_R u$\rule[-3ex]{0ex}{6ex}}
+\end{array}
+&
+\begin{array}{ll}
+\infer[\textit{Left-Simplify-Rule}]
+  {\strut E \cup \{ u \approx t \}, \ \  R}
+  {E, \ \  R \cup \{ s \to t \}} \\
+\mbox{if $s \to_R u$ using a 
+$l \to r \in R$ such that $s \sqsupset l$\rule[-6ex]{0ex}{-50ex}}
 \end{array}
 &
 \begin{array}{ll}
 \infer[\textit{Right-Simplify-Rule}]
   {\strut E, \ \  R \cup \{ s \to u \}}
   {E, \ \  R \cup \{ s \to t \}} \\
-\mbox{if $t \to_R u$\rule[-2ex]{0ex}{5ex}}
+\mbox{if $t \to_R u$\rule[-3ex]{0ex}{6ex}}
 \end{array}
 \end{array}
 \]
+\end{small}
 plus, for Unfailing Completion:
+\begin{small}
 \[
 \begin{array}{ll}
 \infer[\textit{UC-Deduce}]
@@ -90,6 +94,11 @@ plus, for Unfailing Completion:
 \mbox{if $\langle s,t \rangle \in \mathrm{CP}(E \cup R)$\rule[-3ex]{0ex}{6ex}}
 \end{array}
 \]
+\end{small}
+
+
+
+
 
 $E$ is a set of equations,
 $R$ is a set of rewrite rules,
@@ -116,9 +125,8 @@ Standard completion was developed by Knuth and Bendix~\cite{KnuthBendix1970};
 the presentation as an inference system given here
 and the extension to unfailing completion
 are due to
-Bachmair, Dershowitz, and Hsiang~\cite{BachmairDershowitzHsiang1986LICS},
-see also~\cite{Bachmair1991}.
-An approach to extend completion to completion modulo
+Bachmair, Dershowitz, and Hsiang~\cite{BachmairDershowitzHsiang1986LICS,Bachmair1991}.
+An extension of completion to completion modulo
 associativity and/or commutativity was presented in~\cite{PetersonStickel1981}.
 
 \end{history}

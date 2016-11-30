@@ -35,22 +35,21 @@
 % If you need any other package, please contact the editor (bruno@logic.at)
 
 \[
-  \begin{array}{cc}
-\multicolumn{2}{c}{
+  \begin{array}{ccc}
+\multicolumn{3}{c}{
 \infer[\textit{Split}]
 {\Lambda, L\sigma\: \vdash\: \Phi,\: L \lor C\qquad \Lambda, (\overline{L}\sigma)^{\mathrm{sko}}\: \vdash\:  \Phi,\: L \lor C}
 {\Lambda\: \vdash\:  \Phi,\: L \lor C}
 }
     \\[3ex]
-\multicolumn{2}{c}{
 \infer[\textit{Commit}]
 {{\Lambda, K, L, L\sigma}\:\vdash\:{\Phi} \qquad {\Lambda, K, L, \overline{L}\sigma}\:\vdash\:{\Phi}}
 {{\Lambda, K, L}\:\vdash\:{\Phi}}
-} \\[3ex]
+\quad&\quad
 \infer[\textit{Assert}]
 {{\Lambda, L}\:\vdash\:{\Phi,\: L}}
 {{\Lambda}\:\vdash\:{\Phi,\: L}}
-&
+\quad&\quad
 \infer[\textit{Close}]
 {{\Lambda}\:\vdash\:{\Box}}
 {{\Lambda}\:\vdash\:{\Phi,\: C}}
@@ -75,10 +74,10 @@ Additional optional inference rules, not shown here, help improve performance in
 
 \begin{history}
 Model Evolution~\cite{Baumgartner:Tinelli:ModelEvolutionCalculus:CADE:2003}
-is an improved version of the earlier FDPLL
-calculus~\cite{Baumgartner:FDPLL:CADE:00}, a lifiting of the core of the
-propositional DPLL method to the first-order level. Model Evolution has been extended by
-ordered paramodulation inference rules for equality
+improves the earlier FDPLL
+calculus~\cite{Baumgartner:FDPLL:CADE:00}, lifting the core of the
+propositional DPLL method to the first-order level. It has been extended by
+ordered paramodulation rules for equality
 reasoning~\cite{Baumgartner:Tinelli:ModelEvolutionCalculusEquality:CADE:2005}, by lemma
 learning techniques inspired by modern CDCL SAT
 solvers~\cite{Baumgartner:etal:ModelEvolutionLearning:LPAR:2006} and by 

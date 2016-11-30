@@ -34,32 +34,31 @@
 \begin{array}{clcrc}
 \ &
 ({\bf AX}) \ \Gamma, x: P \prova \Delta, x: P \quad (P \ \mbox{atomic})
-& \ &
-({\bf A} \bot) \ \Gamma, x: \bot \prova \Delta & \ \\ \\
+& &
+({\bf A} \bot) \ \Gamma, x: \bot \prova \Delta & \ 
+\\ \\
 & 
-\begin{prooftree}
-\Gamma, x \trans{A} y \prova \Delta, y: B
-\justifies \Gamma \prova \Delta, x: A \Rightarrow B \using (\Rightarrow {\bf R})  \quad (y \not\in \Gamma, \Delta)
-\end{prooftree} 
-& & \\ \\
-&
 \begin{prooftree}
 \Gamma, x: A \Rightarrow B \prova x \trans{A} y, \Delta \qquad \Gamma, x: A \Rightarrow B, y: B \prova \Delta
 \justifies \Gamma, x: A \Rightarrow B \prova \Delta \using (\Rightarrow {\bf L})
 \end{prooftree}
-& & \\ \\
+& &
+\begin{prooftree}
+\Gamma, x \trans{A} y \prova \Delta, y: B
+\justifies \Gamma \prova \Delta, x: A \Rightarrow B \using (\Rightarrow {\bf R})  \quad (y \not\in \Gamma, \Delta)
+\end{prooftree} 
+& \\ \\
 & 
 \begin{prooftree}
 u: A \prova u: B \qquad u: B \prova u: A
 \justifies \Gamma, x \trans{A} y \prova x \trans{B} y, \Delta \using ({\bf EQ})
 \end{prooftree}
-& & \\ \\
 & 
 \begin{prooftree}
 \Gamma, x \trans{A} y, y: A \prova \Delta
 \justifies \Gamma, x \trans{A} y \prova \Delta \using ({\bf ID})
 \end{prooftree}
-& &
+&
 \begin{prooftree}
 \Gamma \prova  x \trans{A} x, x: A, \Delta
 \justifies \Gamma \prova  x \trans{A} x, \Delta \using ({\bf MP})
@@ -81,7 +80,9 @@ u: A \prova u: B \qquad u: B \prova u: A
 \end{array}
 \]
 
+\begin{center}
 {\scriptsize Given a sequent $\Gamma$ and labels $x$ and $u$,  $\Gamma[x/u]$ is the sequent obtained by replacing in $\Gamma$ all occurrences of $x$ with $u$.}
+\end{center}
 \end{footnotesize}
 \end{calculus}
 
@@ -90,11 +91,11 @@ u: A \prova u: B \qquad u: B \prova u: A
  \begin{clarifications}
 % ToDo: write here short remarks that may help the reader to understand 
 % the inference rules of the proof system.
-Conditional logics extend classical logic with formulas of the form $A \Rightarrow B$. SeqS considers the \emph{selection function} semantics:  $A \Rightarrow B$ is true in a world $w$ if $B$ is true in the set of worlds selected by the selection function $f$ for $A$ and $w$ (that are most similar to $w$). SeqS manipulate \emph{labelled} formulas, where labels represent worlds, of the form $x: A$ ($A$ is true in $x$) and $x \trans{A} y$ ($y$ belongs to $f(x,A)$).
-
-The calculi SeqS consider \emph{normal} conditional logics, such that if $A$ and $B$ are true in the same worlds, then $f(w,A)=f(w,B)$. The rule $({\bf EQ})$ takes care of normality.
-
-  Besides the rules shown, SeqS also include standard 
+Conditional logics extend classical logic with formulas of the form $A \Rightarrow B$. SeqS uses \emph{selection function} semantics:  $A \Rightarrow B$ is true in a world $w$ if $B$ is true in the set of worlds selected by the selection function $f$ for $A$ and $w$ (that are most similar to $w$). SeqS manipulates \emph{labelled} formulas, where labels represent worlds, of the form $x: A$ ($A$ is true in $x$) and $x \trans{A} y$ ($y$ belongs to $f(x,A)$).
+%
+SeqS considers \emph{normal} conditional logics, such that if $A$ and $B$ are true in the same worlds, then $f(w,A)=f(w,B)$. The rule $({\bf EQ})$ takes care of normality.
+%
+  Besides the rules shown, SeqS includes standard 
    rules for propositional connectives.
  \end{clarifications}
 
@@ -107,7 +108,7 @@ The calculi SeqS consider \emph{normal} conditional logics, such that if $A$ and
 Completeness is a consequence of the admissibility of cut. The calculi SeqS can be used to obtain a \textsc{PSpace} decision procedure for the respective conditional logics and to develop goal-directed proof procedures.
  \end{technicalities}
 
-
+\vspace{-10pt}
 
 
 
