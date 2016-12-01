@@ -40,29 +40,9 @@
     \UnaryInfC{$\Sigma(\bot, A) \fCenter \bot$}
     \DisplayProof
   \sepproof
-    \Axiom$\Sigma(A, B) \fCenter C$
-    \LeftLabel{($\Sigma\vee$)}
-    \UnaryInf$\Sigma(A \vee D_1, B \vee D_2) \fCenter C \vee D_1 \vee D_2$
-    \DisplayProof
-  \sepline
-    \Axiom$\Gamma(A) \fCenter B$
-    \LeftLabel{($\Gamma\vee$)}
-    \UnaryInf$\Gamma(A \vee C) \fCenter B \vee C$
-    \DisplayProof
-  \sepproof
     \Axiom$\Gamma(A) \fCenter B$
     \LeftLabel{($\Gamma\Box$)}
     \UnaryInf$\Gamma(\Box A) \fCenter \Box B$
-    \DisplayProof
-  \sepline
-    \Axiom$\Sigma(A, B) \fCenter C$
-    \LeftLabel{($\Sigma\Box\Diamond$)}
-    \UnaryInf$\Sigma(\Box A, \Diamond(B \wedge E)) \fCenter \Diamond(B \wedge C \wedge E)$
-    \DisplayProof
-  \sepproof
-    \Axiom$\Sigma(A, B) \fCenter C$
-    \LeftLabel{($\Sigma\Box\Box$)}
-    \UnaryInf$\Sigma(\Box A, \Box B) \fCenter \Box C$
     \DisplayProof
   \sepline
     \Axiom$\Sigma(A, B) \fCenter C$
@@ -73,6 +53,26 @@
     \Axiom$\Gamma(A) \fCenter B$
     \LeftLabel{($\Gamma\Diamond2$)}
     \UnaryInf$\Gamma(\Diamond(A \wedge E)) \fCenter \Diamond(A \wedge B \wedge E)$
+    \DisplayProof
+  \sepline
+    \Axiom$\Gamma(A) \fCenter B$
+    \LeftLabel{($\Gamma\vee$)}
+    \UnaryInf$\Gamma(A \vee C) \fCenter B \vee C$
+    \DisplayProof
+  \sepproof
+    \Axiom$\Sigma(A, B) \fCenter C$
+    \LeftLabel{($\Sigma\vee$)}
+    \UnaryInf$\Sigma(A \vee D_1, B \vee D_2) \fCenter C \vee D_1 \vee D_2$
+    \DisplayProof
+  \sepline
+    \Axiom$\Sigma(A, B) \fCenter C$
+    \LeftLabel{($\Sigma\Box\Diamond$)}
+    \UnaryInf$\Sigma(\Box A, \Diamond(B \wedge E)) \fCenter \Diamond(B \wedge C \wedge E)$
+    \DisplayProof
+  \sepproof
+    \Axiom$\Sigma(A, B) \fCenter C$
+    \LeftLabel{($\Sigma\Box\Box$)}
+    \UnaryInf$\Sigma(\Box A, \Box B) \fCenter \Box C$
     \DisplayProof
 \end{infruleset}
 
