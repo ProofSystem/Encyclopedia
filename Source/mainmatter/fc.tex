@@ -52,10 +52,10 @@ $$
   \[
   \begin{array}{l@{\qquad}l}
 \infer[\rightarrow{I}]
-{\Gamma; E \seq \lambda (x:T.e):(T\rightarrow S)}
+{\Gamma; E \seq (\lambda x:T.e):(T\rightarrow S)}
 {\Gamma; E, (x:T) \seq e: S}
   &
-  \infer[\rightarrow{E}]{\Gamma; E \seq (fe):\tau}
+  \infer[\rightarrow{E}]{\Gamma; E \seq (fe): S}
 {\Gamma; E \seq f: (T\rightarrow S) &
     \Gamma; E \seq e: T}
   \medskip\\
