@@ -8,7 +8,7 @@
 \calculusAuthor{Ranald Clouston}
 \calculusAuthor{Rajeev Gor\'e}
 
-\entryTitle{Sequent Calculus $\seqlcnxt$ for Superintuitionistic Modal Logic KMlin} 
+\entryTitle{Sequent Calculus for Superintuitionistic Modal Logic} 
 \entryAuthor{Rajeev Gor\'e}
 \tag{Two-Sided Sequents}
 \tag{Set Cedents}
@@ -32,7 +32,7 @@
 \newcommand{\condtwo}{\mathrm{C2}}
 \newcommand{\oplist}[4]{#1 {#2}_{#3} , \cdots ,  #1 #2_{#4}}
 
-\newcommand{\idrulename}{\small id}
+\newcommand{\idrulename}{id}
 \newcommand{\idrule}{
 \AxiomC{}
 \LeftLabel{\idrulename}
@@ -40,21 +40,21 @@
 \DisplayProof
 }
 
-\newcommand{\toprightrulename}{\small \top \mathrm{R}}
+\newcommand{\toprightrulename}{ \top \mathrm{R}}
 \newcommand{\toprule}{
 \AxiomC{}
 \LeftLabel{$\toprightrulename$}
 \UnaryInfC{$\Gamma \seq \top, \Delta $}
 \DisplayProof
 }
-\newcommand{\botleftrulename}{\small \bot \mathrm{L}}
+\newcommand{\botleftrulename}{\bot \mathrm{L}}
 \newcommand{\botrule}{
 \AxiomC{}
 \LeftLabel{$\botleftrulename$}
 \UnaryInfC{$\Gamma , \bot \seq \Delta $}
 \DisplayProof
 }
-\newcommand{\orleftrulename}{\small \lor \mathrm{L}}
+\newcommand{\orleftrulename}{\lor \mathrm{L}}
 \newcommand{\orleftrule}{
 \AxiomC{$\Gamma , \varphi \seq \Delta $}
 \AxiomC{$\Gamma , \psi \seq  \Delta $}
@@ -63,7 +63,7 @@
 \DisplayProof
 }
 
-\newcommand{\orrightrulename}{\small \lor \mathrm{R}}
+\newcommand{\orrightrulename}{ \lor \mathrm{R}}
 \newcommand{\orrightrule}{
 \AxiomC{$\Gamma \seq  \varphi, \psi , \Delta $}
 \LeftLabel{$\orrightrulename$}
@@ -71,7 +71,7 @@
 \DisplayProof
 }
 
-\newcommand{\andrightrulename}{\small \land \mathrm{R}}
+\newcommand{\andrightrulename}{ \land \mathrm{R}}
 \newcommand{\andrightrule}{
 \AxiomC{$\Gamma  \seq \varphi, \Delta $}
 \AxiomC{$\Gamma  \seq \psi,  \Delta $}
@@ -80,14 +80,14 @@
 \DisplayProof
 }
 
-\newcommand{\andleftrulename}{\small \land \mathrm{L}}
+\newcommand{\andleftrulename}{\land \mathrm{L}}
 \newcommand{\andleftrule}{
 \AxiomC{$\Gamma , \varphi , \psi \seq \Delta $}
 \LeftLabel{$\andleftrulename$}
 \UnaryInfC{$\Gamma , \varphi\land\psi \seq \Delta $}
 \DisplayProof
 }
-\newcommand{\impleftrulename}{\small \limp\!\!\mathrm{L}}
+\newcommand{\impleftrulename}{ \limp\!\!\mathrm{L}}
 \newcommand{\impleftrule}{
 \AxiomC{$\Gamma  , \varphi\iimp\psi  \seq \varphi, \Delta $}
 \AxiomC{$\Gamma , \varphi\iimp\psi, \psi \seq  \Delta $}
@@ -96,7 +96,7 @@
 \DisplayProof
 }
 
-\newcommand{\imprightrulename}{\small \limp\!\!\mathrm{R}}
+\newcommand{\imprightrulename}{\limp\!\!\mathrm{R}}
 \newcommand{\imprightrule}{
 \AxiomC{$\Gamma , \varphi \seq \psi ,  \Delta$}
 \AxiomC{$\Gamma  \seq \varphi\iimp\psi ,\Delta$}
