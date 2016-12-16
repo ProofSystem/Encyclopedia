@@ -1,0 +1,8 @@
+title: Encyclopedia of Proof Systems
+description: 
+google_analytics: UA-1471148-17
+show_downloads: true
+theme: jekyll-theme-slate
+
+gems:
+  - jekyll-mentions
