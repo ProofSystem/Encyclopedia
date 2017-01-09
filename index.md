@@ -7,15 +7,15 @@ clarifications and technical or historical remarks.
 This project is currently coordinated and maintained by [Bruno Woltzenlogel Paleo](http://paleo.woltzenlogel.org).
 
 
-Tableaux/FroCoS/ITP Event in Brasilia in September 2017
--------------------------------------------------------
+Upcoming Tableaux/FroCoS/ITP Event
+----------------------------------
 
 To promote the encyclopaedia, [Giselle Reis](http://www.gisellereis.com) and [Bruno Woltzenlogel Paleo](http://paleo.woltzenlogel.org) are organizing an event affiliated with the [Tableaux](http://tableaux2017.cic.unb.br), [FroCoS](http://frocos2017.cic.unb.br/) and [ITP](http://itp2017.cic.unb.br/) conferences in Brasilia, the capital of Brazil. The event will consist of:
 
 * a poster session in the afternoon of the 24th of September 2017, during which submitted entries will be displayed as posters.
 * an interactive and hands-on meeting in the morning of the 25th of September 2017, for those who would like to contribute to the continuous improvement of the Encyclopaedia. The activities planned for this meeting will be announced closer to the event.
 
-To participate in the poster session, **entries should be submitted before the 1st of August 2017**.
+For this event, **entries should be submitted before the 1st of August 2017**.
 
 
 Submission Instructions
