@@ -6,6 +6,18 @@ clarifications and technical or historical remarks.
 
 This project is currently coordinated and maintained by [Bruno Woltzenlogel Paleo](http://paleo.woltzenlogel.org).
 
+
+Tableaux/FroCoS/ITP Event in Brasilia in September 2017
+-------------------------------------------------------
+
+To promote the encyclopaedia, [Giselle Reis](http://www.gisellereis.com) and [Bruno Woltzenlogel Paleo](http://paleo.woltzenlogel.org) are organizing an event affiliated with the [Tableaux](http://tableaux2017.cic.unb.br), [FroCoS](http://frocos2017.cic.unb.br/) and [ITP](http://itp2017.cic.unb.br/) conferences in Brasilia, the capital of Brazil. The event will consist of:
+
+* a poster session in the afternoon of the 24th of September 2017, during which submitted entries will be displayed as posters.
+* an interactive and hands-on meeting in the morning of the 25th of September 2017, for those who would like to contribute to the continuous improvement of the Encyclopaedia. The activities planned for this meeting will be announced closer to the event.
+
+To participate in the poster session, **entries should be submitted before the 1st of August 2017**.
+
+
 Submission Instructions
 -----------------------
 
@@ -17,7 +29,7 @@ You must produce two files:
 
 Except for the file extensions (".tex", ".bib"), both files should have the same name. This common name should also be the same as the unique ID of your entry chosen by you and specified inside your LaTeX source file.
 
-When compiled, your entry should have exactly one page. If your proof system has too many inference rules and does not fit in one page, please [contact the coordinators](mailto:eps-coordinators@googlegroups.com), send him a paper containing your proof system and ask for an exception.
+When compiled, your entry should have exactly one page. If your proof system has too many inference rules and does not fit in one page, please [contact the coordinators](mailto:eps-coordinators@googlegroups.com), send them a paper containing your proof system and ask for an exception.
 
 [Examples of entries](https://github.com/ProofSystem/Encyclopedia/tree/master/Source/mainmatter) can be found in the [current version of the encyclopedia](https://github.com/ProofSystem/Encyclopedia/blob/master/main.pdf?raw=true).
 Please conform to the examples.
@@ -79,7 +91,7 @@ If you face any difficulties to compile, [contact the coordinators](mailto:eps-c
 Criteria for Acceptance
 -----------------------
 
-1. the proof system must have been published in journals or conference proceedings.
+1. the proof system must have been published in journals or conference proceedings before.
 
 2. the entry should be factually and historically correct.
 
@@ -150,3 +162,5 @@ License
 By submitting an entry to the encyclopedia, you agree to the following Creative Commons license, and you additionally license your entry for publication as a chapter of the encyclopedia as a book in the future.
 
 [![License](http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png)](http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US).
+
+
