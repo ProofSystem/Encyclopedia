@@ -83,7 +83,7 @@ $ make
 
 This will automatically execute *pdflatex* and [biber](http://biblatex-biber.sourceforge.net) for you. 
 
-*biber* is a modern alternative to *bibtex*. When used in conjunction with *biblatex*, it is more convenient for handling multiple bibliographies. It comes pre-installed in most modern distributions of *LaTeX*. If your *LaTeX* distribution is too old, it might not contain *biber* and you might see error messages. In this case, the easiest solution is to install a newer LaTeX distribution, such as [TeX-Live](https://www.tug.org/texlive/) or [MacTeX](https://www.tug.org/mactex/). The Encyclopaedia is known to compile well with Tex-Live 2015.
+*biber* is a modern alternative to *bibtex*. When used in conjunction with *biblatex*, it is more convenient for handling multiple bibliographies. It comes pre-installed in most modern distributions of *LaTeX*. If your *LaTeX* distribution is too old, it might not contain *biber* and you might see error messages. In this case, the easiest solution is to install a newer LaTeX distribution, such as [TeX-Live](https://www.tug.org/texlive/) or [MacTeX](https://www.tug.org/mactex/). The Encyclopaedia is known to compile well with Tex-Live 2016. Please ensure that your LaTeX installation is updated.
 
 If you face any difficulties to compile, [contact the coordinators](mailto:eps-coordinators@googlegroups.com).
 
