@@ -25,9 +25,8 @@
 \begin{calculus}
 \[
 \begin{array}{ccccccccccc}
-  \infer[ax]{A \vdash A}{}
-  & \quad &
-  \infer[cut]{\Gamma_1,\Gamma_2,\Gamma_3 \vdash C}{\Gamma_1 \vdash A & \Gamma_2,A,\Gamma_3 \vdash C}\\[8pt]
+  & \quad & \infer[ax]{A \vdash A}{} & \quad & \infer[cut]{\Gamma_1,\Gamma_2,\Gamma_3 \vdash C}{\Gamma_1 \vdash A & \Gamma_2,A,\Gamma_3 \vdash C}
+  \\[8pt]
   \infer[I_r]{\cdot \vdash I}{}
   & \quad &
   \infer[I_l]
@@ -40,10 +39,12 @@
   & \quad &
   \infer[\otimes_l]
         {\Gamma_1,A \otimes B,\Gamma_2 \vdash C}
-        {\Gamma_1,A,B,\Gamma_2 \vdash C}\\[8pt]
+        {\Gamma_1,A,B,\Gamma_2 \vdash C}
+  \\[8pt]
   \infer[\rlimp_r]{\Gamma \vdash A \rlimp B}{\Gamma,A \vdash B}
   & \quad &
   \infer[\rlimp_l]{\Gamma_1,A \rlimp B,\Gamma_2,\Gamma_3 \vdash C}{\Gamma_1 \vdash A & \Gamma_2, B, \Gamma_3 \vdash C}
+  & \quad &
   \infer[\llimp_r]{\Gamma \vdash B \llimp A}{A,\Gamma \vdash B}
   & \quad &
   \infer[\llimp_l]{\Gamma_1,B \llimp A,\Gamma_2,\Gamma_3 \vdash C}{\Gamma_1 \vdash A & \Gamma_2, B, \Gamma_3 \vdash C}
