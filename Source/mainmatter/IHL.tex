@@ -1,6 +1,3 @@
-
-
-
 \calculusName{Intuitionistic Hybrid Logic}   
 \calculusAcronym{\IHL}     
 \calculusLogic{Intuitionistic Logics} 
@@ -10,7 +7,7 @@
 \calculusAuthor{Valeria de Paiva}
 \calculusAuthor{Torben Bra\"uner}
 
-\entryTitle{Intuitionistic Hybrid Logic}
+\entryTitle{Intuitionistic Hybrid Logic (IHL)}
 \entryAuthor{Valeria de Paiva}
 \entryAuthor{Harley Eades III}
 
@@ -24,53 +21,59 @@
 \begin{calculus}
   \[
   \begin{array}{c}
-    \begin{array}{ccccc}
-    \infer[\land I]{a : A \land B}{a : A & a : B}
+    \begin{array}{cccccccccccc}
+    \infer[\land I]{a @ A \land B}{a @ A & a @ B}
     & \quad &
-    \infer[\land E_1]{a : A}{a : A \land B}
+    \infer[\land E_1]{a @ A}{a @ A \land B}
     & \quad &
-    \infer[\land E_2]{a : B}{a : A \land B}
-    \\[8pt]
-    \infer[\lor I_1]{a : A \lor B}{a : A}
+    \infer[\land E_2]{a @ B}{a @ A \land B}
     & \quad &
-    \infer[\lor I_2]{a : A \lor B}{a : B}
+    \infer[\lor I_1]{a @ A \lor B}{a @ A}
+    \\[6pt]        
+    \infer[\lor I_2]{a @ A \lor B}{a @ B}
     & \quad &
-    \infer[\lor E]{C}{a : A \lor B & \infer*{C}{[a : A]} & \infer*{C}{[a : B]}}
-    \\[8pt]
-    \infer[\rightarrow I]{a : (A \rightarrow B)}{\infer*{a : B}{[a : A]}}
+    \infer[\lor E]{C}{a @ A \lor B & \infer*{C}{[a @ A]} & \infer*{C}{[a @ B]}}
     & \quad &
-    \infer[\rightarrow E]{a : B}{a : (A \rightarrow B) & a : A}
+    \infer[\rightarrow I]{a @ (A \rightarrow B)}{\infer*{a @ B}{[a @ A]}}
     & \quad &
-    \infer[\perp E]{C}{a : \perp}
-    \\[8pt]
+    \infer[\rightarrow E]{a @ B}{a @ (A \rightarrow B) & a @ A}
+    \\[6pt]            
+    \infer[\perp E]{C}{a @ \perp}
+    & \quad &
+    \infer[@ I]{c @ a @ A}{a @ A}
+    \\[6pt]
   \end{array}
-  \\[8pt]
-  \begin{array}{cccccccc}
-    \infer[: I]{c : a : A}{a : A}
+  \\[6pt]
+  \begin{array}{cccccccccccccc}
+    \infer[@ E]{a @ A}{c @ a @ A}
     & \quad &
-    \infer[: E]{a : A}{c : a : A}
+    \infer[\Diamond I]{a @ \Diamond A}{e @ A & a @ \Diamond e}
     & \quad &
-    \infer[\Diamond I]{a : \Diamond A}{e : A & a : \Diamond e}
+    \infer[\Diamond E]{C}{a @ \Diamond A & \infer*{C}{[c @ A][a @ \Diamond c]}}
     & \quad &
-    \infer[\Diamond E]{C}{a : \Diamond A & \infer*{C}{[c : A][a : \Diamond c]}}
-    \\[8pt]        
-  \end{array}
-  \\[8pt]
-  \begin{array}{cccccc}
-    \infer[\Box I]{a : \Box A}{\infer*{c : A}{[a : \Diamond c]}}
+    \infer[\Box I]{a @ \Box A}{\infer*{c @ A}{[a @ \Diamond c]}}
     & \quad &
-    \infer[\Box E]{e : A}{a : \Box A & a : \Diamond e}
+    \infer[\Box E]{e @ A}{a @ \Box A & a @ \Diamond e}
   \end{array}
   \end{array}
   \]
 \end{calculus}
 
 \begin{clarifications}
-In the rule $\Diamond E$, $c$ does not occur in $a: \lozenge A $, in
-$C$, or in any undischarged assumptions other than the specified
-occurrences of $c: A$ and $a: \lozenge c $.  Furthermore, in $\Box I$,
-$c$ does not occur in $a:\square A $ or in any undischarged
-assumptions other than the specified occurrences of $a: \lozenge c$.
+  Formulas of IHL are defined by the following grammar:
+  \begin{center} 
+    \begin{math}
+      \begin{array}{lll}
+        A,B,C ::= p \mid a \mid A \land B \mid A \lor B \mid A \to B \mid \perp \mid \Box A \mid \Diamond A \mid a @ A
+      \end{array}
+    \end{math}
+  \end{center}
+  where $a$ ranges over nominals and $p$ propositional symbols. In the
+  rule $\Diamond E$, $c$ does not occur in $a@ \lozenge A $, in $C$,
+  or in any undischarged assumptions other than the specified
+  occurrences of $c@ A$ and $a@ \lozenge c $.  Furthermore, in $\Box
+  I$, $c$ does not occur in $a@\square A $ or in any undischarged
+  assumptions other than the specified occurrences of $a@ \lozenge c$.
 \end{clarifications}
 
 \begin{history}
@@ -80,7 +83,16 @@ assumptions other than the specified occurrences of $a: \lozenge c$.
 %% in the Encyclopedia (where "OtherProofSystem" is its ID). 
 %% Use "\irefmissing{SuggestedIDForOtherProofSystem}" to refer to 
 %% another proof system that is not yet available in the encyclopedia.
-TODO
+  
+The Natural Deduction system for IHL was originally suggested in
+\cite{braunerdepaiva2003} and developed in \cite{braunerdepaiva2006}.
+This system adds nominals and satisfaction operators to a version of
+Intuitionistic Modal Logic described using labelled deduction, in the
+style of Simpson \cite{simpson1994}.  Axioms, or a Hilbert-style
+calculus version of the system, were provided in \cite{brauner2006}.
+Some of the properties of the intuitionistic system, as well as a
+discussion of some of its applications to type systems in computing,
+appeared in \cite{brauner2011}.
 \end{history}
 
 %% \begin{technicalities}
