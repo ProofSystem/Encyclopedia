@@ -1,6 +1,7 @@
 \documentclass[graybox, envcountchap]{svmult}
 
 \usepackage[hmarginratio=1:1,vmarginratio=1:1]{geometry}
+\usepackage{savesym} % Package for resolving package conflicts
 
 % Poster Production
 % =================
@@ -21,6 +22,11 @@
 %]{geometry}
 
 
+% General Mathematical Symbols
+% ============================
+\usepackage{amsmath,amssymb}
+\usepackage{ded,stmaryrd}
+
 
 % Font Packages
 % =============
@@ -29,6 +35,11 @@
 \usepackage{helvet}          % selects Helvetica as sans-serif font
 \usepackage{courier}         % selects Courier as typewriter font
 \usepackage{txfonts}
+
+
+
+
+
 
 
 % LaTeX Layout and Functionality Packages and Commands
@@ -42,11 +53,6 @@
 \usepackage[bottom]{footmisc} % places footnotes at page bottom
 \DeclareMathVersion{mathhungry} % for entries that need too many math alphabets        
 
-
-% General Mathematical Symbols
-% ============================
-\usepackage{ded,stmaryrd}
-\usepackage{amssymb}
 
 
 % Logical Symbols
