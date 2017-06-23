@@ -10,6 +10,7 @@
 \entryTitle{Intuitionistic Hybrid Logic (IHL)}
 \entryAuthor{Valeria de Paiva}
 \entryAuthor{Harley Eades III}
+\entryAuthor{Torben Bra\"uner}
 
 \maketitle
 
@@ -22,38 +23,38 @@
   \[
   \begin{array}{c}
     \begin{array}{cccccccccccc}
-    \infer[\land I]{a @ A \land B}{a @ A & a @ B}
+    \infer[\land I]{@_a (A \land B)}{@_a A & @_a B}
     & \quad &
-    \infer[\land E_1]{a @ A}{a @ A \land B}
+    \infer[\land E_1]{@_a A}{@_a (A \land B)}
     & \quad &
-    \infer[\land E_2]{a @ B}{a @ A \land B}
+    \infer[\land E_2]{@_a B}{@_a (A \land B)}
     & \quad &
-    \infer[\lor I_1]{a @ A \lor B}{a @ A}
+    \infer[\lor I_1]{@_a A \lor B}{@_a A}
     \\[6pt]        
-    \infer[\lor I_2]{a @ A \lor B}{a @ B}
+    \infer[\lor I_2]{@_a A \lor B}{@_a B}
     & \quad &
-    \infer[\lor E]{C}{a @ A \lor B & \infer*{C}{[a @ A]} & \infer*{C}{[a @ B]}}
+    \infer[\lor E]{C}{@_a A \lor B & \infer*{C}{[@_a A]} & \infer*{C}{[@_a B]}}
     & \quad &
-    \infer[\rightarrow I]{a @ (A \rightarrow B)}{\infer*{a @ B}{[a @ A]}}
+    \infer[\rightarrow I]{@_a (A \rightarrow B)}{\infer*{@_a B}{[@_a A]}}
     & \quad &
-    \infer[\rightarrow E]{a @ B}{a @ (A \rightarrow B) & a @ A}
+    \infer[\rightarrow E]{@_a B}{@_a (A \rightarrow B) & @_a A}
     \\[6pt]            
-    \infer[\perp E]{C}{a @ \perp}
+    \infer[\perp E]{C}{@_a \perp}
     & \quad &
-    \infer[@ I]{c @ a @ A}{a @ A}
+    \infer[@ I]{@_c @_a A}{@_a A}
     \\[6pt]
   \end{array}
   \\[6pt]
   \begin{array}{cccccccccccccc}
-    \infer[@ E]{a @ A}{c @ a @ A}
+    \infer[@ E]{@_a A}{@_c @_a A}
     & \quad &
-    \infer[\Diamond I]{a @ \Diamond A}{e @ A & a @ \Diamond e}
+    \infer[\Diamond I]{@_a \Diamond A}{@_e A & @_a \Diamond e}
     & \quad &
-    \infer[\Diamond E]{C}{a @ \Diamond A & \infer*{C}{[c @ A][a @ \Diamond c]}}
+    \infer[\Diamond E]{C}{@_a \Diamond A & \infer*{C}{[@_c A][@_a \Diamond c]}}
     & \quad &
-    \infer[\Box I]{a @ \Box A}{\infer*{c @ A}{[a @ \Diamond c]}}
+    \infer[\Box I]{@_a \Box A}{\infer*{@_c A}{[@_a \Diamond c]}}
     & \quad &
-    \infer[\Box E]{e @ A}{a @ \Box A & a @ \Diamond e}
+    \infer[\Box E]{@_e A}{@_a \Box A & @_a \Diamond e}
   \end{array}
   \end{array}
   \]
@@ -64,16 +65,16 @@
   \begin{center} 
     \begin{math}
       \begin{array}{lll}
-        A,B,C ::= p \mid a \mid A \land B \mid A \lor B \mid A \to B \mid \perp \mid \Box A \mid \Diamond A \mid a @ A
+        A,B,C ::= p \mid a \mid A \land B \mid A \lor B \mid A \rightarrow B \mid \perp \mid \Box A \mid \Diamond A \mid @_a A
       \end{array}
     \end{math}
   \end{center}
   where $a$ ranges over nominals and $p$ propositional symbols. In the
-  rule $\Diamond E$, $c$ does not occur in $a@ \lozenge A $, in $C$,
+  rule $\Diamond E$, $c$ does not occur in $@_a \lozenge A $, in $C$,
   or in any undischarged assumptions other than the specified
-  occurrences of $c@ A$ and $a@ \lozenge c $.  Furthermore, in $\Box
-  I$, $c$ does not occur in $a@\square A $ or in any undischarged
-  assumptions other than the specified occurrences of $a@ \lozenge c$.
+  occurrences of $@_c A$ and $@_a \lozenge c $.  Furthermore, in $\Box
+  I$, $c$ does not occur in $@_a \square A $ or in any undischarged
+  assumptions other than the specified occurrences of $@_a \lozenge c$.
 \end{clarifications}
 
 \begin{history}
@@ -83,7 +84,6 @@
 %% in the Encyclopedia (where "OtherProofSystem" is its ID). 
 %% Use "\irefmissing{SuggestedIDForOtherProofSystem}" to refer to 
 %% another proof system that is not yet available in the encyclopedia.
-  
 The Natural Deduction system for IHL was originally suggested in
 \cite{braunerdepaiva2003} and developed in \cite{braunerdepaiva2006}.
 This system adds nominals and satisfaction operators to a version of
