@@ -74,10 +74,10 @@ When restricted to propositional logic, \CR-derivations ending in $\bot$ are iso
 \end{clarifications}
 
 \begin{history}
-The unit-propagating resolution rule is a restriction of the resolution rule~\iref{Resolution} 
-also known as unit-resulting resolution. The conflict-driven clause learning inference rule is,
-at the proof-theoretical level, a first-order lifting of a clause learning procedure implemented by 
-\textsc{Sat}-solvers. This rule can also be seen as a generalization of natural deduction's negation/implication introduction rule to the case with unification and multiple assumptions. In this sense, this rule generalizes negation/implication introduction as Robinson's resolution rule generalizes implication elimination (modus ponens)~\cite{UniversalityOfProofs}. \texttt{Scavenger}~\cite{CADE} was the first theorem prover based on the Conflict Resolution calculus.
+Unit-propagating resolution is a restriction of resolution~\iref{Resolution} 
+also known as unit-resulting resolution. The conflict-driven clause learning rule is,
+at the proof-theoretical level, a first-order lifting of a procedure implemented by 
+\textsc{Sat}-solvers. This rule generalizes natural deduction's implication introduction rule to the case with unification and multiple assumptions, as Robinson's resolution rule generalizes implication elimination (modus ponens)~\cite{UniversalityOfProofs}. \texttt{Scavenger}~\cite{AITP,CADE} was the first theorem prover based on Conflict Resolution.
 \end{history}
 
 \begin{technicalities}
