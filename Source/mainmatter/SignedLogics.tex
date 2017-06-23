@@ -1,0 +1,221 @@
+
+% If the calculus has an acronym, define it.
+% (e.g. \newcommand{\LK}{\ensuremath{\mathbf{LK}}\xspace})
+
+\calculusName{Signed Analytic Calculi for Finite-Valued Logics} % The name of the calculus
+\calculusAcronym{}          % The acronym if defined above, or empty otherwise. 
+\calculusLogic{Finite-Valued Logic}        % Specify the logic (e.g. Classical Logic, Intuitionistic Logic, ...) for which this calculus is intended.
+\calculusLogicOrder{Propositional}   % Specify the order of the logic (e.g. Propositional, Quantified Propositional, First-Order, Higher-Order, ...).
+\calculusType{Sequent Calculus}         % Specify the calculus type (e.g. Tableau, Sequent Calculus, Hyper-Sequent Calculus, Natural Deduction, ...)
+\calculusYear{1990}         % The year when the calculus was published.
+
+\calculusAuthor{Reiner H\"ahnle}       % The name(s) of the author(s) of the calculus.
+%\calculusAuthor{ToDo:FullNameAuthor2}
+%\calculusAuthor{ToDo:FullNameAuthor3}
+
+\entryTitle{Signed Analytic Calculi for Finite-Valued Logics}     % Title of the entry (usually coincides with the name of the calculus).
+\entryAuthor{Reiner H\"ahnle}     
+%\entryAuthor{ToDo:FullNameAuthor2}
+%\entryAuthor{ToDo:FullNameAuthor3}
+
+% The encyclopedia's peer-reviewing policy is described here: 
+% http://proofsystem.github.io/Encyclopedia/
+%
+% Reviewers of this entry will be acknowledged in the following lines:
+\entryReviewer{Bruno Woltzenlogel Paleo}
+% \entryReviewer{Reviewer 2's name}
+% \entryReviewer{Reviewer 3's name}
+%
+% The lines above will be filled by the coordinators. 
+% If you would like to indicate people 
+% who could review your entry, contact the coordinators.
+
+
+% If you wish, use tags to give any other information 
+% that might be helpful for classifying and grouping this entry:
+% e.g. \etag{Two-Sided Sequents}
+% e.g. \etag{Multiset Cedents}
+% e.g. \etag{List Cedents}
+% You are free to invent your own tags. 
+% The Encyclopedia's coordinator will take care of 
+% merging semantically similar tags in the future.
+
+
+\maketitle
+
+
+% If your files are called "MyProofSystem.tex" and "MyProofSystem.bib", 
+% then you should write "\begin{entry}{MyProofSystem}" in the line below
+\begin{entry}{SignedLogics}  
+
+% Define here any newcommands you may need:
+% e.g. \newcommand{\necessarily}{\Box}
+% e.g. \newcommand{\possibly}{\Diamond}
+
+\begin{calculus}
+
+% Add the inference rules of your proof system here.
+% The "proof.sty" and "bussproofs.sty" packages are available.
+% If you need any other package, please contact the coordinator (Bruno Woltzenlogel Paleo <bruno.wp@gmail.com>)
+
+\[
+  \infer[\text{Axiom\quad where }\bigcup_{k=0}^lS_k=N]{\vdash S_1{:}\varphi,\ldots S_l{:}\varphi,\,\Delta}{}\bigskip
+\qquad\quad
+  \infer[(S{:}C)_r]{\vdash
+    S{:}C(\varphi_1,\ldots,\varphi_r),\,\Delta}{\{\vdash S_1^i{:}\varphi_1,\ldots,S_r^i{:}\varphi_r,\,\Delta\}_i}
+\]
+
+\end{calculus}
+
+% The following sections ("clarifications", "history", 
+% "technicalities") are optional. If you use them, 
+% be very concise and objective. Nevertheless, do write full sentences. 
+% Try to have at most one paragraph per section, because line breaks 
+% do not look nice in a short entry.
+
+\begin{clarifications}
+% ToDo: write here short remarks that may help the reader to understand 
+% the inference rules of the proof system.
+  A one-sided sequent calculus for a generic finite-valued logic with
+  truth value set $N=\{0,\ldots,n-1\}$ for any $n\geq2$. Let $C$ be an
+  $r$-ary propositional connective with matrix $M_C:N^r\rightarrow N$
+  and $S\subseteq N$.  We call $S$ a \emph{sign} and---for any
+  propositional formula $\varphi$ over propositional variables
+  $\Sigma$ and connectives $C_1,\ldots,C_m$---the expression
+  $S{:}\varphi$ a \emph{signed formula}.  Interpretations
+  $I:\Sigma\rightarrow N$ are given the usual homomorphic extension to
+  propositional formulas.
+  %
+  Sequents have only a succedent which is a finite multiset of signed
+  formulas. The calculus is designed such that $\vdash S{:}\varphi$ is
+  derivable iff $I(\varphi)\in S$ for all~$I$. This generalizes
+  two-valued validity, where $N=\{0,1\}$ and $S=\{1\}$.
+  %
+  The calculus has only two (generic) rules.  Let
+  $\{\overline{S}^i\}_i=\{S_1^i,\ldots,S_r^i\}_i$ be a finite family
+  of sets, each over $r$ many signs.  A generic rule for a connective
+  $C$ and sign $S$ has $|\{\overline{S}^i\}_i|=m\geq1$ many premises.
+  %
+  % Further let
+  % $\{s_1^i,\ldots,s_r^i\}=\overline{s}^i\in\overline{S}^i$
+  % be a shorthand for $s_j^i\in S_j^i$ for all $1\leq j\leq r$.
+  Any rule where
+  $\emptyset\neq\{\overline{s}\mid M_C(\overline{s})\in
+  S\}=\bigcap_i\,\left(\bigcup_{j=1}^r\,(N\times\cdots\times N\times
+    S_j^i\times N\times\cdots\times N)\right) $
+  is admissible. (If
+  $\{\overline{s}\mid M_C(\overline{s})\in S\}=\emptyset$, then no
+  rule is defined.)
+  %
+  The intuition: the intersection of all premises must contain those
+  tuples in $\overline{s}\in N^r$ such that the range of $M_C$ is in
+  $S$. Hence, each $\overline{s}$ must be contained in at least one
+  $N\times\cdots\times N\times S_j^i\times N\times\cdots\times N$. The
+  second rule is a generic axiom that detects tautologies of the form
+  $N{:}\varphi$.
+  
+  An example is classical binary conjunction $\wedge$, where $n=2$ and
+  $M_\wedge=\min$.  Conjunction on the right in signed logic becomes
+  $\{1\}:\varphi_1\wedge\varphi_2,\,\Delta$. We must characterize
+  $\{\overline{s}\mid M_\wedge(\overline{s})\in\{1\}\}=\{(1,1)\}$.
+  This is achieved by $(\{1\}\times N)\cap(N\times\{1\})$. Hence, an
+  admissible rule has two premises: $\{1\}{:}\varphi_1,\,\Delta$ and
+  $\{1\}{:}\varphi_2,\,\Delta$. Now consider a three-valued logic
+  ($n=3$) and a unary connective $d$ such that $d(2)=2$ and $d(s)=0$
+  for $s\neq2$. One admissible rule for $\{0,2\}{:}d(\varphi)$ has a
+  single premise $N{:}\varphi$. There is no rule for unsatisfiable
+  formulas like $\{1\}{:}d(\varphi)$. One admissible---but not the
+  simplest possible---rule for $\{2\}{:}d(\varphi)$ has the two
+  premises $\{0,2\}{:}\varphi,\,\Delta$ and
+  $\{1,2\}{:}\varphi,\,\Delta$.
+
+\end{clarifications}
+
+\begin{history}
+% ToDo: write here short historical remarks about this proof system,
+% especially if they relate to other proof systems. 
+% Use "\iref{OtherProofSystem}" to refer to another proof system 
+% in the Encyclopedia (where "OtherProofSystem" is its ID). 
+% Use "\irefmissing{SuggestedIDForOtherProofSystem}" to refer to 
+% another proof system that is not yet available in the encyclopedia.
+  The idea to describe generic calculi for finite-valued logics with
+  the help of formulas that are signed with truth value sets appears
+  first in \cite{Haehnle90} for a tableau system. Predecessors with
+  only single truth values as signs were described by Sucho\'n,
+  Carnielli, and others. The concept was re-discovered independently
+  by Baaz \& Fermueller, Doherty, and Murray \& Rosenthal.  Details
+  and references are in \cite{BFS01,Haehnle01}.
+\end{history}
+
+\begin{technicalities}
+% ToDo: write here remarks about soundness, completeness, decidability...
+  The calculus is sound and complete for any finite-valued logic. A
+  decision procedure in NP (for fixed $n$) is obtained in a standard
+  manner.  The meta theory of finite truth value sets can be
+  formulated in classical propositional logic and is therefore
+  applicable to virtually any proof system. It also works for certain
+  infinite-valued logics (e.g., {\L}ukasiewicz logic) and can be
+  lifted to certain first-order quantifiers.
+\end{technicalities}
+
+
+% General Instructions:
+% =====================
+
+% The preferred length of an entry is 1 page. 
+% Do the best you can to fit your proof system in one page.
+%
+% If you are finding it hard to fit what you want in one page, remember:
+%
+%   * Your entry needs to be neither self-contained nor fully understandable
+%     (the interested reader may consult the cited full paper for details)
+%
+%   * If you are describing several proof systems in one entry, 
+%     consider splitting your entry.
+%
+%   * You may reduce the size of your entry by ommitting inference rules
+%     that are already described in other entries.
+%
+%   * Cite parsimoniously (see detailed citation instructions below).
+%
+% 
+% If you do not manage to fit everything in one page, 
+% it is acceptable for an entry to have 2 pages.
+%
+% For aesthetic reasons, it is preferable for an entry to have
+% 1 full page or 2 full pages, in order to avoid unused blank space.
+
+
+
+% Citation Instructions:
+% ======================
+
+% Please cite the original paper where the proof system was defined.
+% To do so, you may use the \cite command within 
+% one of the optional environments above,
+% or use the \nocite command otherwise.
+
+% You may also cite a modern paper or book where the 
+% proof system is explained in greater depth or clarity.
+% Cite parsimoniously.
+
+% Do not cite related work. Instead, use the "\iref" or "\irefmissing" 
+% commands to make an internal reference to another entry, 
+% as explained within the "history" environment above.
+
+% You do not need to create the "References" section yourself. 
+% This is done automatically.
+
+
+% Remove all instruction comments before submitting.
+
+
+% Leave an empty line above "\end{entry}".
+
+\end{entry}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../main"
+%%% End:

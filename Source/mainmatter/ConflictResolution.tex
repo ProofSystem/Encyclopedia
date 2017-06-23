@@ -1,0 +1,88 @@
+
+\calculusName{Conflict Resolution}
+\calculusAcronym{\CR} 
+\calculusLogic{Classical Logic}
+\calculusLogicOrder{First-Order}
+\calculusType{Resolution} 
+\calculusType{NaturalDeduction}
+\calculusYear{2016} 
+
+\calculusAuthor{Bruno Woltzenlogel Paleo}
+
+
+\entryTitle{Conflict Resolution}  
+\entryAuthor{Bruno Woltzenlogel Paleo}     
+
+
+% Reviewers of this entry will be acknowledged in the following lines:
+% \entryReviewer{Reviewer 1's name}
+% \entryReviewer{Reviewer 2's name}
+% \entryReviewer{Reviewer 3's name}
+
+\maketitle
+
+
+\begin{entry}{ConflictResolution}  
+
+
+\newcommand{\upr}[1]{\mathbf{u}(#1)}
+\newcommand{\con}[1]{\mathbf{c}(#1)}
+\newcommand{\cdcl}{\mathbf{cl}}
+\newcommand{\dual}[1]{\overline{#1}}
+\newcommand{\dls}[2]{\begin{tiny}\overset{#1}{#2}\end{tiny}}
+
+\begin{calculus}
+\centering
+
+\begin{multicols}{2}
+\textbf{Unit-Propagating Resolution:}
+\[
+\infer[\upr{\sigma}]{\ell~\sigma}{\ell_1 & \ldots & \ell_n & \dual{\ell'_1} \vee \ldots \vee \dual{\ell'_n} \vee \ell}
+\]
+$\sigma$ is a unifier of $\ell_k$ and $\ell'_k$, for all $k \in \{1, \ldots, n \}$
+
+\columnbreak
+
+\textbf{Conflict:}
+$$
+\infer[\con{\sigma}]{\bot}{\ell & \dual{\ell'}}
+$$
+$\sigma$ is a unifier of $\ell$ and $\ell'$.
+
+\end{multicols}
+
+%\bigskip
+\bigskip
+
+
+
+\textbf{Conflict-Driven Clause Learning:}
+$$
+\infer[\cdcl^{i}]
+{(\dual{\ell_1} \sigma^1_1 \vee \ldots \vee \dual{\ell_1} \sigma^1_{m_1}) \vee \ldots \vee (\dual{\ell_n} \sigma^n_1 \vee \ldots \vee \dual{\ell_n} \sigma^n_{m_n})}
+{\infer*{\bot}{\infer*[(\sigma_1^1,\ldots,\sigma_{m_1}^1)]{}{[\ell_1]^{\dls{i}{1} } } &  & \infer*[(\sigma_1^n,\ldots,\sigma_{m_n}^n)]{}{[\ell_n]^{\dls{i}{n} } } }}
+$$
+
+$\sigma^k_j$ %(for $1 \leq k \leq n$ and $1 \leq j \leq m_k$) 
+is the composition of all substitutions used on the $j$-th path from $\ell_k$ to $\bot$.
+\end{calculus}
+
+
+\begin{clarifications}
+Proofs are directed acyclic graphs and not necessarily tree-like. Therefore, there may be several paths connecting $\ell_k$ to $\bot$. The conflict-driven clause learning rule takes all paths into account.
+When restricted to propositional logic, \CR-derivations ending in $\bot$ are isomorphic to \emph{conflict graphs} of \textsc{Sat}-solvers.
+\end{clarifications}
+
+\begin{history}
+Unit-propagating resolution is a restriction of resolution~\iref{Resolution} 
+also known as unit-resulting resolution. The conflict-driven clause learning rule is,
+at the proof-theoretical level, a first-order lifting of a procedure implemented by 
+\textsc{Sat}-solvers. This rule generalizes natural deduction's implication introduction rule to the case with unification and multiple assumptions, as Robinson's resolution rule generalizes implication elimination (modus ponens)~\cite{UniversalityOfProofs}. \texttt{Scavenger}~\cite{AITP,CADE} was the first theorem prover based on Conflict Resolution.
+\end{history}
+
+\begin{technicalities}
+Soundness was proven by simulation by a clausal variant of natural deduction \iref{GentzenNJ} (i.e. every $\CR$-proof can be translated into an natural deduction proof) and refutational completeness was proven by simulating resolution \iref{Resolution} (i.e. every resolution refutation can be translated into a $\CR$-refutation)~\cite{ConflictResolution}.
+\end{technicalities}
+
+
+\end{entry}

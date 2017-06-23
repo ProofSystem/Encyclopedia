@@ -23,7 +23,7 @@
 \newcommand{\x}{\mathfrak{x}}
 \newcommand{\ma}{\mathfrak{a}}
 
-\newcommand{\implies}{\supset}
+\newcommand{\impl}{\supset}
 \newcommand{\bottom}{\curlywedge}
 
 \begin{calculus}
@@ -61,9 +61,9 @@
 
 \[
 \quad
-\infer[FE]{\A \implies \B}{\infer*{B}{[A]}}
+\infer[FE]{\A \impl \B}{\infer*{B}{[A]}}
 \qquad
-\infer[FB]{\B}{\A & \A \implies \B}
+\infer[FB]{\B}{\A & \A \impl \B}
 \qquad
 \infer[NE]{\neg \A}{\infer*{\bottom}{[\A]}}
 \qquad
