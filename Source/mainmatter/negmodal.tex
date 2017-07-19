@@ -118,41 +118,44 @@
 
 \renewcommand{\arraystretch}{2}
 \centering\footnotesize
-\begin{tabular}{ccc@{\hspace{2em}}cc}
-
-~
+%\begin{tabular}{ccc@{\hspace{2em}}cc}
+\begin{tabular}{ccc@{\hspace{1em}}ccc@{\hspace{1em}}ccc@{\hspace{1em}}cc}
+~&&&
 ${[{\ineg}{\Ra}]}$
 & $\ssrul{\g\Ra\varphi, \d}{\uneg\d,\ineg\varphi\Ra \ineg\g} $
 &&
 ${[{\Ra}{\uneg}]} $
 & $\ssrul{\g,\varphi\Ra \d}{\uneg\d\Ra \uneg\varphi,\ineg\g}$
 \\
+${[{\Ra}{{\wsmile}}]}$
+& $\ssrul{\g,\varphi,\ineg\varphi\Ra \d}{\g\Ra{\wsmile}\varphi,\d}$
+%\\%[1mm]
+&&
 ${[{{\wsmile}}{\Ra}]}$
 & $\ssrul{\g\Ra\varphi, \d\ \ \ \g\Ra\ineg\varphi,\d}
 {\g,{\wsmile}\varphi\Ra\d}$
 &&
-${[{\Ra}{{\wsmile}}]}$
-& $\ssrul{\g,\varphi,\ineg\varphi\Ra \d}{\g\Ra{\wsmile}\varphi,\d}$
-\\%[1mm]
+${[{\Ra}{\wfrown}]}$
+& $\ssrul{\g,\varphi\Ra \d\ \ \ \g,\uneg\varphi\Ra\d}{\g\Ra\wfrown\varphi,\d}$
+&&
 ${[{{\wfrown}}{\Ra}]}$
 & $\ssrul{\g\Ra\varphi,\uneg\varphi,\d}
 {\g,\wfrown\varphi\Ra\d}$
-&&
- ${[{\Ra}{\wfrown}]}$
-& $\ssrul{\g,\varphi\Ra \d\ \ \ \g,\uneg\varphi\Ra\d}{\g\Ra\wfrown\varphi,\d}$
 \\
 $[\Di]$
 & $\ssrul{\Gamma\Ra\Delta}{\uneg\Delta\Ra\ineg\Gamma}$
  &&
  $[\FUNC]$
  &$\ssrul{\Gamma\Ra\Delta}{\ineg\Delta\Ra\ineg\Gamma}$
-\\
+%\\
+&&
 $[\T_{1}]$
 & $\ssrul{\Gamma,\varphi\Ra\Delta}{\Gamma\Ra\ineg\varphi,\Delta}$
 &&
  $[\T_{2}]$
  & $\ssrul{\Gamma\Ra\varphi,\Delta}{\Gamma,\uneg\varphi\Ra\Delta}$
 \\
+&&&
 $[\B_{1}]$
 & $\ssrul{\Gamma,\ineg\Gamma',\varphi\Ra\Delta,\uneg\Delta'}{\uneg\Delta,\Delta'\Ra\uneg\varphi,\ineg\Gamma,\Gamma'}$
 &&
@@ -160,12 +163,14 @@ $[\B_{1}]$
  & $\ssrul{\Gamma,\ineg\Gamma'\Ra\varphi,\Delta,\uneg\Delta'}
  {\uneg\Delta,\Delta',\ineg\varphi\Ra\ineg\Gamma,\Gamma'}$
  \\
+ &&&
 $[\KFour_{1}]$
 & $\ssrul{\uneg\Gamma,\Gamma',\varphi\Ra\ineg\Delta,\Delta'}{\uneg\Gamma,\uneg\Delta'\Ra\uneg\varphi,\ineg\Delta,\ineg\Gamma'}$
 &&
 $[\KFour_{2}]$
 & $\ssrul{\uneg\Gamma,\Gamma'\Ra\varphi,\ineg\Delta,\Delta'}{\uneg\Gamma,\uneg\Delta',\ineg\varphi\Ra\ineg\Delta,\ineg\Gamma'}$
 \\
+&&&
 $[\Di_{B}]$
 & $\ssrul{\ineg\Gamma',\Gamma\Ra\Delta,\uneg\Delta'}{\Delta',\uneg\Delta\Ra\ineg\Gamma,\Gamma'}$
 &&
@@ -186,7 +191,7 @@ $[\Di_{4}]$
 % do not look nice in a short entry.
 
  \begin{clarifications}
- $\mostbasic$ is obtained from propositional positive $\LK$,
+ $\mostbasic$ is obtained from propositional positive $\LK$
  by the addition of the rules for $\wsmile$ and $\wfrown$.
  {$\GPK=\mostbasic+[\uneg\Ra]+[\ineg\Ra]$,}
  {$\GPKD=\GPK+[\Di]$,}
@@ -200,14 +205,20 @@ $[\Di_{4}]$
  \end{clarifications}
 
  \begin{history}
-$\GPK$ was introduced in \cite{dod:mar:ENTCS2013}. All other systems were introduced in \cite{lahav_it_2016}.
+All systems enjoy the replacement property,
+ which is missing in various logics that employ a non-classical negation,
+ such as Kleene three-valued logic, and da Costa's $C_{1}$.
+$\GPK$ was introduced in \cite{dod:mar:ENTCS2013}. All other systems were introduced in \cite{Lahav2017}.
  \end{history}
 
  \begin{technicalities}
-All systems enjoy cut-admissibility, besides
-those that contain the rule $\B$, that are analytic.
-Also, the logics that are induced by these systems enjoy the replacement property,
-which is missing in various other logics that employ a non-classical negation.
+All systems enjoy a generalized subformula property,
+in which $\ineg\varphi$ is considered a subformula of $\wsmile\varphi$
+(and $\uneg\varphi$ is a subformula of $\wfrown\varphi$).
+All systems that do not contain $\B$ also enjoy
+cut-admissibility.
+These facts were proven semantically, using
+the general mechanism of \cite{Lahav:2013:USF:2555591.2528930}.
  \end{technicalities}
 
 
