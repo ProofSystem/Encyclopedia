@@ -2,7 +2,7 @@
 % (e.g. \newcommand{\LK}{\ensuremath{\mathbf{LK}}\xspace})
 
 \calculusName{Sequent Calculi for Paraconsistent Logics}         % The name of the calculus
-\calculusAcronym{}          % The acronym if defined above, or empty otherwise. 
+\calculusAcronym{}          % The acronym if defined above, or empty otherwise.
 \calculusLogic{Paraconsistent Logics}        % Specify the logic (e.g. Classical Logic, Intuitionistic Logic, ...) for which this calculus is intended.
 \calculusLogicOrder{Propositional}   % Specify the order of the logic (e.g. Propositional, Quantified Propositional, First-Order, Higher-Order, ...).
 \calculusType{Sequent Calculus}         % Specify the calculus type (e.g. Tableau, Sequent Calculus, Hyper-Sequent Calculus, Natural Deduction, ...)
@@ -14,11 +14,11 @@
 
 
 \entryTitle{Sequent Calculi for Paraconsistent Logics}     % Title of the entry (usually coincides with the name of the calculus).
-\entryAuthor{Anna Zamansky}     
+\entryAuthor{Anna Zamansky}
 \entryAuthor{Yoni Zohar}
 %\entryAuthor{ToDo:FullNameAuthor3}
 
-% The encyclopedia's peer-reviewing policy is described here: 
+% The encyclopedia's peer-reviewing policy is described here:
 % http://proofsystem.github.io/Encyclopedia/
 %
 % Reviewers of this entry will be acknowledged in the following lines:
@@ -26,27 +26,27 @@
 % \entryReviewer{Reviewer 2's name}
 % \entryReviewer{Reviewer 3's name}
 %
-% The lines above will be filled by the coordinators. 
-% If you would like to indicate people 
+% The lines above will be filled by the coordinators.
+% If you would like to indicate people
 % who could review your entry, contact the coordinators.
 
 
-% If you wish, use tags to give any other information 
+% If you wish, use tags to give any other information
 % that might be helpful for classifying and grouping this entry:
 % e.g. \etag{Two-Sided Sequents}
 % e.g. \etag{Multiset Cedents}
 % e.g. \etag{List Cedents}
-% You are free to invent your own tags. 
-% The Encyclopedia's coordinator will take care of 
+% You are free to invent your own tags.
+% The Encyclopedia's coordinator will take care of
 % merging semantically similar tags in the future.
 
 
 \maketitle
 
 
-% If your files are called "MyProofSystem.tex" and "MyProofSystem.bib", 
+% If your files are called "MyProofSystem.tex" and "MyProofSystem.bib",
 % then you should write "\begin{entry}{MyProofSystem}" in the line below
-\begin{entry}{para}  
+\begin{entry}{para}
 
 % Define here any newcommands you may need:
 % e.g. \newcommand{\necessarily}{\Box}
@@ -76,20 +76,20 @@
 \renewcommand*{\arraystretch}{1.5}
 \footnotesize
 \[\begin{tabular}{ccc@{\hspace{2em}}ccc@{\hspace{2em}}cc}\hline
-% & { R}($ax$) &  & &  { R}($ax$)\\ 
+% & { R}($ax$) &  & &  { R}($ax$)\\
 
-${\name{c}}$ &     $\srul{,\vfi}{}{,\neg\neg\vfi}{}$  &&         
+${\name{c}}$ &     $\srul{,\vfi}{}{,\neg\neg\vfi}{}$  &&
 ${\name{e}}$    & $\srul{}{,\vfi}{}{,\neg\neg\vfi}$  &&
 ${\name{i}}$ &    $\srul{,\vfi,\neg\vfi}{}{,\neg\! \circ \vfi}{}$ \\\hline
-${\name{n^r_\w}}$ &  
+${\name{n^r_\w}}$ &
 $\srul{}{,\neg\psi,\neg\vfi}{}{,\neg (\vfi\w\psi)}$ &&
 ${\name{n^r_\vee}}$ &       $\drul{}{,\neg\vfi}{}{,\neg\psi}{}{,\neg(\vfi\vee\psi)}$
 &&
-${\name{n^r_\su}}$ &   $\drul{}{,\vfi}{}{,\neg\psi}{}{,\neg(\vfi\su\psi)}$ 
+${\name{n^r_\su}}$ &   $\drul{}{,\vfi}{}{,\neg\psi}{}{,\neg(\vfi\su\psi)}$
  \\
 
 ${\name{n^l_\w}}$ &   $\drul{,\neg \vfi}{}{,\neg \psi}{}{,\neg(\vfi\w\psi)}{}$ &&
-${\name{n^l_\vee}}$ & $\srul{,\neg\vfi,\neg\psi}{}{,\neg(\vfi\vee\psi)}{}$ && 
+${\name{n^l_\vee}}$ & $\srul{,\neg\vfi,\neg\psi}{}{,\neg(\vfi\vee\psi)}{}$ &&
 ${\name{n^l_\su}}$  &  $\srul{,\vfi,\neg\psi}{}{,\neg(\vfi\su \psi)}{}$  \\\hline
 
 %begin a_\w, a_\vee and a_\su
@@ -97,7 +97,7 @@ ${\name{n^l_\su}}$  &  $\srul{,\vfi,\neg\psi}{}{,\neg(\vfi\su \psi)}{}$  \\\hlin
     & &&  &  $\drul{,\neg\vfi}{}{,\neg\psi,\psi}{}{,\neg     (\vfi\vee\psi)}{}$ && &  $\drul{,\vfi}{}{,\neg\psi,\psi}{}{,\neg    (\vfi\su\psi)}{}$ \ \  \\
 \vspace{-1.5em}
 \phantom{${\name{a_\wedge}}$ }
-  & 
+  &
   \phantom{$\drul{,\neg \vfi}{}{,\neg\psi}{}{,\neg  (\vfi\w\psi)}{}$ }
   &&
  ${\name{a_\vee}}$ & &&   ${\name{a_\su}}$  & \ \ \\
@@ -108,7 +108,7 @@ ${\name{n^l_\su}}$  &  $\srul{,\vfi,\neg\psi}{}{,\neg(\vfi\su \psi)}{}$  \\\hlin
 \vspace{-1.5em}
 &&&&   $\srul{,\neg \vfi}{}{,\neg (\vfi\vee\psi)}{}$   &&& $\drul{,\neg \vfi}{}{}{,\psi}{,\neg (\vfi\su\psi)}{}$  \ \ \\
 \vspace{-1.5em}
- ${\name{o^{1}_\w}}$ &  $\drul{,\neg \vfi}{}{}{,\psi}{,\neg (\vfi\w\psi)}{}$ && 
+ ${\name{o^{1}_\w}}$ &  $\drul{,\neg \vfi}{}{}{,\psi}{,\neg (\vfi\w\psi)}{}$ &&
  ${\name{o^{1}_\vee}}$ &&& ${\name{o^{1}_\su}}$ & \ \ \\
  &&&&  $\drul{,\vfi}{}{}{,\psi}{,\neg (\vfi\vee\psi)}{}$ &&&
  $\srul{,\vfi}{}{,\neg (\vfi\su\psi)}{}$ \\\hline
@@ -120,7 +120,7 @@ ${\name{n^l_\su}}$  &  $\srul{,\vfi,\neg\psi}{}{,\neg(\vfi\su \psi)}{}$  \\\hlin
 \vspace{-1.5em}
 &&&& $\srul{,\neg \psi}{}{,\neg (\vfi\vee\psi)}{}$ &&&   $\srul{,\neg \psi}{}{,\neg (\vfi\su\psi)}{}$ \ \ \\
 \vspace{-1.5em}
- ${\name{o^{2}_\w}}$ &  $\drul{,\neg \psi}{}{}{,\vfi}{,\neg (\vfi\w\psi)}{}$ && 
+ ${\name{o^{2}_\w}}$ &  $\drul{,\neg \psi}{}{}{,\vfi}{,\neg (\vfi\w\psi)}{}$ &&
  ${\name{o^{2}_\vee}}$ &&&
  ${\name{o^{2}_\su}}$ & \ \ \\
  &&&& $\drul{,\psi}{}{}{,\vfi}{,\neg (\vfi\vee\psi)}{}$ &&&$\drul{,\vfi}{}{,\psi}{}{,\neg (\vfi\su\psi)}{}$\\\hline
@@ -132,41 +132,56 @@ ${\name{n^l_\su}}$  &  $\srul{,\vfi,\neg\psi}{}{,\neg(\vfi\su \psi)}{}$  \\\hlin
 \normalsize
 \end{calculus}
 
-% The following sections ("clarifications", "history", 
-% "technicalities") are optional. If you use them, 
-% be very concise and objective. Nevertheless, do write full sentences. 
-% Try to have at most one paragraph per section, because line breaks 
+% The following sections ("clarifications", "history",
+% "technicalities") are optional. If you use them,
+% be very concise and objective. Nevertheless, do write full sentences.
+% Try to have at most one paragraph per section, because line breaks
 % do not look nice in a short entry.
 
  \begin{clarifications}
-Let $B$ be a subset of the above rules, that  does not contain any of the
-following pairs: 
-{{\rm (1)}~${\bf (o^1_\w)}$, ${\bf (n^r_\w)}$;}
-{{\rm (2)}~${\bf (o^2_\w)}$, ${\bf (n^r_\w)}$;}
-{{\rm (3)}~${\bf (o^1_\vee)}$, ${\bf (n^r_\vee)}$;}
-{{\rm (4)}~${\bf (o^2_\vee)}$,${\bf (n^r_\vee)}$;}
-{{\rm (5)}~${\bf (o^1_\su)}$, ${\bf (n^r_\su)}$.}
-$\GBK\left[B\right]$ is the calculus obtained from the propositional fragment of $\LK$ (\iref{GentzenLK}) by deleting the left rule of negation, and adding the rules $R(x)$ for every $x\in B$, as well as  the following rules:
+Let $B$ be a subset of the above rules, that does not contain any of the
+ pairs:
+${\bf (o^1_\w)}$, ${\bf (n^r_\w)}$;
+${\bf (o^2_\w)}$, ${\bf (n^r_\w)}$;
+${\bf (o^1_\vee)}$, ${\bf (n^r_\vee)}$;
+${\bf (o^2_\vee)}$,${\bf (n^r_\vee)}$; and
+${\bf (o^1_\su)}$, ${\bf (n^r_\su)}$.
+$\GBK\left[B\right]$ is obtained from  propositional
+ $\LK$ (\iref{GentzenLK}) by deleting
+ %the left rule of negation,
+$\neg l$,
+ and
+ adding the rules $R(x)$ for every $x\in B$, as well as the rules:
 \footnotesize$
 (\circ\Ra)~\dfrac{\Gamma\Ra\vfi,\Delta~~~~ \Gamma\Ra\neg\vfi,\Delta}{\Gamma,\circ\vfi\Ra\De} $
 \normalsize and \footnotesize
 $(\Ra\circ)~\dfrac{\Gamma,\vfi,\neg\vfi\Ra\Delta}{\Gamma\Ra\circ\vfi,\Delta}
-$.	
+$.
  \end{clarifications}
 
  \begin{history}
-All the systems were given in \cite{AKZ12,Avron2015}, where well-known axioms for paraconsistent logics were translated to Gentzen-style rules.
+One of the most important families of da Costa's Brazilian School
+to paraconsistency is that of
+C-systems \cite{car:jmar:Taxonomy}.
+%the so-called {\em Logics of Formal Inconsistency (LFIs)}
+%\cite{Carnielli2007}.
+The family of logics induced by the calculi above includes
+every C-system ever studied in the literature.
+%that includes the most important class of LFIs,
+%called C-systems \cite{car:jmar:Taxonomy}.
+All calculi were given in \cite{Avron2015},
+where well-known axioms for paraconsistent logics were translated to sequent rules.
  \end{history}
 
  \begin{technicalities}
-All the systems enjoy cut-admissibility.
+All calculi above enjoy cut-admissibility.
  \end{technicalities}
 
 
 % General Instructions:
 % =====================
 
-% The preferred length of an entry is 1 page. 
+% The preferred length of an entry is 1 page.
 % Do the best you can to fit your proof system in one page.
 %
 % If you are finding it hard to fit what you want in one page, remember:
@@ -174,7 +189,7 @@ All the systems enjoy cut-admissibility.
 %   * Your entry needs to be neither self-contained nor fully understandable
 %     (the interested reader may consult the cited full paper for details)
 %
-%   * If you are describing several proof systems in one entry, 
+%   * If you are describing several proof systems in one entry,
 %     consider splitting your entry.
 %
 %   * You may reduce the size of your entry by ommitting inference rules
@@ -182,8 +197,8 @@ All the systems enjoy cut-admissibility.
 %
 %   * Cite parsimoniously (see detailed citation instructions below).
 %
-% 
-% If you do not manage to fit everything in one page, 
+%
+% If you do not manage to fit everything in one page,
 % it is acceptable for an entry to have 2 pages.
 %
 % For aesthetic reasons, it is preferable for an entry to have
@@ -195,19 +210,19 @@ All the systems enjoy cut-admissibility.
 % ======================
 
 % Please cite the original paper where the proof system was defined.
-% To do so, you may use the \cite command within 
+% To do so, you may use the \cite command within
 % one of the optional environments above,
 % or use the \nocite command otherwise.
 
-% You may also cite a modern paper or book where the 
+% You may also cite a modern paper or book where the
 % proof system is explained in greater depth or clarity.
 % Cite parsimoniously.
 
-% Do not cite related work. Instead, use the "\iref" or "\irefmissing" 
-% commands to make an internal reference to another entry, 
+% Do not cite related work. Instead, use the "\iref" or "\irefmissing"
+% commands to make an internal reference to another entry,
 % as explained within the "history" environment above.
 
-% You do not need to create the "References" section yourself. 
+% You do not need to create the "References" section yourself.
 % This is done automatically.
 
 
