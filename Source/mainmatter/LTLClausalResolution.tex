@@ -1,0 +1,274 @@
+
+% If the calculus has an acronym, define it.
+% (e.g. \newcommand{\LK}{\ensuremath{\mathbf{LK}}\xspace})
+\calculusName{Clausal Resolution for Propositional Linear Time Temporal Logic}         % The name of the calculus
+\calculusAcronym{}          % The acronym if defined above, or empty otherwise. 
+\calculusLogic{Linear Time Temporal Logic}        % Specify the logic (e.g. Classical Logic, Intuitionistic Logic, ...) for which this calculus is intended.
+\calculusLogicOrder{Propostional}   % Specify the order of the logic (e.g. Propositional, Quantified Propositional, First-Order, Higher-Order, ...).
+\calculusType{Resolution}         % Specify the calculus type (e.g. Tableau, Sequent Calculus, Hyper-Sequent Calculus, Natural Deduction, ...)
+\calculusYear{1991/2001}         % The year when the calculus was published.
+
+\calculusAuthor{Michael Fisher}       % The name(s) of the author(s) of the calculus.
+\calculusAuthor{Clare Dixon}
+\calculusAuthor{Martin Peim}
+
+
+
+
+\entryTitle{Clausal Resolution for Propositional Linear Time Temporal Logic}     % Title of the entry (usually coincides with the name of the calculus).
+\entryAuthor{Clare Dixon}     
+\entryAuthor{Michael Fisher}
+\entryAuthor{Ullrich Hustdat}
+\entryAuthor{Boris Konev}
+
+
+% The encyclopedia's peer-reviewing policy is described here: 
+% http://proofsystem.github.io/Encyclopedia/
+%
+% Reviewers of this entry will be acknowledged in the following lines:
+% \entryReviewer{Reviewer 1's name}
+% \entryReviewer{Reviewer 2's name}
+% \entryReviewer{Reviewer 3's name}
+%
+% The lines above will be filled by the coordinators. 
+% If you would like to indicate people 
+% who could review your entry, contact the coordinators.
+
+
+% If you wish, use tags to give any other information 
+% that might be helpful for classifying and grouping this entry:
+% e.g. \tag{Two-Sided Sequents}
+% e.g. \tag{Multiset Cedents}
+% e.g. \tag{List Cedents}
+% You are free to invent your own tags. 
+% The Encyclopedia's coordinator will take care of 
+% merging semantically similar tags in the future.
+
+
+\maketitle
+
+
+% If your files are called "MyProofSystem.tex" and "MyProofSystem.bib", 
+% then you should write "\begin{entry}{MyProofSystem}" in the line below
+\begin{entry}{LTLClausalResolution}  
+
+% Define here any newcommands you may need:
+% e.g. \newcommand{\necessarily}{\Box}
+% e.g. \newcommand{\possibly}{\Diamond}
+
+\newcommand{\Next}{\!\raisebox{-.2ex}{ %possibly add a little space before
+                        \mbox{\unitlength=0.9ex
+                        \begin{picture}(2,2)
+                        \linethickness{0.06ex}
+                        \put(1,1){\circle{2}} % Draws circle with
+                        \end{picture}}}       % diameter 2 at centre 1,1
+                        \,}
+
+ \newcommand{\Always}{\raisebox{-.2ex}{
+                            \mbox{\unitlength=0.9ex
+                            \begin{picture}(2,2)
+                            \linethickness{0.06ex}
+                            \put(0,0){\line(1,0){2}}
+                            \put(0,2){\line(1,0){2}}
+                            \put(0,0){\line(0,1){2}}
+                            \put(2,0){\line(0,1){2}}
+                            \end{picture}}}
+                       \,}
+
+\def\sometime{\hbox{$\,\Diamond \,$}}
+
+\newcommand{\lstart}{{\bf start}}
+%{\mathord{\hbox{\large$\mathchar"0\cmsy@7D$}}} % PS \diamondsuit 
+%                                                             % is too
+%                                                             small
+\def\unless{\hbox{$\,\cal W \,$}}
+
+
+\begin{calculus}
+
+% Add the inference rules of your proof system here.
+% The "proof.sty" and "bussproofs.sty" packages are available.
+% If you need any other package, please contact the coordinator (Bruno Woltzenlogel Paleo <bruno.wp@gmail.com>)
+
+%
+
+\newcommand{\myspace}{4pt}
+
+\vspace{\myspace}
+\[
+\infer[\textit{Initial Resolution}]
+{\Always (\lstart \Rightarrow (A \lor B))}
+{\Always( \lstart \Rightarrow (A \lor p))  &
+\Always(\lstart \Rightarrow (B \lor \neg p))} 
+\]
+\vspace{\myspace}
+\[
+\infer[\textit{Step Resolution}]
+{\Always(C \land D  \Rightarrow  \Next (A \lor B))}
+{\Always(C \Rightarrow \Next (A \lor p))  &
+\Always (D	    \Rightarrow  \Next (B \lor \neg p))} 
+\]
+
+\vspace{-4ex}
+\[
+\infer[\textit{Temporal Resolution} \qquad
+% \left[
+\begin{array}{l}
+\text{where for all} \\
+ 0 \leq i \leq n \\
+\vdash A_i \Rightarrow \neg l; \text{ and} \\
+\vdash A_i \Rightarrow \displaystyle \bigvee_{j=0}^n C_j
+\end{array}
+% \right]
+]
+{\Always  (D    \Rightarrow  \left[\displaystyle\bigwedge_{i=0}^n (\neg C_i)\right] \unless l)}
+{\Always  (C_0   \Rightarrow  \Next A_0) &
+\ldots  \Rightarrow  \ldots &
+\Always  (C_n   \Rightarrow  \Next A_n) & 
+\Always  (D   \Rightarrow  \sometime l)}
+\]
+
+
+% $$
+% \begin{array}{l}
+% \text{where for all} i, 0 \leq i \leq n \\
+% \prv A_i \Rightarrow \neg l; \text{ and} \\
+% \prv A_i \Rightarrow \displaystyle \bigvee_{j=0}^n C_j
+% \end{array}
+% $$
+
+
+
+
+
+% $$\begin{array}{rcl}
+% 	      \lstart & \Rightarrow & A \lor p \\
+% 	      \lstart  & \Rightarrow & B \lor \neg p \\ \hline
+% {\lstart  \Rightarrow  A \lor B}
+% \end{array}
+% \mbox{~~~~~~~~~~~}
+% \begin{array}{rcl}
+% 	       C & \Rightarrow & \Next(A \lor p) \\
+% 	       D & \Rightarrow & \Next(B \lor \neg p) \\ \hline
+% 	       (C  \land D) & \Rightarrow & \Next(A \lor B)
+% \end{array}$$
+
+% $$
+% \begin{array}{rcl}
+% \Always  (C_0  & \Rightarrow & \Next A_0)\\
+% \ldots & \Rightarrow & \ldots\\
+% \Always  (C_n  & \Rightarrow & \Next A_n)\\
+% \Always  (D  & \Rightarrow & \sometime l) \\ \hline
+% \Always  (D   & \Rightarrow & \left[\displaystyle\bigwedge_{i=0}^n (\neg C_i)\right] \unless l)
+% \end{array}
+% $$
+
+Where $p$ is a proposition, $l$ is a literal, $A$, $A_i$ and $B$ are disjunctions of literals and 
+$C$, $C_i$, $D$ are conjunctions of literals. 
+\end{calculus}
+
+% The following sections ("clarifications", "history", 
+% "technicalities") are optional. If you use them, 
+% be very concise and objective. Nevertheless, do write full sentences. 
+% Try to have at most one paragraph per section, because line breaks 
+% do not look nice in a short entry.
+
+ \begin{clarifications}
+% ToDo: write here short remarks that may help the reader to understand 
+% the inference rules of the proof system.
+The calculus is for formulae of discrete propositional
+linear-time temporal logic  with finite past and infinite future.
+Any propositional linear-time temporal logic formula is first
+translated into the following  normal form: 
+$ \Always (\lstart \Rightarrow A)$ {\em an initial clause}
+$ \Always (C \Rightarrow  \Next A)$ {\em a step clause}, and
+$\Always  (C  & \Rightarrow & \sometime l) $ {\em a sometime clause}.
+This  removes many of the  operators, may add new propositional 
+symbols, for example to rename subformulae, and preserves satisfiability.
+The operator $\lstart$ only holds in the first moment in time. The
+resolvent of the temporal resolution rule needs further translation
+into the normal form. 
+ \end{clarifications}
+
+\begin{history}
+% ToDo: write here short historical remarks about this proof system,
+% especially if they relate to other proof systems. 
+% Use "\iref{OtherProofSystem}" to refer to another proof system 
+% in the Encyclopedia (where "OtherProofSystem" is its ID). 
+% Use "\irefmissing{SuggestedIDForOtherProofSystem}" to refer to 
+% another proof system that is not yet available in the encyclopedia.
+First proposed in~\cite{Fis90-resolve} earlier versions of 
+the normal form and the calculus used clauses with past-time formulae
+on the left-hand sides and present or future formulae on the
+right-hand side. The above version of the resolution rules are
+from~\cite{FDP01} and the calculus has been implemented in the prover
+TRP++~\cite{HustadtKonev2003a}. 
+A different presentation is provided in~\cite{DFK02}
+using a {\em Divided Separated Normal Form}.
+% splitting the formule into
+%four sets: the initial and universal parts (both sets of propositional
+%formula), the step part (similar to the above) and the eventuality
+% part (unconditional sometime formula).
+\end{history}
+
+\begin{technicalities}
+% ToDo: write here remarks about soundness, completeness,
+% decidability...
+Soundness, completeness and termination are shown in~~\cite{FDP01}.
+\end{technicalities}
+
+
+% General Instructions:
+% =====================
+
+% The preferred length of an entry is 1 page. 
+% Do the best you can to fit your proof system in one page.
+%
+% If you are finding it hard to fit what you want in one page, remember:
+%
+%   * Your entry needs to be neither self-contained nor fully understandable
+%     (the interested reader may consult the cited full paper for details)
+%
+%   * If you are describing several proof systems in one entry, 
+%     consider splitting your entry.
+%
+%   * You may reduce the size of your entry by ommitting inference rules
+%     that are already described in other entries.
+%
+%   * Cite parsimoniously (see detailed citation instructions below).
+%
+% 
+% If you do not manage to fit everything in one page, 
+% it is acceptable for an entry to have 2 pages.
+%
+% For aesthetic reasons, it is preferable for an entry to have
+% 1 full page or 2 full pages, in order to avoid unused blank space.
+
+
+
+% Citation Instructions:
+% ======================
+
+% Please cite the original paper where the proof system was defined.
+% To do so, you may use the \cite command within 
+% one of the optional environments above,
+% or use the \nocite command otherwise.
+
+% You may also cite a modern paper or book where the 
+% proof system is explained in greater depth or clarity.
+% Cite parsimoniously.
+
+% Do not cite related work. Instead, use the "\iref" or "\irefmissing" 
+% commands to make an internal reference to another entry, 
+% as explained within the "history" environment above.
+
+% You do not need to create the "References" section yourself. 
+% This is done automatically.
+
+
+% Remove all instruction comments before submitting.
+
+
+% Leave an empty line above "\end{entry}".
+
+\end{entry}
