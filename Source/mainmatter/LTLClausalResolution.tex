@@ -16,7 +16,7 @@
 
 
 \entryTitle{Clausal Resolution for Propositional Linear Time Temporal Logic}     % Title of the entry (usually coincides with the name of the calculus).
-\entryAuthor{Clare Dixon}     
+\entryAuthor{Clare Dixon}
 \entryAuthor{Michael Fisher}
 \entryAuthor{Ullrich Hustdat}
 \entryAuthor{Boris Konev}
@@ -78,6 +78,8 @@
 \def\sometime{\hbox{$\,\Diamond \,$}}
 
 \newcommand{\lstart}{{\bf start}}
+\newcommand{\ltrue}{{\bf true}}
+\newcommand{\lfalse}{{\bf false}}
 %{\mathord{\hbox{\large$\mathchar"0\cmsy@7D$}}} % PS \diamondsuit 
 %                                                             % is too
 %                                                             small
@@ -107,6 +109,12 @@
 {\Always(C \land D  \Rightarrow  \Next (A \lor B))}
 {\Always(C \Rightarrow \Next (A \lor p))  &
 \Always (D	    \Rightarrow  \Next (B \lor \neg p))} 
+\]
+\vspace{\myspace}
+\[
+\infer[\textit{Clause Conversion}]
+{\Always(\lstart \Rightarrow C)  \quad \Always (\ltrue	    \Rightarrow  \Next C)}
+{\Always(C  \Rightarrow  \Next \lfalse)} 
 \]
 
 \vspace{-4ex}
@@ -163,8 +171,11 @@
 % \end{array}
 % $$
 
-Where $p$ is a proposition, $l$ is a literal, $A$, $A_i$ and $B$ are disjunctions of literals and 
-$C$, $C_i$, $D$ are conjunctions of literals. 
+Where $p$ is a proposition, $l$ is a literal, $A$ and $B$ are (possibly empty) disjunctions of literals,
+$A_i$ are non-empty disjunctions of literals and 
+$C$, $C_i$, $D$ are (possibly empty) conjunctions of literals. 
+Derivation terminates if either $\lstart\Rightarrow\lfalse$ is derived (the input
+formula is unsatisfiable) or no new clause can be derived (the input formula is satisfiable).  
 \end{calculus}
 
 % The following sections ("clarifications", "history", 
@@ -188,6 +199,8 @@ symbols, for example to rename subformulae, and preserves satisfiability.
 The operator $\lstart$ only holds in the first moment in time. The
 resolvent of the temporal resolution rule needs further translation
 into the normal form. 
+In the rules $\ltrue$ stands for an empty conjunction of literals; $\lfalse$
+stands for an empty disjunction of literals.
  \end{clarifications}
 
 \begin{history}
