@@ -2,7 +2,7 @@
 % If the calculus has an acronym, define it.
 % (e.g. \newcommand{\LK}{\ensuremath{\mathbf{LK}}\xspace})
 \calculusName{Clausal Resolution for Propositional Linear Time Temporal Logic}         % The name of the calculus
-\calculusAcronym{}          % The acronym if defined above, or empty otherwise. 
+\calculusAcronym{LTL}          % The acronym if defined above, or empty otherwise. 
 \calculusLogic{Linear Time Temporal Logic}        % Specify the logic (e.g. Classical Logic, Intuitionistic Logic, ...) for which this calculus is intended.
 \calculusLogicOrder{Propostional}   % Specify the order of the logic (e.g. Propositional, Quantified Propositional, First-Order, Higher-Order, ...).
 \calculusType{Resolution}         % Specify the calculus type (e.g. Tableau, Sequent Calculus, Hyper-Sequent Calculus, Natural Deduction, ...)
@@ -15,7 +15,7 @@
 
 
 
-\entryTitle{Clausal Resolution for Propositional Linear Time Temporal Logic}     % Title of the entry (usually coincides with the name of the calculus).
+\entryTitle{Propositional Linear Time Temporal Logic (LTL)}     % Title of the entry (usually coincides with the name of the calculus).
 \entryAuthor{Clare Dixon}
 \entryAuthor{Michael Fisher}
 \entryAuthor{Ullrich Hustdat}
@@ -85,97 +85,52 @@
 %                                                             small
 \def\unless{\hbox{$\,\cal W \,$}}
 
-
 \begin{calculus}
-
-% Add the inference rules of your proof system here.
-% The "proof.sty" and "bussproofs.sty" packages are available.
-% If you need any other package, please contact the coordinator (Bruno Woltzenlogel Paleo <bruno.wp@gmail.com>)
-
+%\textbf{Resolution rules}
+\vspace*{-.7em}
+\[
+\begin{array}{c}
+\infer[\textit{(initial)}]
+{\lstart \rightarrow (A \lor B)}
+{\lstart \rightarrow (A \lor p)  &
+\lstart \rightarrow (B \lor \neg p)} 
+\qquad
+\infer[\textit{(step)}]
+{\Always(C \land D  \rightarrow  \Next (A \lor B))}
+{\Always(C \rightarrow \Next (A \lor p))  &
+\Always (D	    \rightarrow  \Next (B \lor \neg p))} 
+\\[4pt]
+\infer[\textit{(conversion)}]
+{ \lstart \rightarrow \lnot C  \quad \Always (\ltrue \rightarrow \Next \lnot C)}
+{\Always(C  \rightarrow  \Next \lfalse)} 
+\\[8pt]
 %
+%
+\begin{array}[b]{ll}
+\infer[\textit{(temporal),} ]
+{\textstyle\Always  (D    \rightarrow  \left[\bigwedge_{i=0}^n (\neg C_i)\right] \unless l)}
+{\Always  (C_0   \rightarrow  \Next A_0) &
+\ldots  &\quad
+\Always  (C_n   \rightarrow  \Next A_n) & 
+\Always  (D   \rightarrow  \sometime l)}
 
-\newcommand{\myspace}{4pt}
-
-\vspace{\myspace}
-\[
-\infer[\textit{Initial Resolution}]
-{\Always (\lstart \Rightarrow (A \lor B))}
-{\Always( \lstart \Rightarrow (A \lor p))  &
-\Always(\lstart \Rightarrow (B \lor \neg p))} 
-\]
-\vspace{\myspace}
-\[
-\infer[\textit{Step Resolution}]
-{\Always(C \land D  \Rightarrow  \Next (A \lor B))}
-{\Always(C \Rightarrow \Next (A \lor p))  &
-\Always (D	    \Rightarrow  \Next (B \lor \neg p))} 
-\]
-\vspace{\myspace}
-\[
-\infer[\textit{Clause Conversion}]
-{\Always(\lstart \Rightarrow \lnot C)  \quad \Always (\ltrue	    \Rightarrow  \Next \lnot C)}
-{\Always(C  \Rightarrow  \Next \lfalse)} 
-\]
-
-\vspace{-4ex}
-\[
-\infer[\textit{Temporal Resolution} \qquad
+& \quad
 % \left[
 \begin{array}{l}
-\text{where for all} \\
- 0 \leq i \leq n \\
-\vdash A_i \Rightarrow \neg l; \text{ and} \\
-\vdash A_i \Rightarrow \displaystyle \bigvee_{j=0}^n C_j
+\text{where for all } 0 \leq i \leq n \\[-5pt]
+\mbox{}\;\vdash A_i \rightarrow \neg l \; \text{ and }
+\vdash A_i \rightarrow \displaystyle \bigvee_{j=0}^n C_j
+\vspace*{0.9em}
 \end{array}
-% \right]
-]
-{\Always  (D    \Rightarrow  \left[\displaystyle\bigwedge_{i=0}^n (\neg C_i)\right] \unless l)}
-{\Always  (C_0   \Rightarrow  \Next A_0) &
-\ldots  \Rightarrow  \ldots &
-\Always  (C_n   \Rightarrow  \Next A_n) & 
-\Always  (D   \Rightarrow  \sometime l)}
+\end{array}
+\end{array}
 \]
 
-
-% $$
-% \begin{array}{l}
-% \text{where for all} i, 0 \leq i \leq n \\
-% \prv A_i \Rightarrow \neg l; \text{ and} \\
-% \prv A_i \Rightarrow \displaystyle \bigvee_{j=0}^n C_j
-% \end{array}
-% $$
-
-
-
-
-
-% $$\begin{array}{rcl}
-% 	      \lstart & \Rightarrow & A \lor p \\
-% 	      \lstart  & \Rightarrow & B \lor \neg p \\ \hline
-% {\lstart  \Rightarrow  A \lor B}
-% \end{array}
-% \mbox{~~~~~~~~~~~}
-% \begin{array}{rcl}
-% 	       C & \Rightarrow & \Next(A \lor p) \\
-% 	       D & \Rightarrow & \Next(B \lor \neg p) \\ \hline
-% 	       (C  \land D) & \Rightarrow & \Next(A \lor B)
-% \end{array}$$
-
-% $$
-% \begin{array}{rcl}
-% \Always  (C_0  & \Rightarrow & \Next A_0)\\
-% \ldots & \Rightarrow & \ldots\\
-% \Always  (C_n  & \Rightarrow & \Next A_n)\\
-% \Always  (D  & \Rightarrow & \sometime l) \\ \hline
-% \Always  (D   & \Rightarrow & \left[\displaystyle\bigwedge_{i=0}^n (\neg C_i)\right] \unless l)
-% \end{array}
-% $$
-
-Where $p$ is a proposition, $l$ is a literal, $A$ and $B$ are (possibly empty) disjunctions of literals,
+\vspace*{-1em}
+Here $p$ is a proposition, $l$ is a literal, $A$ and $B$ are (possibly empty) disjunctions of literals,
 $A_i$ are non-empty disjunctions of literals and 
 $C$, $C_i$, $D$ are (possibly empty) conjunctions of literals. 
-Derivation terminates if either $\lstart\Rightarrow\lfalse$ is derived (the input
-formula is unsatisfiable) or no new clause can be derived (the input formula is satisfiable).  
+Derivation terminates if either $\lstart\rightarrow\lfalse$ is derived (unsatisfiable) or no new clause can be derived (satisfiable).  
 \end{calculus}
 
 % The following sections ("clarifications", "history", 
@@ -187,18 +142,22 @@ formula is unsatisfiable) or no new clause can be derived (the input formula is 
  \begin{clarifications}
 % ToDo: write here short remarks that may help the reader to understand 
 % the inference rules of the proof system.
-The calculus is for formulae of discrete propositional
-linear-time temporal logic  with finite past and infinite future.
-Any propositional linear-time temporal logic formula is first
-translated into the following  normal form: 
-$ \Always (\lstart \Rightarrow A)$ {\em an initial clause}
-$ \Always (C \Rightarrow  \Next A)$ {\em a step clause}, and
-$\Always  (C  & \Rightarrow & \sometime l) $ {\em a sometime clause}.
-This  removes many of the  operators, may add new propositional 
-symbols, for example to rename subformulae, and preserves satisfiability.
-The operator $\lstart$ only holds in the first moment in time. The
-resolvent of the temporal resolution rule needs further translation
-into the normal form. 
+The clausal temporal resolution calculus is for formulae of discrete propositional
+linear-time temporal logic with finite past and infinite future.
+Any LTL is first translated, in a satisfiability preserving way, into the
+following  normal form: 
+$\lstart \rightarrow A$, {\em an initial clause},
+$ \Always (C \rightarrow  \Next A)$, {\em a step clause}, and
+$\Always  (C   \rightarrow  \sometime l)$, {\em a sometime clause}.
+%
+This removes many of the operators, may add new propositional 
+symbols, for example to rename subformulae.
+%
+The operator $\lstart$ only holds in the first moment in time. 
+%
+The resolvent of the temporal resolution rule needs further translation into
+the normal form. 
+%
 In the rules $\ltrue$ stands for an empty conjunction of literals; $\lfalse$
 stands for an empty disjunction of literals.
  \end{clarifications}
@@ -218,6 +177,8 @@ from~\cite{FDP01} and the calculus has been implemented in the prover
 TRP++~\cite{HustadtKonev2003a}. 
 A different presentation is provided in~\cite{DFK02}
 using a {\em Divided Separated Normal Form}.
+The calculus has been extended to the monodic fragment of First-Order 
+temporal logic in~\cite{DBLP:journals/tocl/DegtyarevFK06}, implemented in the prover TeMP~\cite{DBLP:conf/cade/HustadtKRV04}.
 % splitting the formule into
 %four sets: the initial and universal parts (both sets of propositional
 %formula), the step part (similar to the above) and the eventuality
