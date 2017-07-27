@@ -1,8 +1,8 @@
 
 % If the calculus has an acronym, define it.
 % (e.g. \newcommand{\LK}{\ensuremath{\mathbf{LK}}\xspace})
-\calculusName{Clausal Resolution for Propositional Linear Time Temporal Logic}         % The name of the calculus
-\calculusAcronym{LTL}          % The acronym if defined above, or empty otherwise. 
+\calculusName{Resolution for Propositional Linear Time Temporal Logic}         % The name of the calculus
+\calculusAcronym{}          % The acronym if defined above, or empty otherwise. 
 \calculusLogic{Linear Time Temporal Logic}        % Specify the logic (e.g. Classical Logic, Intuitionistic Logic, ...) for which this calculus is intended.
 \calculusLogicOrder{Propostional}   % Specify the order of the logic (e.g. Propositional, Quantified Propositional, First-Order, Higher-Order, ...).
 \calculusType{Resolution}         % Specify the calculus type (e.g. Tableau, Sequent Calculus, Hyper-Sequent Calculus, Natural Deduction, ...)
@@ -10,12 +10,14 @@
 
 \calculusAuthor{Michael Fisher}       % The name(s) of the author(s) of the calculus.
 \calculusAuthor{Clare Dixon}
+\calculusAuthor{Ullrich Hustdat}
+\calculusAuthor{Boris Konev}
 \calculusAuthor{Martin Peim}
 
 
 
 
-\entryTitle{Propositional Linear Time Temporal Logic (LTL)}     % Title of the entry (usually coincides with the name of the calculus).
+\entryTitle{Resolution for Propositional Linear Time Temporal Logic (LTL)}     % Title of the entry (usually coincides with the name of the calculus).
 \entryAuthor{Clare Dixon}
 \entryAuthor{Michael Fisher}
 \entryAuthor{Ullrich Hustdat}
@@ -108,10 +110,10 @@
 %
 \begin{array}[b]{ll}
 \infer[\textit{(temporal),} ]
-{\textstyle\Always  (D    \rightarrow  \left[\bigwedge_{i=0}^n (\neg C_i)\right] \unless l)}
-{\Always  (C_0   \rightarrow  \Next A_0) &
+{\textstyle\Always  (D    \rightarrow  \left[\bigwedge_{i=0}^n (\neg E_i)\right] \unless l)}
+{\Always  (E_0   \rightarrow  \Next F_0) &
 \ldots  &\quad
-\Always  (C_n   \rightarrow  \Next A_n) & 
+\Always  (E_n   \rightarrow  \Next F_n) & 
 \Always  (D   \rightarrow  \sometime l)}
 
 & \quad
@@ -128,8 +130,8 @@
 
 \vspace*{-1em}
 Here $p$ is a proposition, $l$ is a literal, $A$ and $B$ are (possibly empty) disjunctions of literals,
-$A_i$ are non-empty disjunctions of literals and 
-$C$, $C_i$, $D$ are (possibly empty) conjunctions of literals. 
+$C$ and $D$ are (possibly empty) conjunctions of literals and $E_i\rightarrow\Next F_i$  are \emph{merged step clauses}
+(conjunctions of step clauses), see~\cite{FDP01} for details.
 Derivation terminates if either $\lstart\rightarrow\lfalse$ is derived (unsatisfiable) or no new clause can be derived (satisfiable).  
 \end{calculus}
 
@@ -178,7 +180,8 @@ TRP++~\cite{HustadtKonev2003a}.
 A different presentation is provided in~\cite{DFK02}
 using a {\em Divided Separated Normal Form}.
 The calculus has been extended to the monodic fragment of First-Order 
-temporal logic in~\cite{DBLP:journals/tocl/DegtyarevFK06}, implemented in the prover TeMP~\cite{DBLP:conf/cade/HustadtKRV04}.
+temporal logic in~\cite{DBLP:journals/tocl/DegtyarevFK06}.
+%, implemented in the prover TeMP~\cite{DBLP:conf/cade/HustadtKRV04}.
 % splitting the formule into
 %four sets: the initial and universal parts (both sets of propositional
 %formula), the step part (similar to the above) and the eventuality
