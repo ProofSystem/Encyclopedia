@@ -1,0 +1,339 @@
+
+% If the calculus has an acronym, define it.
+% (e.g. \newcommand{\LK}{\ensuremath{\mathbf{LK}}\xspace})
+\calculusName{Resolution for Computational Tree Logic}         % The name of the calculus
+\calculusAcronym{}          % The acronym if defined above, or empty otherwise. 
+\calculusLogic{Computational Tree Logic}        % Specify the logic (e.g. Classical Logic, Intuitionistic Logic, ...) for which this calculus is intended.
+\calculusLogicOrder{Propositional}   % Specify the order of the logic (e.g. Propositional, Quantified Propositional, First-Order, Higher-Order, ...).
+\calculusType{Resolution}         % Specify the calculus type (e.g. Tableau, Sequent Calculus, Hyper-Sequent Calculus, Natural Deduction, ...)
+\calculusYear{2009}         % The year when the calculus was published.
+
+\calculusAuthor{Lan Zhang}       % The name(s) of the author(s) of the calculus.
+\calculusAuthor{Ullrich Hustadt}
+\calculusAuthor{Clare Dixon}
+
+
+
+
+\entryTitle{Resolution for Computation Tree Logic (CTL)}     % Title of the entry (usually coincides with the name of the calculus).
+\entryAuthor{Clare Dixon}     
+\entryAuthor{Ullrich Hustadt}
+
+
+
+% The encyclopedia's peer-reviewing policy is described here: 
+% http://proofsystem.github.io/Encyclopedia/
+%
+% Reviewers of this entry will be acknowledged in the following lines:
+% \entryReviewer{Reviewer 1's name}
+% \entryReviewer{Reviewer 2's name}
+% \entryReviewer{Reviewer 3's name}
+%
+% The lines above will be filled by the coordinators. 
+% If you would like to indicate people 
+% who could review your entry, contact the coordinators.
+
+
+% If you wish, use tags to give any other information 
+% that might be helpful for classifying and grouping this entry:
+% \tag{Branching-Time Temporal Logic}
+% e.g. \tag{Multiset Cedents}
+% e.g. \tag{List Cedents}
+% You are free to invent your own tags. 
+% The Encyclopedia's coordinator will take care of 
+% merging semantically similar tags in the future.
+
+
+\maketitle
+
+
+% If your files are called "MyProofSystem.tex" and "MyProofSystem.bib", 
+% then you should write "\begin{entry}{MyProofSystem}" in the line below
+\begin{entry}{CTLClausalResolution}  
+
+% Define here any newcommands you may need:
+% e.g. \newcommand{\necessarily}{\Box}
+% e.g. \newcommand{\possibly}{\Diamond}
+
+%\newcommand{\Next}[0]{\mathop{\raisebox{0.2ex}{\scalebox{0.9}{\ensuremath{\ocircle}}}}}
+\newcommand{\Always}[0]{\mathop{\scalebox{1.25}{\ensuremath{\Box}}}}
+\newcommand{\Sometimes}[0]{\mathop{\Diamond}}
+\newcommand{\Eventually}[0]{\Diamond}
+
+\newcommand{\Next}{\!\raisebox{0.1ex}{ %possibly add a little space before
+                        \mbox{\unitlength=0.62ex
+                        \begin{picture}(2,2)
+                        \linethickness{0.1ex}
+                        \put(1,1){\circle{2}} % Draws circle with
+                        \end{picture}}}       % diameter 2 at centre 1,1
+                        \,}
+
+\newcommand{\TAlways}{\raisebox{-.2ex}{
+                           \mbox{\unitlength=0.9ex
+                           \begin{picture}(2,2)
+                           \linethickness{0.06ex}
+                           \put(0,0){\line(1,0){2}}
+                           \put(0,2){\line(1,0){2}}
+                           \put(0,0){\line(0,1){2}}
+                           \put(2,0){\line(0,1){2}}
+                           \end{picture}}}
+                      \,}
+\newcommand{\TSometime}{\hbox{$\,\Diamond \,$}}
+
+\newcommand{\lstart}{{\mathbf{start}}}
+\newcommand{\ltrue}{{\mathbf{true}}}
+\newcommand{\lfalse}{{\mathbf{false}}}
+
+\def\unless{\hbox{$\,\mathcal W \,$}}
+
+\def\allpaths{\ensuremath{\mathbf A}}
+
+\def\somepath{\ensuremath{\mathbf{E}}}
+
+\def\somepathind{\ensuremath{\mathbf{E}_{\langle ind \rangle}}}
+
+\def\eitherpath{\ensuremath{\mathbf{P}}}
+
+
+\begin{calculus}
+
+% Add the inference rules of your proof system here.
+% The "proof.sty" and "bussproofs.sty" packages are available.
+% If you need any other package, please contact the coordinator (Bruno
+% Woltzenlogel Paleo <bruno.wp@gmail.com>) 
+
+%
+
+\newcommand{\myspace}{-5pt}
+
+\begin{small}
+%\vspace{\myspace}
+\[
+\infer %[\textit{Initial Resolution}]
+{\allpaths \Always (\lstart \rightarrow (C \lor D))}
+{\allpaths\Always( \lstart \rightarrow (C \lor l))  &
+\allpaths\Always(\lstart \rightarrow (D \lor \neg l))} 
+%
+\qquad
+%
+\infer %[\textit{Step Resolution}]
+{\allpaths\Always(P \land Q  \rightarrow  \somepathind 
+  \Next (C \lor D))}
+{\allpaths\Always(P \rightarrow \somepathind\Next (C \lor l))  &
+\allpaths\Always (Q \rightarrow  \somepathind\Next (D \lor \neg l))} 
+\]
+%
+\vspace{\myspace}
+%
+\[
+\infer %[\textit{Initial Resolution}]
+{\allpaths\Always (\lstart \rightarrow (C \lor D))}
+{\allpaths\Always( \ltrue \rightarrow (C \lor l))  &
+\allpaths\Always(\lstart \rightarrow (D \lor \neg l))} 
+%
+\qquad
+%
+\infer %[\textit{Step Resolution}]
+{\allpaths\Always(P \land Q  \rightarrow  \allpaths \Next (C \lor D))}
+{\allpaths\Always(P \rightarrow \allpaths\Next (C \lor l))  &
+\allpaths\Always (Q \rightarrow  \allpaths\Next (D \lor \neg l))} 
+\]
+%
+\vspace{\myspace}
+\[
+%
+ \infer %[\textit{Initial Resolution}]
+ {\allpaths\Always (\ltrue \rightarrow (C \lor D))}
+ {\allpaths\Always( \ltrue \rightarrow (C \lor l))  &
+ \allpaths\Always(\ltrue \rightarrow (D \lor \neg l))} 
+%
+\qquad
+%
+\infer %[\textit{Step Resolution}]
+{\allpaths\Always(P \land Q  \rightarrow  \somepathind \Next (C \lor D))}
+{\allpaths\Always(P \rightarrow \allpaths\Next (C \lor l))  &
+\allpaths\Always (Q \rightarrow  \somepathind\Next (D \lor \neg l))} 
+%
+\]
+%
+\vspace{\myspace}
+%
+\[
+\infer %[\textit{Step Resolution}]
+{\allpaths\Always(P \rightarrow  \allpaths \Next (C \lor D))}
+{\allpaths\Always(\ltrue \rightarrow  (C \lor l))  &
+\allpaths\Always (P \rightarrow  \allpaths \Next (D \lor \neg l))} 
+%
+\qquad
+%
+\infer %[\textit{Step Resolution}]
+{\allpaths\Always(P \rightarrow  \somepathind \Next (C \lor D))}
+{\allpaths\Always(\ltrue \rightarrow  (C \lor l))  &
+\allpaths\Always (P \rightarrow  \somepathind \Next (D \lor \neg l))} 
+\]
+\vspace{\myspace}
+\[
+\infer[\textit{(ERES1)} ]
+{\textstyle \allpaths\Always (Q \rightarrow  \allpaths (\neg P^\dagger  \unless l))}
+{\allpaths\Always (P^\dagger \rightarrow  \somepath \Next \somepath \Always l) &
+\allpaths\Always  (D   \rightarrow  \allpaths \Eventually \neg l)}
+%
+\quad
+%
+\infer[\textit{(ERES2)} ]
+{\textstyle \allpaths\Always  (Q \rightarrow  \somepathind (\neg
+  P^\dagger  \unless \neg l))}
+{\allpaths\Always  (P^\dagger  \rightarrow  \somepathind \Next \somepathind \Always l) &
+\allpaths \Always  (Q   \rightarrow  \somepathind \Eventually \neg l)}
+\]
+%
+\vspace{\myspace}
+%
+\[
+\allpaths\Always(P  \rightarrow  \allpaths \Next \lfalse)
+\Rightarrow
+\allpaths\Always(\ltrue  \rightarrow  \neg P)
+%
+\qquad
+%
+\allpaths\Always(P  \rightarrow  \somepathind \Next \lfalse)
+\Rightarrow
+\allpaths\Always(\ltrue  \rightarrow  \neg P)
+\]
+%
+where $l$ is a literal, 
+$C$ and $D$ are (possibly empty) disjunctions of literals,
+$P$ and $Q$ are (possibly empty) conjunctions of literals,
+$P^\dagger \rightarrow  \varphi$, 
+$\varphi\in\{\somepath \Next \somepath \Always l,
+             \somepathind \Next \somepathind \Always l\}$, 
+represents a set of clauses that together imply $\varphi$. 
+%$\{\Always(P^i_j\rightarrow\star^{i_j} C^i_j\}$
+%with $\star^{i_j}$ either being empty or being an operator
+%in $\{\Always\Next\}\cup\{\somepathind\Next|\mathit{ind}\in\mathsf{Ind}\}$.
+
+Derivations terminate if either $\Always(\lstart\rightarrow\lfalse)$ or
+$\Always(\ltrue\rightarrow\lfalse)$  is derived (unsatisfiable) or no new
+clause can be derived (satisfiable).    
+\end{small}
+
+\end{calculus}
+
+% The following sections ("clarifications", "history", 
+% "technicalities") are optional. If you use them, 
+% be very concise and objective. Nevertheless, do write full sentences. 
+% Try to have at most one paragraph per section, because line breaks 
+% do not look nice in a short entry.
+
+ \begin{clarifications}
+% ToDo: write here short remarks that may help the reader to understand 
+% the inference rules of the proof system.
+% but has less temporal resolution rules, incorporates an ordering and selection function and has been
+% implemented. 
+This calculus is for propositional computation tree logic.
+Formulae are first translated, in a satisfiability preserving way,
+into the following normal form: 
+$\allpaths \Always (\lstart \rightarrow A)$, an \emph{initial clause},
+$\allpaths  \Always (\ltrue \rightarrow A)$, a \emph{global clause},
+$\allpaths \Always (P \rightarrow  \eitherpath \Next C)$,  
+a $P$-\emph{step clause}, and
+$\allpaths  \Always  (P   \rightarrow  \eitherpath \Eventually l)$,
+a $\eitherpath$-\emph{eventuality clause} 
+where $\eitherpath$ represents  either $\allpaths$ or $\somepathind$.
+%
+Indices $\mathit{ind}$ attached to existential path operators 
+$\somepathind$ are elements of an arbitrary enumerable set
+$\mathit{Ind}$; they are introduced during the transformation to normal
+form to represent a particular path and are used to
+preserve satisfiability.
+% 
+The logical constant $\lstart$ only holds in the first moment in time. 
+%
+%Several global or step clauses are needed to be found to satisfy the
+%first premise of the ERES rules. 
+%
+In the rules, $\ltrue$ stands for an empty conjunction of literals,  
+$\lfalse$ stands for an empty disjunction of literals.
+The resolvents of the ERES rules need transformation
+into the normal form. 
+%
+\end{clarifications}
+
+\begin{history}
+% ToDo: write here short historical remarks about this proof system,
+% especially if they relate to other proof systems. 
+% Use "\iref{OtherProofSystem}" to refer to another proof system 
+% in the Encyclopedia (where "OtherProofSystem" is its ID). 
+% Use "\irefmissing{SuggestedIDForOtherProofSystem}" to refer to 
+% another proof system that is not yet available in the encyclopedia.
+The calculus was first presented
+in~\cite{Zhang+Hustadt+Dixon@CADE2009}.
+It removes two redundant rules from an earlier resolution calculus for
+CTL~\cite{BF99:jetai}.
+Full details, including a normal form transformation and algorithms
+for the application of ERES1 and ERES2, are provided in~\cite{Zhang+Hustadt+Dixon@ToCL2014}. 
+The calculus has been implemented in the prover
+CTL-RP~\cite{Zhang+Hustadt+Dixon@AIC2010}. 
+\end{history}
+
+\begin{technicalities}
+% ToDo: write here remarks about soundness, completeness,
+% decidability...
+Soundness, completeness and termination are shown in~\cite{Zhang+Hustadt+Dixon@ToCL2014}.
+\end{technicalities}
+
+
+% General Instructions:
+% =====================
+
+% The preferred length of an entry is 1 page. 
+% Do the best you can to fit your proof system in one page.
+%
+% If you are finding it hard to fit what you want in one page, remember:
+%
+%   * Your entry needs to be neither self-contained nor fully understandable
+%     (the interested reader may consult the cited full paper for details)
+%
+%   * If you are describing several proof systems in one entry, 
+%     consider splitting your entry.
+%
+%   * You may reduce the size of your entry by ommitting inference rules
+%     that are already described in other entries.
+%
+%   * Cite parsimoniously (see detailed citation instructions below).
+%
+% 
+% If you do not manage to fit everything in one page, 
+% it is acceptable for an entry to have 2 pages.
+%
+% For aesthetic reasons, it is preferable for an entry to have
+% 1 full page or 2 full pages, in order to avoid unused blank space.
+
+
+
+% Citation Instructions:
+% ======================
+
+% Please cite the original paper where the proof system was defined.
+% To do so, you may use the \cite command within 
+% one of the optional environments above,
+% or use the \nocite command otherwise.
+
+% You may also cite a modern paper or book where the 
+% proof system is explained in greater depth or clarity.
+% Cite parsimoniously.
+
+% Do not cite related work. Instead, use the "\iref" or "\irefmissing" 
+% commands to make an internal reference to another entry, 
+% as explained within the "history" environment above.
+
+% You do not need to create the "References" section yourself. 
+% This is done automatically.
+
+
+% Remove all instruction comments before submitting.
+
+
+% Leave an empty line above "\end{entry}".
+
+\end{entry}
