@@ -1,0 +1,117 @@
+
+\calculusName{Intuitionistic Sequent Calculus with $\varepsilon$-terms} 
+\calculusAcronym{\LJstar}
+\calculusLogic{Intuitionistic Logic}
+\calculusLogicOrder{First-Order}
+\calculusType{Sequent Calculus}
+\calculusYear{2016} 
+\calculusAuthor{Giselle Reis} 
+\calculusAuthor{Bruno Woltzenlogel Paleo} 
+
+\entryTitle{Epsilonized Sequent Calculus \LJstar}
+\entryAuthor{Giselle Reis} 
+
+\etag{Two-Sided Sequents}
+\etag{Multiset Cedents}
+\etag{Single-Conclusion Succedent}
+
+\maketitle
+
+
+\begin{entry}{LJstar}  
+
+
+\begin{calculus}
+\vspace{5pt}
+\[
+\infer[\vee_l]{\Gamma_1, \Gamma_2, A \vee B \seq F}{\Gamma_1 , A \seq F & \Gamma_2, B \seq F}
+\quad
+\infer[\vee_r^1]{\Gamma \seq A \vee B}{\Gamma \seq A}
+\quad
+\infer[\vee_r^2]{\Gamma \seq A \vee B}{\Gamma \seq B}
+\qquad
+\infer[\neg_l]{\Gamma, \neg A \seq }{\Gamma \seq A}
+\qquad
+\infer[\neg_r]{\Gamma \seq \neg A}{\Gamma, A \seq}
+\]\\[3pt]
+\[
+\infer[\wedge_l]{\Gamma, A \wedge B \seq F}{\Gamma, A, B \seq F}
+\quad
+\infer[\wedge_r]{\Gamma_1, \Gamma_2 \seq A \wedge B}{\Gamma_1 \seq A & \Gamma_2 \seq B}
+\quad
+\infer[\imp_l]{\Gamma_1, \Gamma_2,  A \imp B \seq F}{\Gamma_1 \seq A & \Gamma_2, B \seq F}
+\qquad
+\infer[\imp_r]{\Gamma \seq A \imp B}{\Gamma, A \seq B}
+\]\\[3pt]
+\[
+\infer[w_l]{\Gamma, A \seq F}{\Gamma \seq F}
+\quad
+\infer[w_r]{\Gamma \seq A}{\Gamma \seq}
+\quad
+\infer[c_l]{\Gamma, A \seq F}{\Gamma, A, A \seq F}
+\quad
+\infer[cut]{\Gamma_1, \Gamma_2 \vdash F}{\Gamma_1 \vdash A & \Gamma_2, A \vdash F}
+\qquad
+\infer[a]{A[\nu^l_x~F] \vdash A[\nu^l_x~F]}{}
+\]\\[3pt]
+\[
+\infer[\all_r]{\Gamma \seq \all x. A[x]}{\Gamma \seq A[\alpha]}
+\qquad
+\infer[\ex_l]{\Gamma, \ex x. A[x]  \seq F}{\Gamma, A[\alpha] \seq F}
+\qquad
+\infer[\all_l']{\Gamma, \all x. A[x]  \seq F}{\Gamma, A[t] \seq F}
+\qquad
+\infer[\ex_r']{\Gamma \seq \ex x. A[x]}{\Gamma \seq A[t]}
+\]\\[3pt]
+\centering
+$\nu$ denotes the binders $\varepsilon$ or $\tau$. 
+The term $t$ must be accessible in the conclusion sequent (\emph{accessibility
+condition}).
+Accessible occurrences of $t$ or any of its $\varepsilon$-subterms in $\Gamma$ and $F$
+must have a constant as a label (\emph{label condition}).
+$l$ is a constant in $a$ (\emph{initial condition}).
+\end{calculus}
+
+
+\begin{clarifications}
+A term $t$ is \emph{accessible} in a formula $F$ iff at least one of the two
+following conditions hold: 
+\begin{itemize}
+  \item for any top-level (i.e., not nested inside another $\varepsilon$-term)
+  $\varepsilon$-term $\nu_x~G$ in $t$, it is the case that $F[\nu_x~G
+  \rightsquigarrow x]$ is a sub-formula of $G$ ($\rightsquigarrow$ denotes term
+  rewriting); or
+
+  \item $t$ contains a nested $\varepsilon$-term $\nu_y~H$ such that $\nu_y~H$
+  is accessible in $F$ and $t[\nu_y~H \rightsquigarrow y]$ is accessible in
+  $F[\nu_y~H \rightsquigarrow y]$.
+\end{itemize}
+$t$ is accessible in a sequent $S$ iff all top-level
+$\varepsilon$-terms in $t$ are accessible in some formula occurring in $S$.
+
+$\varepsilon$-terms replace strong quantifiers in formulas (i.e., the ones
+that require eigenvariables).
+Intuitively, term accessibility corresponds to the availability of the
+eigenvariable in a proof of the non-epsilonized formula.
+
+Labels on $\varepsilon$-terms are needed for proof de-epsilonization
+and for making proof epsilonization injective.
+\end{clarifications}
+
+\begin{history}
+\LJstar was introduced in~\cite{Reis2016} as a sequent calculus for
+intuitionistic logic where \emph{epsilonization} is sound, i.e., if the
+epsilonization of a sequent $S$ is derivable in \LJstar, then so is $S$.
+%
+This is achieved by restricting the rules $\forall_l$, $\exists_r$ and initial
+from \LJ~\iref{GentzenLJ} to take into account information available in
+$\varepsilon$-terms.
+\end{history}
+
+\begin{technicalities}
+\LJstar is sound and complete with respect to \LJ~\iref{GentzenLJ} for
+$\varepsilon$-free formulas. A procedure for de-epsilonizing \LJstar proofs is
+defined in~\cite{Reis2016} resulting in a valid intuitionistic proof.
+\end{technicalities}
+
+\end{entry}
