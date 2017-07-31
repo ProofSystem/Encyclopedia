@@ -95,13 +95,13 @@ that require eigenvariables).
 Intuitively, term accessibility corresponds to the availability of the
 eigenvariable in a proof of the non-epsilonized formula.
 %
-Labels on $\varepsilon$-terms are needed for making proof epsilonization injective, allowing de-epsilonization of proofs.
+Labels on $\varepsilon$-terms make proof epsilonization injective and allow proofs to be de-epsilonized.
 \end{clarifications}
 
 \begin{history}
 Skolemization is known to be unsound in intuitionistic logic. \emph{Epsilonization} is similar to skolemization, but replaces strongly quantified variables by $\varepsilon$-terms, instead of Skolem terms. \LJstar was introduced in~\cite{Reis2016} as a sequent calculus for
 intuitionistic logic where \emph{epsilonization} is sound: if the
-epsilonization of a sequent $S$ is derivable in \LJstar, then $S$ is derivable in $\LJ$.
+epsilonization of a sequent $S$ is derivable in \LJstar, then $S$ is derivable in \LJ.
 %
 This is achieved by restricting the rules $\forall_l$, $\exists_r$ and initial
 from \LJ~\iref{GentzenLJ} to take into account information available in
@@ -110,8 +110,8 @@ $\varepsilon$-terms.
 
 \begin{technicalities}
 \LJstar is sound and complete with respect to \LJ~\iref{GentzenLJ} for
-$\varepsilon$-free formulas. A procedure for de-epsilonizing \LJstar proofs is
-defined in~\cite{Reis2016} resulting in a valid \LJ proof.
+$\varepsilon$-free formulas. A procedure for de-epsilonizing \LJstar proofs, resulting in valid \LJ proofs, is
+defined in~\cite{Reis2016}.
 \end{technicalities}
 
 \end{entry}
