@@ -1,0 +1,183 @@
+\calculusName{Hybrid Logic}   
+\calculusAcronym{\HL}     
+\calculusLogic{Modal Logics} 
+\calculusLogicOrder{Propositional}
+\calculusType{Natural Deduction}   
+\calculusYear{2001}   
+\calculusAuthor{Torben Bra\"uner}
+
+\entryTitle{Hybrid Logic (HL)}
+\entryAuthor{Torben Bra\"uner}
+
+\maketitle
+
+\begin{entry}{HL}  
+
+\newcommand{\llimp}[0]{\leftharpoonup}
+\newcommand{\rlimp}[0]{\rightharpoonup}    
+  
+\begin{calculus}
+\[ 
+\begin{array}{ccc}
+\prooftree
+@_{a}\phi
+\hspace{5 mm}
+@_{a}\psi
+\justifies
+@_{a}(\phi \wedge \psi)
+\using
+(\wedge I)
+\endprooftree
+\hspace{6 mm} & \hspace{6 mm}
+\prooftree
+@_{a}(\phi \wedge \psi)
+\justifies
+@_{a} \phi
+\using
+(\wedge E1)
+\endprooftree
+\hspace{5 mm}
+\prooftree
+@_{a}(\phi \wedge \psi)
+\justifies
+@_{a} \psi
+\using
+(\wedge E2)
+\endprooftree
+\hspace{6 mm} & \hspace{6 mm}
+\\ & &\\
+\prooftree
+\prooftree
+{[} @_{a} \phi {]}
+\leadsto
+@_{a} \psi
+\endprooftree
+\justifies
+@_{a}( \phi \rightarrow \psi)
+\using
+(\rightarrow I)
+\endprooftree
+\hspace{6 mm} & \hspace{6 mm}
+\prooftree
+@_{a}( \phi \rightarrow \psi)
+\hspace{5mm}
+@_{a} \phi
+\justifies
+@_{a}\psi
+\using
+(\rightarrow E)
+\endprooftree
+\hspace{6 mm} & \hspace{6 mm}
+\prooftree
+\prooftree
+{[} @_{a} \neg \phi {]}
+\leadsto
+@_{a} \bot
+\endprooftree
+\justifies
+@_{a} \phi
+\using
+(\bot 1)^{\ast}
+\endprooftree
+\\ & & \\
+\prooftree
+@_{a}\phi
+\justifies
+@_{c} @_{a} \phi
+\using
+(@ I)
+\endprooftree
+\hspace{6 mm} & \hspace{6 mm}
+\prooftree
+@_{c} @_{a} \phi
+\justifies
+@_{a}\phi
+\using
+(@ E)
+\endprooftree
+\hspace{6 mm} & \hspace{6 mm}
+\prooftree
+@_{a} \bot
+\justifies
+@_{c} \bot
+\using
+(\bot 2)
+\endprooftree
+\\ & &\\
+\prooftree
+\prooftree
+{[} @_{a} \lozenge c {]}
+\leadsto
+@_{c} \phi
+\endprooftree
+\justifies
+@_{a}\square \phi
+\using
+(\square I)^{\star}
+\endprooftree
+\hspace{6 mm} & \hspace{6 mm}
+\prooftree
+@_{a}\square \phi
+\hspace{5mm}
+@_{a} \lozenge e
+\justifies
+@_{e}\phi
+\using
+(\square E)
+\endprooftree
+\hspace{6 mm} & \hspace{6 mm}\\
+\prooftree
+\justifies
+@_{a}a
+\using
+({\it Ref})
+\endprooftree
+\hspace{6 mm} & \hspace{6 mm}
+\prooftree
+@_{a}c \hspace{5 mm} @_{a} \phi
+\justifies
+@_{c} \phi
+\using
+({\it Nom}1)^{\ast}
+\endprooftree
+\hspace{6 mm} & \hspace{6 mm}
+\prooftree
+@_{a}c \hspace{5 mm} @_{a} \lozenge b
+\justifies
+@_{c} \lozenge b
+\using
+({\it Nom}2)
+\endprooftree
+\end{array}
+\]
+$\ast$ $\phi$ is a propositional symbol (ordinary or a nominal).\\
+$\star$ $c$ does not occur in $@_{a}\square \phi $ or
+in any undischarged assumptions other than the occurrences
+of $@_{a} \lozenge c$.
+
+\end{calculus}
+
+\begin{clarifications}
+Hybrid logic is an extension of ordinary modal logic which allows explicit reference to individual points in a Kripke model. Formulas of are defined by 
+$S \hspace{.5mm} ::= \hspace{.5mm} p \hspace{.5mm} | \hspace{.5mm} a
+\hspace{.5mm} | \hspace{.5mm} S \wedge S \hspace{.5mm} | \hspace{.5mm}
+S \rightarrow S \hspace{.5mm} | \hspace{.5mm} \bot \hspace{.5mm} |
+\hspace{.5mm} \square S \hspace{.5mm} | \hspace{.5mm} @_{a} S$
+where $p$ ranges over ordinary propositional symbols and $a$ ranges
+over nominals (a second sort of propositional symbols that refer to points). As usual, $\neg \phi$ is an abbreviation for $ \phi
+\rightarrow \bot$ and $\lozenge \phi$ is an abbreviation for $\neg \square \neg \phi$.
+\end{clarifications}
+
+\begin{history}
+This natural deduction system for classical HL was originally suggested in
+\cite{Brauner01c} and developed in \cite{Brauner01b}. The system satisfies normalization, and normal derivations satisfy a version of the subformula property. Completeness is preserved when the system is extended with additional rules corresponding to first-order conditions on Kripke frames expressed by geometric theories. A natural deduction system for intuitionistic hybrid logic can be found in the entry \iref{IHL}. These natural deduction systems are also included in the book \cite{Brauner11a}, which considers a spectrum of different versions of hybrid logic
+(propositional, first-order, intensional first-order, and intuitionistic)
+and a spectrum of different types of proof systems for
+hybrid logic (natural deduction, Gentzen, tableau, and axiom systems).
+\end{history}
+
+%% \begin{technicalities}
+%% ...
+%% \end{technicalities}
+
+\end{entry}
