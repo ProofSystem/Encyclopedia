@@ -1,0 +1,130 @@
+\newcommand{\EC}{\ensuremath{\mathbf{EC}}\xspace}
+\newcommand{\ECeps}{\ensuremath{\EC_\varepsilon}\xspace}
+
+\calculusName{Epsilon Calculus}         % The name of the calculus
+\calculusAcronym{}          % The acronym if defined above, or empty otherwise. 
+\calculusLogic{Classical Logic}        % Specify the logic (e.g. Classical Logic, Intuitionistic Logic, ...) for which this calculus is intended.
+\calculusLogicOrder{First-Order}   % Specify the order of the logic (e.g. Propositional, Quantified Propositional, First-Order, Higher-Order, ...).
+\calculusType{Hilbert Calculus}         % Specify the calculus type (e.g. Tableau, Sequent Calculus, Hyper-Sequent Calculus, Natural Deduction, ...)
+\calculusYear{1939}         % The year when the calculus was published.
+
+\calculusAuthor{David Hilbert}       % The name(s) of the author(s) of the calculus.
+\calculusAuthor{Paul Bernays}
+
+\entryTitle{Epsilon Calculus}     % Title of the entry (usually coincides with the name of the calculus).
+\entryAuthor{Kenji Miyamoto}     
+\entryAuthor{Georg Moser}
+
+
+\maketitle
+
+\begin{entry}{EpsilonCalculus}  
+
+
+\begin{calculus}
+
+Epsilon calculus is first-order predicate calculus extended by the
+epsilon-operator and the critical axiom.  Terms $t$ and Formulas $A,
+B$ of epsilon calculus are defined as follows.
+\begin{align*}
+  & t ::= a ~|~ x ~|~ f(t_0, \ldots, t_{n-1}) ~|~ \varepsilon_x A, 
+  && A, B ::= P(t_0, \ldots, t_{n-1}) ~|~ \neg A ~|~ A \land B ~|~ A \lor B ~|~ A \to B ~|~ \exists x. A ~|~ \forall x. A,
+\end{align*}
+where $a$, $x$, $f$, and $P$ range over free variables, bound
+variables, function symbols, and predicate symbols, respectively.
+Each $f$, $P$ has an arbitrary arity $n$.
+The critical axiom is for any formula $A(x)$ given as follows.
+\begin{align*}
+  A(t) \to A(\varepsilon_xA(x)).
+\end{align*}
+\end{calculus}
+
+\begin{clarifications}
+  \emph{Epsilon calculus} is an extension of classical first-order
+  predicate
+  calculus~\cite{HilbertBernays1939,MoserZach06,AvigadZach13}.  The
+  symbol $\varepsilon$ is called the \emph{epsilon-operator}, which
+  constructs a term by quantifying a bound variable in a formula.  A
+  formula $A$ with occurrences of a variable $x$ which is not
+  quantified is written as $A(x)$, and $A(t)$ denotes a formula
+  obtained by replacing the corresponding $x$ by a term $t$ in $A$.
+  The existential and universal quantifiers are definable due to the
+  epsilon-operator.
+\begin{align*}
+  & \exists x. A(x) := A(\varepsilon_x A(x)), & \forall x. A(x) := A(\varepsilon_x \neg A(x)).
+\end{align*}
+\emph{Pure epsilon calculus} is elementary calculus extended by the
+epsilon-operator and the critical axiom.
+
+\end{clarifications}
+
+\begin{history}
+Epsilon calculus first appeared in the
+dissertation~\cite{Ackermann1924} by Ackermann.
+\end{history}
+
+\begin{technicalities}
+\emph{First epsilon theorem} states that if there is a proof in
+epsilon calculus of an $\exists,\forall,\varepsilon$-free formula,
+this formula is probable in elementary calculus.  \emph{Second epsilon
+  theorem} states that if there is a proof in epsilon calculus of an
+$\varepsilon$-free formula, this formula is probable in predicate
+calculus.  By means of epsilon calculus Hilbert and Bernays gave the
+first correct proof of \emph{Herbrand's theorem}.
+\end{technicalities}
+
+
+% General Instructions:
+% =====================
+
+% The preferred length of an entry is 1 page. 
+% Do the best you can to fit your proof system in one page.
+%
+% If you are finding it hard to fit what you want in one page, remember:
+%
+%   * Your entry needs to be neither self-contained nor fully understandable
+%     (the interested reader may consult the cited full paper for details)
+%
+%   * If you are describing several proof systems in one entry, 
+%     consider splitting your entry.
+%
+%   * You may reduce the size of your entry by ommitting inference rules
+%     that are already described in other entries.
+%
+%   * Cite parsimoniously (see detailed citation instructions below).
+%
+% 
+% If you do not manage to fit everything in one page, 
+% it is acceptable for an entry to have 2 pages.
+%
+% For aesthetic reasons, it is preferable for an entry to have
+% 1 full page or 2 full pages, in order to avoid unused blank space.
+
+
+
+% Citation Instructions:
+% ======================
+
+% Please cite the original paper where the proof system was defined.
+% To do so, you may use the \cite command within 
+% one of the optional environments above,
+% or use the \nocite command otherwise.
+
+% You may also cite a modern paper or book where the 
+% proof system is explained in greater depth or clarity.
+% Cite parsimoniously.
+
+% Do not cite related work. Instead, use the "\iref" or "\irefmissing" 
+% commands to make an internal reference to another entry, 
+% as explained within the "history" environment above.
+
+% You do not need to create the "References" section yourself. 
+% This is done automatically.
+
+
+% Remove all instruction comments before submitting.
+
+
+% Leave an empty line above "\end{entry}".
+
+\end{entry}
