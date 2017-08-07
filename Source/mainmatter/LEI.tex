@@ -268,15 +268,15 @@
   \begin{center} 
     \begin{math}
       %\begin{array}{lll}
-        \phi ::= p \in Prop \mid \bot \mid \phi \land \phi \mid \phi \lor \phi \mid \phi \rightarrow \phi \mid \neg \phi \mid \sim \phi \mid \exists x\phi \mid \forall x\phi.
+        \phi ::= p \in Atomic \mid \bot \mid \phi \land \phi \mid \phi \lor \phi \mid \phi \rightarrow \phi \mid \neg \phi \mid \sim \phi \mid \exists x\phi \mid \forall x\phi.
       %\end{array}
     \end{math}
   \end{center}
   
-  LEI is intended to deal with the concept of plausibility. The $?$ and $!$ post-fixed operators symbolizes credulous and skeptical plausibility. The skeptical plausibility is defined as the dual of $?$, that is $\alpha ! := \sim ((\sim \alpha)?)$ LEI is a paraconsistent logic. It has two negation symbols $\sim$ (the classical negation) and $\neg$ (the paraconsistent negation). The $\sim$ can be defined as $\sim \alpha := \alpha \to \bot$. The intuitionistic absurd rule $\neg E$ is restricted to $?$-free formulas, which are represented by Roman capital letters. Introduction and elimination rules for $\land$, $\lor$, $\to$, $\forall$ and $\exists$ are the usual ones. The $?E$ rule has a quite involved restriction for its application. We need the following definitions.
+  LEI is intended to deal with the concept of plausibility. The $?$ and $!$ post-fixed operators symbolize credulous and skeptical plausibility. The skeptical plausibility can be defined as the dual of $?$, that is $\alpha ! := \sim ((\sim \alpha)?)$ LEI is a paraconsistent logic. It has two negation symbols $\sim$ (the classical negation) and $\neg$ (the paraconsistent negation). The $\sim$ can be defined as $\sim \alpha := \alpha \to \bot$. The intuitionistic absurd rule $\neg E$ is restricted to $?$-free formulas, which are represented by Roman capital letters. Introduction and elimination rules for $\land$, $\lor$, $\to$, $\forall$ and $\exists$ are the usual ones. The $?E$ and $!I$ rule has a quite involved restriction for its application. We need the following definitions.
   
   %\begin{definition} [Connection]
-By a connection in a deduction $\Pi$ between two formula occurrences $\alpha$ 
+By a \emph{connection} in a deduction $\Pi$ between two formula occurrences $\alpha$ 
 and
 $\beta$, we understand a sequence $\alpha_{1},\ldots,\alpha_{n}$ of formula 
 occurrences
@@ -311,11 +311,11 @@ this application;
 %\end{definition}
 
 Two formula occurrences $\alpha$
-and $\beta$  are said to be modally independent in a deduction $\Pi$ iff every
+and $\beta$  are said to be \emph{modally independent} in a deduction $\Pi$ iff every
 connection in $\Pi$ between $\alpha$ and $\beta$ contains an occurrence of a 
 ?-closed formula.
 
-The $?E$ can only be applied when each occurrence of $\alpha$ is modally independent in $\Pi$ from $\beta$ and any (open) assumption of $\Pi$.
+The $?E$ can only be applied when each occurrence of $\alpha$ is modally independent in $\Pi$ from $\beta$ and any (open) assumption of $\Pi$. The $!I$ requires that $\alpha$ is modally independent from any (open) assumption of $\Pi$.
 
 \end{clarifications}
 
