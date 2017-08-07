@@ -6,10 +6,10 @@
 \calculusLogic{Classical Logic}        % Specify the logic (e.g. Classical Logic, Intuitionistic Logic, ...) for which this calculus is intended.
 \calculusLogicOrder{First-Order}   % Specify the order of the logic (e.g. Propositional, Quantified Propositional, First-Order, Higher-Order, ...).
 \calculusType{Hilbert Calculus}         % Specify the calculus type (e.g. Tableau, Sequent Calculus, Hyper-Sequent Calculus, Natural Deduction, ...)
-\calculusYear{1939}         % The year when the calculus was published.
+\calculusYear{1923, 1939}         % The year when the calculus was published.
 
 \calculusAuthor{David Hilbert}       % The name(s) of the author(s) of the calculus.
-\calculusAuthor{Paul Bernays}
+%\calculusAuthor{Paul Bernays}
 
 \entryTitle{Epsilon Calculus}     % Title of the entry (usually coincides with the name of the calculus).
 \entryAuthor{Kenji Miyamoto}     
@@ -43,7 +43,7 @@ The critical axiom is, for any formula $A(x)$, given as follows.
   \emph{Epsilon calculus} is an extension of classical first-order
   predicate
   calculus~\cite{HilbertBernays1939,MoserZach06,AvigadZach13}.  The
-  symbol $\varepsilon$ is called \emph{epsilon-operator}, which
+  symbol $\varepsilon$ is called the \emph{epsilon-operator}, which
   constructs a term by quantifying a bound variable in a formula.  A
   formula $A$ with occurrences of a variable $x$ which is not
   quantified is written as $A(x)$, and $A(t)$ denotes a formula
@@ -58,9 +58,25 @@ epsilon-operator and the critical axiom.
 
 \end{clarifications}
 
+  %% Hilbert formulated the prototype of epsilon
+  %% calulus~\cite{Hilbert1923} by means of the \emph{tau-operator} and
+  %% the axiom \(A(\tau_x A(x)) \to A(t)\) instead of the epsilon-operator
+  %% and the critical axiom.  The standard formulation based on the
+  %% epsilon-operator in the book by Hilbert and
+  %% Bernays~\cite{HilbertBernays1939} first appeared in Ackermann's
+  %% dissertation~\cite{Ackermann1924} under the supervision of
+  %% Hilbert.
+  %%
+
 \begin{history}
-Epsilon calculus first appeared in the
-dissertation~\cite{Ackermann1924} by Ackermann.
+Epsilon calculus is due to Hilbert.  He formulated the prototype of
+epsilon calculus~\cite{Hilbert1923} by means of the
+\emph{tau-operator} and the axiom \(A(\tau_x A(x)) \to A(t)\) instead
+of the epsilon-operator and the critical axiom.  The formulation based
+on the epsilon-operator first appeared in Ackermann's
+dissertation~\cite{Ackermann1924} under the supervision of Hilbert.
+Hilbert and Bernays gave a comprehensive account of epsilon calculus
+and its applications~\cite{HilbertBernays1939}.
 \end{history}
 
 \begin{technicalities}
@@ -70,7 +86,8 @@ this formula is provable in elementary calculus.  \emph{Second epsilon
   theorem} states that if there is a proof in epsilon calculus of an
 $\varepsilon$-free formula, this formula is provable in predicate
 calculus.  By means of epsilon calculus Hilbert and Bernays gave the
-first correct proof of \emph{Herbrand's theorem}.
+first correct proof of \emph{Herbrand's
+  theorem}~\cite{HilbertBernays1939,MoserZach06}.
 \end{technicalities}
 
 
