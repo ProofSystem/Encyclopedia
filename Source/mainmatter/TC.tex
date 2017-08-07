@@ -1,0 +1,155 @@
+
+% If the calculus has an acronym, define it.
+% (e.g. \newcommand{\LK}{\ensuremath{\mathbf{LK}}\xspace})
+
+\calculusName{Sequent Calculus TC}         % The name of the calculus
+\calculusAcronym{}          % The acronym if defined above, or empty otherwise. 
+\calculusLogic{Ancestral Logic}        % Specify the logic (e.g. Classical Logic, Intuitionistic Logic, ...) for which this calculus is intended.
+\calculusLogicOrder{Higher-Order}   % Specify the order of the logic (e.g. Propositional, Quantified Propositional, First-Order, Higher-Order, ...).
+\calculusType{Sequent Calculus}         % Specify the calculus type (e.g. Tableau, Sequent Calculus, Hyper-Sequent Calculus, Natural Deduction, ...)
+\calculusYear{2002/2014}         % The year when the calculus was published.
+
+\calculusAuthor{Arnon Avron}       % The name(s) of the author(s) of the calculus.
+\calculusAuthor{Liron Cohen}
+%\calculusAuthor{ToDo:FullNameAuthor3}
+
+
+\entryTitle{Sequent Calculus TC}     % Title of the entry (usually coincides with the name of the calculus).
+\entryAuthor{Arnon Avron}     
+\entryAuthor{Liron Cohen}
+%\entryAuthor{ToDo:FullNameAuthor3}
+
+% The encyclopedia's peer-reviewing policy is described here: 
+% http://proofsystem.github.io/Encyclopedia/
+%
+% Reviewers of this entry will be acknowledged in the following lines:
+% \entryReviewer{Reviewer 1's name}
+% \entryReviewer{Reviewer 2's name}
+% \entryReviewer{Reviewer 3's name}
+%
+% The lines above will be filled by the coordinators. 
+% If you would like to indicate people 
+% who could review your entry, contact the coordinators.
+
+
+% If you wish, use tags to give any other information 
+% that might be helpful for classifying and grouping this entry:
+% e.g. \etag{Two-Sided Sequents}
+% e.g. \etag{Multiset Cedents}
+% e.g. \etag{List Cedents}
+% You are free to invent your own tags. 
+% The Encyclopedia's coordinator will take care of 
+% merging semantically similar tags in the future.
+
+
+\maketitle
+
+
+% If your files are called "MyProofSystem.tex" and "MyProofSystem.bib", 
+% then you should write "\begin{entry}{MyProofSystem}" in the line below
+\begin{entry}{TC}  
+
+% Define here any newcommands you may need:
+% e.g. \newcommand{\necessarily}{\Box}
+% e.g. \newcommand{\possibly}{\Diamond}
+
+
+\begin{calculus}
+
+% Add the inference rules of your proof system here.
+% The "proof.sty" and "bussproofs.sty" packages are available.
+% If you need any other package, please contact the coordinator (Bruno Woltzenlogel Paleo <bruno.wp@gmail.com>)
+\[
+\infer[(sub)]{\Gamma\vdash\Delta,\left(TC_{x,y}\varphi\right)\left(s,t\right)}{\Gamma\vdash\Delta,\varphi\left\{ \frac{s}{x},\frac{t}{y}\right\} }
+\]
+
+\[
+\infer[(trans)]{\Gamma\vdash\Delta,\left(TC_{x,y}\varphi\right)\left(s,t\right)}{\Gamma\vdash\Delta,\left(TC_{x,y}\varphi\right)\left(s,r\right)\,\,\,\,\,\,\,\Gamma\vdash\Delta,\left(TC_{x,y}\varphi\right)\left(r,t\right)}
+\]
+
+\[
+\infer[(min)]{\Gamma,\left(TC_{x,y}\varphi\right)\left(s,t\right)\vdash\Delta,\psi\left\{ \frac{s}{x},\frac{t}{y}\right\} }{\Gamma,\varphi\left(x,y\right)\vdash\Delta,\psi\left(x,y\right)\,\,\,\,\,\,\,\,\Gamma,\psi\left\{ \frac{u}{x},\frac{v}{y}\right\} ,\psi\left\{ \frac{v}{x},\frac{w}{y}\right\} \vdash\Delta,\psi\left\{ \frac{u}{x},\frac{w}{y}\right\} }
+\]
+
+
+\end{calculus}
+
+% The following sections ("clarifications", "history", 
+% "technicalities") are optional. If you use them, 
+% be very concise and objective. Nevertheless, do write full sentences. 
+% Try to have at most one paragraph per section, because line breaks 
+% do not look nice in a short entry.
+
+ \begin{clarifications}
+The system is an extension of the sequent calculus for classical first-order logic, $\LK$~\iref{GentzenLK}. The letters $\Gamma,\Delta$ represent finite multisets of formulas, $\varphi,\psi$ arbitrary formulas, $x,y,u,v,w$ variables, and $r,s,t$ terms. $\varphi\left\{ \frac{t_{1}}{x_{1}},...,\frac{t_{n}}{x_{n}}\right\} $ stands for the result of simultaneously substituting $t_{i}$ for $x_{i}$ in $\varphi$ $(i=1,...,n)$. In all three rules the terms which are substituted should be free for substitution, and no forbidden capturing should occur. In Rule $(min)$ $x,y$ should not occur free in $\Gamma$ and $\Delta$, and $u,v,w$ should not occur free in $\Gamma,\Delta,\phi$ and $\psi$.
+ \end{clarifications}
+
+ \begin{history}
+The sequent calculus was presented in \cite{Cohen2014AL}, based on suggestions made in \cite{AvronTC03}. A similar sequent calculus for the reflexive transitive closure operator was also presented in \cite{Cohen2014AL}. Equivalent Hilbert-style systems for the reflexive transitive closure operator were suggested in \cite{martin1943homogeneous, martin1949note, Myhill52}.
+% ToDo: write here short historical remarks about this proof system,
+% especially if they relate to other proof systems. 
+% Use "\iref{OtherProofSystem}" to refer to another proof system% in the Encyclopedia (where "OtherProofSystem" is its ID). 
+% Use "\irefmissing{SuggestedIDForOtherProofSystem}" to refer to 
+% another proof system that is not yet available in the encyclopedia.
+ \end{history}
+
+ \begin{technicalities}
+%The transitive closure logic is inherently incomplete, i.e., any formal deductive system which is sound for it is incomplete. It 
+The sequent calculus generalizes Gentzen's calculus for Peano's Arithmetics. It is sound with respect to the intended semantics of the transitive closure operator. It is also sound and complete with respect to generalized Henkin-style semantics of the operator. 
+\end{technicalities}
+
+
+% General Instructions:
+% =====================
+
+% The preferred length of an entry is 1 page. 
+% Do the best you can to fit your proof system in one page.
+%
+% If you are finding it hard to fit what you want in one page, remember:
+%
+%   * Your entry needs to be neither self-contained nor fully understandable
+%     (the interested reader may consult the cited full paper for details)
+%
+%   * If you are describing several proof systems in one entry, 
+%     consider splitting your entry.
+%
+%   * You may reduce the size of your entry by ommitting inference rules
+%     that are already described in other entries.
+%
+%   * Cite parsimoniously (see detailed citation instructions below).
+%
+% 
+% If you do not manage to fit everything in one page, 
+% it is acceptable for an entry to have 2 pages.
+%
+% For aesthetic reasons, it is preferable for an entry to have
+% 1 full page or 2 full pages, in order to avoid unused blank space.
+
+
+
+% Citation Instructions:
+% ======================
+
+% Please cite the original paper where the proof system was defined.
+% To do so, you may use the \cite command within 
+% one of the optional environments above,
+% or use the \nocite command otherwise.
+
+% You may also cite a modern paper or book where the 
+% proof system is explained in greater depth or clarity.
+% Cite parsimoniously.
+
+% Do not cite related work. Instead, use the "\iref" or "\irefmissing" 
+% commands to make an internal reference to another entry, 
+% as explained within the "history" environment above.
+
+% You do not need to create the "References" section yourself. 
+% This is done automatically.
+
+
+% Remove all instruction comments before submitting.
+
+
+% Leave an empty line above "\end{entry}".
+
+\end{entry}
