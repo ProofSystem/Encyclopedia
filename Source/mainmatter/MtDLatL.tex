@@ -1,0 +1,215 @@
+
+\calculusName{Proper Multi-type Display Calculus for Lattice Logic MtD.LatL}
+\calculusAcronym{MtDLatL}
+\calculusLogic{Lattice Logic}
+\calculusLogicOrder{Propositional}
+\calculusType{Multi-type Sequent Calculus}
+\calculusYear{2017}
+\calculusAuthor{Giuseppe Greco} \calculusAuthor{Alessandra Palmigiano}
+
+\entryTitle{Proper Multi-type Display Calculus for Lattice Logic MtD.LatL}
+\entryAuthor{Giuseppe Greco}
+
+\etag{Two-Sided Sequents}
+\etag{Multi-type Cedents}
+\etag{Multi-Premise Cedent}
+\etag{Multi-Conclusion Cedent}
+
+%%%Definition and abbreviations
+
+\def\fCenter{{\mbox{$\ \vdash\ $}}}
+\def\ffCenter{{\mbox{$\overline{\vdash}$}}}
+\def\fcenter{{\mbox{\ }}}
+\EnableBpAbbreviations
+
+\def\fns{\footnotesize}
+\def\mc{\multicolumn}
+
+\def\aol{\rule[0.5865ex]{1.38ex}{0.1ex}}
+\def\pdra{\mbox{$\,>\mkern-8mu\raisebox{-0.065ex}{\aol}\,$}}
+\def\pdla{\mbox{\rotatebox[origin=c]{180}{$\,>\mkern-8mu\raisebox{-0.065ex}{\aol}\,$}}}
+
+\newcommand{\TOPBOTL}{\ensuremath{\textrm{I}}\xspace}
+
+%Modalities
+\newcommand{\WCIRCW}{\ensuremath{\circ}\xspace}
+\newcommand{\BCIRCB}{\ensuremath{\bullet}\xspace}
+%white
+\newcommand{\wboxw}{\ensuremath{\Box}\xspace}
+\newcommand{\wdiaw}{\ensuremath{\Diamond}\xspace}
+%black
+\newcommand{\bboxb}{\ensuremath{\blacksquare}\xspace}
+%\newcommand{\bdiab}{\ensuremath{\blacklozenge}\xspace}
+\newcommand{\bdiab}{\ensuremath{\Diamondblack}\xspace}
+
+%Power-set Lattice Connectives
+%operational
+\newcommand{\pnegp}{\ensuremath{-}\xspace}
+\newcommand{\ptopp}{\ensuremath{\wp}\xspace}
+\newcommand{\pbotp}{\ensuremath{\varnothing}\xspace}
+\newcommand{\pandp}{\ensuremath{\cap}\xspace}
+\newcommand{\prarrp}{\ensuremath{\,{\raisebox{-0.065ex}{\rule[0.5865ex]{1.38ex}{0.1ex}}\mkern-5mu\supset}\,}\xspace}
+
+\newcommand{\porp}{\ensuremath{\cup}\xspace}
+\newcommand{\pdrarrp}{\ensuremath{\,{\supset\mkern-5.5mu\raisebox{-0.065ex}{\rule[0.5865ex]{1.38ex}{0.1ex}}}\,}\xspace}
+
+%structural Connectives
+\newcommand{\PNEGP}{\ensuremath{\ominus\,}\xspace}
+\newcommand{\PTOPBOTP}{\ensuremath{\circledS}\xspace}
+\newcommand{\PANDORP}{\ensuremath{\centerdot}\xspace}
+\newcommand{\PARRP}{\ensuremath{\supset}\xspace}
+
+%Power-set Lattice Modalities
+%operational
+\newcommand{\pwdiawp}{\ensuremath{\Diamond}\xspace}
+\newcommand{\pbdiabp}{\ensuremath{\Diamondblack}\xspace}
+\newcommand{\pbboxbp}{\ensuremath{\blacksquare}\xspace}
+\newcommand{\pwboxwp}{\ensuremath{\Box}\xspace}
+%structural
+\newcommand{\PWCIRCWP}{\ensuremath{\circ}\xspace}
+\newcommand{\PBCIRCBP}{\ensuremath{\bullet}\xspace}
+
+
+%Left Power-set Lattice Connectives
+%operational
+\newcommand{\pneg}{\ensuremath{-}\xspace}
+\newcommand{\ptop}{\ensuremath{\wp}\xspace}
+\newcommand{\pbot}{\ensuremath{\varnothing}\xspace}
+\newcommand{\pand}{\ensuremath{\cap}\xspace}
+\newcommand{\prarr}{\ensuremath{\,{\raisebox{-0.065ex}{\rule[0.5865ex]{1.38ex}{0.1ex}}\mkern-5mu\supset}\,}\xspace}
+\newcommand{\por}{\ensuremath{\cup}\xspace}
+\newcommand{\pdrarr}{\ensuremath{\,{\supset\mkern-5.5mu\raisebox{-0.065ex}{\rule[0.5865ex]{1.38ex}{0.1ex}}}\,}\xspace}
+
+%structural Connectives
+\newcommand{\PNEG}{\ensuremath{\ominus\,}\xspace}
+\newcommand{\PTOPBOT}{\ensuremath{\circledS}\xspace}
+\newcommand{\PANDOR}{\ensuremath{\centerdot}\xspace}
+\newcommand{\PARR}{\ensuremath{\supset}\xspace}
+
+%Left Power-set Lattice Modalities
+%operational
+\newcommand{\pwbox}{\ensuremath{\Box}\xspace}
+\newcommand{\pwdia}{\ensuremath{\Diamond}\xspace}
+\newcommand{\pbbox}{\ensuremath{\blacksquare}\xspace}
+\newcommand{\pbdia}{\ensuremath{\Diamondblack}\xspace}
+%structural
+\newcommand{\PWCIRC}{\ensuremath{\circ}\xspace}
+\newcommand{\PBCIRC}{\ensuremath{\bullet}\xspace}
+
+%Right Power-set Lattice Connectives
+%%operational
+\newcommand{\negp}{\ensuremath{-^\mathrm{op}}\xspace}
+\newcommand{\topp}{\ensuremath{\wp^\mathrm{op}}\xspace}
+\newcommand{\botp}{\ensuremath{\varnothing^\mathrm{op}}\xspace}
+\newcommand{\andp}{\ensuremath{\cap^\mathrm{op}}\xspace}
+\newcommand{\rarrp}{\ensuremath{\,{\raisebox{-0.065ex}{\rule[0.5865ex]{1.38ex}{0.1ex}}\mkern-5mu\supset^\mathrm{op}}\,}\xspace}
+\newcommand{\orp}{\ensuremath{\cup^\mathrm{op}}\xspace}
+\newcommand{\drarrp}{\ensuremath{\,{\supset\mkern-5.5mu\raisebox{-0.065ex}{\rule[0.5865ex]{1.38ex}{0.1ex}}^\mathrm{op}}\,}\xspace}
+
+%%structural Connectives
+\newcommand{\NEGP}{\ensuremath{\ominus^\mathrm{op}\,}\xspace}
+\newcommand{\TOPBOTP}{\ensuremath{\circledS^\mathrm{op}}\xspace}
+\newcommand{\ANDORP}{\ensuremath{\centerdot^\mathrm{op}}\xspace}
+\newcommand{\ARRP}{\ensuremath{\supset^\mathrm{op}}\xspace}
+
+%Right Power-set Lattice Modalities
+%operational
+\newcommand{\diawp}{\ensuremath{\Diamond^\mathrm{op}}\xspace}
+\newcommand{\diabp}{\ensuremath{\Diamondblack^\mathrm{op}}\xspace}
+\newcommand{\boxbp}{\ensuremath{\blacksquare^\mathrm{op}}\xspace}
+\newcommand{\boxwp}{\ensuremath{\Box^\mathrm{op}}\xspace}
+%structural
+\newcommand{\CIRCWP}{\ensuremath{\circ^\mathrm{op}}\xspace}
+\newcommand{\CIRCBP}{\ensuremath{\bullet^\mathrm{op}}\xspace}
+
+%%%
+
+\maketitle
+
+\begin{entry}{MtDLatL}
+
+\begin{calculus}
+{%\small
+Identity and Cut rules:
+\vspace{0.2cm}	
+\begin{center}
+\AXC{\fns Id}
+\noLine
+\UI$p \fCenter p$
+\DisplayProof
+\qquad
+\AX$X \fCenter A$
+\AX$A \fCenter Y$
+\RightLabel{\fns Cut}
+\BI$X \fCenter Y$
+\DisplayProof
+\qquad
+\AX$\Gamma \fCenter \alpha$
+\AX$\alpha \fCenter \Delta$
+\RightLabel{\fns Cut}
+\BI$\Gamma \fCenter \Delta$
+\DisplayProof
+\qquad
+\AX$\Pi \fCenter \xi$
+\AX$\xi \fCenter \Sigma$
+\RightLabel{\fns Cut}
+\BI$\Pi \fCenter \Sigma$
+\DisplayProof
+\end{center}
+\vspace{0.2cm}	
+
+
+
+
+Multi-type display rules
+\begin{center}
+\AX$\Gamma \fCenter \PWCIRCWP  X $
+\RightLabel{\fns adj}
+\doubleLine
+\UI$ \PBCIRCBP \Gamma \fCenter X $
+\DisplayProof
+\qquad
+\AX$\CIRCWP  X  \fCenter \Pi$
+\RightLabel{\fns adj}
+\doubleLine
+\UI$ X \fCenter \CIRCBP \Pi$
+\DisplayProof
+\end{center}
+ }
+\end{calculus}
+
+\begin{clarifications}
+The language $\mathcal{L}_\mathrm{MT}(\mathcal{F}, \mathcal{G})$ of  MtD.LatL consists of  {\em logical}   and {\em structural terms} in the types $\mathsf{T}_1:  = \mathsf{Lattice}$, $\mathsf{T}_2: = \mathsf{Left}$ and $\mathsf{T}_3: = \mathsf{Right}$. Following the notation of \iref{MtSC}, the set of logical terms takes as parameters: 1) a denumerable set of atomic terms $\mathsf{At}(\mathsf{Lattice})$, elements of which are denoted $p$, possibly with indexes; 2) disjoint sets of connectives $\mathcal{F}: = \mathcal{F}_{\mathsf{Lattice}}\uplus\mathcal{F}_{\mathsf{Left}}\uplus\mathcal{F}_{\mathsf{Right}}\uplus\mathcal{F}_{\mathrm{MT}}$ and $\mathcal{G}: = \mathcal{G}_{\mathsf{Lattice}}\uplus\mathcal{G}_{\mathsf{Left}}\uplus\mathcal{G}_{\mathsf{Right}}\uplus\mathcal{G}_{\mathrm{MT}}$ defined as follows: $\mathcal{F}_{\mathsf{Lattice}}: = \{\top\}$, $\mathcal{F}_{\mathsf{Left}}: = \{\pand \}$, $\mathcal{F}_{\mathsf{Right}}: = \{\andp \}$, $\mathcal{F}_{\mathrm{MT}}: = \{\pbdiabp, \diawp\}$, where $n_\top = 0$, $n_{\pbdiabp} =n_{\diawp} = 1$, $n_{\pand} = n_{\andp} = 2$, and $\varepsilon_{\pbdiabp}(1) = \varepsilon_{\diawp}(1) = \varepsilon_{\pand}(i) = \varepsilon_{\andp}(i) = 1$ for every $i\in \{1, 2\}$, and
+$\mathcal{G}_{\mathsf{Lattice}}: = \{\bot\}$, $\mathcal{G}_{\mathsf{Left}}: = \{\por \}$, $\mathcal{G}_{\mathsf{Right}}: = \{\orp \}$, $\mathcal{G}_{\mathrm{MT}}: = \{\boxbp, \pwboxwp\}$, where $n_\bot = 0$, $n_\boxbp =n_\pwboxwp = 1$, $n_\por = n_\orp = 2$, and $\varepsilon_{\boxbp}(1) = \varepsilon_{\pwboxwp}(1) = \varepsilon_{\por}(i) = \varepsilon_{\orp}(i) = 1$ for every $i\in \{1, 2\}$.
+The functional types of the heterogeneous connectives $\pwboxwp$, $\diawp$, $\pbdiabp$ and $\boxbp$ are $\mathsf{Lattice}\rightarrow \mathsf{Left}$,  $\mathsf{Lattice}\rightarrow \mathsf{Right}$, $\mathsf{Left}\rightarrow \mathsf{Lattice}$, and  $\mathsf{Right}\rightarrow \mathsf{Lattice}$ respectively.
+
+The structural terms are built by means of structural connectives, taking logical terms as atomic structures. The set of structural connectives includes  $\PWCIRC, \CIRCWP, \PBCIRC, \CIRCBP$   which are the structural counterparts of $\pwbox, \diawp, \pbdiabp, \boxbp$, respectively.  It also includes $\TOPBOTL$ which is the structural counterpart of $\top$ (when occurring in precedent position) and $\bot$ (when occurring in succedent position); $\PANDOR$ which is the structural counterpart of $\pand$ (when occurring in precedent position) and $\por $ (when occurring in succedent position); $\ANDORP$ which is the structural counterpart of $\andp$ (when occurring in precedent position) and $\orp $ (when occurring in succedent position). Finally, it includes $\PARR$ and $\ARRP$ which, when occurring in precedent position, correspond to the left residuals of $\PANDOR$ and $\ANDORP$ respectively,  and, when occurring in succedent position, correspond to the right residuals of $\PANDOR$ and $\ANDORP$ respectively, and the structural constants  $\PTOPBOT$ and $\TOPBOTP$, corresponding to the top (when occurring in precedent position) and bottom (when occurring in succedent position) of $\mathsf{Left}$ and $\mathsf{Right}$, respectively.
+
+Summing up, the well formed terms of MtD.LatL are generated by simultaneous induction as follows:
+\begin{center}
+\begin{tabular}{lll}
+$\mathsf{Lattice}$ \ \ \ &
+$\mathsf{Left}$ \ \ \ &
+$\mathsf{Right}$ \\
+
+$A ::= \,p \mid \pbdiabp \alpha \mid \bboxb \xi$ \ \ \ &
+$\alpha     ::= \, \pwbox A \mid \alpha \pand \alpha \mid \alpha \por \alpha$ \ \ \ &
+$\xi     ::= \, \diawp A \mid \xi \andp \xi \mid \xi \orp \xi$ \\
+
+$X ::= \, p \mid \TOPBOTL \mid \PBCIRCBP \Gamma \mid \PBCIRCBP^{\mathrm{op}} \Pi$ \ \ \ &
+$\Gamma ::= \, \PWCIRC X \mid \PTOPBOT \mid \Gamma \PANDOR \Gamma \mid \Gamma\PARR \Gamma$ \ \ \ &
+$\Pi ::= \, \CIRCWP X \mid \TOPBOTP \mid \Pi \ANDORP \Pi \mid \Pi \ARRP \Pi$ \\
+\end{tabular}
+\end{center}
+
+The introduction rules instantiate the general template described in \iref{MtSC}, and hence are omitted. Also, the pure-type structural rules are the standard ones capturing distributive lattices (for the types $\mathsf{Left}$ and $\mathsf{Right}$), and are also omitted.
+\end{clarifications}
+
+\begin{history} Lattice logic is the $\{\wedge, \vee, \top, \bot\}$-fragment of classical propositional logic without distributivity. In \cite{Belnap1990}, a display calculus is introduced for lattice logic, regarded as the `additive fragment' of  linear logic. In this calculus, no  structural counterparts are assigned  to $\wedge$ and $\vee$, and the introduction rules of these connectives are given in the so called {\em additive} form, which subsumes the usual weakening, associativity, exchange and contraction rules. In \cite{GrecoPalmigiano2017}, Birkhoff's representation theorem for complete lattices provides the guidelines for the design of the proper multi-type display calculus MtD.LatL.
+\end{history}
+
+\begin{technicalities}
+ In MtD.LatL, all connectives are introduced by means of standard rules as discussed in \iref{MtSC}, which occur in the so called {\em multiplicative} form and do not subsume weakening, associativity, exchange and contraction. The calculus above is sound and complete w.r.t.~complete lattices, equivalently presented as heterogeneous algebras as discussed  in \cite{GrecoPalmigiano2017}; it is conservative, and enjoys the cut elimination and subformula property as immediate consequences of the general theory of multi-type calculi.
+\end{technicalities}
+
+\end{entry}
