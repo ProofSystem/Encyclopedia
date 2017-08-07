@@ -45,7 +45,7 @@
 (\wedge E2)
 \endprooftree
 \hspace{6 mm} & \hspace{6 mm}
-\\ & &\\
+\\ \vspace{-2mm} & &\\
 \prooftree
 \prooftree
 {[} @_{a} \phi {]}
@@ -79,7 +79,7 @@
 \using
 (\bot 1)^{\ast}
 \endprooftree
-\\ & & \\
+\\ \vspace{-2mm} & & \\
 \prooftree
 @_{a}\phi
 \justifies
@@ -103,7 +103,7 @@
 \using
 (\bot 2)
 \endprooftree
-\\ & &\\
+\\ \vspace{-2mm} & &\\
 \prooftree
 \prooftree
 {[} @_{a} \lozenge c {]}
@@ -149,6 +149,7 @@
 ({\it Nom}2)
 \endprooftree
 \end{array}
+\vspace{-2mm}
 \]
 $\ast$ $\phi$ is a propositional symbol (ordinary or a nominal).\\
 $\star$ $c$ does not occur in $@_{a}\square \phi $ or
@@ -158,14 +159,14 @@ of $@_{a} \lozenge c$.
 \end{calculus}
 
 \begin{clarifications}
-Hybrid logic is an extension of ordinary modal logic which allows explicit reference to individual points in a Kripke model. Formulas of are defined by 
+Hybrid logic is an extension of ordinary modal logic which allows explicit reference to individual points in a Kripke model. Formulas of HL are defined by 
 $S \hspace{.5mm} ::= \hspace{.5mm} p \hspace{.5mm} | \hspace{.5mm} a
 \hspace{.5mm} | \hspace{.5mm} S \wedge S \hspace{.5mm} | \hspace{.5mm}
 S \rightarrow S \hspace{.5mm} | \hspace{.5mm} \bot \hspace{.5mm} |
 \hspace{.5mm} \square S \hspace{.5mm} | \hspace{.5mm} @_{a} S$
 where $p$ ranges over ordinary propositional symbols and $a$ ranges
-over nominals (a second sort of propositional symbols that refer to points). As usual, $\neg \phi$ is an abbreviation for $ \phi
-\rightarrow \bot$ and $\lozenge \phi$ is an abbreviation for $\neg \square \neg \phi$.
+over nominals (a second sort of propositional symbols that refer to points in the model). As usual, $\neg \phi$ stands for $ \phi
+\rightarrow \bot$ and $\lozenge \phi$ stands for $\neg \square \neg \phi$. 
 \end{clarifications}
 
 \begin{history}
@@ -173,7 +174,7 @@ This natural deduction system for classical HL was originally suggested in
 \cite{Brauner01c} and developed in \cite{Brauner01b}. A natural deduction system for intuitionistic hybrid logic can be found in the entry \iref{IHL}. These and other natural deduction systems are also included in the book \cite{Brauner11a}, which considers a spectrum of different versions of hybrid logic
 (propositional, first-order, intensional first-order, and intuitionistic)
 and a spectrum of different types of proof systems for
-hybrid logic (natural deduction, Gentzen, tableau, and axiom systems).
+hybrid logic (natural deduction, Gentzen, tableau, and axiom systems). See \cite{AC06} for a general introduction to hybrid logic.
 \end{history}
 
 \begin{technicalities}
