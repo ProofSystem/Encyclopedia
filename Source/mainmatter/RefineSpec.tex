@@ -1,0 +1,132 @@
+
+% If the calculus has an acronym, define it.
+% (e.g. \newcommand{\LK}{\ensuremath{\mathbf{LK}}\xspace})
+
+\calculusName{Refinement of Structured Specifications}         % The name of the calculus
+\calculusAcronym{\SP_{{\vdash}}}          % The acronym if defined above, or empty otherwise. 
+\calculusLogic{Institution}        % Specify the logic (e.g. Classical Logic, Intuitionistic Logic, ...) for which this calculus is intended.
+\calculusLogicOrder{General}   % Specify the order of the logic (e.g. Propositional, Quantified Propositional, First-Order, Higher-Order, ...).
+\calculusType{Hilbert-Style}         % Specify the calculus type (e.g. Tableau, Sequent Calculus, Hyper-Sequent Calculus, Natural Deduction, ...)
+\calculusYear{1991}         % The year when the calculus was published.
+
+\calculusAuthor{Martin Wirsing}       % The name(s) of the author(s) of the calculus.
+
+
+\entryTitle{Refinement of Structured Specifications}     % Title of the entry (usually coincides with the name of the calculus).
+\entryAuthor{Rolf Hennicker}     
+\entryAuthor{Donald Sannella}     
+\entryAuthor{Andrzej Tarlecki}
+\entryAuthor{Martin Wirsing}
+
+% The encyclopedia's peer-reviewing policy is described here: 
+% http://proofsystem.github.io/Encyclopedia/
+%
+% Reviewers of this entry will be acknowledged in the following lines:
+% \entryReviewer{Reviewer 1's name}
+% \entryReviewer{Reviewer 2's name}
+% \entryReviewer{Reviewer 3's name}
+%
+% The lines above will be filled by the coordinators. 
+% If you would like to indicate people 
+% who could review your entry, contact the coordinators.
+
+\maketitle
+
+% If your files are called "MyProofSystem.tex" and "MyProofSystem.bib", 
+% then you should write "\begin{entry}{MyProofSystem}" in the line below
+\begin{entry}{RefineSpec}  
+
+% Define here any newcommands you may need:
+% e.g. \newcommand{\necessarily}{\Box}
+% e.g. \newcommand{\possibly}{\Diamond}
+
+\newcommand{\ang}[1]{\langle{#1}\rangle}
+\newcommand{\Family}[2]{\ang{#1}_{#2}}
+\newcommand{\SP}{\mathit{SP}}
+\newcommand{\SPSig}[1]{{\mathit{Sig}}[#1]}
+\newcommand{\SPMod}[1]{{\mathit{Mod}}[#1]}
+\newcommand{\INS}{{\bf INS}}
+\newcommand{\Sign}{{\bf Sign}}
+\newcommand{\Sen}{{\bf Sen}}
+\newcommand{\Set}{{\bf Set}}
+\newcommand{\Mod}{{\bf Mod}}
+\newcommand{\Cat}{{\bf Cat}}
+\newcommand{\op}{\mathit{op}}
+%\newcommand{\pow}{{\mathscr{P}}}
+\newcommand{\pow}{{\mathit{Pow}}}
+\newcommand{\translate}[2]{#1\textbf{\upshape{} with }#2}
+\newcommand{\derive}[2]{#1\textbf{\upshape{} hide via }#2}
+\newcommand{\union}[2]{#1 \cup #2}
+
+\begin{calculus}
+
+% Add the inference rules of your proof system here.
+% The "proof.sty" and "bussproofs.sty" packages are available.
+% If you need any other package, please contact the coordinator (Bruno Woltzenlogel Paleo <bruno.wp@gmail.com>)
+
+\[
+\infer{\SP \vdash \ang{\SPSig{\SP},\Phi}}
+      { \textrm{for all } \varphi \in \Phi, \SP \vdash \varphi}
+\]
+\[
+\infer{\SP \vdash \union{\SP_1}{\SP_2}}
+      {\SP \vdash \SP_1 \qquad \SP \vdash \SP_2}
+\]
+\[
+\infer{\SP' \vdash \translate{\SP}{\sigma}}
+      {\derive{\SP'}{\sigma} \vdash \SP}
+\]
+\[
+\infer[\renewcommand{\arraystretch}{0.8}%
+        \begin{array}{@{}l@{}}
+           \sigma\colon\SP\rightarrow\widehat{\SP}
+           \textrm{ admits} \\
+           \hfill \textrm{model expansion}
+        \end{array}]{\SP \vdash \derive{\SP'}{\sigma}}
+                    {\widehat{\SP} \vdash \SP'}
+\]
+
+\end{calculus}
+
+ \begin{clarifications}
+$\INS = \ang{\Sign,\; \Sen\colon\Sign\to\Set,\; \Mod\colon\Sign^\op\to\Cat,\;
+      \ang{{\models_\Sigma}\subseteq|\Mod(\Sigma)|\times\Sen(\Sigma)}_{\Sigma\in|\Sign|}}$
+is an institution that defines the logical system used for specifications, and
+$\SP$, $\SP_1$, $\SP_2$, $\SP'$ and $\widehat{\SP}$ are structured specifications over $\INS$.
+Structured specifications in $\INS$ are built from basic specifications
+$\ang{\Sigma, \Phi}$ where $\Sigma\in|\Sign|$ and $\Phi\subseteq\Sen(\Sigma)$,
+the union of $\Sigma$-specifications $\union{\SP_1}{\SP_2}$,
+the translation ``$\translate{\SP}{\sigma}$'' of $\SP$
+    along a signature morphism $\sigma\colon\Sigma\to\Sigma'$,
+and hiding ``$\derive{\SP}{\sigma}$'' for hiding the symbols in $\SP$
+    not occurring in the image of $\sigma\colon\Sigma'\to\Sigma$.
+$\SPSig{\SP}$ is the signature of $\SP$ and
+$\SPMod{\SP}\subseteq|\Mod(\SPSig{\SP})|$ is the class of models of $\SP$.
+A signature morphism $\sigma\colon\SPSig{\SP}\to\SPSig{\SP'}$
+is a specification morphism $\sigma\colon\SP\to\SP'$
+if for every $M'\in\SPMod{\SP'}$, $\Mod(\sigma)(M')\in\SPMod{\SP}$.
+Then $\sigma$ admits model expansion
+if $\Mod(\sigma)\colon\SPMod{\SP'}\to\SPMod{\SP}$ is surjective.
+The judgement $\SP\vdash\varphi$ is entailment for structured specifications
+which is required to be sound:
+$\SP\vdash\varphi$ implies $M\models_{\SPSig{\SP}}\varphi$
+for every $M\in\SPMod{\SP}$.
+
+The judgement $\SP\vdash\SP'$ is meant to capture that
+$\SP$ refines (or entails) $\SP'$, that is,
+$\SPSig{\SP} = \SPSig{\SP'}$ and $\SPMod{\SP}\subseteq\SPMod{\SP'}$.
+\end{clarifications}
+
+\begin{history}
+The first proof systems for refinement of structured specifications were given
+by Farr\'es-Casals \cite{Far89} and Wirsing \cite{Wir91}.
+The above presentation can be found in \cite{ST12}, Sect.~9.3.
+\end{history}
+
+\begin{technicalities}
+The calculus is sound; it is complete if the underlying entailment system for
+structured specifications is complete \cite{Wir91, ST12}. 
+ \cite{RH97} provides additional rules for observability operators to support refinement by observational abstraction.
+\end{technicalities}
+%References: [Wir91], [Far89], [ST12]  
+\end{entry}
