@@ -70,8 +70,11 @@ The term $t$ should not contain variables bound in $A[t]$.
 
 
 \begin{clarifications}
-\LJ and \LK \iref{GentzenLK} have exactly the same rules, 
-but in \LJ the succedent of every sequent may have at most one formula.
+Gentzen introduced the sequent calculi \LK~\iref{GentzenLK} and \LJ for
+classical and intuitionistic logics respectively. The rules in both systems
+have the same shape, but in \LJ they may have at most one formula in the
+succedent (right side of $\vdash$).
+%
 This restriction is equivalent to
 forbidding the axiom of excluded middle in natural deduction.
 %It is common to consider \LJ without the exchange rule $e_l$ just by
@@ -84,7 +87,11 @@ forbidding the axiom of excluded middle in natural deduction.
 \newcommand{\LHJ}{\ensuremath{\mathbf{LHJ}}\xspace}
 
 \begin{technicalities}
-The cut rule is eliminable (\emph{Hauptsatz} \cite{Gentzen1935}), and hence intuitionistic predicate logic is consistent and its propositional fragment is decidable \cite{Gentzen1935a}. \LJ is complete relative to \NJ \iref{GentzenNJ} and sound relative to the Hilbert-style calculus \LHJ \irefmissing{ToDo} \cite{Gentzen1935a}.
+The cut rule is eliminable (\emph{Hauptsatz}~\cite{Gentzen1935}), and hence
+intuitionistic predicate logic is consistent and its propositional fragment is
+decidable~\cite{Gentzen1935a}. \LJ is complete relative to \NJ~\iref{GentzenNJ}
+and sound relative to the Hilbert-style calculus
+\LHJ~\irefmissing{ToDo}~\cite{Gentzen1935a}.
 \end{technicalities}
 
 
