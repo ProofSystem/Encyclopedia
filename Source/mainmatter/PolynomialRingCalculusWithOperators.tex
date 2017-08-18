@@ -28,15 +28,15 @@
 
 \begin{calculus} 
  
- As  basis  for modal logics, formulas of   the  Classical Propositional Calculus $CPL$ are translated into  Boolean rings   $R$   via  the translation $\fn{T_{BR}}{Form_{CPL}}{Term_{BR}}$, recursively defined by:
-\begin{align}   
+ As  basis  for modal logics, formulas of   the  Classical Propositional Logic $CPL$ are translated into  Boolean rings   $R$   via  the translation $\fn{T_{BR}}{Form_{CPL}}{Term_{BR}}$, recursively defined by:
+\begin{align*}   
 	T_{BR}(p_i) &= x_i,\\
 	T_{BR}(\neg \alpha) &= T_{BR}(\alpha) + 1,\\
 	T_{BR}(\alpha \vee \beta) &= T_{BR}(\alpha) \cdot T_{BR}(\beta) + T_{BR}(\alpha) + T_{BR}(\beta),\\
 	T_{BR}(\alpha \wedge \beta) &= T_{BR}(\alpha) \cdot T_{BR}(\beta),\\
 	T_{BR}(\alpha \to \beta) &= T_{BR}(\alpha) \cdot T_{BR}(\beta) + T_{BR}(\alpha) + 1,\\
 	T_{BR}(\alpha \leftrightarrow \beta) &= T_{BR}(\alpha) + T_{BR}(\beta) + 1. 
-\end{align}
+\end{align*}
 This obtains an  immediate  proof  procedure and decision  method for $CPL$, in the sense that
  $\vdash_{CPL} \alpha$ iff  $BR \vDash T_{BR}(\alpha) \approx 1$,
 i.e, iff the translated expression reduces to 1 by cancellation rules of  polynomials with  coefficients
@@ -75,29 +75,26 @@ BRO defines a   \emph{Polynomial Ring Calculus with Operators} (PRCO) for the  n
 
 
 \begin{clarifications}
-The Polynomial Ring Calculus with Operators (PRCO's) are  algebraic proof methods,  
-here devoted to the modal logics K, KD, T, S4, S5 and to  intuitionistic logic. The methods are
-based on the Polynomial Ring Calculi introduced in  \cite{car:2005}], and extend
-the results in \cite{agude-car:2011}. Full completeness and  several examples are provided in 
-\cite{agude-car:2015},  as well as a comparison with other methods.    
-
-\end{clarifications}
-
-\begin{history}
-
-The Polynomial Ring Calculi (PRC), introduced in \cite{car:2005}, are   algebraic proof
-methods which consist of translating formulas of a logical system into polynomials 
+The Polynomial Ring Calculus with Operators (PRCO's) are algebraic proof methods,  
+here devoted to the modal logics K, KD, T, S4, S5 and to intuitionistic logic. 
+They consist of translating formulas of a logical system into polynomials 
 over an adequate field, in such a way that algebraic reductions on polynomials
 allow us to determine whether a formula is or is not a theorem of the respective
 system. The decision procedure works as a proof in algebraic  terms. As shown in  \cite{car:2005}, 
 PRC are particularly applicable to any truth-functional finite-valued propositional logic,
 and can also be applied to non-truth-functional propositional logics, see
-\cite{car-mat:2014} and  \cite{car-mat:2015}.
+\cite{car-mat:2014} and \cite{car-mat:2015}.
+\end{clarifications}
 
+\begin{history}
+Polynomial Ring Calculi (PRC) were introduced in \cite{car:2005} and extend
+the results in \cite{agude-car:2011}.  
  \end{history}
 
-% \begin{technicalities}
-% ToDo: write here remarks about soundness, completeness, decidability...
-% \end{technicalities}
+\begin{technicalities}
+Full completeness, several examples and a comparison with other methods are provided in 
+\cite{agude-car:2015}.  
+\end{technicalities}
+
 
 \end{entry}
