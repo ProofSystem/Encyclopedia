@@ -28,7 +28,7 @@
 
 \begin{calculus} 
  
- As  basis  for modal logics, formulas of   the  Classical Propositional Logic $CPL$ are translated into  Boolean rings   $R$   via  the translation $\fn{T_{BR}}{Form_{CPL}}{Term_{BR}}$, recursively defined by:
+ As  basis  for modal logics, formulas of   the  Classical Propositional Logic $CPL$ are translated into  Boolean rings   $BR$   via  the translation $\fn{T_{BR}}{Form_{CPL}}{Term_{BR}}$, recursively defined by:
 \begin{align*}   
 	T_{BR}(p_i) &= x_i,\\
 	T_{BR}(\neg \alpha) &= T_{BR}(\alpha) + 1,\\
@@ -42,7 +42,7 @@ This obtains an  immediate  proof  procedure and decision  method for $CPL$, in 
 i.e, iff the translated expression reduces to 1 by cancellation rules of  polynomials with  coefficients
 in $\mathbb{Z}_{2}$.
  
- The  structure   $\mathcal{R}=\langle R,  \n \rangle$ is a \emph{boolean ring with operators} (BRO, or \emph{modal ring})  if $R$ is a BR and $\fn{\n}{A}{A}$ satisfies:
+ The  structure   $\mathcal{R}=\langle R,  \n \rangle$ is a \emph{boolean ring with operators} (BRO, or \emph{modal ring})  if $BR$ is a BR and $\fn{\n}{A}{A}$ satisfies:
 	\begin{align*}
 		\n(1) &= 1,\\
 		\n(x \cdot y) &= \n(x) \cdot \n(y).
@@ -87,8 +87,10 @@ and can also be applied to non-truth-functional propositional logics, see
 \end{clarifications}
 
 \begin{history}
-Polynomial Ring Calculi (PRC) were introduced in \cite{car:2005} and extend
-the results in \cite{agude-car:2011}.  
+Polynomial Ring Calculi (PRC) were introduced in \cite{car:2005} and extended  
+in \cite{Carnielli2007}, \cite{agude-car:2011} and  {agude-car:2015}.
+Conceptual discussions and extensions to non-deterministic semantics appear
+in \cite{car-mat:2014} and \cite{car-mat:2015}.
  \end{history}
 
 \begin{technicalities}
