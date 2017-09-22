@@ -36,6 +36,7 @@
   \global\let\@entryTitle\@empty
   \global\togglefalse{alreadyHasAuthors}
   \global\setcounter{cacounter}{0}
+  \global\setcounter{implementationcounter}{0}
 }
 
 % =================
@@ -62,6 +63,26 @@
 % ===================================
 
 
+% Commands to Handle Calculus Implementations
+% ===========================================
+
+% Implementations are stored in an array,
+% which is then read by "\updateIndexes" at the end of the "entry" environment
+
+\newcounter{implementationcounter}
+\newcommand\setimplementation[2]{
+  \csdef{implementation#1}{#2}
+}
+\newcommand\addimplementation[1]{
+  \csdef{implementation\theimplementationcounter}{#1}
+  \stepcounter{implementationcounter}
+}
+\newcommand\getimplementation[1]{
+  \csuse{implementation#1}
+}
+
+% ===========================================
+
 
 % Indexing Commands
 % =================
@@ -70,6 +91,7 @@
 
 \newcommand{\indexCalculusAuthor}[1]{\index{calculusAuthors}{#1}}
 
+\newcommand{\indexImplementation}[1]{\index{implementations}{#1}}
 
 % =================
 
@@ -99,6 +121,7 @@
 %\newcommand{\calculusAuthor}[1]{\gdef\@calculusAuthor{#1}}
 
 \newcommand{\calculusAuthor}[1]{\addauthor{#1}}
+\newcommand{\implementation}[2]{\addimplementation{#1}} % \implementation{NameOfProver}{URL}
 
 
 \newcommand{\calculusYear}[1]{\gdef\@calculusYear{#1}}
@@ -252,12 +275,12 @@
 \newcommand{\nothing}[1]{}
 
 
-\newcounter{i} % Generic counter used for forloops
-
+\newcounter{i}
 \newcommand{\updateindex}{
   \index{logics}{\@calculusLogic!\@calculusLogicOrder!\@calculusName} 
   \index{calculusTypes}{\@calculusType!\@calculusName} 
   \nothing{\@calculusAuthor}
 
   \forloop{i}{0}{\value{i} < \value{cacounter}}{\indexCalculusAuthor{\getauthor{\thei}}}
+  \forloop{i}{0}{\value{i} < \value{implementationcounter}}{\indexImplementation{\@calculusName!\getimplementation{\thei}}}
 }

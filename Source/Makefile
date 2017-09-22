@@ -10,6 +10,7 @@ all : main.tex proofsystems.tex frontmatter/*.tex backmatter/*.tex mainmatter/*.
 	$(MAKEINDEX)  calculusTypes
 	$(MAKEINDEX)  authors
 	$(MAKEINDEX)  calculusAuthors
+	$(MAKEINDEX)  implementations
 	$(TEX) -interaction nonstopmode $<
 	$(TEX) -interaction nonstopmode $<
 
