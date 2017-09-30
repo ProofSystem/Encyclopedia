@@ -10,15 +10,9 @@
 
 \calculusAuthor{Michael Ludwig}
 \calculusAuthor{Ullrich Hustadt}      % The name(s) of the author(s) of the calculus.
-
-
-
-
-
 \entryTitle{Ordered Fine-Grained Resolution with Selection for Monodic First-Order Temporal Logic}     % Title of the entry (usually coincides with the name of the calculus).
 \entryAuthor{Ullrich Hustadt}
-
-
+\implementation{TSPASS}{http://cgi.csc.liv.ac.uk/~michael/TLBook/TSPASS-System/}
 
 % The encyclopedia's peer-reviewing policy is described here: 
 % http://proofsystem.github.io/Encyclopedia/
@@ -54,6 +48,16 @@
 % e.g. \newcommand{\necessarily}{\Box}
 % e.g. \newcommand{\possibly}{\Diamond}
 
+\newcommand{\ProverState}[3]{\ensuremath{#1\,|\,#2\,|\, #3}}
+\newcommand{\NewSet}{\ensuremath{\mathcal{N}}}
+\newcommand{\ProcessedSet}{\ensuremath{\mathcal{P}}}
+\newcommand{\OldSet}{\ensuremath{\mathcal{O}}}
+\newcommand{\Set}[2]{\{\,#1 \mid #2\,\}}
+\newcommand{\SetEnum}[1]{\{#1\}}
+\newcommand{\predset}[2]{\{#1\;|\;#2\}}
+\newcommand{\existentialClosure}{\tilde{\exists}}
+\newcommand{\existentialClosureExc}[1]{\existentialClosure_{\backslash #1}}
+\newcommand{\EmptyClause}{\ensuremath{\bot}}
 %\newcommand{\Next}[0]{\mathop{\raisebox{0.2ex}{\scalebox{0.9}{\ensuremath{\ocircle}}}}}
 \newcommand{\Always}[0]{\mathop{\scalebox{1.25}{\ensuremath{\Box}}}}
 \newcommand{\Sometimes}[0]{\Diamond}
@@ -92,19 +96,23 @@
 % If you need any other package, please contact the coordinator (Bruno
 % Woltzenlogel Paleo <bruno.wp@gmail.com>) 
 %
-\newcommand{\myspace}{2ex}
-\vspace{-\myspace}
+The calculus consists of the six \emph{inference rules} below that
+operate on individual clauses as well as \emph{derivation rules} that
+operate on sets of clauses:
+%\newcommand{\myspace}{2ex}
+%\vspace{-\myspace}
+\vspace*{-1ex}
 \[
 \begin{array}{c@{\hspace*{1.8em}}c@{\hspace*{1.8em}}c}
-\infer
+\infer[]%[R]
 { (D_1\lor D_2)\sigma }
 { D_1\lor L_1 & \neg L_2\lor D_2}
 &
- \infer[]
+ \infer[]%[F]
  {(D_3\lor L_1)\sigma}
  {D_3\lor L_1\lor L_2}
 &
-\infer[]
+\infer[]%[C]
  {\neg C_1}
  {C_1\rightarrow\Next\bot}
 \\
@@ -117,16 +125,16 @@
 %$L_1$ is eligible in $D_3\lor L_1\lor L_2$ for $\sigma$.
 %\[
 %\begin{array}{c@{\hspace{1.8em}}c@{\hspace{1.8em}}c}
- \infer[]
+ \infer[]%[\mathit{SS}]
 {(C_1\land C_2)\sigma\rightarrow\Next(D_1\lor D_2)\sigma}
 {C_1\rightarrow\Next(D_1\lor L_1) & 
  C_2\rightarrow\Next(\neg L_2\lor D_2)}
 &
- \infer[]
+ \infer[]%[\mathit{SU}]
 {C_1\sigma\rightarrow\Next(D_1\lor D_2)\sigma}
 {C_1\rightarrow\Next(D_1\lor L_1) & \neg L_2\lor D_2}
 &
- \infer[]
+ \infer[]%\mathit{SF}]
  {C_3\sigma\rightarrow\Next(D_3\lor L_1)\sigma}
  {C_3\rightarrow\Next(D_3\lor L_1\lor L_2)}
 \end{array}\vspace*{-1.5ex}
@@ -140,42 +148,129 @@ a constant or a functional term,
 $L_1$ is eligible in $D_1\lor L_1$ for $\sigma$,
 $\neg L_2$ is eligible in $D_2\lor\neg L_2$ for $\sigma$, and
 $L_1$ is eligible in $D_3\lor L_1\lor L_2$ for $\sigma$.
-\[
-\infer[]%\Eventually^\mathcal{U}_{\mathit{res}}]
- {\forall x\bigwedge_{i=1}^n\neg\mathcal{A}_i(x)}
- {\forall x(\mathcal{A}_1(x)\rightarrow\Next\mathcal{B}_1(x)) & \cdots &
-  \forall x(\mathcal{A}_n(x)\rightarrow\Next\mathcal{B}_n(x)) &
-  \Eventually L(x)}\vspace*{-1.5ex}
-\]
-where $\forall x(\mathcal{A}_1(x)\rightarrow\Next\mathcal{B}_1(x))$,
-$1\leq i\leq n$, are formulae constructed from the set of step clauses
-such that for every $i$, $1\leq i\leq n$,
-$\forall x(\mathcal{U}\land\mathcal{B}_i(x)\rightarrow\neg L(x))$
-and 
-$\forall
-x(\mathcal{U}\land\mathcal{B}_i(x)\rightarrow\bigvee_{j=1}^n
-\mathcal{A}_j(x))$ are valid.
 
-\[
-\infer[]%\Eventually^\mathcal{U}_{\mathit{res}}]
- {\bigwedge_{i=1}^n\neg\mathcal{A}_i}
- {\mathcal{A}_1\rightarrow\Next\mathcal{B}_1 & \cdots &
-  \mathcal{A}_n\rightarrow\Next\mathcal{B}_n & \Eventually L}\vspace*{-1.5ex}
-\]
-where $\mathcal{A}_1\rightarrow\Next\mathcal{B}_1$,
-$1\leq i\leq n$, are formulae constructed from the set of step clauses
-such that for every $i$, $1\leq i\leq n$,
-$\mathcal{U}\land\mathcal{B}_i\rightarrow\neg L$
-and 
-$\mathcal{U}\land\mathcal{B}_i\rightarrow\bigvee_{j=1}^n
-\mathcal{A}_j$ are valid.
+By $\mathrm{Res}(C,\mathcal{O})$ we denote the set of all clauses
+derivable from clause $C$ with clauses in $\mathcal{O}$ using the
+inference rules above.
 
-Inferences are restricted by an \emph{ordering} $\succ$ on literals
-and a \emph{selection function} $S$. $S$ maps any first-order clause $C$
-to a possibly empty subset of its negative literals. 
-A literal $L$ is \emph{eligible} in a clause $L\lor C$ for a
-substitution $\sigma$ if either $L\in S(C)$, or $S(C)=\emptyset$  and
-$L\sigma$ is $\succ$-maximal wrt $C\sigma$.
+Derivations are constructed according to the \emph{derivation rules}
+below:\vspace*{-2ex}
+\begin{align*}
+% Initialisation
+\langle \mathcal{U}, \mathcal{I}, \mathcal{S}, \mathcal{E} \rangle
+&\Longrightarrow
+\ProverState{\mathcal{N}}{\emptyset}{\emptyset}
+\parbox[t]{25em}{\ 
+\begin{tabular}[t]{@{}l@{}}
+where
+$\mathcal{N} = \mathcal{U}
+\begin{array}[t]{@{}l@{}}
+\hbox{}\cup \mathcal{I} \cup \mathcal{S}\\
+\hbox{}\cup \Set{P(c^L) \supset \Next Q(c^L)}{P(x) \implies \Next Q(x) \in
+  \mathcal{S}, \Eventually L(x)\in\mathcal{E}}\\
+\hbox{}\cup \Set{s^{L,1}_0 \supset \Next L(c^L}{\Eventually L(x) \in
+  \mathcal{E}}
+\cup \Set{s^{L,0}_0 \supset \Next L}{\Eventually L \in
+  \mathcal{E}}
+\end{array}
+$
+\end{tabular}}
+\\
+% Loop Search Contradiction
+\ProverState{\emptyset}{\ProcessedSet \cup 
+\SetEnum{s^{L,k}_i \implies \Next\EmptyClause}}{\OldSet}
+&\Longrightarrow
+\makebox[187pt][l]{$\ProverState{\SetEnum{\EmptyClause}}{\ProcessedSet}{\OldSet \cup 
+\SetEnum{s^{L,k}_i \implies \Next \EmptyClause}}$}
+\mbox{ for some $i, k, L$}
+\\
+% Next Loop Search Iteration (Non-ground)
+\ProverState{\emptyset}{\ProcessedSet \cup 
+\SetEnum{s^{L,1}_i \land C \implies \Next\EmptyClause}}{\OldSet}
+&\Longrightarrow
+\makebox[187pt][l]{\ProverState{\SetEnum{s^{L,1}_{i+1} \implies \Next \lnot C \lor
+L(c^l)}}{\ProcessedSet}{\OldSet \cup 
+\SetEnum{s^{L,1}_i \land C \implies\Next\EmptyClause}}}
+\mbox{ for some $i,L$ and $C \neq \emptyset$}\makebox[12pt][l]{}
+\\
+% Next Loop Search Iteration (Ground)
+\ProverState{\emptyset}{\ProcessedSet \cup 
+\SetEnum{s^{L,0}_i \land C \implies \Next\EmptyClause}}{\OldSet}
+&\Longrightarrow
+\makebox[187pt][l]{$\ProverState{\SetEnum{s^{L,0}_{i+1} \implies \Next \lnot C \lor
+L}}{\ProcessedSet}{\OldSet \cup 
+\SetEnum{s^{L,0}_i \land C \implies\Next\EmptyClause}}$}
+\mbox{ for some $i,L$ and $C \neq \emptyset$}
+\\
+% Regular Inference Computation
+\ProverState{\emptyset}{\ProcessedSet \cup \SetEnum{\mathcal{C}}}{\OldSet}
+&\Longrightarrow
+\makebox[56pt][l]{$\ProverState{\NewSet}{\ProcessedSet}{\OldSet \cup \SetEnum{\mathcal{C}}}$}
+\mbox{ if none of the previous rule applies and $\NewSet = \mathrm{Res}(\mathcal{C}, \OldSet)$}
+\\
+% Loop Testing (Non-ground)
+\ProverState{\emptyset}{\ProcessedSet}{\OldSet}
+&\Longrightarrow
+\begin{array}[t]{@{}l@{}}
+\ProverState{%
+\Set{\Always \forall x \neg H_{i+1}^L(x)}{\mbox{for all $i$,
+$L$ with } \models \forall x (H_i^L(x) \Leftrightarrow H_{i+1}^L(x))}%
+}{\ProcessedSet}{\OldSet}\\
+\mbox{where }
+H_i^L(x) := \bigvee \predset{(\existentialClosure C_j)\{c^l /
+x\}}{s_i^{L,1}\land C_j\imp\Next\bot\in \ProcessedSet \cup \OldSet}
+\mbox{ for all $i$, $L$}
+\end{array}
+\\
+% Loop Testing (Ground)
+\ProverState{\emptyset}{\ProcessedSet}{\OldSet}
+&\Longrightarrow
+\begin{array}[t]{@{}l@{}}
+\ProverState{%
+\Set{\Always \neg H_{i+1}^L}{\mbox{for all $i$,
+$L$ with } \models (H_i^L \Leftrightarrow H_{i+1}^L)}%
+}{\ProcessedSet}{\OldSet}\\
+\mbox{where }
+H_i^L := \bigvee 
+\predset{C_j}{s_i^{L,0}\land C_j\imp\Next\bot\in \ProcessedSet \cup \OldSet}
+\mbox{ for all $i$, $L$}
+\end{array}
+\\
+% \ProverState{\NewSet \cup \SetEnum{\mathcal{C}}}{\ProcessedSet}{\OldSet}
+% &\Longrightarrow
+% \ProverState{\NewSet}{\ProcessedSet \cup \SetEnum{\mathcal{C}}}{\OldSet}$
+% \mbox{ if none of the previous rules applies}
+%
+% % Tautology Deletion
+% \ProverState{\NewSet \cup \SetEnum{\mathcal{C}}}{\ProcessedSet}{\OldSet}
+% &\Longrightarrow
+% \makebox[100pt][l]{$\ProverState{\NewSet}{\ProcessedSet}{\OldSet}$}
+% \mbox{ if $\mathcal{C}$ is a tautology}
+% \\
+% % Forward Subsumption
+% \ProverState{\NewSet \cup \SetEnum{\mathcal{C}}}{\ProcessedSet}{\OldSet}
+% &\Longrightarrow
+% \makebox[100pt][l]{$\ProverState{\NewSet}{\ProcessedSet}{\OldSet}$}
+% \mbox{ if some clause in $\ProcessedSet \cup \OldSet$ subsumes $\mathcal{C}$}
+% \\
+% % Backward Subsumption
+% \ProverState{\NewSet}{\ProcessedSet  \cup \SetEnum{\mathcal{C}}}{\OldSet}
+% &\Longrightarrow
+% \makebox[100pt][l]{$\ProverState{\NewSet}{\ProcessedSet}{\OldSet}$}
+% \mbox{ if some clause in $\NewSet$ properly subsumes $\mathcal{C}$}
+% \\
+% % Backward Subsumption
+% \ProverState{\NewSet}{\ProcessedSet}{\OldSet \cup \SetEnum{\mathcal{C}}}
+% &\Longrightarrow
+% \makebox[100pt][l]{$\ProverState{\NewSet}{\ProcessedSet}{\OldSet}$}
+% \mbox{ if some clause in $\NewSet$ properly subsumes $\mathcal{C}$}
+% \\
+% Clause Processing
+\ProverState{\NewSet \cup \SetEnum{\mathcal{C}}}{\ProcessedSet}{\OldSet}
+&\Longrightarrow
+\makebox[56pt][l]{$\ProverState{\NewSet}{\ProcessedSet\cup\SetEnum{\mathcal{C}}}{\OldSet}$}
+\mbox{ if none of the previous rules applies}
+\end{align*}
 \end{calculus}
 
 % The following sections ("clarifications", "history", 
@@ -207,12 +302,16 @@ and $t$ is either a variable or a constant;
 $\mathcal{E}$  
 % (the eventuality part) 
 is a set of \emph{eventuality clauses}
-of the form $\Eventually l$, where $l$ is a propositional literal,
+of the form $\Eventually L$, where $L$ is a propositional literal,
 $\Eventually (\neg)P(t)$, where $P$ is a unary predicate and $t$ is
 either a constant or a variable.
-Inferences extend $\mathcal{U}$, $\mathcal{I}$ and $\mathcal{S}$ until
-$\mathcal{U}$ or $\mathcal{I}$ contains the empty clause ($\varphi$ is
-unsatisfiable).
+%
+Inferences are restricted by an \emph{ordering} $\succ$ on literals
+and a subsumption-compatible \emph{selection function} $S$. $S$ maps
+any first-order clause $C$ to a possibly empty subset of its negative literals. 
+A literal $L$ is \emph{eligible} in a clause $L\lor C$ for a
+substitution $\sigma$ if either $L\in S(C)$, or $S(C)=\emptyset$  and
+$L\sigma$ is $\succ$-maximal wrt $C\sigma$.
 \end{clarifications}
 
 \begin{history}
