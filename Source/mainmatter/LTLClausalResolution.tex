@@ -10,17 +10,16 @@
 
 \calculusAuthor{Michael Fisher}       % The name(s) of the author(s) of the calculus.
 \calculusAuthor{Clare Dixon}
-\calculusAuthor{Ullrich Hustdat}
+\calculusAuthor{Ullrich Hustadt}
 \calculusAuthor{Boris Konev}
 \calculusAuthor{Martin Peim}
-
-
-
+\newcommand{\TRPpp}{\textsf{TRP\protect\raisebox{0.4ex}{\small{+}{+}}}\xspace}
+\implementation{\TRPpp}{http://cgi.csc.liv.ac.uk/~konev/software/trp++/}
 
 \entryTitle{Resolution for Propositional Linear Time Temporal Logic (LTL)}     % Title of the entry (usually coincides with the name of the calculus).
 \entryAuthor{Clare Dixon}
 \entryAuthor{Michael Fisher}
-\entryAuthor{Ullrich Hustdat}
+\entryAuthor{Ullrich Hustadt}
 \entryAuthor{Boris Konev}
 
 
@@ -58,7 +57,15 @@
 % e.g. \newcommand{\necessarily}{\Box}
 % e.g. \newcommand{\possibly}{\Diamond}
 
-\newcommand{\Next}{\!\raisebox{-.2ex}{ %possibly add a little space before
+\newcommand{\Next}{\!\raisebox{0.1ex}{ %possibly add a little space before
+                        \mbox{\unitlength=0.62ex
+                        \begin{picture}(2,2)
+                        \linethickness{0.1ex}
+                        \put(1,1){\circle{2}} % Draws circle with
+                        \end{picture}}}       % diameter 2 at centre 1,1
+                        \,}
+
+\newcommand{\TNext}{\!\raisebox{-.2ex}{ %possibly add a little space before
                         \mbox{\unitlength=0.9ex
                         \begin{picture}(2,2)
                         \linethickness{0.06ex}
@@ -66,7 +73,8 @@
                         \end{picture}}}       % diameter 2 at centre 1,1
                         \,}
 
- \newcommand{\Always}{\raisebox{-.2ex}{
+\newcommand{\Always}[0]{\mathop{\scalebox{1.25}{\ensuremath{\Box}}}}
+\newcommand{\TAlways}{\raisebox{-.2ex}{
                             \mbox{\unitlength=0.9ex
                             \begin{picture}(2,2)
                             \linethickness{0.06ex}
@@ -77,7 +85,9 @@
                             \end{picture}}}
                        \,}
 
-\def\sometime{\hbox{$\,\Diamond \,$}}
+\newcommand{\Eventually}[0]{\Diamond}
+%\def\sometime{\hbox{$\,\Diamond \,$}}
+\newcommand{\sometime}[0]{\Diamond}
 
 \newcommand{\lstart}{{\bf start}}
 \newcommand{\ltrue}{{\bf true}}
@@ -93,35 +103,36 @@
 \[
 \begin{array}{c}
 \infer[\textit{(initial)}]
-{\lstart \rightarrow (A \lor B)}
-{\lstart \rightarrow (A \lor p)  &
-\lstart \rightarrow (B \lor \neg p)} 
+{\Always(\lstart \rightarrow (C \lor D))}
+{\Always(\lstart \rightarrow (C \lor A))  &
+\Always(\lstart \rightarrow (D \lor \neg A))} 
 \qquad
 \infer[\textit{(step)}]
-{\Always(C \land D  \rightarrow  \Next (A \lor B))}
-{\Always(C \rightarrow \Next (A \lor p))  &
-\Always (D	    \rightarrow  \Next (B \lor \neg p))} 
+{\Always(P \land Q  \rightarrow  \Next (C \lor D))}
+{\Always(P \rightarrow \Next (C \lor A))  &
+ \Always(Q \rightarrow \Next (D \lor \neg A))} 
 \\[4pt]
 \infer[\textit{(conversion)}]
-{ \lstart \rightarrow \lnot C  \quad \Always (\ltrue \rightarrow \Next \lnot C)}
-{\Always(C  \rightarrow  \Next \lfalse)} 
+{\Always(\lstart \rightarrow \lnot P)  \quad 
+ \Always(\ltrue  \rightarrow \Next \lnot P)}
+{\Always(P       \rightarrow \Next \lfalse)} 
 \\[8pt]
 %
 %
 \begin{array}[b]{ll}
-\infer[\textit{(temporal),} ]
-{\textstyle\Always  (D    \rightarrow  \left[\bigwedge_{i=0}^n (\neg E_i)\right] \unless l)}
-{\Always  (E_0   \rightarrow  \Next F_0) &
-\ldots  &\quad
-\Always  (E_n   \rightarrow  \Next F_n) & 
-\Always  (D   \rightarrow  \sometime l)}
+\infer[{\textit{(temporal),}} ]
+{\textstyle\Always  (P    \rightarrow  \left[\bigwedge_{i=0}^n (\neg\mathcal{A}_i)\right] \unless L)}
+{\Always  (\mathcal{A}_0 \rightarrow  \Next \mathcal{B}_0) &
+ \cdots  &\quad
+ \Always  (\mathcal{A}_n \rightarrow  \Next \mathcal{B}_n) & 
+\Always  (P   \rightarrow  \sometime L)}
 
-& \quad
+& \hspace*{1ex}
 % \left[
 \begin{array}{l}
-\text{where for all } 0 \leq i \leq n \\[-5pt]
-\mbox{}\;\vdash F_i \rightarrow \neg l \; \text{ and }
-\vdash F_i \rightarrow \displaystyle \bigvee_{j=0}^n E_j
+\text{where for all } 0 \leq i \leq n \\
+\mbox{}\;\vdash \mathcal{B}_i \rightarrow \neg L \; \text{ and }
+\vdash \mathcal{B}_i \rightarrow \textstyle\bigvee_{j=0}^n \mathcal{A}_j
 \vspace*{0.9em}
 \end{array}
 \end{array}
@@ -129,10 +140,12 @@
 \]
 
 \vspace*{-1em}
-Here $p$ is a proposition, $l$ is a literal, $A$ and $B$ are (possibly empty) disjunctions of literals,
-$C$ and $D$ are (possibly empty) conjunctions of literals and $E_i\rightarrow\Next F_i$  are \emph{merged step clauses}
+Here $A$ is a proposition, $L$ is a literal, $C$ and $D$ are (possibly empty) disjunctions of literals,
+$P$ and $Q$ are (possibly empty) conjunctions of literals and $\mathcal{A}_i\rightarrow\Next\mathcal{B}_i$  are \emph{merged step clauses}
 (conjunctions of step clauses), see~\cite{FDP01} for details.
-Derivation terminates if either $\lstart\rightarrow\lfalse$ is derived (unsatisfiable) or no new clause can be derived (satisfiable).  
+Derivation terminates if either $\Always(\lstart\rightarrow\lfalse)$
+is derived (unsatisfiable) or no new clause can be derived
+(satisfiable).
 \end{calculus}
 
 % The following sections ("clarifications", "history", 
@@ -145,17 +158,18 @@ Derivation terminates if either $\lstart\rightarrow\lfalse$ is derived (unsatisf
 % ToDo: write here short remarks that may help the reader to understand 
 % the inference rules of the proof system.
 The clausal temporal resolution calculus is for formulae of discrete propositional
-linear-time temporal logic with finite past and infinite future.
+linear-time temporal logic with finite past and infinite
+future~\cite{Prior@OUP1967,Kamp@PhD1968,Gabbay+Pnueli+Shelah+Stavi@POPL1980}.
 Any LTL formula is first translated, in a satisfiability preserving way, into the
 following  normal form: 
-$\lstart \rightarrow A$, {\em an initial clause},
-$ \Always (C \rightarrow  \Next A)$, {\em a step clause}, and
-$\Always  (C   \rightarrow  \sometime l)$, {\em a sometime clause}.
+$\Always(\lstart \rightarrow C)$, \emph{an initial clause},
+$\Always(P \rightarrow \Next C)$, \emph{a step clause}, and
+$\Always(P \rightarrow \sometime L)$, \emph{a sometime clause}.
 %
 This removes many of the operators, may add new propositional 
 symbols, for example to rename subformulae.
 %
-The operator $\lstart$ only holds in the first moment in time. 
+The logical constant $\lstart$ only holds in the first moment in time. 
 %
 The resolvent of the temporal resolution rule needs further translation into
 the normal form. 
@@ -176,7 +190,7 @@ the normal form and the calculus used clauses with past-time formulae
 on the left-hand sides and present or future formulae on the
 right-hand side. The above version of the resolution rules are
 from~\cite{FDP01} and the calculus has been implemented in the prover
-TRP++~\cite{HustadtKonev2003a}. 
+\TRPpp~\cite{HustadtKonev2003a}. 
 A different presentation is provided in~\cite{DFK02}
 using a {\em Divided Separated Normal Form}.
 The calculus has been extended to the monodic fragment of First-Order 
