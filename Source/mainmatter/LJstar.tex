@@ -1,10 +1,9 @@
-
 \calculusName{Intuitionistic Sequent Calculus with $\varepsilon$-terms} 
 \calculusAcronym{\LJstar}
 \calculusLogic{Intuitionistic Logic}
 \calculusLogicOrder{First-Order}
 \calculusType{Sequent Calculus}
-\calculusYear{2016} 
+\calculusYear{2017} 
 \calculusAuthor{Giselle Reis} 
 \calculusAuthor{Bruno Woltzenlogel Paleo} 
 
@@ -20,7 +19,6 @@
 
 
 \begin{entry}{LJstar}  
-
 
 \begin{calculus}
 \vspace{5pt}
@@ -75,43 +73,47 @@ $l$ is a constant in $a$ (\emph{initial condition}).
 
 
 \begin{clarifications}
-A term $t$ is \emph{accessible} in a formula $F$ iff at least one of the
-following two conditions hold: 
-\begin{itemize}
-  \item for any top-level (i.e., not nested inside another $\varepsilon$-term)
-  $\varepsilon$-term $\nu_x~G$ in $t$, it is the case that $F[\nu_x~G
-  \rightsquigarrow x]$ is a sub-formula of $G$ ($\rightsquigarrow$ denotes term
-  rewriting); or
-
-  \item $t$ contains a nested $\varepsilon$-term $\nu_y~H$ such that $\nu_y~H$
-  is accessible in $F$ and $t[\nu_y~H \rightsquigarrow y]$ is accessible in
-  $F[\nu_y~H \rightsquigarrow y]$.
-\end{itemize}
-$t$ is accessible in a sequent $S$ iff all top-level
-$\varepsilon$-terms in $t$ are accessible in some formula occurring in $S$.
-%
-$\varepsilon$-terms replace strong quantifiers in formulas (i.e., the ones
-that require eigenvariables).
-Intuitively, term accessibility corresponds to the availability of the
-eigenvariable in a proof of the non-epsilonized formula.
-%
-Labels on $\varepsilon$-terms make proof epsilonization injective and allow proofs to be de-epsilonized.
+  A term $t$ is \emph{accessible} in a formula $F$ iff at least one of the
+  following two conditions hold: 
+  \begin{itemize}
+    \item for any top-level (i.e., not nested inside another $\varepsilon$-term)
+    $\varepsilon$-term $\nu_x~G$ in $t$, it is the case that $F[\nu_x~G
+    \rightsquigarrow x]$ is a sub-formula of $G$ ($\rightsquigarrow$ denotes term
+    rewriting); or
+  
+    \item $t$ contains a nested $\varepsilon$-term $\nu_y~H$ such that $\nu_y~H$
+    is accessible in $F$ and $t[\nu_y~H \rightsquigarrow y]$ is accessible in
+    $F[\nu_y~H \rightsquigarrow y]$.
+  \end{itemize}
+  $t$ is accessible in a sequent $S$ iff all top-level
+  $\varepsilon$-terms in $t$ are accessible in some formula occurring in $S$.
+  %
+  $\varepsilon$-terms replace strong quantifiers in formulas (i.e., the ones
+  that require eigenvariables).
+  Intuitively, term accessibility corresponds to the availability of the
+  eigenvariable in a proof of the non-epsilonized formula.
+  %
+  Labels on $\varepsilon$-terms make proof epsilonization injective and allow
+  proofs to be de-epsilonized.
 \end{clarifications}
 
 \begin{history}
-Skolemization is known to be unsound in intuitionistic logic. \emph{Epsilonization} is similar to skolemization, but replaces strongly quantified variables by $\varepsilon$-terms, instead of Skolem terms. \LJstar was introduced in~\cite{Reis2016} as a sequent calculus for
-intuitionistic logic where \emph{epsilonization} is sound: if the
-epsilonization of a sequent $S$ is derivable in \LJstar, then $S$ is derivable in \LJ.
-%
-This is achieved by restricting the rules $\forall_l$, $\exists_r$ and initial
-from \LJ~\iref{GentzenLJ} to take into account information available in
-$\varepsilon$-terms.
+  Skolemization is known to be unsound in intuitionistic logic.
+  \emph{Epsilonization} is similar to skolemization, but replaces strongly
+  quantified variables by $\varepsilon$-terms, instead of Skolem terms. \LJstar
+  was introduced in~\cite{Reis2016} as a sequent calculus for
+  intuitionistic logic where \emph{epsilonization} is sound: if the
+  epsilonization of a sequent $S$ is derivable in \LJstar, then $S$ is derivable in \LJ.
+  %
+  This is achieved by restricting the rules $\forall_l$, $\exists_r$ and initial
+  from \LJ~\iref{GentzenLJ} to take into account information available in
+  $\varepsilon$-terms.
 \end{history}
 
 \begin{technicalities}
-\LJstar is sound and complete with respect to \LJ~\iref{GentzenLJ} for
-$\varepsilon$-free formulas. A procedure for de-epsilonizing \LJstar proofs, resulting in valid \LJ proofs, is
-defined in~\cite{Reis2016}.
+  \LJstar is sound and complete with respect to \LJ~\iref{GentzenLJ} for
+  $\varepsilon$-free formulas. A procedure for de-epsilonizing \LJstar proofs,
+  resulting in valid \LJ proofs, is defined in~\cite{Reis2016}.
 \end{technicalities}
 
 \end{entry}
