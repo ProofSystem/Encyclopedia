@@ -1,13 +1,13 @@
-\calculusName{First-Order Unification}   % The name of the calculus
-\calculusAcronym{}    % The acronym if defined above, or empty otherwise.
-\calculusLogic{Unification}  % Specify the logic (e.g. classical, intuitionistic, ...) for which this calculus is intended.
+\calculusName{First-Order Unification}
+\calculusAcronym{}
+\calculusLogic{Unification}
 \calculusLogicOrder{First-Order}
-\calculusType{Unification}   % Specify the calculus type (e.g. Frege-Hilbert style, tableau, sequent calculus, hypersequent calculus, natural deduction, ...)
-\calculusYear{1965}   % The year when the calculus was invented.
-\calculusAuthor{John Alan Robinson} % The name(s) of the author(s) of the calculus.
+\calculusType{Unification}
+\calculusYear{1965}
+\calculusAuthor{John Alan Robinson}
 
-\entryTitle{First-Order Unification}     % Title of the entry (usually coincides with the name of the calculus).
-\entryAuthor{Tomer Libal}    % Your name(s). Separate multiple names with "\and".
+\entryTitle{First-Order Unification}
+\entryAuthor{Tomer Libal}
 
 \entryReviewer{Bruno Woltzenlogel Paleo}
 
@@ -20,43 +20,45 @@
 
 \begin{calculus}
 \[
-\infer[delete] {S}
-               {\{\upair u u\} \cup S}
+\infer[\mathit{delete}] {S}
+                        {\{\upair u u\} \cup S}
 \qquad
-\infer[decomp] {\{\upair {v_1} {u_1} ,\ldots, \upair {v_n} {u_n}\}  \cup S}
-               {\{\upair {f(v_1,\ldots,v_n)} {f(u_1,\ldots,u_n)}\} \cup S}
+\infer[\mathit{decomp}] {\{\upair {v_1} {u_1} ,\ldots, \upair {v_n} {u_n}\}  \cup S}
+                        {\{\upair {f(v_1,\ldots,v_n)} {f(u_1,\ldots,u_n)}\} \cup S}
 \qquad
-\infer[varelim]{\{\spair x v\} \cup \sigma(S)}
-               {\{\upair x v\} \cup S}
+\infer[\mathit{varelim}]{\{\spair x v\} \cup \sigma(S)}
+                        {\{\upair x v\} \cup S}
 \]
 Where $x$ does not occur in $v$ and $\sigma = [v/x]$.
 \end{calculus}
 
 \begin{clarifications}
-  $x$ is a variable. $v_1,\ldots,v_n, u_1,\ldots, u_n$ are terms.
-  $\upair v u$ and $\spair v u$ are unsolved and solved, respectively, pairs of first-order terms.
-  $S$ is a set of such pairs and $\sigma$ is a substitution.
+  $x$ is a variable. $v_1,\ldots,v_n, u_1,\ldots, u_n$ are terms.  $\upair v u$
+  and $\spair v u$ are unsolved and solved, respectively, pairs of first-order
+  terms. $S$ is a set of such pairs and $\sigma$ is a substitution.
+  The set $S$ is considered solved if it contains only solved pairs. 
 \end{clarifications}
 
 \begin{history}
-   The unification principle was first described by Herbrand in his thesis \cite{herbrand1930recherches}
-   but was overlooked until rediscovered independently by Prawitz \cite{Prawitz1960}
-   and Guard \cite{guard1964automated} (where it is called matching, not to
-   be confused with the modern notion of matching - the unification of a term
-   with a ground term).
-   These findings helped pave the way for Robinson's seminal work on Resolution \cite{Robinson1965JACM} (see \iref{Resolution}).
-   The above set of rules is taken from Snyder and Gallier \cite{Snyder1989101}.
+   The unification principle was first described by Herbrand in his
+   thesis~\cite{herbrand1930recherches} but was overlooked until rediscovered
+   independently by Prawitz~\cite{Prawitz1960} and
+   Guard~\cite{guard1964automated} (where it is called matching, not to be
+   confused with the modern notion of matching - the unification of a term with
+   a ground term).  These findings helped pave the way for Robinson's seminal
+   work on Resolution~\cite{Robinson1965JACM} (see~\iref{Resolution}).  The
+   above set of rules is taken from Snyder and Gallier~\cite{Snyder1989101}.
 \end{history}
 
 \begin{technicalities}
-   The set $S$ is considered
-   solved if it contains only solved pairs. The application of the above rules always terminates on a given set of pairs of terms
-   and if, in addition, the set is unifiable, then it terminates in a set $S'$ containing only solved pairs.
-   The set $S'$ contains the substitution components \cite{Robinson1965JACM} of a most general unifier of $S$.
-   The choice of which equation to process is a "don't-care" non-determinism, which means
-   that the resulting substitutions, if they exist, are identical up to the renaming of free variables.
- \end{technicalities}
+   The application of the above rules always terminates on a given set of pairs
+   of terms and if, in addition, the set is unifiable, then it terminates in a
+   set $S'$ containing only solved pairs.  The set $S'$ contains the
+   substitution components~\cite{Robinson1965JACM} of a most general unifier of
+   $S$.  The choice of which rule to apply is a ``don't-care'' non-determinism,
+   which means that the resulting substitutions, if they exist, are identical up
+   to renaming of free variables.
+\end{technicalities}
 
-% Leave an empty line above "\end{entry}".
 
 \end{entry}
