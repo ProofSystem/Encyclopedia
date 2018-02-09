@@ -1,4 +1,3 @@
-
 \calculusName{Natural Deduction for Modal Logic \textbf{K}}
 \calculusAcronym{\NDK}
 \calculusLogic{Intuitionistic}
@@ -38,31 +37,40 @@
 
 
 \begin{center}
-\textbf{eigen-box condition:}\\ 
-a modal inference is said to \emph{access}\\
- the box immediately above or below it. \\
-$\nec_I$ and $\pos_E$ are \emph{strong} modal rules: \\
-$\omega$ must be a fresh name for the box they access \\ 
-(in analogy to the eigen-variable condition for strong quantifier rules). \\
-Every box must be accessed by \emph{exactly one} strong modal inference. \\
-\vspace{0.5em}
-\textbf{boxed assumption condition:} \\
-assumptions should be discharged within the box where they are created.
+  \textbf{eigen-box condition:}\\ 
+  a modal inference is said to \emph{access}\\
+   the box immediately above or below it. \\
+  $\nec_I$ and $\pos_E$ are \emph{strong} modal rules: \\
+  $\omega$ must be a fresh name for the box they access \\ 
+  (in analogy to the eigen-variable condition for strong quantifier rules). \\
+  Every box must be accessed by \emph{exactly one} strong modal inference. \\
+  \vspace{0.5em}
+  \textbf{boxed assumption condition:} \\
+  assumptions should be discharged within the box where they are created.
 \end{center}
 
 \end{calculus}
 
 
 \begin{clarifications}
-This calculus extends any natural deduction calculus (e.g. \iref{GentzenNJ}) by surrounding derivations by boxes and by adding the four modal rules shown above, which introduce and eliminate modal operators, moving formulas in and out of boxes. 
+  This calculus extends any natural deduction calculus (e.g.~\iref{GentzenNJ}) by
+  surrounding derivations by boxes and by adding the four modal rules shown above,
+  which introduce and eliminate modal operators, moving formulas in and out of
+  boxes.
 \end{clarifications}
 
 \begin{history}
-An embedding of (a higher-order version of) this calculus in the \textsc{Coq} proof assistant was mentioned in \cite{CSR} and the calculus was studied in more depth in \cite{StudiaLogica}, where it was used to formalize G\"odel's ontological argument.
+  An embedding of (a higher-order version of) this calculus in the \textsc{Coq}
+  proof assistant was mentioned in~\cite{CSR} and the calculus was studied in more
+  depth in~\cite{StudiaLogica}, where it was used to formalize G\"odel's
+  ontological argument.
 \end{history}
 
 \begin{technicalities}
-In \cite{StudiaLogica}, this calculus was shown to be sound and complete relative to a natural deduction calculus extended with a necessitation rule and the modal axiom $K$. Consequently, the calculus is sound and complete for rigid modal logic \textbf{K}.
+  In~\cite{StudiaLogica}, this calculus was shown to be sound and complete
+  relative to a natural deduction calculus extended with a necessitation rule and
+  the modal axiom $K$. Consequently, the calculus is sound and complete for rigid
+  modal logic \textbf{K}.
 \end{technicalities}
 
 
