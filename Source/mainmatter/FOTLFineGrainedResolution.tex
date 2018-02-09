@@ -59,9 +59,12 @@
 %\newcommannd{\mC}[1]{\mathcal{#1}}
 
 \begin{calculus}
-The calculus consists of the six \emph{inference rules} below that
-operate on individual clauses as well as \emph{derivation rules} that
-operate on sets of clauses:
+\begin{small}
+% The calculus consists of the six \emph{inference rules} below that
+% operate on individual clauses as well as \emph{derivation rules} that
+% operate on sets of clauses:
+The calculus consists of six \emph{inference rules} operating on individual
+clauses, and \emph{derivation rules} operating on sets of clauses:
 %\newcommand{\myspace}{2ex}
 %\vspace{-\myspace}
 \vspace*{-1ex}
@@ -128,8 +131,7 @@ below:\vspace*{-2ex}
 where
 $\mathcal{N} = \mathcal{U}
 \begin{array}[t]{@{}l@{}}
-\hbox{}\cup \mathcal{I} \cup \mathcal{S}\\
-\hbox{}\cup \Set{P(c^L) \supset \Next Q(c^L)}{P(x) \implies \Next Q(x) \in
+\hbox{}\cup \mathcal{I} \cup \mathcal{S} \cup \Set{P(c^L) \supset \Next Q(c^L)}{P(x) \implies \Next Q(x) \in
   \mathcal{S}, \Eventually L(x)\in\mathcal{E}}\\
 \hbox{}\cup \Set{s^{L,1}_0 \supset \Next L(c^L}{\Eventually L(x) \in
   \mathcal{E}}
@@ -234,6 +236,8 @@ H_i^L := \bigvee
 \makebox[56pt][l]{$\ProverState{\NewSet}{\ProcessedSet\cup\SetEnum{\mathcal{C}}}{\OldSet}$}
 \mbox{ if none of the previous rules applies}
 \end{align*}
+\end{small}
+\vspace{-20pt}
 \end{calculus}
 
 \begin{clarifications}
@@ -269,10 +273,13 @@ H_i^L := \bigvee
 \end{clarifications}
 
 \begin{history}
-  Related to~\iref{FOTLResolution}, this calculus was introduced
-  in~\cite{Ludwig+Hustadt@CADE2009}. It has been implemented in the prover
+  Introduced in~\cite{Ludwig+Hustadt@CADE2009} and related
+  to~\iref{FOTLResolution}.
+  %Related to~\iref{FOTLResolution}, this calculus was introduced
+  %in~\cite{Ludwig+Hustadt@CADE2009}. 
+  It has been implemented in the prover
   TSPASS~\cite{Ludwig+Hustadt@AIC2010}. Satisfiability equivalence of the
-  transformation, soundness and refutational completeness of the calculus are
+  transformation, soundness and refutational completeness are
   shown in~\cite{Ludwig@Liverpool2010}.
   %A later implementation focusing on fair derivations is provided in
   %TSPASS~\cite{Ludwig+Hustadt@CADE2009,Ludwig+Hustadt@AIC2010}.
