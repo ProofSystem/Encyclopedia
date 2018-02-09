@@ -1,6 +1,4 @@
 
-
-
 \calculusName{Kleene's Intuitionistic $\Gthree$}   
 \calculusAcronym{\Gthree}     
 \calculusLogic{Intuitionistic Logic}  
@@ -9,13 +7,9 @@
 \calculusYear{1952}   
 \calculusAuthor{Stephen Cole Kleene} 
 
-
 \entryTitle{Kleene's Intuitionistic $\Gthree$ System}     
 \entryAuthor{Bj{\"o}rn Lellmann}
 \entryAuthor{Valeria de Paiva}     
-
-
-
 
 \etag{Two-Sided Sequents}
 \etag{Asymmetric Sequents}
@@ -23,12 +17,7 @@
 
 \maketitle
 
-
-
-\begin{entry}{KleeneG3intuitionistic}  
-
-
-
+\begin{entry}{KleeneG3intuitionistic}
 
 \begin{calculus}
 
@@ -46,7 +35,8 @@
   \infer[\lor\seq]{A \lor B, \Gamma\seq \Theta}{A, A \lor B, \Gamma
   \seq \Theta & B, A \lor B, \Gamma \seq \Theta}
   &
-  \infer[\seq\lor_1]{\Gamma \seq A \lor B}{\Gamma \seq A} \quad   \infer[\seq\lor_2]{\Gamma \seq A \lor B}{\Gamma \seq B}\medskip\\
+  \infer[\seq\lor_1]{\Gamma \seq A \lor B}{\Gamma \seq A} \quad 
+  \infer[\seq\lor_2]{\Gamma \seq A \lor B}{\Gamma \seq B}\medskip\\
   \infer[\land\seq_1]{A \land B, \Gamma \seq \Theta}{A, A \land B,
   \Gamma \seq \Theta}
   \quad
@@ -79,11 +69,8 @@ does not occur in $\Gamma,\Theta,A(x)$.
 \end{calculus}
 
 
-
 \begin{clarifications}
-% ToDo: write here short remarks that may help the reader to understand 
-% the inference rules of the proof system.
-  The $A,B$ are formulae; $\Gamma$ and $\Theta$ are a finite (possibly
+  $A,B$ are formulae; $\Gamma$ and $\Theta$ are a finite (possibly
   empty) sequences of formulae with $\Theta$ containing at most one
   formula; $x$ is a variable; $A(x)$ is a formula. In applications of
   the rules every sequent $\Gamma \seq \Theta$ can be replaced with a
@@ -94,45 +81,24 @@ does not occur in $\Gamma,\Theta,A(x)$.
 \end{clarifications}
 
 \begin{history}
-% ToDo: write here short historical remarks about this proof system,
-% especially if they relate to other proof systems. 
-% Use "\iref{OtherProofSystem}" to refer to another proof system 
-% in the Encyclopedia (where "OtherProofSystem" is its ID). 
-% Use "\irefmissing{SuggestedIDForOtherProofSystem}" to refer to 
-% another proof system that is not yet available in the encyclopedia.
-  Kleene's systems introduced in his~1952 monograph were the staple of
+  Kleene's systems, introduced in his~1952 monograph, were the staple of
   generations of logicians, who learned about sequent calculus from
   his textbooks~\cite{Kleene:1952} and~\cite{Kleene:1967}.
 \end{history}
 
 \begin{technicalities}
-% ToDo: write here remarks about soundness, completeness, decidability...
   Based on Gentzen's sequent calculus $\LJ$~\iref{GentzenLJ}
   (corresponding to intuitionistic $\mathbf{G1}$
   in~\cite{Kleene:1952}). Seems to be the first system
   (with~\iref{KleeneG3classical}) in which admissibility of
   contraction is obtained by copying the principal formulae into the
   premisses (accordingly, this is sometimes called \emph{Kleene's
-    Method}). Used together with its multi-conclusion version for
+  Method}). Used together with its multi-conclusion version for
   classical logic~\iref{KleeneG3classical} to uniformly obtain
-  decidability of propositional classical and intuitionistic logic via
+  decidability of propositional classical and intuitionistic logics via
   backwards proof search in~\cite{Kleene:1952}.
-  % Used together with its multi-conclusion version for classical
-  % logic~\iref{KleeneG3classical} to uniformly obtain decidability for
-  % propositional classical and intuitionistic logic via backwards
-  % proof search in~\cite{Kleene:1952}.
 \end{technicalities}
 
-
-
-
-
-
-
-
-
 \nocite{Kleene:1952}
-
-
 
 \end{entry}
