@@ -1,52 +1,20 @@
-
-% If the calculus has an acronym, define it.
-% (e.g. \newcommand{\LK}{\ensuremath{\mathbf{LK}}\xspace})
-\calculusName{Ordered Fine-Grained Resolution with Selection} % The name of the calculus
-\calculusAcronym{}          % The acronym if defined above, or empty otherwise. 
-\calculusLogic{Monodic First Order Temporal Logic}        % Specify the logic (e.g. Classical Logic, Intuitionistic Logic, ...) for which this calculus is intended.
-\calculusLogicOrder{First-Order}   % Specify the order of the logic (e.g. Propositional, Quantified Propositional, First-Order, Higher-Order, ...).
-\calculusType{Resolution}         % Specify the calculus type (e.g. Tableau, Sequent Calculus, Hyper-Sequent Calculus, Natural Deduction, ...)
-\calculusYear{2009}         % The year when the calculus was published.
+\calculusName{Ordered Fine-Grained Resolution with Selection}
+\calculusAcronym{}
+\calculusLogic{Monodic First Order Temporal Logic}
+\calculusLogicOrder{First-Order}
+\calculusType{Resolution}
+\calculusYear{2009}
 
 \calculusAuthor{Michael Ludwig}
-\calculusAuthor{Ullrich Hustadt}      % The name(s) of the author(s) of the calculus.
-\entryTitle{Ordered Fine-Grained Resolution with Selection for Monodic First-Order Temporal Logic}     % Title of the entry (usually coincides with the name of the calculus).
+\calculusAuthor{Ullrich Hustadt}
+
+\entryTitle{Ordered Fine-Grained Resolution with Selection for Monodic First-Order Temporal Logic}
 \entryAuthor{Ullrich Hustadt}
 \implementation{TSPASS}{http://cgi.csc.liv.ac.uk/~michael/TLBook/TSPASS-System/}
 
-% The encyclopedia's peer-reviewing policy is described here: 
-% http://proofsystem.github.io/Encyclopedia/
-%
-% Reviewers of this entry will be acknowledged in the following lines:
-% \entryReviewer{Reviewer 1's name}
-% \entryReviewer{Reviewer 2's name}
-% \entryReviewer{Reviewer 3's name}
-%
-% The lines above will be filled by the coordinators. 
-% If you would like to indicate people 
-% who could review your entry, contact the coordinators.
-
-
-% If you wish, use tags to give any other information 
-% that might be helpful for classifying and grouping this entry:
-% \tag{Monodic First-Order Temporal Logic}
-% e.g. \tag{Multiset Cedents}
-% e.g. \tag{List Cedents}
-% You are free to invent your own tags. 
-% The Encyclopedia's coordinator will take care of 
-% merging semantically similar tags in the future.
-
-
 \maketitle
 
-
-% If your files are called "MyProofSystem.tex" and "MyProofSystem.bib", 
-% then you should write "\begin{entry}{MyProofSystem}" in the line below
 \begin{entry}{FOTLFineGrainedResolution}  
-
-% Define here any newcommands you may need:
-% e.g. \newcommand{\necessarily}{\Box}
-% e.g. \newcommand{\possibly}{\Diamond}
 
 \newcommand{\ProverState}[3]{\ensuremath{#1\,|\,#2\,|\, #3}}
 \newcommand{\NewSet}{\ensuremath{\mathcal{N}}}
@@ -91,11 +59,6 @@
 %\newcommannd{\mC}[1]{\mathcal{#1}}
 
 \begin{calculus}
-% Add the inference rules of your proof system here.
-% The "proof.sty" and "bussproofs.sty" packages are available.
-% If you need any other package, please contact the coordinator (Bruno
-% Woltzenlogel Paleo <bruno.wp@gmail.com>) 
-%
 The calculus consists of the six \emph{inference rules} below that
 operate on individual clauses as well as \emph{derivation rules} that
 operate on sets of clauses:
@@ -273,122 +236,46 @@ H_i^L := \bigvee
 \end{align*}
 \end{calculus}
 
-% The following sections ("clarifications", "history", 
-% "technicalities") are optional. If you use them, 
-% be very concise and objective. Nevertheless, do write full sentences. 
-% Try to have at most one paragraph per section, because line breaks 
-% do not look nice in a short entry.
-
- \begin{clarifications}
-% ToDo: write here short remarks that may help the reader to understand 
-% the inference rules of the proof system.
-%
-To determine the satisfiability of a formula $\varphi$ of monodic first-order
-discrete linear time temporal logic over expanding domains, the
-formula $\varphi$ is transformed into a \emph{Clausal Monodic Temporal Problem}
-$\mathcal{P} = \langle \mathcal{U, I, S, E} \rangle$ 
-where $\mathcal{U}$
-% (the universal part) 
-and $\mathcal{I}$ 
-% (the step part) 
-are sets of first-order clauses;
-$\mathcal{S}$ 
-% (the step part) 
-is a set of \emph{step clauses} of the form
-$p\rightarrow\Next q$,
-where $p$ and $q$ are propositions, or
-$P(t)\rightarrow\Next Q(t)$, where $P$ and $Q$ are unary predicates
-and $t$ is either a variable or a constant;
-$\mathcal{E}$  
-% (the eventuality part) 
-is a set of \emph{eventuality clauses}
-of the form $\Eventually L$, where $L$ is a propositional literal,
-$\Eventually (\neg)P(t)$, where $P$ is a unary predicate and $t$ is
-either a constant or a variable.
-%
-Inferences are restricted by an \emph{ordering} $\succ$ on literals
-and a subsumption-compatible \emph{selection function} $S$. $S$ maps
-any first-order clause $C$ to a possibly empty subset of its negative literals. 
-A literal $L$ is \emph{eligible} in a clause $L\lor C$ for a
-substitution $\sigma$ if either $L\in S(C)$, or $S(C)=\emptyset$  and
-$L\sigma$ is $\succ$-maximal wrt $C\sigma$.
+\begin{clarifications}
+  To determine the satisfiability of a formula $\varphi$ of monodic first-order
+  discrete linear time temporal logic over expanding domains, the
+  formula $\varphi$ is transformed into a \emph{Clausal Monodic Temporal Problem}
+  $\mathcal{P} = \langle \mathcal{U, I, S, E} \rangle$ 
+  where $\mathcal{U}$
+  % (the universal part) 
+  and $\mathcal{I}$ 
+  % (the step part) 
+  are sets of first-order clauses;
+  $\mathcal{S}$ 
+  % (the step part) 
+  is a set of \emph{step clauses} of the form
+  $p\rightarrow\Next q$,
+  where $p$ and $q$ are propositions, or
+  $P(t)\rightarrow\Next Q(t)$, where $P$ and $Q$ are unary predicates
+  and $t$ is either a variable or a constant;
+  $\mathcal{E}$  
+  % (the eventuality part) 
+  is a set of \emph{eventuality clauses}
+  of the form $\Eventually L$, where $L$ is a propositional literal,
+  $\Eventually (\neg)P(t)$, where $P$ is a unary predicate and $t$ is
+  either a constant or a variable.
+  %
+  Inferences are restricted by an \emph{ordering} $\succ$ on literals
+  and a subsumption-compatible \emph{selection function} $S$. $S$ maps
+  any first-order clause $C$ to a possibly empty subset of its negative literals. 
+  A literal $L$ is \emph{eligible} in a clause $L\lor C$ for a
+  substitution $\sigma$ if either $L\in S(C)$, or $S(C)=\emptyset$  and
+  $L\sigma$ is $\succ$-maximal w.r.t. $C\sigma$.
 \end{clarifications}
 
 \begin{history}
-% ToDo: write here short historical remarks about this proof system,
-% especially if they relate to other proof systems. 
-% Use "\iref{OtherProofSystem}" to refer to another proof system 
-% in the Encyclopedia (where "OtherProofSystem" is its ID). 
-% Use "\irefmissing{SuggestedIDForOtherProofSystem}" to refer to 
-% another proof system that is not yet available in the encyclopedia.
-Related to~\iref{FOTLResolution}, this calculus was introduced in
-\cite{Ludwig+Hustadt@CADE2009}.
-It has been implemented in the prover TSPASS~\cite{Ludwig+Hustadt@AIC2010}.
-Satisfiability equivalence of the transformation, soundness and
-refutational completeness of the calculus are shown in~\cite{Ludwig@Liverpool2010}.
-%A later
-%implementation focusing on fair derivations is provided in
-%TSPASS~\cite{Ludwig+Hustadt@CADE2009,Ludwig+Hustadt@AIC2010}.
+  Related to~\iref{FOTLResolution}, this calculus was introduced
+  in~\cite{Ludwig+Hustadt@CADE2009}. It has been implemented in the prover
+  TSPASS~\cite{Ludwig+Hustadt@AIC2010}. Satisfiability equivalence of the
+  transformation, soundness and refutational completeness of the calculus are
+  shown in~\cite{Ludwig@Liverpool2010}.
+  %A later implementation focusing on fair derivations is provided in
+  %TSPASS~\cite{Ludwig+Hustadt@CADE2009,Ludwig+Hustadt@AIC2010}.
 \end{history}
-
-%\begin{technicalities}
-%% ToDo: write here remarks about soundness, completeness,
-%% decidability...
-%Soundness, completeness and termination are shown in~\cite{DBLP:journals/tocl/DegtyarevFK06}.
-%\end{technicalities}
-
-
-% General Instructions:
-% =====================
-
-% The preferred length of an entry is 1 page. 
-% Do the best you can to fit your proof system in one page.
-%
-% If you are finding it hard to fit what you want in one page, remember:
-%
-%   * Your entry needs to be neither self-contained nor fully understandable
-%     (the interested reader may consult the cited full paper for details)
-%
-%   * If you are describing several proof systems in one entry, 
-%     consider splitting your entry.
-%
-%   * You may reduce the size of your entry by ommitting inference rules
-%     that are already described in other entries.
-%
-%   * Cite parsimoniously (see detailed citation instructions below).
-%
-% 
-% If you do not manage to fit everything in one page, 
-% it is acceptable for an entry to have 2 pages.
-%
-% For aesthetic reasons, it is preferable for an entry to have
-% 1 full page or 2 full pages, in order to avoid unused blank space.
-
-
-
-% Citation Instructions:
-% ======================
-
-% Please cite the original paper where the proof system was defined.
-% To do so, you may use the \cite command within 
-% one of the optional environments above,
-% or use the \nocite command otherwise.
-
-% You may also cite a modern paper or book where the 
-% proof system is explained in greater depth or clarity.
-% Cite parsimoniously.
-
-% Do not cite related work. Instead, use the "\iref" or "\irefmissing" 
-% commands to make an internal reference to another entry, 
-% as explained within the "history" environment above.
-
-% You do not need to create the "References" section yourself. 
-% This is done automatically.
-
-
-% Remove all instruction comments before submitting.
-
-
-% Leave an empty line above "\end{entry}".
 
 \end{entry}
