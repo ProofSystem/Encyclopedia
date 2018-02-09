@@ -1,51 +1,17 @@
-% If the calculus has an acronym, define it.
-% (e.g. \newcommand{\LK}{\ensuremath{\mathbf{LK}}\xspace})
+\calculusName{Untyped Lambda Reduction}
+\calculusAcronym{}
+\calculusLogic{}
+\calculusLogicOrder{Lambda Abstraction, First-Order}
+\calculusType{(Term-)Sequent Calculus}
+\calculusYear{2011}
 
-\calculusName{Untyped Lambda Reduction}         % The name of the calculus
-\calculusAcronym{}          % The acronym if defined above, or empty otherwise.
-\calculusLogic{}        % Specify the logic (e.g. Classical Logic, Intuitionistic Logic, ...) for which this calculus is intended.
-\calculusLogicOrder{Lambda Abstraction, First-Order}   % Specify the order of the logic (e.g. Propositional, Quantified Propositional, First-Order, Higher-Order, ...).
-\calculusType{(Term-)Sequent Calculus}         % Specify the calculus type (e.g. Tableau, Sequent Calculus, Hyper-Sequent Calculus, Natural Deduction, ...)
-\calculusYear{2011}         % The year when the calculus was published.
+\calculusAuthor{Michael Gabbay}
 
-\calculusAuthor{Michael Gabbay}       % The name(s) of the author(s) of the calculus.
-%\calculusAuthor{ToDo:FullNameAuthor2}
-%\calculusAuthor{ToDo:FullNameAuthor3}
-
-
-\entryTitle{Untyped $\lambda$ Reduction}     % Title of the entry (usually coincides with the name of the calculus).
+\entryTitle{Untyped $\lambda$ Reduction}
 \entryAuthor{Michael Gabbay}
-%\entryAuthor{ToDo:FullNameAuthor2}
-%\entryAuthor{ToDo:FullNameAuthor3}
-
-% The encyclopedia's peer-reviewing policy is described here:
-% http://proofsystem.github.io/Encyclopedia/
-%
-% Reviewers of this entry will be acknowledged in the following lines:
-% \entryReviewer{Reviewer 1's name}
-% \entryReviewer{Reviewer 2's name}
-% \entryReviewer{Reviewer 3's name}
-%
-% The lines above will be filled by the coordinators.
-% If you would like to indicate people
-% who could review your entry, contact the coordinators.
-
-
-% If you wish, use tags to give any other information
-% that might be helpful for classifying and grouping this entry:
-% e.g. \etag{Two-Sided Sequents}
-% e.g. \etag{Multiset Cedents}
-% e.g. \etag{List Cedents}
-% You are free to invent your own tags.
-% The Encyclopedia's coordinator will take care of
-% merging semantically similar tags in the future.
-
 
 \maketitle
 
-
-% If your files are called "MyProofSystem.tex" and "MyProofSystem.bib",
-% then you should write "\begin{entry}{MyProofSystem}" in the line below
 \begin{entry}{LambdaTermSequent}
 
 \newcommand{\pa}[1]{\langle #1\rangle}
@@ -59,97 +25,84 @@
 
 \textbf{Term-Sequent Rules}
 $$
+\begin{array}{cc}
 %
-\infer[(Ax_{\col})]{\Gamma\vdash {t}\col {t},\Psi,\Delta}{} \qquad
-\infer[(Cut_{\lambda})]{\Gamma\vdash\pa{\dots\Theta\dots}\col{t},\Psi,\Delta}{\Gamma\vdash\Theta\col{s},\Psi,\Delta&\Gamma\vdash\pa{\dots{s}\dots}\col{t},\Psi,\Delta}
-$$
-$$
-\infer[(\cdot L)]{\Gamma\vdash\pa{\dots{t}_1\cdot{t}_2\dots}\col
-{t},\Psi,\Delta}{\Gamma\vdash\pa{\dots\pa{{t}_1,{t}_2}\dots}\col
-{t},\Psi,\Delta} \quad \infer[(\cdot
-R)]{\Gamma\vdash\pa{\Theta_1,\Theta_2}\col{t}_1\cdot{t}_2,\Psi,\Delta}{\Gamma\vdash\Theta_1\col{t}_1,\Psi,\Delta&\Gamma\vdash\Theta_2\col{t}_2,\Psi,\Delta
-}
-$$
-$$
-%
-\infer[(\aep)]{\Gamma,{t}_1\aeq{t}_2\vdash\pa{\dots\Theta\dots}\col{t},\Psi,\Delta}{\Gamma\vdash\Theta\col{t}_1,\Psi,\Delta&\Gamma\vdash\pa{\dots{t}_2\dots}\col{t},\Psi,\Delta}%%\
-\qquad
-%
-\infer[(\aer)]{\Gamma\vdash {t}_1\aeq{t}_2,\Psi,\Delta}{\Gamma\vdash
-{t}_1\col{t}_2,\Psi,\Delta}
-%
-$$
-$$
-%
-\infer[(\lambda
-L)]{\Gamma\vdash\pa{\dots\pa{\lambda{x}.{t}_2,\Theta}\dots}\col{t},\Psi,\Delta}{\Gamma\vdash\Theta\col{t}_1,\Psi,\Delta&\Gamma\vdash\pa{\dots{t}_2[{x}/{t}_1]\dots}\col{t},\Psi,\Delta}
-%
-\qquad
-%
-\infer[(\lambda
-R)]{\Gamma\vdash\Theta\col\lambda{x}.{t},\Psi,\Delta}{\Gamma\vdash\pa{\Theta,{y}}\col{t}[{x}/{y}]
-,\Psi,\Delta}
-%\ \
-%
-%
-%
+\infer[(Ax_{\col})]{\Gamma \vdash {t} \col{t}, \Psi, \Delta}{} 
+&
+\infer[(Cut_{\lambda})]{\Gamma \vdash \pa{\dots\Theta\dots}\col{t}, \Psi, \Delta}
+                       {\Gamma \vdash \Theta\col{s}, \Psi, \Delta & \Gamma \vdash \pa{\dots{s}\dots}\col{t}, \Psi, \Delta}
+\\[0.8em]
+\infer[(\cdot L)]{\Gamma \vdash \pa{\dots{t}_1\cdot{t}_2\dots}\col{t}, \Psi, \Delta}
+                 {\Gamma \vdash \pa{\dots\pa{{t}_1, {t}_2}\dots}\col{t}, \Psi, \Delta} 
+&
+\infer[(\cdot R)]{\Gamma \vdash \pa{\Theta_1, \Theta_2}\col{t}_1\cdot{t}_2, \Psi, \Delta}
+                 {\Gamma \vdash \Theta_1\col{t}_1, \Psi, \Delta & \Gamma \vdash \Theta_2\col{t}_2, \Psi, \Delta}
+\\[0.8em]
+\infer[(\aep)]{\Gamma, {t}_1\aeq{t}_2 \vdash \pa{\dots\Theta\dots}\col{t}, \Psi, \Delta}
+              {\Gamma \vdash \Theta\col{t}_1, \Psi, \Delta & \Gamma \vdash \pa{\dots{t}_2\dots}\col{t}, \Psi, \Delta}
+&
+\infer[(\aer)]{\Gamma \vdash {t}_1\aeq{t}_2, \Psi, \Delta}
+              {\Gamma \vdash {t}_1\col{t}_2, \Psi, \Delta}
+\\[0.8em]
+\infer[(\lambda L)]{\Gamma \vdash \pa{\dots\pa{\lambda{x}.{t}_2, \Theta}\dots}\col{t}, \Psi, \Delta}
+                   {\Gamma \vdash \Theta\col{t}_1, \Psi, \Delta & \Gamma \vdash \pa{\dots{t}_2[{x}/{t}_1]\dots}\col{t}, \Psi, \Delta}
+&
+\infer[(\lambda R)]{\Gamma \vdash \Theta\col\lambda{x}.{t}, \Psi, \Delta}
+                   {\Gamma \vdash \pa{\Theta, {y}}\col{t}[{x}/{y}], \Psi, \Delta}
+\end{array}
 $$
 \textbf{(Classical) Sequent Rules}
 $$
 %
-\infer[(Cut)]{\Gamma\vdash\Psi,\Delta}{\Gamma\vdash \Psi,{A},\Delta
-&\Gamma,{A}\vdash \Psi,\Delta}
-%
+\infer[(Cut)]{\Gamma \vdash \Psi, \Delta}
+             {\Gamma \vdash  \Psi, {A}, \Delta & \Gamma, {A} \vdash  \Psi, \Delta}
 %
 $$
 $$
 %
-%
-\infer[(\forall L)]{\Gamma,\forall {x}.{A}\vdash\Psi,\Delta}{\Gamma,{A}[{x}/{t}]\vdash
-\Psi,\Delta}
+\infer[(\forall L)]{\Gamma, \forall {x}.{A} \vdash \Psi, \Delta}
+                   {\Gamma, {A}[{x}/{t}] \vdash \Psi, \Delta}
 %
 \qquad
 %
-\infer[(\forall R)]{\Gamma\vdash\Psi,\forall {x}.{A},\Delta}{\Gamma\vdash \Psi,{A}[{x}/{y}],\Delta}% \ \
+\infer[(\forall R)]{\Gamma \vdash \Psi, \forall {x}.{A}, \Delta}
+                   {\Gamma \vdash \Psi, {A}[{x}/{y}], \Delta}% \ \
 %
-%\parbox{11ex}{\smaller ${y}$ not free in$\Gamma,\Delta$ or $\Psi$}
+%\parbox{11ex}{\smaller ${y}$ not free in$\Gamma, \Delta$ or $\Psi$}
 % %\quad
-%\infer[(\cn R)]{\Gamma\vdash\cn {A},\Delta}{\Gamma,{A}\vdash\Delta}
+%\infer[(\cn R)]{\Gamma \vdash \cn {A}, \Delta}{\Gamma, {A} \vdash \Delta}
 %\quad
-%\infer[(\cn L)]{\Gamma,\cn {A}\vdash\Delta}{\Gamma\vdash {A},\Delta}
+%\infer[(\cn L)]{\Gamma, \cn {A} \vdash \Delta}{\Gamma \vdash  {A}, \Delta}
 $$
 $$
-\infer[(\ci L)]{\Gamma,{A}\ci {B}\vdash \Psi,\Delta}{\Gamma\vdash
-{A},\Delta&\Gamma,{B}\vdash \Psi,\Delta} \qquad \infer[(\ci
-R)]{\Gamma\vdash\Psi, {A}\ci {B},\Delta}{\Gamma,{A}\vdash\Psi,{B},\Delta}
-\qquad \infer[(\bot)]{\Gamma,\bot\vdash
-\Psi,\Delta}{}%\Gamma,{A}\vdash\Psi,\Delta}
+\infer[(\ci L)]{\Gamma, {A}\ci {B} \vdash  \Psi, \Delta}
+               {\Gamma \vdash {A}, \Delta&\Gamma, {B} \vdash  \Psi, \Delta} 
+\qquad 
+\infer[(\ci R)]{\Gamma \vdash \Psi,  {A}\ci {B}, \Delta}
+               {\Gamma, {A} \vdash \Psi, {B}, \Delta}
+\qquad 
+\infer[(\bot)]{\Gamma, \bot \vdash \Psi, \Delta}{}%\Gamma, {A} \vdash \Psi, \Delta}
 $$
 \end{calculus}
 
-% The following sections ("clarifications", "history",
-% "technicalities") are optional. If you use them,
-% be very concise and objective. Nevertheless, do write full sentences.
-% Try to have at most one paragraph per section, because line breaks
-% do not look nice in a short entry.
-
- \begin{clarifications}
-% ToDo: write here short remarks that may help the reader to understand
-% the inference rules of the proof system.
-A {\em term-sequent} is a pair $\Theta \col {t}$ where $\Theta$ is a tree and ${t}$ is a term. Define {\em trees} by: $\Theta::={t} \mid \pa{\Theta_1,\Theta_2}$. If $\Theta'$ occurs as a {\em subtree} of $\Theta$ then we write $\Theta$ as $\pa{\dots\Theta'\dots}$. A {\em sequent} has the form $\Gamma\vdash \Psi,\Delta$ where $\Gamma$ and $\Delta$ are sets of formulae and $\Psi$ is a set of term-sequents. ${y}$ must not be free in the lower term-sequent of $(\lambda R)$ nor the lower sequent of $(\forall R)$.
- \end{clarifications}
-
-% \begin{history}
-% ToDo: write here short historical remarks about this proof system,
-% especially if they relate to other proof systems.
-% Use "\iref{OtherProofSystem}" to refer to another proof system
-% in the Encyclopedia (where "OtherProofSystem" is its ID).
-% Use "\irefmissing{SuggestedIDForOtherProofSystem}" to refer to
-% another proof system that is not yet available in the encyclopedia.
-% \end{history}
+\begin{clarifications}
+A {\em term-sequent} is a pair $\Theta \col {t}$ where $\Theta$ is a tree and
+${t}$ is a term. Define {\em trees} by: $\Theta::={t} \mid
+\pa{\Theta_1, \Theta_2}$. If $\Theta'$ occurs as a {\em subtree} of $\Theta$ then
+we write $\Theta$ as $\pa{\dots\Theta'\dots}$. A {\em sequent} has the form
+$\Gamma \vdash \Psi, \Delta$ where $\Gamma$ and $\Delta$ are sets of formulae and
+$\Psi$ is a set of term-sequents. ${y}$ must not be free in the lower
+term-sequent of $(\lambda R)$ nor the lower sequent of $(\forall R)$.
+\end{clarifications}
 
 \begin{technicalities}
-Cut elimination --- for both $(Cut)$ and $(Cut_{\lambda})$ --- is proved in~\cite{mgabbay:lambdacut}, as is soundness and completeness of term-sequents with respect to the calculus of untyped lambda reduction with $\beta$-reduction and $\eta$-expansion. Soundness and completeness of the full calculus is shown for an axiomatic presentation of a stronger system in~\cite{gabbay:simcks} (using a model theory of lambda reduction similar to {\em graph models} which is expanded further in~\cite{gabbay:simcmt,Gabbay2016}).
+Cut elimination --- for both $(Cut)$ and $(Cut_{\lambda})$ --- is proved
+in~\cite{mgabbay:lambdacut}, as is soundness and completeness of term-sequents
+with respect to the calculus of untyped lambda reduction with $\beta$-reduction
+and $\eta$-expansion. Soundness and completeness of the full calculus is shown
+for an axiomatic presentation of a stronger system in~\cite{gabbay:simcks}
+(using a model theory of lambda reduction similar to {\em graph models} which is
+expanded further in~\cite{gabbay:simcmt,Gabbay2016}).
 \end{technicalities}
 
 \end{entry} 
