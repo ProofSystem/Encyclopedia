@@ -1,23 +1,17 @@
+\calculusName{Resolution for First-Order Temporal Logic}
+\calculusAcronym{}
+\calculusLogic{Monodic First Order Temporal Logic}
+\calculusLogicOrder{First-Order}
+\calculusType{Resolution}
+\calculusYear{2003}
 
-% If the calculus has an acronym, define it.
-% (e.g. \newcommand{\LK}{\ensuremath{\mathbf{LK}}\xspace})
-\calculusName{Resolution for First-Order Temporal Logic}         % The name of the calculus
-\calculusAcronym{}          % The acronym if defined above, or empty otherwise. 
-\calculusLogic{Monodic First Order Temporal Logic}        % Specify the logic (e.g. Classical Logic, Intuitionistic Logic, ...) for which this calculus is intended.
-\calculusLogicOrder{First-Order}   % Specify the order of the logic (e.g. Propositional, Quantified Propositional, First-Order, Higher-Order, ...).
-\calculusType{Resolution}         % Specify the calculus type (e.g. Tableau, Sequent Calculus, Hyper-Sequent Calculus, Natural Deduction, ...)
-\calculusYear{2003}         % The year when the calculus was published.
-
-\calculusAuthor{Boris Konev}       % The name(s) of the author(s) of the calculus.
+\calculusAuthor{Boris Konev}
 \calculusAuthor{Anatoli Degtyarev}
 \calculusAuthor{Michael Fisher}
 \calculusAuthor{Ullrich Hustadt}
 %\calculusAuthor{Clare Dixon}
 
-
-
-
-\entryTitle{Resolution for Monodic First-Order Temporal Logic}     % Title of the entry (usually coincides with the name of the calculus).
+\entryTitle{Resolution for Monodic First-Order Temporal Logic}
 \entryAuthor{Clare Dixon}  
 \entryAuthor{Michael Fisher}   
 \entryAuthor{Ullrich Hustadt}
@@ -25,39 +19,9 @@
 \implementation{TeMP}{http://cgi.csc.liv.ac.uk/~konev/software/TeMP/}
 
 
-% The encyclopedia's peer-reviewing policy is described here: 
-% http://proofsystem.github.io/Encyclopedia/
-%
-% Reviewers of this entry will be acknowledged in the following lines:
-% \entryReviewer{Reviewer 1's name}
-% \entryReviewer{Reviewer 2's name}
-% \entryReviewer{Reviewer 3's name}
-%
-% The lines above will be filled by the coordinators. 
-% If you would like to indicate people 
-% who could review your entry, contact the coordinators.
-
-
-% If you wish, use tags to give any other information 
-% that might be helpful for classifying and grouping this entry:
-% \tag{Monodic First-Order Temporal Logic}
-% e.g. \tag{Multiset Cedents}
-% e.g. \tag{List Cedents}
-% You are free to invent your own tags. 
-% The Encyclopedia's coordinator will take care of 
-% merging semantically similar tags in the future.
-
-
 \maketitle
 
-
-% If your files are called "MyProofSystem.tex" and "MyProofSystem.bib", 
-% then you should write "\begin{entry}{MyProofSystem}" in the line below
 \begin{entry}{FOTLResolution}  
-
-% Define here any newcommands you may need:
-% e.g. \newcommand{\necessarily}{\Box}
-% e.g. \newcommand{\possibly}{\Diamond}
 
 %\newcommand{\Next}[0]{\mathop{\raisebox{0.2ex}{\scalebox{0.9}{\ensuremath{\circle}}}}}
 \newcommand{\Always}[0]{\mathop{\scalebox{1.25}{\ensuremath{\Box}}}}
@@ -93,12 +57,6 @@
 
 \begin{calculus}
 
-% Add the inference rules of your proof system here.
-% The "proof.sty" and "bussproofs.sty" packages are available.
-% If you need any other package, please contact the coordinator (Bruno
-% Woltzenlogel Paleo <bruno.wp@gmail.com>) 
-
-%
 
 \newcommand{\myspace}{6pt}
 
@@ -168,144 +126,69 @@ $L$.
 % or no new clause can be derived (satisfiable).    
 \end{calculus}
 
-% The following sections ("clarifications", "history", 
-% "technicalities") are optional. If you use them, 
-% be very concise and objective. Nevertheless, do write full sentences. 
-% Try to have at most one paragraph per section, because line breaks 
-% do not look nice in a short entry.
-
- \begin{clarifications}
-% ToDo: write here short remarks that may help the reader to understand 
-% the inference rules of the proof system.
-%
-To determine the satisfiability of a formula of monodic first-order
-discrete linear time temporal logic over expanding domains, the
-formula is transformed into a \emph{Monodic Temporal Problem
-in Divided Separated Normal Form}
-$\mathcal{P} = \langle \mathcal{U, I, S, E} \rangle$ 
-where $\mathcal{U}$
-% (the universal part) 
-and $\mathcal{I}$ 
-% (the step part) 
-are finite sets of arbitrary closed first-order formulae;
-$\mathcal{S}$ 
-% (the step part) 
-is a finite set of formulae of the form
-$p\rightarrow\Next q$ (\emph{original ground step clause}), 
-where $p$ and $q$ are propositions, or
-$P(x)\rightarrow\Next Q(x)$ (\emph{original non-ground step clauses}), 
-where $P$ and $Q$ are unary predicates and $x$ is variable; and
-$\mathcal{E}$  
-% (the eventuality part) 
-is a set of \emph{eventuality clauses}
-of the form $\Eventually l$, where $l$ is a propositional literal,
-$\Eventually L(c)$, where $L(c)$ is a unary ground literal,
-or
-$\Eventually L(x)$, where $L(x)$ is a unary non-ground literal.
-
-If $P_1(x)\rightarrow\Next Q_1(x)$, \dots, $P_k(x)\rightarrow\Next Q_k(x)$ are
-original non-ground step clauses, then
-$\forall x (P_1(x)\lor\dots\lor P_k(x)\rightarrow\Next
- \forall x (Q_1(x)\lor\dots\lor Q_k(x))$,
-$\exists x (P_1(x)\land\dots\land P_k(x)\rightarrow\Next
- \exists x (Q_1(x)\land\dots\land Q_k(x))$, and
-$P_i(c)\rightarrow Q_i(c)$, $1\leq i\leq k$, where $c$ is a constant
-occurring in $\mathcal{P}$, are \emph{derived step clauses}.
-If $\Phi_1\rightarrow\Next\Psi_1$, \dots,$\Phi_n\rightarrow\Psi_n$
-are derived step clauses or original ground step clauses, then
-$\bigwedge_{i=1}^n\Phi_i\rightarrow\Next\bigwedge_{i=1}^n\Psi_i$ is a
-\emph{merged derived step clause}. 
-If $\mathcal{A}\rightarrow\Next\mathcal{B}$ is a merged derived step
-clause and $P_1(x)\rightarrow\Next Q_1(x)$, \dots,
-$P_k(x)\rightarrow\Next Q_k(x)$ are original step clauses,
-then $\forall x (\mathcal{A}\land\bigwedge_{i=1}^k P_i(x))
-\rightarrow\Next (\mathcal{B}\land\bigwedge_{i=1}^k Q_i(x))$
-is a \emph{full merged step clause}.
+\begin{clarifications}
+  To determine the satisfiability of a formula of monodic first-order
+  discrete linear time temporal logic over expanding domains, the
+  formula is transformed into a \emph{Monodic Temporal Problem
+  in Divided Separated Normal Form}
+  $\mathcal{P} = \langle \mathcal{U, I, S, E} \rangle$ 
+  where $\mathcal{U}$
+  % (the universal part) 
+  and $\mathcal{I}$ 
+  % (the step part) 
+  are finite sets of arbitrary closed first-order formulae;
+  $\mathcal{S}$ 
+  % (the step part) 
+  is a finite set of formulae of the form
+  $p\rightarrow\Next q$ (\emph{original ground step clause}), 
+  where $p$ and $q$ are propositions, or
+  $P(x)\rightarrow\Next Q(x)$ (\emph{original non-ground step clauses}), 
+  where $P$ and $Q$ are unary predicates and $x$ is variable; and
+  $\mathcal{E}$  
+  % (the eventuality part) 
+  is a set of \emph{eventuality clauses}
+  of the form $\Eventually l$, where $l$ is a propositional literal,
+  $\Eventually L(c)$, where $L(c)$ is a unary ground literal,
+  or
+  $\Eventually L(x)$, where $L(x)$ is a unary non-ground literal.
+  
+  If $P_1(x)\rightarrow\Next Q_1(x)$, \dots, $P_k(x)\rightarrow\Next Q_k(x)$ are
+  original non-ground step clauses, then
+  $\forall x (P_1(x)\lor\dots\lor P_k(x)\rightarrow\Next
+   \forall x (Q_1(x)\lor\dots\lor Q_k(x))$,
+  $\exists x (P_1(x)\land\dots\land P_k(x)\rightarrow\Next
+   \exists x (Q_1(x)\land\dots\land Q_k(x))$, and
+  $P_i(c)\rightarrow Q_i(c)$, $1\leq i\leq k$, where $c$ is a constant
+  occurring in $\mathcal{P}$, are \emph{derived step clauses}.
+  If $\Phi_1\rightarrow\Next\Psi_1$, \dots,$\Phi_n\rightarrow\Psi_n$
+  are derived step clauses or original ground step clauses, then
+  $\bigwedge_{i=1}^n\Phi_i\rightarrow\Next\bigwedge_{i=1}^n\Psi_i$ is a
+  \emph{merged derived step clause}. 
+  If $\mathcal{A}\rightarrow\Next\mathcal{B}$ is a merged derived step
+  clause and $P_1(x)\rightarrow\Next Q_1(x)$, \dots,
+  $P_k(x)\rightarrow\Next Q_k(x)$ are original step clauses,
+  then $\forall x (\mathcal{A}\land\bigwedge_{i=1}^k P_i(x))
+  \rightarrow\Next (\mathcal{B}\land\bigwedge_{i=1}^k Q_i(x))$
+  is a \emph{full merged step clause}.
 \end{clarifications}
 
 \begin{history}
-% ToDo: write here short historical remarks about this proof system,
-% especially if they relate to other proof systems. 
-% Use "\iref{OtherProofSystem}" to refer to another proof system 
-% in the Encyclopedia (where "OtherProofSystem" is its ID). 
-% Use "\irefmissing{SuggestedIDForOtherProofSystem}" to refer to 
-% another proof system that is not yet available in the encyclopedia.
-Related to~\iref{LTLClausalResolution}, this calculus was introduced in
-\cite{Degtyarev+Fisher+Konev@CADE2003},
-a comprehensive description is given
-in~\cite{DBLP:journals/tocl/DegtyarevFK06}. It was 
-extended to handling equality in~\cite{Konev+Degtyarev+Fisher@LPAR2003} 
-and a calculus closer to an implementable form was provided 
-in~\cite{KDDFH05}. It has been implemented in the prover TeMP
-\cite{DBLP:conf/cade/HustadtKRV04}.
-%Satisfiability equivalence of the transformation, 
-Soundness and completeness 
-%of the calculus 
-are shown 
-in~\cite{DBLP:journals/tocl/DegtyarevFK06}. 
-%A later
-%implementation focusing on fair derivations is provided in
-%TSPASS~\cite{Ludwig+Hustadt@CADE2009,Ludwig+Hustadt@AIC2010}.
+  Related to~\iref{LTLClausalResolution}, this calculus was introduced in
+  \cite{Degtyarev+Fisher+Konev@CADE2003},
+  a comprehensive description is given
+  in~\cite{DBLP:journals/tocl/DegtyarevFK06}. It was 
+  extended to handling equality in~\cite{Konev+Degtyarev+Fisher@LPAR2003} 
+  and a calculus closer to an implementable form was provided 
+  in~\cite{KDDFH05}. It has been implemented in the prover
+  TeMP~\cite{DBLP:conf/cade/HustadtKRV04}.
+  %Satisfiability equivalence of the transformation, 
+  Soundness and completeness 
+  %of the calculus 
+  are shown 
+  in~\cite{DBLP:journals/tocl/DegtyarevFK06}. 
+  %A later
+  %implementation focusing on fair derivations is provided in
+  %TSPASS~\cite{Ludwig+Hustadt@CADE2009,Ludwig+Hustadt@AIC2010}.
 \end{history}
-
-%\begin{technicalities}
-%% ToDo: write here remarks about soundness, completeness,
-%% decidability...
-%Soundness, completeness and termination are shown in~\cite{DBLP:journals/tocl/DegtyarevFK06}.
-%\end{technicalities}
-
-
-% General Instructions:
-% =====================
-
-% The preferred length of an entry is 1 page. 
-% Do the best you can to fit your proof system in one page.
-%
-% If you are finding it hard to fit what you want in one page, remember:
-%
-%   * Your entry needs to be neither self-contained nor fully understandable
-%     (the interested reader may consult the cited full paper for details)
-%
-%   * If you are describing several proof systems in one entry, 
-%     consider splitting your entry.
-%
-%   * You may reduce the size of your entry by ommitting inference rules
-%     that are already described in other entries.
-%
-%   * Cite parsimoniously (see detailed citation instructions below).
-%
-% 
-% If you do not manage to fit everything in one page, 
-% it is acceptable for an entry to have 2 pages.
-%
-% For aesthetic reasons, it is preferable for an entry to have
-% 1 full page or 2 full pages, in order to avoid unused blank space.
-
-
-
-% Citation Instructions:
-% ======================
-
-% Please cite the original paper where the proof system was defined.
-% To do so, you may use the \cite command within 
-% one of the optional environments above,
-% or use the \nocite command otherwise.
-
-% You may also cite a modern paper or book where the 
-% proof system is explained in greater depth or clarity.
-% Cite parsimoniously.
-
-% Do not cite related work. Instead, use the "\iref" or "\irefmissing" 
-% commands to make an internal reference to another entry, 
-% as explained within the "history" environment above.
-
-% You do not need to create the "References" section yourself. 
-% This is done automatically.
-
-
-% Remove all instruction comments before submitting.
-
-
-% Leave an empty line above "\end{entry}".
 
 \end{entry}
