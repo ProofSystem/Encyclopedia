@@ -1,55 +1,22 @@
-% If the calculus has an acronym, define it.
-% (e.g. \newcommand{\LK}{\ensuremath{\mathbf{LK}}\xspace})
+\calculusName{Sequent Systems for Negative Modalities}
+\calculusAcronym{}
+\calculusLogic{Negative Modal Logics}
+\calculusLogicOrder{Propositional}
+\calculusType{Sequent Calculus}
+\calculusYear{2016}
 
-\calculusName{Sequent Systems for Negative Modalities}         % The name of the calculus
-\calculusAcronym{}          % The acronym if defined above, or empty otherwise.
-\calculusLogic{Negative Modal Logics}        % Specify the logic (e.g. Classical Logic, Intuitionistic Logic, ...) for which this calculus is intended.
-\calculusLogicOrder{Propositional}   % Specify the order of the logic (e.g. Propositional, Quantified Propositional, First-Order, Higher-Order, ...).
-\calculusType{Sequent Calculus}         % Specify the calculus type (e.g. Tableau, Sequent Calculus, Hyper-Sequent Calculus, Natural Deduction, ...)
-\calculusYear{2016}         % The year when the calculus was published.
-
-\calculusAuthor{Ori Lahav}       % The name(s) of the author(s) of the calculus.
+\calculusAuthor{Ori Lahav}
 \calculusAuthor{Jo\~ao Marcos}
 \calculusAuthor{Yoni Zohar}
 
 
-\entryTitle{Sequent Systems for Negative Modalities}     % Title of the entry (usually coincides with the name of the calculus).
+\entryTitle{Sequent Systems for Negative Modalities}
 \entryAuthor{Yoni Zohar}
-%\entryAuthor{ToDo:FullNameAuthor3}
-
-% The encyclopedia's peer-reviewing policy is described here:
-% http://proofsystem.github.io/Encyclopedia/
-%
-% Reviewers of this entry will be acknowledged in the following lines:
-% \entryReviewer{Reviewer 1's name}
-% \entryReviewer{Reviewer 2's name}
-% \entryReviewer{Reviewer 3's name}
-%
-% The lines above will be filled by the coordinators.
-% If you would like to indicate people
-% who could review your entry, contact the coordinators.
-
-
-% If you wish, use tags to give any other information
-% that might be helpful for classifying and grouping this entry:
-% e.g. \etag{Two-Sided Sequents}
-% e.g. \etag{Multiset Cedents}
-% e.g. \etag{List Cedents}
-% You are free to invent your own tags.
-% The Encyclopedia's coordinator will take care of
-% merging semantically similar tags in the future.
-
 
 \maketitle
 
-
-% If your files are called "MyProofSystem.tex" and "MyProofSystem.bib",
-% then you should write "\begin{entry}{MyProofSystem}" in the line below
 \begin{entry}{negmodal}
 
-% Define here any newcommands you may need:
-% e.g. \newcommand{\necessarily}{\Box}
-% e.g. \newcommand{\possibly}{\Diamond}
 \makeatletter
 \newcommand\incircbin
 {%
@@ -81,13 +48,6 @@
 
 \newcommand{\ineg}{{\smallsmile}}
 \newcommand{\uneg}{{\smallfrown}}
-%\newcommand{\wsmile}{\scalebox{1}{$\mathrlap{\Circle}\textcolor{black}{\smallsmile}$}}
-%\newcommand{\wfrown}{\scalebox{1}{$\mathrlap{\Circle}\textcolor{black}{\smallfrown}$}}
-%\newcommand*\circled[1]{\tikz[baseline=(char.base)]{   \node[shape=circle,draw,inner sep=1pt] (char) {#1};}}
-%\newcommand{\wsmile}{{\circled{\ineg}}}
-%\newcommand{\wfrown}{{\circled{\uneg}}}
-%\newcommand{\wsmile}{{\textcircled{\ineg}}}
-%\newcommand{\wfrown}{{\textcircled{\uneg}}}
 \newcommand{\wsmile}{{\incircbin{\ineg}}}
 \newcommand{\wfrown}{{\incircbin{\uneg}}}
 
@@ -112,13 +72,8 @@
 
 \begin{calculus}
 
-% Add the inference rules of your proof system here.
-% The "proof.sty" and "bussproofs.sty" packages are available.
-% If you need any other package, please contact the coordinator (Bruno Woltzenlogel Paleo <bruno.wp@gmail.com>)
-
 \renewcommand{\arraystretch}{2}
 \centering\footnotesize
-%\begin{tabular}{ccc@{\hspace{2em}}cc}
 \begin{tabular}{ccc@{\hspace{1em}}ccc@{\hspace{1em}}ccc@{\hspace{1em}}cc}
 ~&&&
 ${[{\ineg}{\Ra}]}$
@@ -180,18 +135,10 @@ $[\Di_{4}]$
 \end{tabular}
 \normalsize
 
-
-
 \end{calculus}
 
-% The following sections ("clarifications", "history",
-% "technicalities") are optional. If you use them,
-% be very concise and objective. Nevertheless, do write full sentences.
-% Try to have at most one paragraph per section, because line breaks
-% do not look nice in a short entry.
-
- \begin{clarifications}
- $\mostbasic$ is obtained from propositional positive $\LK$
+\begin{clarifications}
+ $\mostbasic$ is obtained from propositional positive $\LK$~\iref{GentzenLK}
  by the addition of the rules for $\wsmile$ and $\wfrown$.
  {$\GPK=\mostbasic+[\uneg\Ra]+[\ineg\Ra]$,}
  {$\GPKD=\GPK+[\Di]$,}
@@ -201,27 +148,21 @@ $[\Di_{4}]$
  {$\GPKFour=\mostbasic+[\KFour_{1}]+[\KFour_{2}]$,}
  {$\GPKDB=\GPKB+[\Di_{\B}]$,} and
  {$\GPKFourD=\GPKFour+[\Di_{\KFour}]$.}
+\end{clarifications}
 
- \end{clarifications}
+\begin{history}
+  All systems enjoy the replacement property, which is missing in various logics
+  that employ a non-classical negation, such as Kleene's three-valued logic, and
+  da Costa's $C_{1}$. $\GPK$ was introduced in~\cite{dod:mar:ENTCS2013}. All
+  other systems were introduced in~\cite{lahav_it_2016,Lahav2017}.
+\end{history}
 
- \begin{history}
-All systems enjoy the replacement property,
- which is missing in various logics that employ a non-classical negation,
- such as Kleene's three-valued logic, and da Costa's $C_{1}$.
-$\GPK$ was introduced in \cite{dod:mar:ENTCS2013}. All other systems were introduced in \cite{lahav_it_2016,Lahav2017}.
- \end{history}
-
- \begin{technicalities}
-All systems enjoy a generalized subformula property,
-in which $\ineg\varphi$ is considered a subformula of $\wsmile\varphi$
-(and $\uneg\varphi$ is a subformula of $\wfrown\varphi$).
-All systems that do not contain $\B$ also enjoy
-cut-admissibility.
-These facts were proven semantically, using
-the general mechanism of \cite{Lahav:2013:USF:2555591.2528930}.
- \end{technicalities}
-
-
-% Leave an empty line above "\end{entry}".
+\begin{technicalities}
+  All systems enjoy a generalized sub-formula property, in which $\ineg\varphi$
+  is considered a sub-formula of $\wsmile\varphi$ (and $\uneg\varphi$ is a
+  sub-formula of $\wfrown\varphi$).  All systems that do not contain $\B$ also
+  enjoy cut-admissibility.  These facts were proven semantically, using the
+  general mechanism of~\cite{Lahav:2013:USF:2555591.2528930}.
+\end{technicalities}
 
 \end{entry}
