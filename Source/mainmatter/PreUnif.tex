@@ -31,35 +31,35 @@
 % If you need any other package, please contact the editor (bruno@logic.at)
 
 \[
-\infer[delete] {S}
+\infer[\mathit{delete}] {S}
                {\{\upair u u\} \cup S}
 \qquad
-\infer[varelim]{\{\spair z {{\lambda \vc x k}.v}\} \cup \sigma(S)\downarrow_\beta}
+\infer[\mathit{varelim}]{\{\spair z {{\lambda \vc x k}.v}\} \cup \sigma(S)\downarrow_\beta}
                {\{\upair {{\lambda\vc x k.z(\vc x k)}} {\lambda\vc x k.v}\} \cup S}
-\]
+\]\\[-1em]
 \[
-\infer[decomp] {\{\upair {{\lambda\vc x k}.v_1} {{\lambda\vc x k}.u_1} ,\ldots,
+\infer[\mathit{decomp}] {\{\upair {{\lambda\vc x k}.v_1} {{\lambda\vc x k}.u_1} ,\ldots,
                   \upair {{\lambda\vc x k}.v_n} {{\lambda\vc x k}.u_n}\}  \cup S}
                {\{\upair {{\lambda\vc x k}.a(\vc v n)}
                          {{\lambda\vc x k}.a(\vc u n}\} \cup S}
-\]
+\]\\[-1em]
 \[
-\infer[imitate]{\{\upair {y\uparrow_\eta} {t\uparrow_\eta}, \upair {\lambda\vc x k.y(\vc u n)}
+\infer[\mathit{imitate}]{\{\upair {y\uparrow_\eta} {t\uparrow_\eta}, \upair {\lambda\vc x k.y(\vc u n)}
                  {\lambda\vc x k.b(\vc v m)}\} \cup S}
                {\{\upair {\lambda\vc x k.y(\vc u n)}
                {\lambda\vc x k.b(\vc v m)}\} \cup S}
 \qquad
-\infer[project]{\{\upair {y\uparrow_\eta} {s\uparrow_\eta}, \upair {\lambda\vc x k.y(\vc u n)}
+\infer[\mathit{project}]{\{\upair {y\uparrow_\eta} {s\uparrow_\eta}, \upair {\lambda\vc x k.y(\vc u n)}
                  {\lambda\vc x k.a(\vc v m)}\} \cup S}
                {\{\upair {\lambda\vc x k.y(\vc u n)}
                {\lambda\vc x k.a(\vc v m)}\} \cup S}
-\]
+\]\\
 Where $a\in\Sigma$ or $a\in{\vc x k}$; $b\in\Sigma$; $z$ does not occur in $v$;
 $\sigma = [\lambda\vc x k.v/x]$; $t = \lambda\vc x n.b(\overline{y_m(\vc x n)})$;
 $s = \lambda\vc x n.x_i(\overline{y_l(\vc x n)})$ for $0<i\leq n$ and $l = \texttt{ty}(x_i)$.
 \end{calculus}
 
- \begin{clarifications}
+\begin{clarifications}
   $\Sigma$ is the term signature. $\vc o p = \vco o p$. $z,x,\vc x k$ and $y,\vc y m$ are variables.
   $v,\vc v n$ and $u,\vc u n$ are terms.
   $\upair v u$ and $\spair v u$ are unsolved and solved, respectively, pairs of $\lambda$-terms.
@@ -67,79 +67,32 @@ $s = \lambda\vc x n.x_i(\overline{y_l(\vc x n)})$ for $0<i\leq n$ and $l = \text
   $\downarrow_\beta$ denotes $\beta$-normalization and $\uparrow_\eta$ denotes $\eta$-expansion.
   $\texttt{ty}(a) = n$ for a symbol $a$ of type $\beta_1\rightarrow\ldots\rightarrow \beta_n\rightarrow \gamma$.
   The set $S$ must originaly contain terms in $\beta$-normalized and $\eta$-expanded form.
-   \end{clarifications}
+\end{clarifications}
 
-
- \begin{history}
+\begin{history}
    In contrast to the first-order case,
    the question whether higher-order terms are unifiable is
-   undecidable already in the second-order case \cite{goldfarb81tcs}.
+   undecidable already in the second-order case~\cite{goldfarb81tcs}.
    The first complete procedure for higher-order unification was given by
-   Jensen and Pietrzykowski \cite{jensen76tcs}.
+   Jensen and Pietrzykowski~\cite{jensen76tcs}.
    The use of pre-unifiers, introduced by Huet, enabled the search to
    be less redundant and more efficient.
- \end{history}
+\end{history}
 
 \begin{technicalities}
-  Huet \cite{huet75tcs} introduced the procedure without assuming
-  the axiom of functional extensionality and showed that assuming this axiom
-  makes the procedure non-redundant.
-  The above set of rules assumes extensionality.
-The set $S$ is considered
-   pre-solved if it contains only solved or ``flex-flex" pairs where a ``flex" term
-   is a term whose head is a free variable.
-   The solved pairs in $S'$ are the substitution components \cite{Robinson1965JACM} of a
-   pre-unifier of $S$ which can always be extended into a unifier.
-  The application of the last two rules is
-  a ``don't-know" non-determinism, while the choice of which equation to choose
-  is a ``don't-care" non-determinism. Nevertheless, by choosing an appropriate strategy,
-   the application of the above rules always terminates on a unifiable set of pairs of terms
-   and enumerates (with extensionality) a complete and minimal set of pre-unifiers.
- \end{technicalities}
-
-
-% General Instructions:
-% =====================
-
-% The preferred length of an entry is 1 page.
-% Do the best you can to fit your proof system in one page.
-%
-% If you are finding it hard to fit what you want in one page, remember:
-%
-%   * Your entry needs to be neither self-contained nor fully understandable
-%     (the interested reader may consult the cited full paper for details)
-%
-%   * If you are describing several proof systems in one entry,
-%     consider splitting your entry.
-%
-%   * You may reduce the size of your entry by ommitting inference rules
-%     that are already described in other entries.
-%
-%   * Cite parsimoniously (see detailed citation instructions below).
-%
-%
-% If you do not manage to fit everything in one page,
-% it is acceptable for an entry to have 2 pages.
-%
-% For aesthetical reasons, it is preferable for an entry to have
-% 1 full page or 2 full pages, in order to avoid unused blank space.
-
-
-
-% Citation Instructions:
-% ======================
-
-% Please cite the original paper where the proof system was defined.
-% To do so, you may use the \cite command within
-% one of the optional environments above,
-% or use the \nocite command otherwise.
-
-% You may also cite a modern paper or book where the
-% proof system is explained in greater depth or clarity.
-% Cite parsimoniously.
-
-% Do not cite related work. Instead, use the "\iref" or "\irefmissing"
-% commands to make an internal reference to another entry,
-% as explained within the "history" environment above.
+  Huet~\cite{huet75tcs} introduced the procedure without assuming the axiom of
+  functional extensionality and showed that assuming this axiom makes the
+  procedure non-redundant.  The above set of rules assumes extensionality.  The
+  set $S$ is considered pre-solved if it contains only solved or ``flex-flex''
+  pairs where a ``flex'' term is a term whose head is a free variable.  The
+  solved pairs in $S'$ are the substitution components~\cite{Robinson1965JACM}
+  of a pre-unifier of $S$ which can always be extended into a unifier.  The
+  application of $\mathit{imitate}$ and $\mathit{project}$ is a ``don't-know''
+  non-determinism, while the choice of $\mathit{delete}$, $\mathit{varelim}$ or
+  $\mathit{decomp}$ is a ``don't-care'' non-determinism.  Nevertheless, by
+  choosing an appropriate strategy, the application of the above rules always
+  terminates on a unifiable set of pairs of terms and enumerates (with
+  extensionality) a complete and minimal set of pre-unifiers.
+\end{technicalities}
 
 \end{entry}
