@@ -1,28 +1,20 @@
-\calculusName{Sequent Calculus for Logic of Partial Quasiary Predicates}         % The name of the calculus
-\calculusAcronym{QE-calculus}          % The acronym if defined above, or empty otherwise. 
-\calculusLogic{Extended Logic of Partial Quasiary Predicates}        % Specify the logic (e.g. Classical Logic, Intuitionistic Logic, ...) for which this calculus is intended.
-\calculusLogicOrder{First-order}   % Specify the order of the logic (e.g. Propositional, Quantified Propositional, First-Order, Higher-Order, ...).
-\calculusType{Sequent Calculus}         % Specify the calculus type (e.g. Tableau, Sequent Calculus, Hyper-Sequent Calculus, Natural Deduction, ...)
-\calculusYear{2017}         % The year when the calculus was published.
+\calculusName{Sequent Calculus for Logic of Partial Quasiary Predicates}
+\calculusAcronym{QE-calculus}
+\calculusLogic{Extended Logic of Partial Quasiary Predicates}
+\calculusLogicOrder{First-order}
+\calculusType{Sequent Calculus}
+\calculusYear{2017}
 
-\calculusAuthor{Mykola Nikitchenko}       % The name(s) of the author(s) of the calculus.
+\calculusAuthor{Mykola Nikitchenko}
 \calculusAuthor{Stepan Skilniak}
 
-
-
-\entryTitle{Sequent Calculus for Logic of Partial Quasiary Predicates}     % Title of the entry (usually coincides with the name of the calculus).
+\entryTitle{Sequent Calculus for Logic of Partial Quasiary Predicates}
 \entryAuthor{Mykola Nikitchenko}     
 \entryAuthor{Stepan Skilniak}
 
-
-
 \maketitle
 
-
 \begin{entry}{QE-calculus}  
-
-
-
 
 \begin{calculus}
 
@@ -48,7 +40,8 @@ Sequent rules for propositional compositions:
 \end{minipage}
 \end{center}
 
-Sequent rules for renomination compositions ($C_{{\rm R}\exists}$ is $ u \in fu(R^{\bar v}_{\bar x}(\exists y \Phi))$, $ C_{\rm RU}$ is $y \in fu(\Phi)$):
+Sequent rules for renomination compositions ($C_{{\rm R}\exists}$ is $ u \in
+fu(R^{\bar v}_{\bar x}(\exists y \Phi))$, $ C_{\rm RU}$ is $y \in fu(\Phi)$):
 \begin{center}
 \begin{minipage}[b]{0.45\textwidth}
 \raisebox{5pt}{R${\vee_L}$} \infer[;]
@@ -171,29 +164,41 @@ Sequent rules for   quantification compositions:
 \end{minipage}
 \end{center}
 Rule $\exists$E1$_R$  is applied when at least one variable is assigned.
-Rule $\exists$E2$_R$ is applied when there are no assigned variables (in this case a fresh unassigned variables is assigned). This means  the first application of quantification elimination (therefore $\varepsilon (\Delta)=\emptyset$).  Rule $\exists$E3$_R$ is applied when an unspecified  variable is involved into quantifier elimination. In this case two branches appear:  with this variable being unassigned and assigned.  
-
-
-
+Rule $\exists$E2$_R$ is applied when there are no assigned variables (in this
+case a fresh unassigned variables is assigned). This means  the first
+application of quantification elimination (therefore $\varepsilon
+(\Delta)=\emptyset$).  Rule $\exists$E3$_R$ is applied when an unspecified
+variable is involved into quantifier elimination. In this case two branches
+appear:  with this variable being unassigned and assigned.  
 
 \end{calculus}
 
 
 \begin{clarifications}
-
-Quasiary predicates are predicates over partial assignments of variables. Such predicates do not have fixed arity and generalize $n$-ary predicates. This specific feature of quasiary predicates requires additional operations (compositions): renomination $R_{x_{1} ,...,x_{n} }^{v_{1} ,...,v_{n} }$ ($R^{\bar v}_{\bar x}$) and  variable unassignment  predicate $\varepsilon x$. Thus, the language of the logic is defined by Kleene-like compositions: disjunction $\vee$, negation $\neg$, existential quantifier $\exists x$,   $R^{\bar v}_{\bar x}$, and $\varepsilon x$. Quasiary predicates are sensitive to unassigned variables therefore rules of sequent calculus classify variables as assigned, unassigned, and unspecified. To make correct transformations of formulas from $\Gamma$, unessential variables (analog of fresh variables in classical logic) are required; their set is denoted $fu(\Gamma)$.      
-
-
+  Quasiary predicates are predicates over partial assignments of variables. Such
+  predicates do not have fixed arity and generalize $n$-ary predicates. This
+  specific feature of quasiary predicates requires additional operations
+  (compositions): renomination $R_{x_{1} ,...,x_{n} }^{v_{1} ,...,v_{n} }$
+  ($R^{\bar v}_{\bar x}$) and  variable unassignment  predicate $\varepsilon x$.
+  Thus, the language of the logic is defined by Kleene-like compositions:
+  disjunction $\vee$, negation $\neg$, existential quantifier $\exists x$,
+  $R^{\bar v}_{\bar x}$, and $\varepsilon x$. Quasiary predicates are sensitive to
+  unassigned variables therefore rules of sequent calculus classify variables as
+  assigned, unassigned, and unspecified. To make correct transformations of
+  formulas from $\Gamma$, unessential variables (analog of fresh variables in
+  classical logic) are required; their set is denoted $fu(\Gamma)$.      
 \end{clarifications}
 
 \begin{history}
-Quasiary predicates (and functions) represent semantics of programs and their components.  Thus, logics of quasiary predicates are program-oriented logics. Various types of such logics are described in \cite{NikShk2008,NikShk2013}. The presented QE-calculus, proof of its soundness and completeness can be found in \cite{NikShk2017}. Hoare-like program logic based on partial quasiary predicates is described in \cite{KNS2013}. Satisfiability-preserving translation of formulas of quasiary logic to formulas of classical first-order logic is formulated in \cite{NikTym2012}.
-
-
+  Quasiary predicates (and functions) represent semantics of programs and their
+  components.  Thus, logics of quasiary predicates are program-oriented logics.
+  Various types of such logics are described in \cite{NikShk2008,NikShk2013}. The
+  presented QE-calculus, proof of its soundness and completeness can be found in
+  \cite{NikShk2017}. Hoare-like program logic based on partial quasiary predicates
+  is described in \cite{KNS2013}. Satisfiability-preserving translation of
+  formulas of quasiary logic to formulas of classical first-order logic is
+  formulated in \cite{NikTym2012}.
 \end{history}
-
-
-
 
 
 \end{entry}
