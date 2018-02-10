@@ -1,68 +1,25 @@
+\calculusName{Logic of Epistemic Inconsistency}
+\calculusAcronym{LEI}
+\calculusLogic{Paraconsistent}
+\calculusLogicOrder{First-Order}
+\calculusType{Natural Deduction}
+\calculusYear{1993}
 
-% If the calculus has an acronym, define it.
-% (e.g. \newcommand{\LK}{\ensuremath{\mathbf{LK}}\xspace})
-
-\calculusName{Logic of Epistemic Inconsistency}         % The name of the calculus
-\calculusAcronym{LEI}          % The acronym if defined above, or empty otherwise. 
-\calculusLogic{Paraconsistent}        % Specify the logic (e.g. Classical Logic, Intuitionistic Logic, ...) for which this calculus is intended.
-\calculusLogicOrder{First-Order}   % Specify the order of the logic (e.g. Propositional, Quantified Propositional, First-Order, Higher-Order, ...).
-\calculusType{Natural Deduction}         % Specify the calculus type (e.g. Tableau, Sequent Calculus, Hyper-Sequent Calculus, Natural Deduction, ...)
-\calculusYear{1993}         % The year when the calculus was published.
-
-\calculusAuthor{Ana Teresa Martins}       % The name(s) of the author(s) of the calculus.
+\calculusAuthor{Ana Teresa Martins}
 \calculusAuthor{Lilia Ramalho Martins}
 \calculusAuthor{Felipe Ferreira de Morais}
 
 
-\entryTitle{Logic of Epistemic Inconsistency}     % Title of the entry (usually coincides with the name of the calculus).
+\entryTitle{Logic of Epistemic Inconsistency}
 \entryAuthor{Ana Teresa Martins}     
 \entryAuthor{Francicleber Ferreira}
-%\entryAuthor{ToDo:FullNameAuthor3}
-
-% The encyclopedia's peer-reviewing policy is described here: 
-% http://proofsystem.github.io/Encyclopedia/
-%
-% Reviewers of this entry will be acknowledged in the following lines:
-% \entryReviewer{Reviewer 1's name}
-% \entryReviewer{Reviewer 2's name}
-% \entryReviewer{Reviewer 3's name}
-%
-% The lines above will be filled by the coordinators. 
-% If you would like to indicate people 
-% who could review your entry, contact the coordinators.
-
-
-% If you wish, use tags to give any other information 
-% that might be helpful for classifying and grouping this entry:
-% e.g. \etag{Two-Sided Sequents}
-% e.g. \etag{Multiset Cedents}
-% e.g. \etag{List Cedents}
-% You are free to invent your own tags. 
-% The Encyclopedia's coordinator will take care of 
-% merging semantically similar tags in the future.
 
 
 \maketitle
 
-
-% If your files are called "MyProofSystem.tex" and "MyProofSystem.bib", 
-% then you should write "\begin{entry}{MyProofSystem}" in the line below
-\begin{entry}{bibliographies/LEI}  
-
-% Define here any newcommands you may need:
-% e.g. \newcommand{\necessarily}{\Box}
-% e.g. \newcommand{\possibly}{\Diamond}
-
-%ToDo
-
-
-
+\begin{entry}{LEI}  
 
 \begin{calculus}
-
-% Add the inference rules of your proof system here.
-% The "proof.sty" and "bussproofs.sty" packages are available.
-% If you need any other package, please contact the coordinator (Bruno Woltzenlogel Paleo <bruno.wp@gmail.com>)
 
 \[
 \begin{array}{ccccccccccccccc}
@@ -251,149 +208,83 @@
 
 \end{calculus}
 
-% The following sections ("clarifications", "history", 
-% "technicalities") are optional. If you use them, 
-% be very concise and objective. Nevertheless, do write full sentences. 
-% Try to have at most one paragraph per section, because line breaks 
-% do not look nice in a short entry.
-
-% \begin{clarifications}
-% ToDo: write here short remarks that may help the reader to understand 
-% the inference rules of the proof system.
-% \end{clarifications}
-
 
 \begin{clarifications}
   The syntax of LEI is given by the following BNF rule
   \begin{center} 
     \begin{math}
       %\begin{array}{lll}
-        \phi ::= p \in Atomic \mid \bot \mid \phi \land \phi \mid \phi \lor \phi \mid \phi \rightarrow \phi \mid \neg \phi \mid \sim \phi \mid \exists x\phi \mid \forall x\phi.
+        \phi ::= p \in Atomic \mid \bot \mid \phi \land \phi 
+                 \mid \phi \lor \phi \mid \phi \rightarrow \phi 
+                 \mid \neg \phi \mid \sim \phi \mid \exists x\phi 
+                 \mid \forall x\phi.
       %\end{array}
     \end{math}
   \end{center}
   
-  LEI is intended to deal with the concept of plausibility. The $?$ and $!$ post-fixed operators symbolize credulous and skeptical plausibility. The skeptical plausibility can be defined as the dual of $?$, that is $\alpha ! := \sim ((\sim \alpha)?)$ LEI is a paraconsistent logic. It has two negation symbols $\sim$ (the classical negation) and $\neg$ (the paraconsistent negation). The $\sim$ can be defined as $\sim \alpha := \alpha \to \bot$. The intuitionistic absurd rule $\neg E$ is restricted to $?$-free formulas, which are represented by Roman capital letters. Introduction and elimination rules for $\land$, $\lor$, $\to$, $\forall$ and $\exists$ are the usual ones. The $?E$ and $!I$ rule has a quite involved restriction for its application. We need the following definitions.
+  LEI is intended to deal with the concept of plausibility. The $?$ and $!$
+  post-fixed operators symbolize credulous and skeptical plausibility. The
+  skeptical plausibility can be defined as the dual of $?$, that is $\alpha ! :=
+  \sim ((\sim \alpha)?)$ LEI is a paraconsistent logic. It has two negation
+  symbols $\sim$ (the classical negation) and $\neg$ (the paraconsistent
+  negation). The $\sim$ can be defined as $\sim \alpha := \alpha \to \bot$. The
+  intuitionistic absurd rule $\neg E$ is restricted to $?$-free formulas, which
+  are represented by Roman capital letters. Introduction and elimination rules for
+  $\land$, $\lor$, $\to$, $\forall$ and $\exists$ are the usual ones. The $?E$ and
+  $!I$ rule has a quite involved restriction for its application. We need the
+  following definitions.
   
   %\begin{definition} [Connection]
-By a \emph{connection} in a deduction $\Pi$ between two formula occurrences $\alpha$ 
-and
-$\beta$, we understand a sequence $\alpha_{1},\ldots,\alpha_{n}$ of formula 
-occurrences
-in $\Pi$ such that $\alpha_{1}=\alpha, \alpha_{n}=\beta$, and one of the 
-following
-conditions holds for each $i \leq n$:
+  By a \emph{connection} in a deduction $\Pi$ between two formula occurrences
+  $\alpha$ and $\beta$, we understand a sequence $\alpha_{1},\ldots,\alpha_{n}$ of
+  formula occurrences in $\Pi$ such that $\alpha_{1}=\alpha, \alpha_{n}=\beta$,
+  and one of the following conditions holds for each $i \leq n$:
 
-
-\begin{enumerate}
-
-\item
- $\alpha_{i}$ is not the major premise of an application of $\vee E$, 
-$\exists E$ and
-$?E$, and $\alpha_{i+1}$ stands immediately below $\alpha_{i}$; or vice 
-versa;
-
-\item 
-$\alpha_{i}$ is a premise of an application of $\rightarrow E$, $\neg E$ or $\sim E$, and $\alpha_{i+1}$ is side connected with  $\alpha_{i}$;
-
-\item 
-$\alpha_{i}$ is  the major premise of an application of $\vee E$, $\exists E$ and
-$?E$, and $\alpha_{i+1}$ is a hypothesis discharged by this application;  or 
-vice versa;
-
-\item 
-$\alpha_{i}$ is a consequence of an application of $\rightarrow I$, 
-$\neg I$, $\sim I$,
-$\bot\neg$, $\bot\!\!\sim$, and $\alpha_{i+1}$ is a hypothesis discharged by 
-this application;
- or vice versa;
-\end{enumerate}
+  \begin{enumerate}
+  
+  \item
+   $\alpha_{i}$ is not the major premise of an application of $\vee E$, 
+  $\exists E$ and
+  $?E$, and $\alpha_{i+1}$ stands immediately below $\alpha_{i}$; or vice 
+  versa;
+  
+  \item 
+  $\alpha_{i}$ is a premise of an application of $\rightarrow E$, $\neg E$ or
+  $\sim E$, and $\alpha_{i+1}$ is side connected with  $\alpha_{i}$;
+  
+  \item 
+  $\alpha_{i}$ is  the major premise of an application of $\vee E$, $\exists E$ and
+  $?E$, and $\alpha_{i+1}$ is a hypothesis discharged by this application;  or 
+  vice versa;
+  
+  \item 
+  $\alpha_{i}$ is a consequence of an application of $\rightarrow I$, 
+  $\neg I$, $\sim I$,
+  $\bot\neg$, $\bot\!\!\sim$, and $\alpha_{i+1}$ is a hypothesis discharged by 
+  this application;
+   or vice versa;
+  \end{enumerate}
 %\end{definition}
 
-Two formula occurrences $\alpha$
-and $\beta$  are said to be \emph{modally independent} in a deduction $\Pi$ iff every
-connection in $\Pi$ between $\alpha$ and $\beta$ contains an occurrence of a 
-?-closed formula.
-
-The $?E$ can only be applied when each occurrence of $\alpha$ is modally independent in $\Pi$ from $\beta$ and any (open) assumption of $\Pi$. The $!I$ requires that $\alpha$ is modally independent from any (open) assumption of $\Pi$.
-
+  Two formula occurrences $\alpha$ and $\beta$  are said to be \emph{modally
+  independent} in a deduction $\Pi$ iff every connection in $\Pi$ between $\alpha$
+  and $\beta$ contains an occurrence of a ?-closed formula.
+  
+  The $?E$ can only be applied when each occurrence of $\alpha$ is modally
+  independent in $\Pi$ from $\beta$ and any (open) assumption of $\Pi$. The $!I$
+  requires that $\alpha$ is modally independent from any (open) assumption of
+  $\Pi$.
 \end{clarifications}
 
-
-% \begin{history}
-% ToDo: write here short historical remarks about this proof system,
-% especially if they relate to other proof systems. 
-% Use "\iref{OtherProofSystem}" to refer to another proof system 
-% in the Encyclopedia (where "OtherProofSystem" is its ID). 
-% Use "\irefmissing{SuggestedIDForOtherProofSystem}" to refer to 
-% another proof system that is not yet available in the encyclopedia.
-% \end{history}
-
 \begin{history}
-The Logic of Epistemic Inconsistency was proposed by Pequeno and Buchsbaum \cite{pequeno1991}. The natural deduction system for LEI was created by Martins and Pequeno \cite{martins1993}.
+  The Logic of Epistemic Inconsistency was proposed by Pequeno and
+  Buchsbaum~\cite{pequeno1991}. The natural deduction system for LEI was created
+  by Martins and Pequeno~\cite{martins1993}.
 \end{history}
 
-
-% \begin{technicalities}
-% ToDo: write here remarks about soundness, completeness, decidability...
-% \end{technicalities}
-
-
 \begin{technicalities}
-Completeness and correctness for LEI has been proved in \cite{martins1997}. Normalization for the system above has been proved in \cite{martins2007}.
+  Completeness and correctness for LEI has been proved in~\cite{martins1997}.
+  Normalization for the system above has been proved in~\cite{martins2007}.
 \end{technicalities}
-
-% General Instructions:
-% =====================
-
-% The preferred length of an entry is 1 page. 
-% Do the best you can to fit your proof system in one page.
-%
-% If you are finding it hard to fit what you want in one page, remember:
-%
-%   * Your entry needs to be neither self-contained nor fully understandable
-%     (the interested reader may consult the cited full paper for details)
-%
-%   * If you are describing several proof systems in one entry, 
-%     consider splitting your entry.
-%
-%   * You may reduce the size of your entry by ommitting inference rules
-%     that are already described in other entries.
-%
-%   * Cite parsimoniously (see detailed citation instructions below).
-%
-% 
-% If you do not manage to fit everything in one page, 
-% it is acceptable for an entry to have 2 pages.
-%
-% For aesthetic reasons, it is preferable for an entry to have
-% 1 full page or 2 full pages, in order to avoid unused blank space.
-
-
-
-% Citation Instructions:
-% ======================
-
-% Please cite the original paper where the proof system was defined.
-% To do so, you may use the \cite command within 
-% one of the optional environments above,
-% or use the \nocite command otherwise.
-
-% You may also cite a modern paper or book where the 
-% proof system is explained in greater depth or clarity.
-% Cite parsimoniously.
-
-% Do not cite related work. Instead, use the "\iref" or "\irefmissing" 
-% commands to make an internal reference to another entry, 
-% as explained within the "history" environment above.
-
-% You do not need to create the "References" section yourself. 
-% This is done automatically.
-
-
-% Remove all instruction comments before submitting.
-
-
-% Leave an empty line above "\end{entry}".
 
 \end{entry}
