@@ -1,46 +1,14 @@
+\calculusName{Bernays's Propositional Calculus}
+\calculusAcronym{}
+\calculusLogic{Classical Logic}
+\calculusLogicOrder{Propositional}
+\calculusType{Axiomatic}
+\calculusYear{1918}
 
-% If the calculus has an acronym, define it.
-% (e.g. \newcommand{\LK}{\ensuremath{\mathbf{LK}}\xspace})
+\calculusAuthor{Paul Bernays}
 
-\calculusName{Bernays's Propositional Calculus}         % The name of the calculus
-\calculusAcronym{}          % The acronym if defined above, or empty otherwise. 
-\calculusLogic{Classical Logic}        % Specify the logic (e.g. Classical Logic, Intuitionistic Logic, ...) for which this calculus is intended.
-\calculusLogicOrder{Propositional}   % Specify the order of the logic (e.g. Propositional, Quantified Propositional, First-Order, Higher-Order, ...).
-\calculusType{Axiomatic}         % Specify the calculus type (e.g. Tableau, Sequent Calculus, Hyper-Sequent Calculus, Natural Deduction, ...)
-\calculusYear{1918}         % The year when the calculus was published.
-
-\calculusAuthor{Paul bernays}       % The name(s) of the author(s) of the calculus.
-%\calculusAuthor{ToDo:FullNameAuthor2}
-%\calculusAuthor{ToDo:FullNameAuthor3}
-
-
-\entryTitle{Bernays's Propositional Calculus}     % Title of the entry (usually coincides with the name of the calculus).
-\entryAuthor{Richard Zach}     
-%\entryAuthor{ToDo:FullNameAuthor2}
-%\entryAuthor{ToDo:FullNameAuthor3}
-
-% The encyclopedia's peer-reviewing policy is described here: 
-% http://proofsystem.github.io/Encyclopedia/
-%
-% Reviewers of this entry will be acknowledged in the following lines:
-% \entryReviewer{Reviewer 1's name}
-% \entryReviewer{Reviewer 2's name}
-% \entryReviewer{Reviewer 3's name}
-%
-% The lines above will be filled by the coordinators. 
-% If you would like to indicate people 
-% who could review your entry, contact the coordinators.
-
-
-% If you wish, use tags to give any other information 
-% that might be helpful for classifying and grouping this entry:
-% e.g. \etag{Two-Sided Sequents}
-% e.g. \etag{Multiset Cedents}
-% e.g. \etag{List Cedents}
-% You are free to invent your own tags. 
-% The Encyclopedia's coordinator will take care of 
-% merging semantically similar tags in the future.
-
+\entryTitle{Bernays's Propositional Calculus}
+\entryAuthor{Richard Zach}
 
 \maketitle
 
@@ -49,8 +17,8 @@
 \begin{calculus}
 Axioms:
 \begin{align*}
-1)\quad & \overline{XX}X &
-1)\quad & X \lor X \rightarrow X\\
+1) \quad & \overline{XX}X &
+1) \quad & X \lor X \rightarrow X\\
 2) \quad & \overline{X}(XY) &
 2) \quad & X \rightarrow X \lor X\\
 3) \quad & \overline{XY}(YX) &
@@ -72,32 +40,26 @@ Rules:
 \end{calculus}
 
 \begin{clarifications}
-Bernays used juxtaposition for disjunction $\lor$, $+$ for conjunction
-$\land$, and overlining $\overline{\phantom{X}}$ for
-negation. The axioms on the left are official, those on the right use the abbreviation $\alpha \rightarrow \beta$ for
-$\overline{\alpha}\beta$, i.e., $\overline{\alpha} \lor \beta$. The substitution
-rule allows the replacement of propositional variables by any
-expression.
+  Bernays used juxtaposition for disjunction $\lor$, $+$ for conjunction $\land$,
+  and overlining $\overline{\phantom{X}}$ for negation. The axioms on the left are
+  official, those on the right use the abbreviation $\alpha \rightarrow \beta$ for
+  $\overline{\alpha}\beta$, i.e., $\overline{\alpha} \lor \beta$. The substitution
+  rule allows the replacement of propositional variables by any expression.
 \end{clarifications}
 
 \begin{history}
-The axioms are a slight variation on the propositional fragment of
-Whitehead and Russell's \emph{Principia
-Mathematica} \irefmissing{PrincipiaMathematica} due to Paul
-Bernays \cite{Bernays1918}.  The system is noteworthy since Bernays
-was the first to prove completeness relative to standard truth value
-semantics, as well as decidability; see \cite{Zach1999}. Bernays investigated systems in which axioms are replaced
-by rules, e.g., $\alpha \vdash \alpha \lor \beta$, including rules
-that operate on parts of a formula such as
-$\gamma(\alpha \lor \beta) \vdash \gamma(\beta \lor \alpha)$. He showed
-that a system with six rules and $X \rightarrow X$ as the only axiom
-is complete. He also
-showed that axiom (4) is provable from the others and the rest are
-independent (published in \cite{Bernays1926}). 
+  The axioms are a slight variation on the propositional fragment of Whitehead and
+  Russell's \emph{Principia Mathematica}~\irefmissing{PrincipiaMathematica} due to
+  Paul Bernays~\cite{Bernays1918}.  The system is noteworthy since Bernays was the
+  first to prove completeness relative to standard truth value semantics, as well
+  as decidability; see~\cite{Zach1999}. Bernays investigated systems in which
+  axioms are replaced by rules, e.g., $\alpha \vdash \alpha \lor \beta$, including
+  rules that operate on parts of a formula such as $\gamma(\alpha \lor \beta)
+  \vdash \gamma(\beta \lor \alpha)$. He showed that a system with six rules and $X
+  \rightarrow X$ as the only axiom is complete. He also showed that axiom (4) is
+  provable from the others and the rest are independent (published
+  in~\cite{Bernays1926}).  
 \end{history}
 
-% \begin{technicalities}
-% ToDo: write here remarks about soundness, completeness, decidability...
-% \end{technicalities}
 
 \end{entry}
