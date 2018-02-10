@@ -1,6 +1,3 @@
-
-
-
 \calculusName{Pure Type Systems}   
 \calculusAcronym{}    
 \calculusLogic{Type Theory}  
@@ -13,22 +10,8 @@
 \entryTitle{Pure Type Systems}     
 \entryAuthor{Ali Assaf}     
 
-
-% If you wish, use tags to give any other information
-% that might be helpful for classifying and grouping this entry:
-% e.g. \etag{Two-Sided Sequents}
-% e.g. \etag{Multiset Cedents}
-% e.g. \etag{List Cedents}
-% You are free to invent your own tags.
-% The Encyclopedia's coordinator will take care of
-% merging semantically similar tags in the future.
-
-
 \maketitle
 
-
-% If your files are called "MyProofSystem.tex" and "MyProofSystem.bib",
-% then you should write "\begin{entry}{MyProofSystem}" in the line below
 \begin{entry}{PureTypeSystems}
 
 
@@ -52,9 +35,6 @@
 
 \begin{calculus}
 
-% Add the inference rules of your proof system here.
-% The "proof.sty" and "bussproofs.sty" packages are available.
-% If you need any other package, please contact the editor (bruno@logic.at)
 \negvspace
 \[ \infer[axiom\ ((c : s) \in \axioms)]{\entails c : s}{ } \qquad
    \infer[start\ (x \not\in \Gamma)]{\Gamma, x : A \entails x : A}{\Gamma \entails A : s} \]
@@ -69,15 +49,7 @@
 
 \end{calculus}
 
-% The following sections ("clarifications", "history",
-% "technicalities") are optional. If you use them,
-% be very concise and objective. Nevertheless, do write full sentences.
-% Try to have at most one paragraph per section, because line breaks
-% do not look nice in a short entry.
-
 \begin{clarifications}
-% ToDo: write here short remarks that may help the reader to understand
-% the inference rules of the proof system.
 \emph{Pure type systems} (PTS) are a general class of typed $\lambda$ calculus. They represent logical systems through the Curry-Howard correspondence and the "propositions as types" interpretation. The syntax is given by the grammar:
 \negvspace\[
   \terms \Coloneqq \variables \mid \constants \mid \Pi \variables : \terms. \terms \mid \lambda \variables : \terms. \terms \mid \terms~\terms
@@ -90,12 +62,6 @@ $\rules \subseteq \sorts \times \sorts \times \sorts$ is the set of \emph{rules}
 \end{clarifications}
 
 \begin{history}
-% ToDo: write here short historical remarks about this proof system,
-% especially if they relate to other proof systems.
-% Use "\iref{OtherProofSystem}" to refer to another proof system
-% in the Encyclopedia (where "OtherProofSystem" is its ID).
-% Use "\irefmissing{SuggestedIDForOtherProofSystem}" to refer to
-% another proof system that is not yet available in the encyclopedia.
 Pure type systems were independently introduced by Berardi and Terlouw as a generalization of systems of the $\lambda$ cube, and further developed and popularized by Barendregt, Geuvers, Nederhof \cite{barendregt_introduction_1991,geuvers_modular_1991,barendregt_lambda_1992,geuvers_logics_1993}. Many important systems can be expressed as PTSs, including simply typed $\lambda$ calculus ($\lambda{\rightarrow}$), $\lambda\Pi$ calculus \iref{LuoLF} ($\lambda{P}$), system F \iref{fc} ($\lambda{2}$), and the calculus of constructions ($\lambda{C}$):
 \negvspace\[
   \begin{array}{cc}
@@ -109,63 +75,11 @@ as well as intuitionistic higher-order logic ($\lambda{HOL}$). Pure type systems
 \end{history}
 
 \begin{technicalities}
-% ToDo: write here remarks about soundness, completeness, decidability...
 Soundness and decidability of type checking in PTSs are closely related to \emph{strong normalization} (SN), i.e.~the property that all well-typed terms terminate. Not all pure type systems are SN. Examples of PTSs that are \emph{not} SN (and are therefore inconsistent) are Girard's system U and the universal PTS $\lambda{\Prop}$:
 \negvspace\[
   \sorts = \{\Prop\} \qquad \axioms = \{(\Prop, \Prop)\} \qquad \rules = \{(\Prop, \Prop, \Prop)\}
 \negvspace\]
 \end{technicalities}
-
-
-% General Instructions:
-% =====================
-
-% The preferred length of an entry is 1 page.
-% Do the best you can to fit your proof system in one page.
-%
-% If you are finding it hard to fit what you want in one page, remember:
-%
-%   * Your entry needs to be neither self-contained nor fully understandable
-%     (the interested reader may consult the cited full paper for details)
-%
-%   * If you are describing several proof systems in one entry,
-%     consider splitting your entry.
-%
-%   * You may reduce the size of your entry by ommitting inference rules
-%     that are already described in other entries.
-%
-%   * Cite parsimoniously (see detailed citation instructions below).
-%
-%
-% If you do not manage to fit everything in one page,
-% it is acceptable for an entry to have 2 pages.
-%
-% For aesthetical reasons, it is preferable for an entry to have
-% 1 full page or 2 full pages, in order to avoid unused blank space.
-
-
-
-% Citation Instructions:
-% ======================
-
-% Please cite the original paper where the proof system was defined.
-% To do so, you may use the \cite command within
-% one of the optional environments above,
-% or use the \nocite command otherwise.
-
-% You may also cite a modern paper or book where the
-% proof system is explained in greater depth or clarity.
-% Cite parsimoniously.
-
-% Do not cite related work. Instead, use the "\iref" or "\irefmissing"
-% commands to make an internal reference to another entry,
-% as explained within the "history" environment above.
-
-% You do not need to create the "References" section yourself.
-% This is done automatically.
-
-
-
 
 
 

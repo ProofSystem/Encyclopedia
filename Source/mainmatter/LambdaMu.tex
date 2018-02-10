@@ -1,4 +1,3 @@
-
 \newcommand{\dest}[4]{\mathsf{dest}~#1~\mathsf{as}~(#2,#3)~\mathsf{in}~#4}
 \newcommand{\Case}[5]{\mathsf{case}~#1~\mathsf{of}~[#2\,\Rightarrow\,#3~|~#4\,\Rightarrow\,#5]}
 \newcommand{\efq}[1]{\texttt{efq}~{#1}}
@@ -13,28 +12,16 @@
 \calculusAuthor{Parigot} 
 \entryTitle{Classical Natural Deduction ($\lmu$-calculus)} 
 \entryAuthor{Hugo Herbelin}  
-% If you wish, use tags to give any other information
-% that might be helpful for classifying and grouping this entry:
+
 \etag{Multi-Conclusion Sequents}
-% e.g. \etag{Multiset Cedents}
-%\etag{List Cedents}
 \etag{Term-annotated}
-% You are free to invent your own tags.
-% The Encyclopedia's coordinator will take care of
-% merging semantically similar tags in the future.
 
 \maketitle
-
-% If your files are called "MyProofSystem.tex" and "MyProofSystem.bib",
-% then you should write "\begin{entry}{MyProofSystem}" in the line below
 
 \begin{entry}{LambdaMu}
 
 
 \begin{calculus}
-% Add the inference rules of your proof system here.
-% The "proof.sty" and "bussproofs.sty" packages are available.
-% If you need any other package, please cpontact the editor (bruno@logic.at)
 
 {\sc Structural subsystem}
 \[
@@ -109,11 +96,7 @@
 \]
 
 \end{calculus}
-% The following sections ("clarifications", "history",
-% "technicalities") are optional. If you use them,
-% be very concise and objective. Nevertheless, do write full sentences.
-% Try to have at most one paragraph per section, because line breaks
-% do not look nice in a short entry.
+
 \begin{clarifications}
 There are two kinds of sequents: first $p: \Gamma \vdash A ~|~
 \Delta$ with a distinguished formula on the right for typing the
@@ -174,52 +157,5 @@ but not computationally equivalent~\cite{HerbelinSaurin10}.
 
 \end{history}
 
-% Use "\irefmissing{SuggestedIDForOtherProofSystem}" to refer to
-% another proof system that is not yet available in the encyclopedia.
-% \end{history}
-%\begin{technicalities}
-%The system is obviously logically equivalent to Gentzen's $\LK$ when
-%equipped with the corresponding connectives and observed through the
-%sequents of the form $\Gamma \vdash \Delta$. 
-%\end{technicalities}
-
-% General Instructions:
-% =====================
-% The preferred length of an entry is 1 page.
-% Do the best you can to fit your proof system in one page.
-%
-% If you are finding it hard to fit what you want in one page, remember:
-%
-% * Your entry needs to be neither self-contained nor fully understandable
-% (the interested reader may consult the cited full paper for details)
-%
-% * If you are describing several proof systems in one entry,
-% consider splitting your entry.
-%
-% * You may reduce the size of your entry by ommitting inference rules
-% that are already described in other entries.
-%
-% * Cite parsimoniously (see detailed citation instructions below).
-%
-%
-% If you do not manage to fit everything in one page,
-% it is acceptable for an entry to have 2 pages.
-%
-% For aesthetical reasons, it is preferable for an entry to have
-% 1 full page or 2 full pages, in order to avoid unused blank space.
-% Citation Instructions:
-% ======================
-% Please cite the original paper where the proof system was defined.
-% To do so, you may use the \cite command within
-% one of the optional environments above,
-% or use the \nocite command otherwise.
-% You may also cite a modern paper or book where the
-% proof system is explained in greater depth or clarity.
-% Cite parsimoniously.
-% Do not cite related work. Instead, use the "\iref" or "\irefmissing"
-% commands to make an internal reference to another entry,
-% as explained within the "history" environment above.
-% You do not need to create the "References" section yourself.
-% This is done automatically.
 
 \end{entry}
