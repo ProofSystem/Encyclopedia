@@ -4,7 +4,10 @@
 \calculusLogicOrder{Higher-Order}
 \calculusType{Natural Deduction}   
 \calculusYear{1989}   
-\calculusAuthor{Berardi} \calculusAuthor{Terlouw} \calculusAuthor{Barendregt} \calculusAuthor{Geuvers} 
+\calculusAuthor{Berardi} 
+\calculusAuthor{Terlouw} 
+\calculusAuthor{Barendregt} 
+\calculusAuthor{Geuvers} 
 
 
 \entryTitle{Pure Type Systems}     
@@ -62,7 +65,14 @@ $\rules \subseteq \sorts \times \sorts \times \sorts$ is the set of \emph{rules}
 \end{clarifications}
 
 \begin{history}
-Pure type systems were independently introduced by Berardi and Terlouw as a generalization of systems of the $\lambda$ cube, and further developed and popularized by Barendregt, Geuvers, Nederhof \cite{barendregt_introduction_1991,geuvers_modular_1991,barendregt_lambda_1992,geuvers_logics_1993}. Many important systems can be expressed as PTSs, including simply typed $\lambda$ calculus ($\lambda{\rightarrow}$), $\lambda\Pi$ calculus \iref{LuoLF} ($\lambda{P}$), system F \iref{fc} ($\lambda{2}$), and the calculus of constructions ($\lambda{C}$):
+Pure type systems were independently introduced by Berardi and Terlouw as a
+generalization of systems of the $\lambda$ cube, and further developed and
+popularized by Barendregt, Geuvers,
+Nederhof~\cite{barendregt_introduction_1991,geuvers_modular_1991,barendregt_lambda_1992,geuvers_logics_1993}.
+Many important systems can be expressed as PTSs, including simply typed
+$\lambda$ calculus ($\lambda{\rightarrow}$), $\lambda\Pi$ calculus~\iref{LuoLF}
+($\lambda{P}$), system F~\iref{fc} ($\lambda{2}$), and the calculus of
+constructions ($\lambda{C}$):
 \negvspace\[
   \begin{array}{cc}
     \sorts = \{\Prop, \Type\} \qquad \axioms = \{(\Prop, \Type)\} \qquad \rules_{\rightarrow} = \{(\Prop, \Prop, \Prop)\} \\[1ex]

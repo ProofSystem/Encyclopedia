@@ -1,45 +1,27 @@
-% If the calculus has an acronym, define it.
-	% (e.g. \newcommand{\LK}{\ensuremath{\mathbf{LK}}\xspace})
-	\newcommand{\LuoLF}{\ensuremath{\mathbf{LF}}\xspace}
-	\calculusName{Typed LF for Type Theories} 
-	\calculusAcronym{LF} 
-	\calculusLogic{Type Theory} 
-	\calculusLogicOrder{Higher-Order}
-	%\calculusType{Logical Framework}
-	\calculusType{Natural Deduction}
-	\calculusYear{1994} 
-	\calculusAuthor{Zhaohui Luo} 
-	
-	
-	\entryTitle{Typed LF for Type Theories} 
-	\entryAuthor{Zhaohui Luo} \entryAuthor{Sergei Soloviev}  
-	
-	
-	% If you wish, use tags to give any other information
-	% that might be helpful for classifying and grouping this entry:
-	% e.g. \etag{Two-Sided Sequents}
-	% e.g. \etag{Multiset Cedents}
-	% e.g. \etag{List Cedents}
-	% You are free to invent your own tags.
-	% The Encyclopedia's coordinator will take care of
-	% merging semantically similar tags in the future.
-	
-	
-	\maketitle
-	
-	
-	% If your files are called "<ID>.tex" and "<ID>.bib",
-	% then you should write "\begin{entry}{<ID>}" in the line below
-	\begin{entry}{LuoLF}
-	
-	% Define here any newcommands you may need:
-	% e.g. \newcommand{\necessarily}{\Box}
-	% e.g. \newcommand{\possibly}{\Diamond}
-	
-	
-	\begin{calculus}
-	
-	% Add the inference rules of your proof system here
+\newcommand{\LuoLF}{\ensuremath{\mathbf{LF}}\xspace}
+\calculusName{Typed LF for Type Theories} 
+\calculusAcronym{LF} 
+\calculusLogic{Type Theory} 
+\calculusLogicOrder{Higher-Order}
+%\calculusType{Logical Framework}
+\calculusType{Natural Deduction}
+\calculusYear{1994} 
+\calculusAuthor{Zhaohui Luo} 
+
+
+\entryTitle{Typed LF for Type Theories} 
+\entryAuthor{Zhaohui Luo} \entryAuthor{Sergei Soloviev}  
+
+
+        
+\maketitle
+
+
+\begin{entry}{LuoLF}
+
+
+\begin{calculus}
+        
 \centering
 $$
 \infer{<>\seq {\bf valid}}{}\!\quad\!\infer{\Gamma, x:K\seq {\bf valid}}{\Gamma\seq K\,{\bf kind} & x\notin FV(\Gamma)}\quad\!\infer{\Gamma, x:K, \Gamma'\seq x:K}{\Gamma, x:K, \Gamma'\seq {\bf valid}}\!\quad\! (1)
@@ -75,64 +57,39 @@ $$
 \infer{\Gamma\seq [x:K]f(x)=f:(x:K)K'}{\Gamma\seq f:(x:K)K' & 
 x\notin FV(f)}\!\quad\!(4)
 $$
+\end{calculus}
 
 
-
-	% The "proof.sty" and "bussproofs.sty" packages are available.
-	% If you need any other package, please contact the editor (bruno@logic.at)
-	
-	%ToDo
-	
-	\end{calculus}
-	
-	% The following environments ("clarifications", "history",
-	% "technicalities") are optional. If you do use them,
-	% be very concise and objective.
-	
-	\begin{clarifications}
+\begin{clarifications}
 We follow~\cite{Luo:94}.  
 Terms of $\LuoLF$ are of the forms ${\bf Type}, El(A)$, $(x:K)K'$
 (dependent product), $[x:K]K'$ (abstraction), $f(k)$, and judgements
 of the forms $\Gamma\seq{\bf valid}$ (validity of context),
 $\Gamma\seq K {\bf kind}$, $\Gamma\seq k:K$, $\Gamma\seq k=k':K$, $\Gamma\seq K=K'$. 
-Rule groups: (1) rules for contexts and assumptions; (2)* equality rules (reflexivity, symmetry and transitivity rules are ommitted); (3)** substitution rules ($J$ denotes the right side of any of the five forms of judgement); (4) rules for dependent product kinds; (5) and the kind {\bf Type}. 
-	\end{clarifications}
-	
-	\begin{history}
-First defined in~\cite{Luo:94}, ch. 9, $\LuoLF$ is a typed version of Martin-L\"of's logical framework~\cite{NPS:90}\irefmissing{Martin-L\"of's LF}. In difference
-from Edinburgh LF\irefmissing{Edinburgh LF} it may be used to specify type theories.
-{\em E.g.}, theories specified in $\LuoLF$ were used as basis of proof-assistants Lego and Plastic. Later the system was extended to include coercive subtyping~\cite{Luo:99, SolLuo:02, LuoSolXue:13}\irefmissing{LF with coercive subtyping}.
-	% ToDo: write here short historical remarks about this proof system,
-	% especially if they relate to other proof systems.
-	% Use "\iref{OtherProofSystem}" to refer to another proof system
-	% in the Encyclopedia (where "OtherProofSystem" is its ID).
-	% Use "\irefmissing{SuggestedIDForOtherProofSystem}" to refer to
-	% another proof system that is not yet available in the encyclopedia.
-	 \end{history}
-	
-	\begin{technicalities}
-	The proof-theoretical analysis of $\LuoLF$ above was used in meta-theoretical studies of larger theories defined on its basis, {\em e.g.}, UTT (Unifying Theory of dependent Types) that includes inductive schemata, second order logic SOL with impredicative type $Prop$ and a hierarchy of predicative universes~\cite{Luo:94}. H. Goguen defined a typed operational semantics for UTT and proved strong normalization theorem~\cite{HG:94}. For $\LuoLF$ with coercive subtyping conservativity results were obtained~\cite{Luo:99, SolLuo:02, LuoSolXue:13}.
-	\end{technicalities}
-	
-	
-	
-	% Please cite the original paper where the proof system was defined.
-	% To do so, you may use the \cite command within
-	% one of the optional environments above,
-	% or use the \nocite command otherwise.
-	
-	% You may also cite a modern paper or book where the
-	% proof system is explained in greater depth or clarity.
-	% Cite parsimoniously.
-	
-	% Do not cite related work. Instead, use the "\iref" or "\irefmissing"
-	% commands to make an internal reference to another entry,
-	% as explained within the "history" environment above.
-	
-	% You do not need to create the "References" section yourself.
-	% This is done automatically.
-	
-	
-	
-	
-	\end{entry}
+Rule groups: (1) rules for contexts and assumptions; (2)* equality rules
+(reflexivity, symmetry and transitivity rules are ommitted); (3)** substitution
+rules ($J$ denotes the right side of any of the five forms of judgement); (4)
+rules for dependent product kinds; (5) and the kind {\bf Type}. 
+\end{clarifications}
+
+\begin{history}
+First defined in~\cite{Luo:94}, ch. 9, $\LuoLF$ is a typed version of
+Martin-L\"of's logical framework~\cite{NPS:90}\irefmissing{Martin-L\"of's LF}.
+In difference from Edinburgh LF\irefmissing{Edinburgh LF} it may be used to
+specify type theories.  {\em E.g.}, theories specified in $\LuoLF$ were used as
+basis of proof-assistants Lego and Plastic. Later the system was extended to
+include coercive subtyping~\cite{Luo:99, SolLuo:02, LuoSolXue:13}\irefmissing{LF
+with coercive subtyping}.  
+\end{history}
+
+\begin{technicalities}
+The proof-theoretical analysis of $\LuoLF$ above was used in meta-theoretical
+studies of larger theories defined on its basis, {\em e.g.}, UTT (Unifying
+Theory of dependent Types) that includes inductive schemata, second order logic
+SOL with impredicative type $Prop$ and a hierarchy of predicative
+universes~\cite{Luo:94}. H. Goguen defined a typed operational semantics for UTT
+and proved strong normalization theorem~\cite{HG:94}. For $\LuoLF$ with coercive
+subtyping conservativity results were obtained~\cite{Luo:99,SolLuo:02,LuoSolXue:13}.
+\end{technicalities}
+        
+\end{entry}

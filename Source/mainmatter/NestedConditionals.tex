@@ -83,22 +83,32 @@
 
 
 
- \begin{clarifications}
-% ToDo: write here short remarks that may help the reader to understand 
-% the inference rules of the proof system.
-Conditional logics extend classical logic with formulas of the form $A \Rightarrow B$: intuitively, $A \Rightarrow B$ is true in a world $x$ if $B$ is true in the set of worlds where $A$ is true and that are most similar to $x$. The calculi $\mathcal{N}S$ manipulate \emph{nested} sequents, a generalization of ordinary sequent calculi where sequents are allowed to occur within sequents. A nested sequent $\Gamma = A_1, \dots, A_m, [B_1: \Gamma_1], \dots, [B_n: \Gamma_n]$ is inductively defined by the formula $\mathcal{F}(\Gamma)=A_1 \vee \dots \vee A_m \vee (B_1 \Rightarrow \mathcal{F}(\Gamma_1)) \vee \dots \vee (B_n \Rightarrow \mathcal{F}(\Gamma_n)).$ $\Gamma(\Delta)$ represents a sequent $\Gamma$ containing a \emph{context} (a unique empty position) filled by the (nested) sequent $\Delta$.
-  Besides the rules shown above, the calculi $\mathcal{N}S$ also include standard 
-   rules for propositional connectives.
- \end{clarifications}
+\begin{clarifications}
+  Conditional logics extend classical logic with formulas of the form $A
+  \Rightarrow B$: intuitively, $A \Rightarrow B$ is true in a world $x$ if $B$ is
+  true in the set of worlds where $A$ is true and that are most similar to $x$.
+  The calculi $\mathcal{N}S$ manipulate \emph{nested} sequents, a generalization
+  of ordinary sequent calculi where sequents are allowed to occur within sequents.
+  A nested sequent $\Gamma = A_1, \dots, A_m, [B_1: \Gamma_1], \dots, [B_n:
+  \Gamma_n]$ is inductively defined by the formula $\mathcal{F}(\Gamma)=A_1 \vee
+  \dots \vee A_m \vee (B_1 \Rightarrow \mathcal{F}(\Gamma_1)) \vee \dots \vee (B_n
+  \Rightarrow \mathcal{F}(\Gamma_n)).$ $\Gamma(\Delta)$ represents a sequent
+  $\Gamma$ containing a \emph{context} (a unique empty position) filled by the
+  (nested) sequent $\Delta$.  Besides the rules shown above, the calculi
+  $\mathcal{N}S$ also include standard rules for propositional connectives.
+\end{clarifications}
 
- \begin{history}
-  The calculi $\mathcal{N}S$ have been introduced in 
-  \cite{jelia2012pozz} and extended  in \cite{jlcpozz}. The theorem prover NESCOND, implementing $\mathcal{N}S$ in Prolog, has been presented in \cite{ijcarpozz}.
- \end{history}
+\begin{history}
+  The calculi $\mathcal{N}S$ have been introduced in~\cite{jelia2012pozz} and
+  extended  in~\cite{jlcpozz}. The theorem prover NESCOND, implementing
+  $\mathcal{N}S$ in Prolog, has been presented in~\cite{ijcarpozz}.
+\end{history}
 
- \begin{technicalities}
-Completeness is a consequence of cut admissibility. $\mathcal{N}S$ calculi  can be used to obtain a \textsc{PSpace} decision procedure for the respective conditional logics (optimal for CK and extensions with ID and MP).
- \end{technicalities}
+\begin{technicalities}
+  Completeness is a consequence of cut admissibility. $\mathcal{N}S$ calculi  can
+  be used to obtain a \textsc{PSpace} decision procedure for the respective
+  conditional logics (optimal for CK and extensions with ID and MP).
+\end{technicalities}
 
 
 

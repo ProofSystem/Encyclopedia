@@ -22,7 +22,7 @@
 
 \textbf {Some of the rules given to the system} :\\
 \hspace*{0.1cm} 
-Basic rules of Natural Deduction (similar to Bledsoe's SPLIT rules \iref{Bledsoe}).\\
+Basic rules of Natural Deduction (similar to Bledsoe's SPLIT rules~\iref{Bledsoe}).\\
 \hspace*{0.1cm} 
 Flatten : Replace $P(f(x))$ by $\exists y(y:f(x) \land P(y))$ or by $\forall y (y:f(x) \Rightarrow P(y))$ depending on the position (positive or negative)
 of the formula in the theorem to be proved and in the definitions and lemmas.
@@ -36,10 +36,10 @@ If $x \in \sigma E$, then $\exists y (y \in E \land x \in y)$\\
 If $C : A \cap B$, $x \in A$ and $x \in B$, then $x \in C$ \\
 \end{tabular}\\
 \hspace*{0.15cm} in place of (and more general than) given 
-REDUCE conversion rules of \iref{Bledsoe}. \\
+REDUCE conversion rules of~\iref{Bledsoe}. \\
 \textbf {and from universal hypotheses} :\\
 \hspace*{0.1cm}Universal hypotheses are removed and replaced by local rules (for a sub-theorem).\\ 
-\hspace*{0.1cm}This replaces and generalizes PEEK forward-chaining of \iref{Bledsoe}. 
+\hspace*{0.1cm}This replaces and generalizes PEEK forward-chaining of~\iref{Bledsoe}. 
 \end{calculus}
 
 \begin{clarifications}
@@ -54,7 +54,7 @@ Metarules build rules from definitions, lemmas and universal hypotheses.
 \end{clarifications}
 
 \begin{history}
-{\sc \Muscadet} \cite{pastre:1989,pastre:1993} is a knowledge-based system.
+{\sc \Muscadet}~\cite{pastre:1989,pastre:1993} is a knowledge-based system.
 Facts are hypotheses and the conclusion 
 of a theorem or a sub-theorem to be proved,
 and all sorts of facts which give relevant information
