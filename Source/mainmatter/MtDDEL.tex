@@ -1,11 +1,14 @@
-
 \calculusName{Multi-type Sequent Calculus for Dynamic Epistemic Logic MtD.DEL}
 \calculusAcronym{MtDDEL}
 \calculusLogic{Dynamic Epistemic Logic}
 \calculusLogicOrder{Propositional}
 \calculusType{Multi-type Sequent Calculus}
 \calculusYear{2016}
-\calculusAuthor{Giuseppe Greco} \calculusAuthor{Alessandra Palmigiano} \calculusAuthor{Alexander Kurz} \calculusAuthor{Sabine Frittella} \calculusAuthor{Vlasta Sikimi\'{c}} 
+\calculusAuthor{Giuseppe Greco} 
+\calculusAuthor{Alessandra Palmigiano} 
+\calculusAuthor{Alexander Kurz} 
+\calculusAuthor{Sabine Frittella} 
+\calculusAuthor{Vlasta Sikimi\'{c}} 
 
 \entryTitle{Multi-type Sequent Calculus for Dynamic Epistemic Logic MtD.DEL}
 \entryAuthor{Giuseppe Greco}
@@ -337,7 +340,9 @@
 
 \begin{calculus}
 {
-Atom rule: where  $F_1,\ldots, F_n, G_1,\ldots, G_m\in \mathsf{FNC}$, $\circ \in \{\mAND_{\! 0} \ , \mBAND_{\! 0} \ \}$, ${\rhd} \in \{\mRA_{\!\! 0} \ , \mBRA_{\!\! 0} \ \}$ and $n, m\in \mathbb{N}$,
+Atom rule: where  $F_1,\ldots, F_n, G_1,\ldots, G_m\in \mathsf{FNC}$, $\circ \in
+\{\mAND_{\! 0} \ , \mBAND_{\! 0} \ \}$, ${\rhd} \in \{\mRA_{\!\! 0} \ ,
+\mBRA_{\!\! 0} \ \}$ and $n, m\in \mathbb{N}$,
 \[
 F_1 \circ (F_2 \circ \cdots (F_n \circ p) \cdots)\vdash G_1 {\rhd} (G_2 {\rhd} \cdots (G_m {\rhd} p)\cdots)
 \]
@@ -402,57 +407,172 @@ Interaction rules between dynamic and epistemic modalities:
 
 
 \begin{clarifications}
-The language $\mathcal{L}_\mathrm{MT}(\mathcal{F}, \mathcal{G})$ of  MtD.DEL consists of  {\em logical}   and {\em structural terms} in the types $\mathsf{T}_1:  = \mathsf{Fm}$, $\mathsf{T}_2: = \mathsf{Fnc}$, $\mathsf{T}_3:  = \mathsf{Act}$, $\mathsf{T}_4: = \mathsf{Ag}$. Following the notation of \iref{MtSC}, the set  of logical terms takes as parameters: 1) a denumerable  set of atomic terms $\mathsf{At}(\mathsf{Fm})$, elements of which are denoted $p$, possibly with indexes; a denumerable  set of atomic terms $\mathsf{At}(\mathsf{Fnc})$, elements of which are denoted $\alpha$, possibly with indexes; a finite  set of atomic terms $\mathsf{At}(\mathsf{Ag})$, elements of which are denoted $\aga$, possibly with indexes;
- 2)  sets of connectives $\mathcal{F}: = \mathcal{F}_{\mathsf{Fm}}\uplus\mathcal{F}_{\mathsf{Fnc}}\uplus\mathcal{F}_{\mathsf{Act}}\uplus\mathcal{F}_{\mathsf{Ag}}\uplus\mathcal{F}_{\mathrm{MT}}$ and $\mathcal{G}: = \mathcal{G}_{\mathsf{Fm}}\uplus\mathcal{G}_{\mathsf{Fnc}}\uplus\mathcal{G}_{\mathsf{Act}}\uplus\mathcal{G}_{\mathsf{Ag}}\uplus\mathcal{G}_{\mathrm{MT}}$ defined as follows:
-$\mathcal{F}_{\mathsf{Fm}}: = \{\top, \wedge, \pdra\}$, $\mathcal{F}_{\mathsf{Fnc}}: = \emptyset$, $\mathcal{F}_{\mathsf{Act}}: = \emptyset$, $\mathcal{F}_{\mathsf{Ag}}: = \emptyset$, $\mathcal{F}_{\mathrm{MT}}: = \{\mand_k\mid 0\leq k\leq 3\}$, where  $n_\top = 0$, $n_{\wedge} = n_{\,>\mkern-3.8mu\raisebox{-0.2ex}{\aoll}\,} = n_{\mand_k}  = 2$ for every $0\leq k\leq 3$, and $\varepsilon_{\pdra}(1) = \partial$ and $\varepsilon_{\wedge}(i)=\varepsilon_{\,>\mkern-3.8mu\raisebox{-0.2ex}{\aoll}\,}(2) = \varepsilon_{\mand_k}(i)  = 1$ for every $i\in \{1, 2\}$, and every $0\leq k\leq 3$, and
-$\mathcal{G}_{\mathsf{Fm}}: = \{\bot, \vee, \pra\}$, $\mathcal{G}_{\mathsf{Fnc}}: = \emptyset$, $\mathcal{G}_{\mathsf{Act}}: = \emptyset$, $\mathcal{G}_{\mathsf{Ag}}: = \emptyset$, $\mathcal{G}_{\mathrm{MT}}: = \{\mra_k\mid 0\leq k\leq 2\}$, where  $n_\bot = 0$, $n_{\vee} = n_{\pra} =n_{\,-{\mkern-3mu\vartriangleright}_k\,}  = 2$ for every $0\leq k\leq 3$, and $\varepsilon_{\pra}(1) = \varepsilon_{\,-{\mkern-3mu\vartriangleright}_k\,}(1)  =  \partial$ and $\varepsilon_{\vee}(i)=\varepsilon_{\pra}(2) = \varepsilon_{\,-{\mkern-3mu\vartriangleright}_k\,}(2) = 1$ for every $i\in \{1, 2\}$, and every $0\leq k\leq 2$.  The functional types of the heterogeneous connectives are given as follows:
-${\mand}_0, {\mra}_{\! 0}   :  \mathsf{Fnc} \times \mathsf{Fm} \to \mathsf{Fm}$, 
-${\mand}_1, {\mra}_{\! 1}  :  \mathsf{Act} \times \mathsf{Fm} \to \mathsf{Fm}$, 
-${\mand}_2, {\mra}_{\! 2}  : \mathsf{Ag} \times \mathsf{Fm} \to \mathsf{Fm}$, 
-${\mand}_3  :  \mathsf{Ag} \times \mathsf{Fnc} \to \mathsf{Act}$.
-
-The structural terms are built by means of structural connectives, taking logical terms as atomic structures. The set of structural connectives includes  $\mAND_{\!\!k}$ and $ \mRA_{\!\!\!\!j}$ for each $0\leq k\leq 3$  and  $0\leq j\leq 2$ which are the structural counterparts of $\mand_k$ and $ \mra_{\!\!j}$, respectively, for each $0\leq k\leq 3$ and  $0\leq j\leq 2$.  It also includes   $;$ as the structural counterpart of both $\wedge$ (when occurring in antecedent position) and $\vee$ (when occurring in succedent position), $\mathrm{I}$ as the structural counterpart of both $\top$ (when occurring in antecedent position) and $\bot$ (when occurring in succedent position), and $>$ as the structural counterpart of both $\pdra$ (when occurring in antecedent position) and $\pra$ (when occurring in succedent position). Finally, it includes  $\mBLA_{\!\!k}$ and $\mBRA_{\!\!\!k}$ for each $0\leq k\leq 3$, and $\mBAND_{\!\!\!j}$ and $\mLA_{\!\!\!j}$ for each $0\leq j\leq 2$, where $\mBLA_{\!\!k}$ and $\mBRA_{\!\!k}$ are the residuals of $\mAND_{\!\!k}$ in its first and  second coordinate respectively, and $\mLA_{\!\!j}$ and $\mBAND_{\!\!\!j}$ are the  residuals of $\mRA_{\!\!\!\!j}$ in its first and second  coordinate respectively. Hence, the functional types of these structural connectives are given as follows:
-${\mBAND}_{\!0}, {\mBRA}_{\! 0}   :  \mathsf{Fnc} \times \mathsf{Fm} \to \mathsf{Fm}$, 
-${\mBAND}_{\!1}, {\mBRA}_{\! 1}  :  \mathsf{Act} \times \mathsf{Fm} \to \mathsf{Fm}$, 
-${\mBAND}_{\!2}, {\mBRA}_{\! 2}  : \mathsf{Ag} \times \mathsf{Fm} \to \mathsf{Fm}$, 
-$ {\mBRA}_{\! 3}  :  \mathsf{Ag} \times \mathsf{Act} \to \mathsf{Fnc}$,
-${\mLA}_{\! 0} , {\mBLA}_{\! 0} : \mathsf{Fm}  \times \mathsf{Fm} \to \mathsf{Fnc}$,
-${\mLA}_{\! 1} , {\mBLA}_{\! 1} :  \mathsf{Fm}  \times \mathsf{Fm} \to \mathsf{Act},$
-${\mLA}_{\! 2} , {\mBLA}_{\! 2} : \mathsf{Fm}\times \mathsf{Fm} \to \mathsf{Ag}$,
-$ {\mBLA}_{\! 3} :  \mathsf{Act} \times \mathsf{Fnc} \to \mathsf{Ag}$.
-Summing up, the well formed terms of MtD.SDM are generated by simultaneous induction as follows:
-{\small
-\begin{center}
-\begin{tabular}{@{}l@{}}
-$\mathsf{Fm}$ \\
-$A:: = \, p \mid \bot\mid \top \mid A\wedge A\mid A\vee A\mid A \rightarrow A\mid A \pdra A\mid \alpha\mand_0 A\mid \alpha\mra_{\! 0} \  A  \mid \gamma\mand_1 A\mid \gamma\mra_{\! 1} \  A  \mid \aga\mand_2 A\mid \aga\mra_{\! 2} \  A$ \\
-$X:: = \, A \mid \textrm{I} \mid X~; X\mid X > X\mid F \mAND_{\! 0} \ X\mid F \mRA_{\!\! 0} \  X \mid \Gamma\mAND_{\! 1} \  X\mid \Gamma\mRA_{\!\! 1} \  X \mid
- {\large{\texttt{a}}}\mAND_{\! 2} \  X\mid {\large{\texttt{a}}}\mRA_{\!\! 2} \  X \mid$ \\
-\ \ \ \ \ \ \ \ \ \,$F \mBAND_{\! 0} \  X\mid F \mBRA_{\!\! 0} \  X \mid
-\Gamma\mBAND_{\! 1} \  X\mid \Gamma\mBRA_{\!\! 1} \  X \mid
- {\large{\texttt{a}}}\mBAND_{\! 2} \  X\mid {\large{\texttt{a}}}\mBRA_{\!\! 2} \  X$ \\
-\end{tabular}
-\end{center}
-
-\begin{center}
-\begin{tabular}{lclcl}
-$\mathsf{Fnc}$ &\ \ \ & $\mathsf{Act}$ &\ \ \ & $\mathsf{Ag}$\\
-$\alpha:: = \, \alpha$ &\ \ \ &  $\gamma:: =\, \aga\mand_3 \alpha$ &\ \ & $\aga:: = \aga$ \\
-$F:: = \, \alpha\mid X \mLA_{\!\! 0} \   X \mid X \mBLA_{\!\! 0} \  X\mid {\large{\texttt{a}}} \mBRA_{\!\! 3} \  \Gamma$ &\ \ \ & $\Gamma:: =\,    {\large{\texttt{a}}}\mAND_{\! 3} \  F \mid  X \mLA_{\! 1} \  X \mid X \mBLA_{\! 1} \  X$ &\ \ \ & ${\large{\texttt{a}}}:: =  \,\aga \mid X \mLA_{\!\! 2} \   X \mid X \mBLA_{\!\! 2} \  X  \mid \Gamma \mBLA_{\!\! 3} \ F$\\
-\end{tabular}
-\end{center}
-
-
- }
-
-The Identity, Cut, Display and introduction rules instantiate the general template described in \iref{MtSC}, and hence are omitted. Also, the pure-type structural rules for $\mathsf{Fm}$ are the standard ones capturing the usual (classical, intuitionistic, substructural...) propositional base, and are also omitted. The calculus MtD.DEL is a proper fragment of the calculus introduced in \cite{FrittellaGrecoKurzPalmigianoSikimic2016} and captures the diamond-only presentation of dynamic epistemic logic. The rules swap-out$_R$ and swap-in$_R$ are a notational variant of the corresponding rules introduced in \cite{FrittellaGrecoKurzPalmigianoSikimic2016}. \end{clarifications}
+  The language $\mathcal{L}_\mathrm{MT}(\mathcal{F}, \mathcal{G})$ of  MtD.DEL
+  consists of  {\em logical}   and {\em structural terms} in the types
+  $\mathsf{T}_1:  = \mathsf{Fm}$, 
+  $\mathsf{T}_2: = \mathsf{Fnc}$, 
+  $\mathsf{T}_3: = \mathsf{Act}$, 
+  $\mathsf{T}_4: = \mathsf{Ag}$. 
+  Following the notation of~\iref{MtSC}, the set  of logical terms takes as
+  parameters:
+  %
+  1) a denumerable set of atomic terms $\mathsf{At}(\mathsf{Fm})$, elements of
+  which are denoted $p$, possibly with indexes; a denumerable  set of atomic terms
+  $\mathsf{At}(\mathsf{Fnc})$, elements of which are denoted $\alpha$, possibly
+  with indexes; a finite  set of atomic terms $\mathsf{At}(\mathsf{Ag})$, elements
+  of which are denoted $\aga$, possibly with indices; 
+  %
+  2)  sets of connectives
+  $\mathcal{F}: = \mathcal{F}_{\mathsf{Fm}} \uplus
+                  \mathcal{F}_{\mathsf{Fnc}} \uplus
+                  \mathcal{F}_{\mathsf{Act}} \uplus
+                  \mathcal{F}_{\mathsf{Ag}} \uplus
+                  \mathcal{F}_{\mathrm{MT}}$
+  %
+  and 
+  $\mathcal{G}: = \mathcal{G}_{\mathsf{Fm}} \uplus
+                  \mathcal{G}_{\mathsf{Fnc}} \uplus
+                  \mathcal{G}_{\mathsf{Act}} \uplus
+                  \mathcal{G}_{\mathsf{Ag}} \uplus
+                  \mathcal{G}_{\mathrm{MT}}$
+  %
+  defined as follows: 
+  $\mathcal{F}_{\mathsf{Fm}}: = \{\top, \wedge, \pdra\}$,
+  $\mathcal{F}_{\mathsf{Fnc}}: = \emptyset$, 
+  $\mathcal{F}_{\mathsf{Act}}: = \emptyset$, 
+  $\mathcal{F}_{\mathsf{Ag}}: = \emptyset$,
+  $\mathcal{F}_{\mathrm{MT}}: = \{\mand_k\mid 0\leq k\leq 3\}$, 
+  %
+  where  
+  $n_\top = 0$, 
+  $n_{\wedge} = n_{\,>\mkern-3.8mu\raisebox{-0.2ex}{\aoll}\,} = n_{\mand_k} = 2$ 
+  %
+  for every 
+  $0\leq k\leq 3$, and 
+  $\varepsilon_{\pdra}(1) = \partial$ and
+  $\varepsilon_{\wedge}(i)=\varepsilon_{\,>\mkern-3.8mu\raisebox{-0.2ex}{\aoll}\,}(2) = \varepsilon_{\mand_k}(i)  = 1$ 
+  %
+  for every $i\in \{1, 2\}$, and every $0\leq k\leq 3$, and 
+  $\mathcal{G}_{\mathsf{Fm}}: = \{\bot, \vee, \pra\}$,
+  $\mathcal{G}_{\mathsf{Fnc}}: = \emptyset$, 
+  $\mathcal{G}_{\mathsf{Act}}: = \emptyset$, 
+  $\mathcal{G}_{\mathsf{Ag}}: = \emptyset$,
+  $\mathcal{G}_{\mathrm{MT}}: = \{\mra_k\mid 0\leq k\leq 2\}$, 
+  %
+  where  
+  $n_\bot = 0$, 
+  $n_{\vee} = n_{\pra} =n_{\,-{\mkern-3mu\vartriangleright}_k\,} = 2$ 
+  %
+  for every 
+  $0\leq k\leq 3$, and 
+  $\varepsilon_{\pra}(1) = \varepsilon_{\,-{\mkern-3mu\vartriangleright}_k\,}(1)  =  \partial$ and
+  $\varepsilon_{\vee}(i)=\varepsilon_{\pra}(2) = \varepsilon_{\,-{\mkern-3mu\vartriangleright}_k\,}(2) = 1$ 
+  %
+  for every $i\in \{1, 2\}$, and every $0\leq k\leq 2$.  
+  %  
+  The functional types of the heterogeneous connectives are given as follows:
+  ${\mand}_0, {\mra}_{\! 0} : \mathsf{Fnc}
+  \times \mathsf{Fm} \to \mathsf{Fm}$, ${\mand}_1, {\mra}_{\! 1}  :  \mathsf{Act}
+  \times \mathsf{Fm} \to \mathsf{Fm}$, ${\mand}_2, {\mra}_{\! 2}  : \mathsf{Ag}
+  \times \mathsf{Fm} \to \mathsf{Fm}$, ${\mand}_3  :  \mathsf{Ag} \times
+  \mathsf{Fnc} \to \mathsf{Act}$.
+  
+  The structural terms are built by means of structural connectives, taking
+  logical terms as atomic structures. The set of structural connectives includes
+  $\mAND_{\!\!k}$ and $ \mRA_{\!\!\!\!j}$ for each $0\leq k\leq 3$  and  $0\leq
+  j\leq 2$ which are the structural counterparts of $\mand_k$ and $ \mra_{\!\!j}$,
+  respectively, for each $0\leq k\leq 3$ and  $0\leq j\leq 2$.  It also includes
+  $;$ as the structural counterpart of both $\wedge$ (when occurring in antecedent
+  position) and $\vee$ (when occurring in succedent position), $\mathrm{I}$ as the
+  structural counterpart of both $\top$ (when occurring in antecedent position)
+  and $\bot$ (when occurring in succedent position), and $>$ as the structural
+  counterpart of both $\pdra$ (when occurring in antecedent position) and $\pra$
+  (when occurring in succedent position). Finally, it includes  $\mBLA_{\!\!k}$
+  and $\mBRA_{\!\!\!k}$ for each $0\leq k\leq 3$, and $\mBAND_{\!\!\!j}$ and
+  $\mLA_{\!\!\!j}$ for each $0\leq j\leq 2$, where $\mBLA_{\!\!k}$ and
+  $\mBRA_{\!\!k}$ are the residuals of $\mAND_{\!\!k}$ in its first and  second
+  coordinate respectively, and $\mLA_{\!\!j}$ and $\mBAND_{\!\!\!j}$ are the
+  residuals of $\mRA_{\!\!\!\!j}$ in its first and second  coordinate
+  respectively. Hence, the functional types of these structural connectives are
+  given as follows:
+  %
+  ${\mBAND}_{\!0}, {\mBRA}_{\! 0}   :  \mathsf{Fnc} \times \mathsf{Fm} \to \mathsf{Fm}$, 
+  ${\mBAND}_{\!1}, {\mBRA}_{\! 1}  :  \mathsf{Act} \times \mathsf{Fm} \to \mathsf{Fm}$, 
+  ${\mBAND}_{\!2}, {\mBRA}_{\! 2}  : \mathsf{Ag} \times \mathsf{Fm} \to \mathsf{Fm}$, 
+  ${\mBRA}_{\! 3}  :  \mathsf{Ag} \times \mathsf{Act} \to \mathsf{Fnc}$,
+  ${\mLA}_{\! 0} , {\mBLA}_{\! 0} : \mathsf{Fm}  \times \mathsf{Fm} \to \mathsf{Fnc}$,
+  ${\mLA}_{\! 1} , {\mBLA}_{\! 1} :  \mathsf{Fm}  \times \mathsf{Fm} \to \mathsf{Act},$
+  ${\mLA}_{\! 2} , {\mBLA}_{\! 2} : \mathsf{Fm}\times \mathsf{Fm} \to \mathsf{Ag}$,
+  ${\mBLA}_{\! 3} :  \mathsf{Act} \times \mathsf{Fnc} \to \mathsf{Ag}$.
+  %
+  Summing up, the well formed terms of MtD.SDM are generated by simultaneous
+  induction as follows:
+  %
+  {\small
+  \begin{center}
+  \begin{tabular}{@{}l@{}}
+  $\mathsf{Fm}$ \\
+  $A:: = \, p \mid \bot \mid \top \mid A \wedge A \mid A \vee A \mid A \rightarrow A 
+         \mid A \pdra A \mid \alpha\mand_0 A \mid \alpha\mra_{\! 0} \  A 
+         \mid \gamma\mand_1 A\mid \gamma\mra_{\! 1} \  A \mid \aga \mand_2 A \mid \aga\mra_{\! 2} \  A$ \\
+  $X:: = \, A \mid \textrm{I} \mid X~; X\mid X > X\mid F \mAND_{\! 0} \ X
+         \mid F \mRA_{\!\! 0} \  X \mid \Gamma\mAND_{\! 1} \  X\mid \Gamma\mRA_{\!\! 1} \  X 
+         \mid {\large{\texttt{a}}}\mAND_{\! 2} \  X\mid {\large{\texttt{a}}}\mRA_{\!\! 2} \  X 
+         \mid$ \\
+  \ \ \ \ \ \ \ \ \ \,$F \mBAND_{\! 0} \  X\mid F \mBRA_{\!\! 0} \  X \mid
+    \Gamma\mBAND_{\! 1} \  X\mid \Gamma\mBRA_{\!\! 1} \  X 
+    \mid {\large{\texttt{a}}}\mBAND_{\! 2} \  X\mid {\large{\texttt{a}}}\mBRA_{\!\! 2} \  X$ \\
+  \end{tabular}
+  \end{center}
+  
+  \begin{center}
+  \begin{tabular}{lclcl}
+  $\mathsf{Fnc}$ &\ \ \ & $\mathsf{Act}$ &\ \ \ & $\mathsf{Ag}$\\
+  $\alpha:: = \, \alpha$ &\ \ \ &  
+    $\gamma:: =\, \aga\mand_3 \alpha$ &\ \ & 
+    $\aga:: = \aga$ \\
+  $F:: = \, \alpha\mid X \mLA_{\!\! 0} \   X \mid X \mBLA_{\!\! 0} \  X
+         \mid {\large{\texttt{a}}} \mBRA_{\!\! 3} \  \Gamma$ &\ \ \ & $\Gamma:: =\,{\large{\texttt{a}}}\mAND_{\! 3} \  F 
+         \mid  X \mLA_{\! 1} \  X 
+         \mid X \mBLA_{\! 1} \  X$ &\ \ \ & ${\large{\texttt{a}}}:: =  \,\aga 
+         \mid X \mLA_{\!\! 2} \   X \mid X \mBLA_{\!\! 2} \  X  \mid \Gamma \mBLA_{\!\! 3} \ F$\\
+  \end{tabular}
+  \end{center}
+  }
+  
+  The Identity, Cut, Display and introduction rules instantiate the general
+  template described in~\iref{MtSC}, and hence are omitted. Also, the pure-type
+  structural rules for $\mathsf{Fm}$ are the standard ones capturing the usual
+  (classical, intuitionistic, substructural...) propositional base, and are also
+  omitted. The calculus MtD.DEL is a proper fragment of the calculus introduced
+  in~\cite{FrittellaGrecoKurzPalmigianoSikimic2016} and captures the diamond-only
+  presentation of dynamic epistemic logic. The rules swap-out$_R$ and swap-in$_R$
+  are a notational variant of the corresponding rules introduced
+  in~\cite{FrittellaGrecoKurzPalmigianoSikimic2016}.
+\end{clarifications}
 
 
 \begin{history}
-MtD.DEL was introduced in \cite{FrittellaGrecoKurzPalmigianoSikimic2016} and captures Baltag-Moss-Solecki's dynamic epistemic logic  \cite{BaltagMossSolecki1999} in its classical version, and the logic IEAK \cite{KurzPalmigiano2013} in its intuitionistic version. An overview of the literature about the proof theoretic approaches for dynamic epistemic logics can be found in \cite{SabineGrecoKurzPalmigianoSikimic2016a}.   \end{history}
+  MtD.DEL was introduced in~\cite{FrittellaGrecoKurzPalmigianoSikimic2016} and
+  captures Baltag-Moss-Solecki's dynamic epistemic
+  logic~\cite{BaltagMossSolecki1999} in its classical version, and the logic
+  IEAK~\cite{KurzPalmigiano2013} in its intuitionistic version. An overview of the
+  literature about the proof theoretic approaches for dynamic epistemic logics can
+  be found in~\cite{SabineGrecoKurzPalmigianoSikimic2016a}.   
+\end{history}
 
 \begin{technicalities}
-The axiomatization of Baltag-Moss-Solecki's dynamic epistemic logic is not closed under uniform substitution and is given in terms of meta-linguistic labels. The multi-type language of MtD.DEL makes it possible to internalize the labels into the object language of the calculus so that when recast in this language, the axioms are analytic inductive according to the definition of \cite{GrecoMaPalmigianoTzimoulisZhao2016}. The $0$-ary rule Atom captures the axioms which are not closed under uniform substitution.  The calculus above is sound and complete w.r.t. final coalgebra semantics introduced in \cite{GrecoKurzPalmigiano2013}; it is conservative, and enjoys the cut elimination and subformula property as immediate consequences of the general theory of multi-type calculi.
+  The axiomatization of Baltag-Moss-Solecki's dynamic epistemic logic is not
+  closed under uniform substitution and is given in terms of meta-linguistic
+  labels. The multi-type language of MtD.DEL makes it possible to internalize the
+  labels into the object language of the calculus so that when recast in this
+  language, the axioms are analytic inductive according to the definition
+  of~\cite{GrecoMaPalmigianoTzimoulisZhao2016}. The $0$-ary rule Atom captures the
+  axioms which are not closed under uniform substitution.  The calculus above is
+  sound and complete w.r.t. final coalgebra semantics introduced
+  in~\cite{GrecoKurzPalmigiano2013}; it is conservative, and enjoys the cut
+  elimination and subformula property as immediate consequences of the general
+  theory of multi-type calculi.
 \end{technicalities}
 
 \end{entry}
