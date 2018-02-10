@@ -99,7 +99,7 @@
 
 \newcommand{\entryAuthor}[1]{
   \iftoggle{alreadyHasAuthors}{
-    \g@addto@macro{\@entryAuthors}{, #1\indexAuthor{#1} }
+    \g@addto@macro{\@entryAuthors}{, #1\indexAuthor{#1}}
   }{
     \g@addto@macro{\@entryAuthors}{#1\indexAuthor{#1}}
   }
