@@ -1,46 +1,14 @@
-%
-% If the calculus has an acronym, define it.
-% (e.g. \newcommand{\LK}{\ensuremath{\mathbf{LK}}\xspace})
+\calculusName{Hilbert's Axiomatic Calculus}
+\calculusAcronym{}
+\calculusLogic{Classical Logic}
+\calculusLogicOrder{First-Order}
+\calculusType{Axiomatic}
+\calculusYear{1917}
 
-\calculusName{Hilbert's Axiomatic Calculus}         % The name of the calculus
-\calculusAcronym{}          % The acronym if defined above, or empty otherwise. 
-\calculusLogic{Classical Logic}        % Specify the logic (e.g. Classical Logic, Intuitionistic Logic, ...) for which this calculus is intended.
-\calculusLogicOrder{First-Order}   % Specify the order of the logic (e.g. Propositional, Quantified Propositional, First-Order, Higher-Order, ...).
-\calculusType{Axiomatic}         % Specify the calculus type (e.g. Tableau, Sequent Calculus, Hyper-Sequent Calculus, Natural Deduction, ...)
-\calculusYear{1917}         % The year when the calculus was published.
+\calculusAuthor{David Hilbert}
 
-\calculusAuthor{David Hilbert}       % The name(s) of the author(s) of the calculus.
-%\calculusAuthor{ToDo:FullNameAuthor2}
-%\calculusAuthor{ToDo:FullNameAuthor3}
-
-
-\entryTitle{Hilbert's Axiomatic Calculus}     % Title of the entry (usually coincides with the name of the calculus).
+\entryTitle{Hilbert's Axiomatic Calculus}
 \entryAuthor{Richard Zach}     
-%\entryAuthor{ToDo:FullNameAuthor2}
-%\entryAuthor{ToDo:FullNameAuthor3}
-
-% The encyclopedia's peer-reviewing policy is described here: 
-% http://proofsystem.github.io/Encyclopedia/
-%
-% Reviewers of this entry will be acknowledged in the following lines:
-% \entryReviewer{Reviewer 1's name}
-% \entryReviewer{Reviewer 2's name}
-% \entryReviewer{Reviewer 3's name}
-%
-% The lines above will be filled by the coordinators. 
-% If you would like to indicate people 
-% who could review your entry, contact the coordinators.
-
-
-% If you wish, use tags to give any other information 
-% that might be helpful for classifying and grouping this entry:
-% e.g. \etag{Two-Sided Sequents}
-% e.g. \etag{Multiset Cedents}
-% e.g. \etag{List Cedents}
-% You are free to invent your own tags. 
-% The Encyclopedia's coordinator will take care of 
-% merging semantically similar tags in the future.
-
 
 \maketitle
 
@@ -85,36 +53,31 @@ Rules:
 \end{calculus}
 
 \begin{clarifications}
-Hilbert used the symbol $\times$ for disjunction $\lor$, $+$ for
-conjunction $\land$, and overlining $\overline{\phantom{X}}$ for
-negation. $\alpha \rightarrow \beta$ is an abbreviation for
-$\overline{\alpha} \lor \beta$, and $\alpha \land \beta$ for
-$\overline{\overline{\alpha} \lor \overline{\beta}}$. The usual
-conventions about operator precendence apply. $(x)$ is a universal
-quantifier and $(Ex)$ an existential quantifier. The system is
-formulated in a language that distinguishes between propositional and
-predicate constants and variables. In particular, the axioms
-are \emph{not} understood as schemas. The substitution rule allows the
-replacement of propositional variables by a formula that contains no
-object variable free, and a predicate variable with $n$ arguments
-$x_1$, \dots, $x_n$ by an expression in which all and only $x_1$, \dots, $x_n$
-occur free.
+  Hilbert used the symbol $\times$ for disjunction $\lor$, $+$ for
+  conjunction $\land$, and overlining $\overline{\phantom{X}}$ for
+  negation. $\alpha \rightarrow \beta$ is an abbreviation for
+  $\overline{\alpha} \lor \beta$, and $\alpha \land \beta$ for
+  $\overline{\overline{\alpha} \lor \overline{\beta}}$. The usual
+  conventions about operator precedence apply. $(x)$ is a universal
+  quantifier and $(Ex)$ an existential quantifier. The system is
+  formulated in a language that distinguishes between propositional and
+  predicate constants and variables. In particular, the axioms
+  are \emph{not} understood as schemas. The substitution rule allows the
+  replacement of propositional variables by a formula that contains no
+  object variable free, and a predicate variable with $n$ arguments
+  $x_1$, \dots, $x_n$ by an expression in which all and only 
+  $x_1$, \dots, $x_n$ occur free.
 \end{clarifications}
 
 \begin{history}
-The system was first presented in lecture notes by Paul Bernays to Hilbert's
-course ``Principles of Mathematics,'' taught in the
-Winter term 1917--18; see \cite{Hilbert1917}.  The system
-is based on the axiomatic proof system of Whitehead and
-Russell's \emph{Principia
-Mathematica} \irefmissing{PrincipiaMathematica}, but restricts the
-language to first order. It adds the explicit rules of substitution
-and renaming, and avoids the use of free variables in its axioms and
-theorems.
+  The system was first presented in lecture notes by Paul Bernays to Hilbert's
+  course ``Principles of Mathematics'', taught in the Winter term 1917--18;
+  see~\cite{Hilbert1917}.
+  The system is based on the axiomatic proof system of Whitehead and Russell's
+  \emph{Principia Mathematica},~\irefmissing{PrincipiaMathematica} but restricts
+  the language to first order. It adds the explicit rules of substitution and
+  renaming, and avoids the use of free variables in its axioms and theorems.
 \end{history}
 
-% \begin{technicalities}
-% ToDo: write here remarks about soundness, completeness, decidability...
-% \end{technicalities}
 
 \end{entry}
