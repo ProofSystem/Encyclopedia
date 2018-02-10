@@ -1,7 +1,3 @@
-
-
-
-
 \calculusName{Update Logic}   
 \calculusAcronym{UL}     
 \calculusLogic{Substructural Logics} 
@@ -13,9 +9,6 @@
 \entryTitle{Update Logic UL}        
 %\entryAuthor{Guillaume Aucher} 
 \entryAuthor{Guillaume Aucher}  
-
-
-
 
 \maketitle
 
@@ -178,7 +171,7 @@
   
 \begin{calculus}
 \scalebox{0.92}{$\begin{array}{@{\quad\quad}l@{\quad\quad}l@{\quad\quad}l@{\quad\quad}l@{\quad\quad}l@{\quad}l@{\quad}l@{\quad}} 
-\infer=[\ulstructruleaddeux]{\Y\entail \Z\commak *\X}{\infer=[\ulstructrulebdun]{\X\entail *\Y\commaj\Z}{\X\commai\Y\entail \Z}} & 		
+\infer=[\ulstructruleaddeux]{\Y\entail \Z\commak *\X}{\infer=[\ulstructrulebdun]{\X\entail *\Y\commaj\Z}{\X\commai\Y\entail \Z}} &              
 \infer=[\ulstructruleaddeuxbis]{\Z\commak*\X\entail \Y}{\infer=[\ulstructrulebdunbis]{*\Y\commaj\Z\entail\X}{\Z\entail \X\commai\Y}} & 
 \infer={\bulletj\X\entail\Y}{\X\entail\bulletj\Y} & \infer[Cut]{\U\entail\V}{\U\entail\phi & \phi\entail\V} \\
 \\
@@ -186,17 +179,17 @@
 \infer[\CA]{\X\entail\U}{\X\com\X\entail\U} & 
 \infer[\comA]{\X\com\Y\entail \U}{\Y\com\X\entail \U}  & 
 \infer[\ass]{\X\com(\Y\com\Z)\entail\U}{(\X\com\Y)\com\Z\entail\U} \\
-\\ 	
+\\      
 \infer[\axun]{p\entail p}{} & 
 \infer[\bot_A]{\bot\entail}{}  & 
 \infer[\top_K]{\entail\top}{}  \\
 \\
-\infer[\veeK^1]{\U\entail\phi\vee\psi}{\U\entail\phi} & 		
+\infer[\veeK^1]{\U\entail\phi\vee\psi}{\U\entail\phi} &                 
 \infer[\veeK^2]{\U\entail\phi\vee\psi}{\U\entail\psi} & 
 \infer[\veeA]{\phi\vee\psi\entail\U}{\phi\entail\U & \psi\entail\U} & 
 \infer[\neg_K]{\U\entail\neg\phi}{\U\entail *\phi} \\ %\\
 \\
-\infer[\land_K]{\U\entail \phi\land\psi}{\U\entail\phi & \U\entail\psi} & 			
+\infer[\land_K]{\U\entail \phi\land\psi}{\U\entail\phi & \U\entail\psi} &                       
 \infer[\land_A^1]{\phi\land\psi\entail\U}{\phi\entail\U} & 
 \infer[\land_A^2]{\phi\land\psi\entail\U}{\psi\entail\U} & 
 \infer[\neg_A]{\neg\phi\entail \U}{*\phi\entail\U} \\
@@ -211,62 +204,70 @@
 \infer[\RAK]{*\X\commaj\Y\entail\psi\Yleft_{\mbox{\tiny{j}}}\phi}{\Y\entail\psi & \phi\entail\X} & 
 \infer[\RAA]{\psi\Yleft_{\mbox{\tiny{j}}}\phi\entail\X}{\psi\entail \phi\commak\X} \\
 \\
-\infer[\introentailbisid]{\X\entail\psi\implybisi\phi}{\phi\commai\X\entail\psi} & \infer[\elimentailbisiniid]{\psi\implybisi\phi\entail\Y\commak*\X}{\psi\entail\Y & \X\entail\phi} & 		
+\infer[\introentailbisid]{\X\entail\psi\implybisi\phi}{\phi\commai\X\entail\psi} & 
+\infer[\elimentailbisiniid]{\psi\implybisi\phi\entail\Y\commak*\X}{\psi\entail\Y & \X\entail\phi} &             
 \infer[\BRAA]{\Y\commak*\X\entail\phi\Yright_{\mbox{\tiny{k}}}\psi}{\phi\entail\X & \Y\entail\psi} & 
 \infer[\BRAK]{\phi\Yright_{\mbox{\tiny{k}}}\psi\entail\X}{\psi\entail\phi\commai\X}\\
 \\
 \multicolumn{3}{l}{(i,j,k)\in\left\{(1,2,3), (2,3,1), (3,1,2)\right\} } \\
 \\
-\infer[\Box_K]{\X\entail\belj\phi}{\bulletj\X\entail\phi} 	&		\infer[\Box_A]{\belj\phi\entail\bulletj\X}{\phi\entail \X} & \infer[\Box^-_K]{\U\entail\backbox\phi}{\U\entail*\bulletj*\phi} 	&		\infer[\Box^-_A]{\backbox\phi\entail*\bulletj*\X}{\phi\entail \X}\\
+\infer[\Box_K]{\X\entail\belj\phi}{\bulletj\X\entail\phi}  &
+\infer[\Box_A]{\belj\phi\entail\bulletj\X}{\phi\entail \X} &
+\infer[\Box^-_K]{\U\entail\backbox\phi}{\U\entail*\bulletj*\phi} &
+\infer[\Box^-_A]{\backbox\phi\entail*\bulletj*\X}{\phi\entail \X}\\
 \\
-\infer[\Diamond^{-}_K]{\bulletj\X\entail\backmod\phi}{\X\entail\phi} &     \infer[\Diamond^{-}_A]{\backmod\phi\entail\X}{\phi\entail\bulletj\X}	 & \infer[\Diamond_K]{*\bulletj*\X\entail\feas\phi}{\X\entail\phi} &     \infer[\Diamond_A]{\feas\phi\entail\U}{*\bulletj*\phi\entail\U} 						
+\infer[\Diamond^{-}_K]{\bulletj\X\entail\backmod\phi}{\X\entail\phi} & 
+\infer[\Diamond^{-}_A]{\backmod\phi\entail\X}{\phi\entail\bulletj\X} & 
+\infer[\Diamond_K]{*\bulletj*\X\entail\feas\phi}{\X\entail\phi} & 
+\infer[\Diamond_A]{\feas\phi\entail\U}{*\bulletj*\phi\entail\U}                                                
 \end{array}$}
 \end{calculus}
 
-\begin{clarifications}
-Update logic \cite{Aucher2016}  generalizes  the non--associative Lambek calculus \iref{LambekCalc} and includes  modal, propositional and dual substructural connectives. %It contains three symetric triples of connectives
-%The substructural connectives are interconnected by means of cyclic permutations. %The usual fusion, implication
-%and co-implication connectives form one of these triples.
- %It is a (proper) display calculus and   the cut rule is eliminable. Its validity problem is also decidable.
- Correspondences between frame properties and structural display
-calculus rules are used to define novel display sequent calculi for a broad range of
-substructural logics (bi--intuitionistic logic is a case study of \cite{Aucher2016}).  \end{clarifications}
+\begin{clarifications} 
+  Update logic~\cite{Aucher2016}  generalizes  the non--associative Lambek
+  calculus~\iref{LambekCalc} and includes  modal, propositional and dual
+  substructural connectives. 
+  %It contains three symetric triples of connectives The substructural connectives
+  %are interconnected by means of cyclic permutations. %The usual fusion,
+  %implication and co-implication connectives form one of these triples. It is a
+  %(proper) display calculus and   the cut rule is eliminable. Its validity
+  %problem is also decidable.
+  Correspondences between frame properties and structural display calculus rules
+  are used to define novel display sequent calculi for a broad range of
+  substructural logics (bi--intuitionistic logic is a case study
+  of~\cite{Aucher2016}).  
+\end{clarifications}
 
 %\begin{history}
-%%% ToDo: write here short historical remarks about this proof system,
-%%% especially if they relate to other proof systems. 
-%%% Use "\iref{OtherProofSystem}" to refer to another proof system 
-%%% in the Encyclopedia (where "OtherProofSystem" is its ID). 
-%%% Use "\irefmissing{SuggestedIDForOtherProofSystem}" to refer to 
-%%% another proof system that is not yet available in the encyclopedia.
-%The system now known as the basic Lambek Calculus was introduced in
-%1958 by Joachim Lambek as the "Syntactic Calculus" \cite{lambek1958}.
-%Lambek's motivation was to ``to obtain an effective rule (or
-%algorithm) for distinguishing sentences from non-sentences, which
-%works not only for the formal languages of interest to the
-%mathematical logician, but also for natural languages $[\ldots]$'', as
-%explained by Moortgat in \cite{moortgat2010}.  After a long period of
-%ostracism, around the middle 1980s the Syntactic Calculus, now called
-%the Lambek Calculus was taken up by logicians interested in
-%Computational Linguistics, especially van Benthem, Buszkowski and
-%Moortgat. They realized that a computational semantics for categorical
-%derivations along the lines of the Curry-Howard proofs-as-programs
-%interpretation would provide us with a ``parsing-as-deduction"
-%paradigm and a powerful tool to study ``logical" derivational
-%semantics. Around the same time, the introduction of Linear Logic
-%\iref{LL}, by Jean-Yves Girard also gave a new impulse to the work in
-%Categorical Grammars. This was because of Linear Logic's insight that
-%even if you had a very weak proof system, you could introduce
-%structural rules in a controlled fashion and hence obtain more
-%expressive systems, by the use of the so called modalities. Since no
-%expressivity is lost in this process, this opened the way for various
-%types of experiments, trying to make sure that the logical system
-%could cope with more phenomena from the language, see discussion of
-%examples in \cite{moortgat2010}.
+  %The system now known as the basic Lambek Calculus was introduced in
+  %1958 by Joachim Lambek as the "Syntactic Calculus"~\cite{lambek1958}.
+  %Lambek's motivation was to ``to obtain an effective rule (or
+  %algorithm) for distinguishing sentences from non-sentences, which
+  %works not only for the formal languages of interest to the
+  %mathematical logician, but also for natural languages $[\ldots]$'', as
+  %explained by Moortgat in~\cite{moortgat2010}.  After a long period of
+  %ostracism, around the middle 1980s the Syntactic Calculus, now called
+  %the Lambek Calculus was taken up by logicians interested in
+  %Computational Linguistics, especially van Benthem, Buszkowski and
+  %Moortgat. They realized that a computational semantics for categorical
+  %derivations along the lines of the Curry-Howard proofs-as-programs
+  %interpretation would provide us with a ``parsing-as-deduction"
+  %paradigm and a powerful tool to study ``logical" derivational
+  %semantics. Around the same time, the introduction of Linear Logic
+  %\iref{LL}, by Jean-Yves Girard also gave a new impulse to the work in
+  %Categorical Grammars. This was because of Linear Logic's insight that
+  %even if you had a very weak proof system, you could introduce
+  %structural rules in a controlled fashion and hence obtain more
+  %expressive systems, by the use of the so called modalities. Since no
+  %expressivity is lost in this process, this opened the way for various
+  %types of experiments, trying to make sure that the logical system
+  %could cope with more phenomena from the language, see discussion of
+  %examples in~\cite{moortgat2010}.
 %\end{history}
 
- \begin{technicalities}
-Update logic  is a (proper) display calculus which  enjoys  cut elimination. % and  is decidable. %It is sound and complete 
- \end{technicalities}
+\begin{technicalities}
+  Update logic  is a (proper) display calculus which  enjoys  cut elimination. 
+  % and  is decidable. %It is sound and complete 
+\end{technicalities}
 
 \end{entry}
