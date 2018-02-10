@@ -1,46 +1,24 @@
+\calculusName{Entailment for Structured Specifications}
+\calculusAcronym{\Pi_{SPEC}}
+\calculusLogic{Institution}
+\calculusLogicOrder{General}
+\calculusType{Sequent-style or Hilbert-style calculus}
+\calculusYear{1988}
 
-% If the calculus has an acronym, define it.
-% (e.g. \newcommand{\LK}{\ensuremath{\mathbf{LK}}\xspace})
-
-\calculusName{Entailment for Structured Specifications}         % The name of the calculus
-\calculusAcronym{\Pi_{SPEC}}          % The acronym if defined above, or empty otherwise. 
-\calculusLogic{Institution}        % Specify the logic (e.g. Classical Logic, Intuitionistic Logic, ...) for which this calculus is intended.
-\calculusLogicOrder{General}   % Specify the order of the logic (e.g. Propositional, Quantified Propositional, First-Order, Higher-Order, ...).
-\calculusType{Sequent-style or Hilbert-style calculus}         % Specify the calculus type (e.g. Tableau, Sequent Calculus, Hyper-Sequent Calculus, Natural Deduction, ...)
-\calculusYear{1988}         % The year when the calculus was published.
-
-\calculusAuthor{Don Sannella}       % The name(s) of the author(s) of the calculus.
+\calculusAuthor{Don Sannella}
 \calculusAuthor{Andrzej Tarlecki}
 \calculusAuthor{Martin Wirsing}
 
 
-\entryTitle{Entailment for Structured Specifications}     % Title of the entry (usually coincides with the name of the calculus).
-\entryAuthor{Rolf Hennicker}     
-\entryAuthor{Donald Sannella}     
+\entryTitle{Entailment for Structured Specifications}
+\entryAuthor{Rolf Hennicker}
+\entryAuthor{Donald Sannella}
 \entryAuthor{Andrzej Tarlecki}
 \entryAuthor{Martin Wirsing}
 
-% The encyclopedia's peer-reviewing policy is described here: 
-% http://proofsystem.github.io/Encyclopedia/
-%
-% Reviewers of this entry will be acknowledged in the following lines:
-% \entryReviewer{Reviewer 1's name}
-% \entryReviewer{Reviewer 2's name}
-% \entryReviewer{Reviewer 3's name}
-%
-% The lines above will be filled by the coordinators. 
-% If you would like to indicate people 
-% who could review your entry, contact the coordinators.
-
 \maketitle
 
-% If your files are called "MyProofSystem.tex" and "MyProofSystem.bib", 
-% then you should write "\begin{entry}{MyProofSystem}" in the line below
 \begin{entry}{StructSpec}  
-
-% Define here any newcommands you may need:
-% e.g. \newcommand{\necessarily}{\Box}
-% e.g. \newcommand{\possibly}{\Diamond}
 
 \newcommand{\ang}[1]{\langle{#1}\rangle}
 \newcommand{\Family}[2]{\ang{#1}_{#2}}
@@ -61,10 +39,6 @@
 \newcommand{\union}[2]{#1 \cup #2}
 
 \begin{calculus}
-
-% Add the inference rules of your proof system here.
-% The "proof.sty" and "bussproofs.sty" packages are available.
-% If you need any other package, please contact the coordinator (Bruno Woltzenlogel Paleo <bruno.wp@gmail.com>)
 
 \[
 \infer{\SP \vdash \varphi}
@@ -93,54 +67,60 @@
 
 \end{calculus}
 
- \begin{clarifications}
-$\INS = \ang{\Sign,\; \Sen\colon\Sign\to\Set,\; \Mod\colon\Sign^\op\to\Cat,\;
-      \ang{{\models_\Sigma}\subseteq|\Mod(\Sigma)|\times\Sen(\Sigma)}_{\Sigma\in|\Sign|}}$
-is an institution that defines the logical system used for specifications,
-$\SP$, $\SP_1$ and $\SP_2$ are structured $\Sigma$-specifications over $\INS$,
-where $\Sigma$ is a signature in the category $\Sign$,
-$\varphi, \varphi_1, \ldots, \varphi_n$ are $\Sigma$-sentences,
-i.e.\ elements in $\Sen(\Sigma)$,
-$\Phi$ is a set of $\Sigma$-sentences, and
-$\sigma(\varphi)$ denotes $\Sen(\sigma)(\varphi)$, the translation of the sentence $\varphi$ along $\sigma\colon\Sigma\to\Sigma'$.
-Structured specifications in $\INS$ are built from basic specifications
-$\ang{\Sigma, \Phi}$,
-the union of $\Sigma$-specifications $\union{\SP_1}{\SP_2}$,
-the translation ``$\translate{\SP}{\sigma}$'' of $\SP$
-    along a signature morphism $\sigma\colon\Sigma\to\Sigma'$,
-and hiding ``$\derive{\SP}{\sigma}$'' for hiding the symbols in $\SP$
-    not occurring in the image of $\sigma\colon\Sigma'\to\Sigma$.
-$\SPSig{\SP}$ is the signature of $\SP$.
-Translations of $\Sigma$-sentences and $\Sigma'$-models
-along $\sigma \colon \Sigma \rightarrow \Sigma'$
-are required to preserve satisfaction:
-for any $\varphi \in \Sen(\Sigma)$ and $M' \in |\Mod(\Sigma')|$,
-$M' \models_{\Sigma'} \Sen(\sigma)(\varphi)
-     \Leftrightarrow
-  \Mod(\sigma)(M') \models_{\Sigma} \varphi$.
-Finally, $\ang{{\vdash_\Sigma}\subseteq\pow(\Sen(\Sigma))\times\Sen(\Sigma)}_{\Sigma\in|\Sign|}$
-is a sound entailment relation
-for the satisfaction relation $\ang{{\models_\Sigma}}_{\Sigma\in|\Sign|}$.
-
-The judgement $\SP \vdash \varphi$ is meant to capture the property that $\varphi$ is satisfied
-in all models of $\SP$.
+\begin{clarifications}
+  $\INS = \ang{\Sign,\; \Sen\colon\Sign\to\Set,\; \Mod\colon\Sign^\op\to\Cat,\;
+          \ang{{\models_\Sigma}\subseteq|\Mod(\Sigma)|\times\Sen(\Sigma)}_{\Sigma\in|\Sign|}}$
+  %
+  is an institution that defines the logical system used for specifications,
+  $\SP$, $\SP_1$ and $\SP_2$ are structured $\Sigma$-specifications over $\INS$,
+  where $\Sigma$ is a signature in the category $\Sign$, $\varphi, \varphi_1,
+  \ldots, \varphi_n$ are $\Sigma$-sentences, i.e.\ elements in $\Sen(\Sigma)$,
+  $\Phi$ is a set of $\Sigma$-sentences, and $\sigma(\varphi)$ denotes
+  $\Sen(\sigma)(\varphi)$, the translation of the sentence $\varphi$ along
+  $\sigma\colon\Sigma\to\Sigma'$. 
+  %
+  Structured specifications in $\INS$ are built from basic specifications
+  $\ang{\Sigma, \Phi}$, the union of $\Sigma$-specifications
+  $\union{\SP_1}{\SP_2}$, the translation ``$\translate{\SP}{\sigma}$'' of $\SP$
+  along a signature morphism $\sigma\colon\Sigma\to\Sigma'$, and hiding
+  ``$\derive{\SP}{\sigma}$'' for hiding the symbols in $\SP$ not occurring in the
+  image of $\sigma\colon\Sigma'\to\Sigma$.  $\SPSig{\SP}$ is the signature of
+  $\SP$.
+  %
+  Translations of $\Sigma$-sentences and $\Sigma'$-models along 
+  $\sigma \colon \Sigma \rightarrow \Sigma'$ 
+  are required to preserve satisfaction: for any
+  $\varphi \in \Sen(\Sigma)$ and 
+  $M' \in |\Mod(\Sigma')|$, 
+  $M' \models_{\Sigma'} \Sen(\sigma)(\varphi) 
+      \Leftrightarrow \Mod(\sigma)(M') \models_{\Sigma} \varphi$. 
+  %
+  Finally,
+  $\ang{{\vdash_\Sigma}\subseteq\pow(\Sen(\Sigma))\times\Sen(\Sigma)}_{\Sigma\in|\Sign|}$
+  is a sound entailment relation for the satisfaction relation
+  $\ang{{\models_\Sigma}}_{\Sigma\in|\Sign|}$.
+  
+  The judgment $\SP \vdash \varphi$ is meant to capture the property that
+  $\varphi$ is satisfied in all models of $\SP$.
 \end{clarifications}
 
 \begin{history}
-The first systems for proving entailment in structured specifications were
-given by Sannella and Burstall \cite{SB83}, Sannella and Tarlecki \cite{ST88},
-and Wirsing \cite{Wir91}.
-The above presentation can be found in \cite{ST12}, Sect.~9.2.
+  The first systems for proving entailment in structured specifications were
+  given by Sannella and Burstall~\cite{SB83}, Sannella and Tarlecki~\cite{ST88},
+  and Wirsing~\cite{Wir91}.
+  The above presentation can be found in~\cite{ST12}, Sect.~9.2.
 \end{history}
 
  \begin{technicalities}
-The system is sound; completeness is shown in \cite{Wir91} for the first-order logic instance and in \cite{Bor02,ST12}
-for an institution $\INS$ which is finitely exact, admits propositional operators, satisfies Craig interpolation,
-and has a complete entailment relation $\ang{{\vdash_\Sigma}}_{\Sigma\in|\Sign|}$.
-\cite{ST14} shows that this is the most powerful sound proof system that is compositional in the structure of specifications.
- \cite{RH97} provides additional rules for observability operators.
-
-
+  The system is sound; completeness is shown in~\cite{Wir91} for the first-order
+  logic instance and in~\cite{Bor02,ST12} for an institution $\INS$ which is
+  finitely exact, admits propositional operators, satisfies Craig interpolation,
+  and has a complete entailment relation
+  $\ang{{\vdash_\Sigma}}_{\Sigma\in|\Sign|}$. \cite{ST14}~shows that this is the
+  most powerful sound proof system that is compositional in the structure of
+  specifications.  ~\cite{RH97} provides additional rules for observability
+  operators.
 \end{technicalities}
 %References: [SB83], [ST88], [Wir91], [Bor02], [ST12], [ST14]
+
 \end{entry}
