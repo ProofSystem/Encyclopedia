@@ -1,5 +1,3 @@
-
-
 \calculusName{Polynomial Ring Calculus with Operators}        
 \calculusAcronym{PRCO}         
 \calculusLogic{Modal Logics}     
@@ -10,15 +8,10 @@
 \calculusAuthor{Walter Carnielli}       
 \calculusAuthor{Juan Carlos Agudelo-Agudelo}
 
-
-
 \entryTitle{Polynomial Ring Calculus with Operators}    
 \entryAuthor{Walter Carnielli}     
 
-
-
 \maketitle
-
 
 \begin{entry}{PolynomialRingCalculusWithOperators}  
 
@@ -28,46 +21,57 @@
 
 \begin{calculus} 
  
- As  basis  for modal logics, formulas of   the  Classical Propositional Logic $CPL$ are translated into  Boolean rings   $BR$   via  the translation $\fn{T_{BR}}{Form_{CPL}}{Term_{BR}}$, recursively defined by:
+As basis for modal logics, formulas of the Classical Propositional Logic
+$CPL$ are translated into Boolean rings $BR$ via  the translation
+$\fn{T_{BR}}{Form_{CPL}}{Term_{BR}}$, recursively defined by:
 \begin{align*}   
-	T_{BR}(p_i) &= x_i,\\
-	T_{BR}(\neg \alpha) &= T_{BR}(\alpha) + 1,\\
-	T_{BR}(\alpha \vee \beta) &= T_{BR}(\alpha) \cdot T_{BR}(\beta) + T_{BR}(\alpha) + T_{BR}(\beta),\\
-	T_{BR}(\alpha \wedge \beta) &= T_{BR}(\alpha) \cdot T_{BR}(\beta),\\
-	T_{BR}(\alpha \to \beta) &= T_{BR}(\alpha) \cdot T_{BR}(\beta) + T_{BR}(\alpha) + 1,\\
-	T_{BR}(\alpha \leftrightarrow \beta) &= T_{BR}(\alpha) + T_{BR}(\beta) + 1. 
+        T_{BR}(p_i) &= x_i,\\
+        T_{BR}(\neg \alpha) &= T_{BR}(\alpha) + 1,\\
+        T_{BR}(\alpha \vee \beta) &= T_{BR}(\alpha) \cdot T_{BR}(\beta) + T_{BR}(\alpha) + T_{BR}(\beta),\\
+        T_{BR}(\alpha \wedge \beta) &= T_{BR}(\alpha) \cdot T_{BR}(\beta),\\
+        T_{BR}(\alpha \to \beta) &= T_{BR}(\alpha) \cdot T_{BR}(\beta) + T_{BR}(\alpha) + 1,\\
+        T_{BR}(\alpha \leftrightarrow \beta) &= T_{BR}(\alpha) + T_{BR}(\beta) + 1. 
 \end{align*}
-This obtains an  immediate  proof  procedure and decision  method for $CPL$, in the sense that
- $\vdash_{CPL} \alpha$ iff  $BR \vDash T_{BR}(\alpha) \approx 1$,
-i.e, iff the translated expression reduces to 1 by cancellation rules of  polynomials with  coefficients
-in $\mathbb{Z}_{2}$.
+This obtains an immediate proof procedure and decision method for $CPL$, in the
+sense that
+$\vdash_{CPL} \alpha$ iff  $BR \vDash T_{BR}(\alpha) \approx 1$,
+i.e, iff the translated expression reduces to 1 by cancellation rules of
+polynomials with  coefficients in $\mathbb{Z}_{2}$.
  
- The  structure   $\mathcal{R}=\langle R,  \n \rangle$ is a \emph{boolean ring with operators} (BRO, or \emph{modal ring})  if $BR$ is a BR and $\fn{\n}{A}{A}$ satisfies:
-	\begin{align*}
-		\n(1) &= 1,\\
-		\n(x \cdot y) &= \n(x) \cdot \n(y).
-	\end{align*}
-BRO defines a   \emph{Polynomial Ring Calculus with Operators} (PRCO) for the  normal modal  logic   $K$. Subsequent  proof  systems for  normal modal logics are obtained by adding  new conditions to this basic PRCO, according to the characteristics of the   necessitation operator. For each of the  the following axioms that   define the systems $KD$, $KT= T$, $KT4 = S4$ and $KT5= S5$,  the specific  conditions are:
-
+The  structure   $\mathcal{R}=\langle R,  \n \rangle$ is a \emph{boolean ring
+with operators} (BRO, or \emph{modal ring})  if $BR$ is a BR and $\fn{\n}{A}{A}$
+satisfies:
+%
+\begin{align*}
+        \n(1) &= 1,\\
+        \n(x \cdot y) &= \n(x) \cdot \n(y).
+\end{align*}
+%
+BRO defines a \emph{Polynomial Ring Calculus with Operators} (PRCO) for the
+normal modal logic $K$. Subsequent proof systems for normal modal logics
+are obtained by adding new conditions to this basic PRCO, according to the
+characteristics of the necessitation operator. For each of the  the following
+axioms that define the systems $KD$, $KT= T$, $KT4 = S4$ and $KT5= S5$,  the
+specific conditions are:
 
 \begin{enumerate}
 \item  For D, $\Box\alpha \to \Diamond \alpha $ defines  PRCO$_{D}$,  the extension of PRCO   by adding:
  \begin{equation*}
-	 \n(0) \vdashp 0 . 
+         \n(0) \vdashp 0 . 
  \end{equation*}
-\item 	For T, $\Box\alpha \to \alpha$ defines PRCO$_{T}$,  the extension of PRCO  by adding:
+\item   For T, $\Box\alpha \to \alpha$ defines PRCO$_{T}$,  the extension of PRCO  by adding:
 \begin{equation*}
-	\n(P) \vdashp P \n(P).
+        \n(P) \vdashp P \n(P).
 \end{equation*}
 \item For S4, $\Box\alpha \to \Box\Box\alpha$  defines PRCO$_{S4}$, the extension of  PRCO$_T$   by adding:
 \begin{align*}
-	&\n(P) \vdashp \n(QR) \mbox{ (if $\mbox{Fact}(P) = Q \n(R)$ and $D(Q) \leq D(R)$)},   \\ 
-	&\n(P) \vdashp \n(\n(Q)R) \mbox{ (if $\mbox{Fact}(P) = Q R$ and $D(Q) < D(R)$)}.  
+        &\n(P) \vdashp \n(QR) \mbox{ (if $\mbox{Fact}(P) = Q \n(R)$ and $D(Q) \leq D(R)$)},   \\ 
+        &\n(P) \vdashp \n(\n(Q)R) \mbox{ (if $\mbox{Fact}(P) = Q R$ and $D(Q) < D(R)$)}.  
  \end{align*} 
   where $Fact(Q)$ denotes the factorization of a modal polynomial $Q$.
-	\item For  S5, $\Diamond\alpha \to \Box\Diamond\alpha$ defines  PRCO$_{S5}$, the extension of  PRCO$_T$   by adding:
+        \item For  S5, $\Diamond\alpha \to \Box\Diamond\alpha$ defines  PRCO$_{S5}$, the extension of  PRCO$_T$   by adding:
 \begin{equation*}
-	\n(P \n(Q) + R) \vdashp \n(Q R + Q P) + \n(Q R) + \n(R). 
+        \n(P \n(Q) + R) \vdashp \n(Q R + Q P) + \n(Q R) + \n(R). 
 \end{equation*}
 \end{enumerate}
 
@@ -75,27 +79,28 @@ BRO defines a   \emph{Polynomial Ring Calculus with Operators} (PRCO) for the  n
 
 
 \begin{clarifications}
-The Polynomial Ring Calculus with Operators (PRCO's) are algebraic proof methods,  
-here devoted to the modal logics K, KD, T, S4, S5 and to intuitionistic logic. 
-They consist of translating formulas of a logical system into polynomials 
-over an adequate field, in such a way that algebraic reductions on polynomials
-allow us to determine whether a formula is or is not a theorem of the respective
-system. The decision procedure works as a proof in algebraic  terms. As shown in  \cite{car:2005}, 
-PRC are particularly applicable to any truth-functional finite-valued propositional logic,
-and can also be applied to non-truth-functional propositional logics, see
-\cite{car-mat:2014} and \cite{car-mat:2015}.
+  The Polynomial Ring Calculus with Operators (PRCO's) are algebraic proof
+  methods,  here devoted to the modal logics K, KD, T, S4, S5 and to
+  intuitionistic logic.  They consist of translating formulas of a logical system
+  into polynomials over an adequate field, in such a way that algebraic reductions
+  on polynomials allow us to determine whether a formula is or is not a theorem of
+  the respective system. The decision procedure works as a proof in algebraic
+  terms. As shown in ~\cite{car:2005}, PRC are particularly applicable to any
+  truth-functional finite-valued propositional logic, and can also be applied to
+  non-truth-functional propositional logics, see~\cite{car-mat:2014}
+  and~\cite{car-mat:2015}.
 \end{clarifications}
 
 \begin{history}
-Polynomial Ring Calculi (PRC) were introduced in \cite{car:2005} and extended  
-in \cite{Carnielli2007}, \cite{agude-car:2011} and  {agude-car:2015}.
-Conceptual discussions and extensions to non-deterministic semantics appear
-in \cite{car-mat:2014} and \cite{car-mat:2015}.
- \end{history}
+  Polynomial Ring Calculi (PRC) were introduced in~\cite{car:2005} and extended
+  in~\cite{Carnielli2007},~\cite{agude-car:2011} and~\cite{agude-car:2015}.
+  Conceptual discussions and extensions to non-deterministic semantics appear
+  in~\cite{car-mat:2014} and~\cite{car-mat:2015}.
+\end{history}
 
 \begin{technicalities}
-Full completeness, several examples and a comparison with other methods are provided in 
-\cite{agude-car:2015}.  
+  Full completeness, several examples and a comparison with other methods are
+  provided in~\cite{agude-car:2015}.  
 \end{technicalities}
 
 
