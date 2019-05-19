@@ -1,0 +1,287 @@
+
+\calculusName{Concept-Script}  
+\calculusLogic{Classical Logic}
+\calculusLogicOrder{Second-Order}
+\calculusType{Axiomatic Calculus}
+\calculusYear{1893}   
+\calculusAuthor{Gottlob Frege} 
+
+\entryTitle{Frege's Concept-Script (\emph{Grundgesetze der Arithmetik})}
+\entryAuthor{Roy T. Cook and Philip A. Ebert and Marcus Rossberg}   
+
+
+\maketitle
+
+\begin{entry}{Frege}  
+
+\begin{calculus}
+
+Frege's six Basic Laws, as presented in his \emph{Grundgesetze der Arithmetik} I (Jena, 1893):\\
+
+{\centering
+
+~ \hfill (I) ~ ~ $\GGassert\GGconditional{\GGnonot a}{\GGconditional{b}{a}}$\,,~~~$\GGassert\GGconditional{a}{a}$ 
+~ \hfill (II\kern1pta) ~ ~  $\GGassert\GGconditional{\GGall{a}f(\mathfrak{a})}{\GGnoquant f(a)}$
+~ \hfill (II\kern1ptb) ~ ~ $\GGassert\GGconditional{\GGall{f} M_\beta({\mathfrak{f}(\beta))}}{\GGnoquant M_\beta(f(\beta))}$ \hfill ~\\
+
+~\\[1ex]
+
+~ \hfill (III) ~ ~ $\GGassert\GGconditional{g(a=b)}{g\GGbracket{\GGall{f}\GGconditional{\mathfrak{f}(b)}{\mathfrak{f}(a)}}}$ 
+~ \hfill (IV) ~ ~ $\GGassert\GGconditional{\GGnot(\GGcontent a) = (\kern4pt\GGnotalone b)}{\GGnonot(\GGcontent a) = (\GGcontent b)}$ \hfill ~\\
+
+~\\[1ex]
+
+~ \hfill (V) ~ ~ $\GGassert (\spirituslenis{\varepsilon} f(\varepsilon) = \spirituslenis{\alpha} g(\alpha)) =  (\GGall{a} f(\mathfrak{a}) = g(\mathfrak{a}))$ ~ \hfill (VI) ~ ~ 
+$\GGassert a = \fgebackslash\spirituslenis{\varepsilon} (a = \varepsilon)$\hfill ~
+}
+
+~
+
+And his rules of inference:\\[-1ex]
+%\begin{minipage}{.48\textwidth}
+%1. \emph{Fusion of horizontals} 
+
+%$  g (\GGcontent (\GGcontent a)) \  \underset{(tacit)}{\rightsquigarrow} \   g (\GGcontent a)$\\ 
+%where the horizontal, \GGcontent, is understood to include the horizontal-stroke portions of \ \GGjudge,\, \GGnotalone,\, \GGconditional{}{}, and\: \GGall{}.\\
+
+%2. \emph{Permutation of subcomponents}
+
+%$\GGjudge\!\cdots\GGconditional{\GGnoquant\GGnoquant\GGnonot\GGtiniestspace\Gamma}{\kern-.7pt\cdots \GGconditional{\GGnoquant\Delta}{\cdots\Sigma}} \  \ \underset{(tacit)}{\rightsquigarrow} \ \ \GGjudge\!\cdots\GGconditional{\GGnoquant\GGnoquant\GGnonot\GGtiniestspace\Delta}{\kern-.7pt\cdots \GGconditional{\GGnoquant\Gamma}{\cdots\Sigma}}$ \\
+
+%3. \emph{Contraposition}
+
+%$\GGjudge\!\cdots\GGconditional{\GGnoquant\GGnoquant\GGnonot\GGtiniestspace\Gamma}{\kern-.7pt\cdots \GGconditional{\GGnoquant\Delta}{\cdots\Sigma}}$
+
+%\hspace{5ex}{\Large{$\times$}}
+
+%$\GGjudge\!\cdots\GGconditional{\GGnoquant\GGnoquant\GGnonot\GGtiniestspace\Delta}{\kern-.7pt\cdots \GGconditional{\GGnoquant\Gamma}{\cdots\Sigma}}$\\
+
+
+%4. \emph{Fusion of equal subcomponent}
+
+%$\GGjudge\!\cdots\GGconditional{\GGnoquant\GGnoquant\GGnonot\GGtiniestspace\Gamma}{\kern-.7pt\cdots \GGconditional{\GGnoquant\Gamma}{\cdots\Sigma}} \  \ \underset{(tacit)}{\rightsquigarrow} \ \ \GGjudge\! \cdots \GGconditional{\GGnoquant\Gamma}{\cdots\Sigma}$ \\
+						
+%\end{minipage} ~~~ 
+\begin{minipage}[t]{.48\textwidth}
+1. \emph{Fusion of horizontals} 
+
+~~~~$ \GGcontent (\GGcontent \Delta) \  \underset{(tacit)}{\rightsquigarrow} \    \GGcontent \Delta$\\ 
+where the horizontal, \GGcontent, is understood to include the horizontal-stroke portions of \, \GGnotalone,\, \GGconditional{}{}, and\: \GGall{}.\\
+
+2. \emph{Permutation of subcomponents}
+
+~~~~$\GGjudge\GGconditional{\GGnonot\Gamma}{\GGconditional{\Delta}{\Sigma}} \  \ \underset{(tacit)}{\rightsquigarrow} \ \ \GGjudge\GGconditional{\GGnonot\Delta}{\GGconditional{\Gamma}{\Sigma}}$ \\
+
+3. \emph{Contraposition} [generalized]
+
+~~~~$\GGjudge\GGconditional{\GGnonot\GGnonot\Gamma}{\GGconditional{\GGnonot\Delta}{\GGconditional{\Theta}{\Sigma}}}$
+
+~~~~\hspace{1.8ex}{\Large{$\times$}}
+
+~~~~$\GGjudge\GGconditional{\GGnonot\GGnonot\GGnonot\Gamma}{\GGconditional{\GGnonot\GGnot\Sigma}{\GGconditional{\GGnonot\Theta}{\GGnot\Delta}}}$\\ 
+
+
+
+4. \emph{Fusion of equal subcomponent}
+
+~~~~$\GGjudge\GGconditional{\GGnonot\Gamma}{\GGconditional{\Gamma}{\Sigma}} \  \ \underset{(tacit)}{\rightsquigarrow} \ \ \GGjudge\GGconditional{\Gamma}{\Sigma}$ \\
+\end{minipage} ~~~~ 
+\begin{minipage}[t]{.48\textwidth}
+5. \emph{Transformation of a Roman into a German letter}
+
+~~~~\begin{tabular}{lcl}
+$\GGjudge f(a)$ & ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ & $\GGjudge M_\beta(f(\beta))$\\
+
+\hspace{1.3ex}\rotatebox{90}{$\left\lgroup\right.$} & and~~~ & \hspace{3ex}\rotatebox{90}{$\left\lgroup\right.$}\\
+
+$\GGjudge \GGall{a} f(\mathfrak{a})$ & & $\GGjudge \GGall{f} M_\beta({\mathfrak{f}(\beta))}$\\
+\end{tabular}
+
+~
+
+6. \emph{Inferring $(a)$} [generalized \emph{modus ponens}]
+
+~~~~~~~~$\GGjudge \Gamma$ \hspace{7ex} ($\alpha$
+
+~\\[-4ex]
+
+~~~~~~~~$\GGjudge\GGconditional{\GGnonot\GGnonot\Delta}{\GGconditional{\GGnonot\Gamma}{\GGconditional{\Theta}{\Sigma}}}$
+
+$(\alpha)$:: \rule[2.2pt]{6ex}{0.5pt}
+
+~~~~~~~~$\GGjudge\GGconditional{\GGnonot\Delta}{\GGconditional{\Theta}{\Sigma}}$\\[1ex]
+%[note: subcomponents $\Delta, \Theta$ need not be present]\\[1ex]
+7. \emph{Inferring $(b)$} [generalized \emph{hypothetical syllogism}]
+
+~~~~~~~~$\GGjudge\GGconditional{\GGnonot\Gamma\hspace{6ex}(\alpha}{\GGconditional{\Delta}{\Sigma}}$
+
+~
+
+~~~~~~~~$\GGjudge\GGconditional{\GGnonot\Upsilon}{\GGconditional{\Theta}{\Delta}}$
+
+$(\alpha)$: $-\,-\,-\ -$
+
+~~~~~~~~$\GGjudge\GGconditional{\GGnonot\GGnonot\Gamma}{\GGconditional{\GGnonot\Upsilon}{\GGconditional{\Theta}{\Sigma}}}$
+\end{minipage}
+\end{calculus}
+
+
+\begin{calculus}
+
+Frege's rules of inference, cont'd:\\[-1ex]
+
+\begin{minipage}[t]{.48\textwidth}
+8. \emph{Inferring $(c)$} [generalized \emph{dilemma}]
+
+~~~~~~~~$\GGjudge\GGconditional{\GGnonot\GGnonot\Gamma\hspace{6ex}(\alpha}{\GGconditional{\GGnonot\Delta}{\GGconditional{\Upsilon}{\Sigma}}}$
+
+~
+
+~~~~~~~~$\GGjudge\GGconditional{\GGnonot\GGnonot\Theta}{\GGconditional{\GGnot\Delta}{\GGconditional{\Xi}{\Sigma}}}$
+
+$(\alpha)$: $-\!\cdot\!-\!\cdot\!-\!\cdot\!-$
+
+~~~~~~~~$\GGjudge\GGconditional{\GGnonot\GGnonot\GGnonot\Gamma}{\GGconditional{\GGnonot\GGnonot\Upsilon}{\GGconditional{\GGnonot\Theta}{\GGconditional{\Xi}{\Sigma}}}}$
+
+
+
+
+
+\end{minipage} ~~~~ 
+\begin{minipage}[t]{.48\textwidth}
+
+9. \emph{Replacement of Roman letters}
+
+Roman letters may uniformly be replaced by other Roman letters, constants, or complex expressions of the appropriate type.
+[Note that since there are no free variables (German letters or Greek vowels), no provision for illicit variable binding is required.]\\[1ex]
+10. \emph{Replacement of German letters}
+
+German letters (bound variables for quantification) may uniformly be replaced by other German letters of the appropriate type, provided the latter is free for the former.\\[1ex]
+11. \emph{Replacement of Greek vowels}
+
+Greek vowels (bound variables for value-range notation) may uniformly be replaced by other Greek vowels, provided the latter is free for the former.\\[1ex]
+\end{minipage}
+
+
+\end{calculus}
+
+\begin{clarifications}
+Frege's $\GGnotalone$\!, $\GGconditional{\zeta}{\xi}$, $\GGall{a}f\varphi(\mathfrak{a})$, $\GGall{f}M_\beta(\mathfrak{f}(\beta))$, and $\zeta = \xi$ correspond, roughly, to contemporary negation, conditional, first-order universal quantification, second-order universal quantification (over unary functions), and identity. In the conditional, $\zeta$ is the \emph{subcomponent} (the antecedent, in contemporary terms) and $\xi$ is the \emph{supercomponent} (the consequent).
+$\spirituslenis{\varepsilon}\,\varphi(\varepsilon)$ is a unary second-level function mapping functions to objects (the value-range operator), and $\fgebackslash\,\xi$ is a unary function mapping objects to objects (the backslash operator, a kind of proto-definite description operator). 
+It is important to note that negation is a \emph{total} unary function mapping objects in the domain to truth values (which are included in the domain); hence, $\GGnotalone 2$ is a name of the True, thus $\GGjudge\GGnot 2$, as Frege notes in \S6 of \emph{Grundgesetze} I \cite{Frege1893}. Likewise, $\GGconditional{\zeta}{\xi}$ names a binary function from objects to truth values, and $\GGall{a}\varphi(\mathfrak{a})$ names a binary function from unary functions to truth values.  Importantly, $\zeta = \xi$, a binary function from objects to truth values, does double duty: as the standard notion of identity, and as a biconditional, expressing that the two arguments name the same truth value. Interestingly, $\zeta = \xi$ does not name the same function as the conjunction of $\GGconditional{\zeta}{\xi}$ and $\GGconditional{\xi}{\zeta}$, although they agree when their inputs are truth values.
+
+For easier legibility, some of the rules above are not given in the full generality in which Frege presents them. Frege notes that multiple embedded conditionals can be analyzed into supercomponent and subcomponent in multiple ways. Hence, we can analyze:
+$$
+\GGconditional{\GGnonot\Delta}{\GGconditional{\Gamma}{\Sigma}}
+$$
+as having $\Sigma$ as supercomponent, and both $\Delta$ and $\Gamma$ as subcomponents, or we can analyze it as having $\GGconditional{\Gamma}{\Sigma}$ as supercomponent, and $\Delta$ as subcomponent. Thus, \emph{Permutation of Subcomponents} allows for the interchange of any two subcomponents on any (single) way of analyzing an expression into supercomponents and subcomponent(s) and, likewise, \emph{Inferring (b)} (Generalized Hypothetical Syllogism) allows the replacement of any subcomponent $\Delta$ in one formula with all subcomponenents from a second formula whose supercomponent is $\Delta$, on any way of analyzing those formulas into supercomponents and subcomponents. Similar comments apply to the other rules.
+This flexibility stems from the fact that, when read from a contemporary perspective, Frege's notation incorporates a systematic (and efficient!) ambiguity. We can understand:
+$$
+\GGconditional{\GGnonot\Delta}{\GGconditional{\Gamma}{\Sigma}}
+$$
+as corresponding both to $(\Delta \rightarrow (\Gamma \rightarrow \Sigma))$ and as $((\Delta \wedge \Gamma) \rightarrow \Sigma)$ (note that these correspond to the two ways of dividing this formula into supercomponent and subconmponent(s).) Hence, a generalized version of exportation is built into the notation, and this justifies the flexibility of Frege's propositional rules of inference.
+
+For more details on Frege's logic, see  \cite{Frege2013}, especially the Translators' Introduction and the Appendix, ``How to Read \emph{Grundgesetze}'', by Roy T.\ Cook.
+
+%[explain `:' vs `::', i.e., minor vs major premise; note re: transition signs]
+\end{clarifications}
+
+\begin{history}
+The formal logic of \emph{Grundgesetze} is an extension of the first formulation of what is essentially modern first- and higher-order predicate logic, which appeared in the earlier \emph{Begriffsschrift} (1879) \cite{Frege1879}. The system in \emph{Begriffsschrift} is, setting aside the problematic treatment of substitution and of identity (see \cite{Boolos1985} for discussion), essentially modern second-order logic. \emph{Grundgesetze} incorporates several innovations not found in the original system of \emph{Begriffsschrift}, including a more sophisticated treatment of identity, and the value-range and backslash operators governed by Basic Laws V and VI respectively. As is well known, however, this expanded system falls prey to the Russell paradox.
+
+Despite the inconsistency of the mature, \emph{Grundgesetze} version of Frege's logic, the system in question represents a copernican revolution in the development of logic, resolving a number of issues that had been plaguing 19$^{th}$ century work in logic, including:
+\begin{itemize}
+\item isolating the quantifier(s) as independent operators that applied to functions;
+\item unifying propositional logic and syllogistic (proto-quantificational) logic;
+\item analyzing logical operators as functions from arguments to truth values;
+\item formalizing propositions with multiple and embedded quantifiers;
+\item extending logical analysis to relations of arity $n > 1$, and to relations with arguments of multiple types.
+\end{itemize}
+These are made possible by Frege's innovation of analyzing sentences into function and argument, as opposed to the subject/predicate analysis as found in syllogistic. As a result of the resolution of these problems, the logic of \emph{Grundgesetze} was the first formal system able to adequately formalize propositions of, and arguments in, contemporary mathematics.
+\end{history}
+
+\end{entry}
+
+
+% \begin{entry}{Frege_misrepresented}  
+
+% \begin{calculus}
+
+% Frege's six Basic Laws, represented in Peano-Russell notation:\\
+
+% {\centering
+
+% ~ \hfill (I) ~ ~ $\vdash a \rightarrow (b \rightarrow a)$\,,~~~$\vdash a \rightarrow a$ 
+% ~ \hfill (II\kern1pta) ~ ~  $\vdash \forall x \, f(x) \rightarrow f(a)$
+% ~ \hfill (II\kern1ptb) ~ ~ $\vdash \forall X \, M_y(X(y)) \rightarrow M_y(f(y))$ \hfill ~\\
+
+% ~\\
+
+% ~ \hfill (III) ~ ~ $\vdash g(a=b) \rightarrow g(\forall X \, X(b) \rightarrow X(a))$ 
+% ~ \hfill (IV) ~ ~ $\vdash \neg (a \leftrightarrow \neg b) \rightarrow (a \leftrightarrow b)$ \hfill ~\\
+
+% \hspace{15ex} $\vdash g(a \leftrightarrow b) \rightarrow g(\forall X \, X(b) \rightarrow X(a))$ \hfill ~ \\
+
+% ~\\
+
+% ~ \hfill (V) ~ ~ $\vdash \spirituslenis{\varepsilon} f(\varepsilon) = \spirituslenis{\alpha} g(\alpha) \, \leftrightarrow \, \forall  x \,  (f(x) = g(x))$ ~ \hfill (VI) ~ ~ 
+% $\vdash a = \fgebackslash\spirituslenis{\varepsilon} (a = \varepsilon)~~~~\text{(VI)}$\hfill ~
+
+% }
+
+
+% ~
+
+
+% And his rules of inference, likewise:
+
+% ~
+
+% \begin{minipage}[t]{.48\textwidth}
+% 1. \emph{Fusion of horizontals}\\[1ex]
+% (nothing corresponding in Peano-Russell notation)\\
+
+% 2. \emph{Permutation of antecedents}\\[1ex]
+% \infer{\vdash b \rightarrow (a \rightarrow c)}{\vdash a \rightarrow (b \rightarrow c)}\\
+
+% 3. \emph{Generalized contraposition}\\[1ex]
+% \infer{\vdash a \rightarrow (\neg d \rightarrow (c \rightarrow \neg b))}{\vdash a \rightarrow (b \rightarrow (c \rightarrow d))}\\
+
+% 4. \emph{Fusion of equal antecedents}\\[1ex]
+% \infer{\vdash a \rightarrow b}{\vdash a \rightarrow (a \rightarrow b)}\\
+
+% 5. \emph{Universal generalization}\\[1ex]
+% \infer[~~~~~~~~\textup{and}~~~~~~~~]{\vdash \forall x F(x)}{\vdash F(a)}  \infer{\vdash \forall X\, M_y(X(y))}{\vdash M_y(f(y))} 
+% \end{minipage} ~~~~ 
+% \begin{minipage}[t]{.48\textwidth}
+
+% 6. \emph{Inferring $(a)$} [generalized \emph{modus ponens}]\\[1ex]
+% \infer{\vdash a \rightarrow (c \rightarrow d)}{\vdash a \rightarrow (b \rightarrow (c \rightarrow d)) & \vdash b}\\[1ex]
+% %[note: `$ a \ \rightarrow$' need not be present]\\
+
+% 7. \emph{Inferring $(b)$} [generalized \emph{hypothetical syllogism}]\\[1ex]
+% \infer{\vdash a \rightarrow (d \rightarrow (e \rightarrow c))}{\vdash d \rightarrow (e \rightarrow b) & \vdash a \rightarrow (b \rightarrow c) }\\
+
+% 8. \emph{Inferring $(b)$} [generalized \emph{dilemma}]\\[1ex]
+% \infer{\vdash a \rightarrow (b \rightarrow (d \rightarrow (e \rightarrow f)))}{\vdash a \rightarrow (c \rightarrow (b \rightarrow f)) & \vdash d \rightarrow (\neg c \rightarrow (e \rightarrow f))}\\
+
+% 9. \emph{Replacement of Roman letters}
+
+% (analogous to formulation above)\\[1ex]
+% 10. \emph{Replacement of bound quantification variables}
+
+% (analogous to formulation above)\\[1ex]
+% 11. \emph{Replacement of Greek vowels}
+
+% (analogous to formulation above)
+% \end{minipage}
+
+
+% \end{calculus}
+
+% \begin{clarifications}
+% We have included versions of Frege's axioms and rules in modern notation only to assist the reader in sussing out the general shape of his system, and we \emph{emphatically} warn the reader against interpreting Frege's actual notations as synonymous or in any way equivalent to modern day notation (either these paraphrases or any others). The expressions in Frege's logic are not ``sentences'' in the modern sense (although they are called such by Frege, in a technical use of this term specific to his system). Instead, these expressions are (with the exception of those formulas involving the Roman letter generality device; see Heck \cite{Heck2012}, ch.\,3, for discussion of Roman letters in \emph{Grundgesetze}) names of truth values. Translating Frege's notation mechanically into modern symbols, rather than achieving literacy with his system as he presents it, can lead to misreadings and misunderstandings, since, for example, his second-order quantifiers range over first-level functions on the domain (not concepts or properties), and his logical operators are total functions from entities of the appropriate sort to objects in the domain.
+% \end{clarifications}
+
+% \end{entry}
+
