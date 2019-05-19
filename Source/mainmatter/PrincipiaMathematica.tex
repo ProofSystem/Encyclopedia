@@ -1,0 +1,111 @@
+\calculusName{Principia Mathematica}       
+\calculusAcronym{}         
+\calculusLogic{Classical Logic}      
+\calculusLogicOrder{First-Order}
+\calculusType{Hilbert-Style}
+\calculusYear{1910}     
+
+\calculusAuthor{Bertrand A. Russel}
+\calculusAuthor{Alfred N. Whitehead}
+
+
+\entryTitle{Principia Mathematica}    
+\entryAuthor{Bernard Linsky}  
+
+
+\maketitle
+
+
+\begin{entry}{Principia Mathematica}  
+
+
+
+
+\begin{calculus}
+
+\textbf{Axioms:}
+\begin{enumerate}
+\item $ ( p\; {\scriptstyle \vee} \;  p )  \supset  \;  p $ 
+
+\item $\; q \;  \supset (  p \;  {\scriptstyle \vee} \; q ) $ 
+
+\item $( p \;  {\scriptstyle \vee} \; q  ) \supset ( q \;  {\scriptstyle \vee} \; p )  $ 
+
+ 
+\item  $  p \;  {\scriptstyle \vee} \; (q \;  {\scriptstyle \vee} \;r ) \;  \supset . \; q \;  {\scriptstyle \vee} \; (p \;  {\scriptstyle \vee} \;r  )   $
+
+\item  $ ( q \supset r    )  \supset . \; (p \;  {\scriptstyle \vee} \; q \; ) \supset (\; p \;  {\scriptstyle \vee} \; r ) $ 
+
+
+\item Universal Instantiation: 
+$ \forall \nu_{\tau} \; \psi \; \supset \;  \psi '$ \\ where $\psi '$ is like $\psi$ except for having a term $\nu$ of r - type $\tau$ substituted for $\nu_{\tau}$ in $\psi$.
+
+
+\item Comprehension: $\exists \phi \: \forall x_1 \: \ldots \forall x_m \: [ \phi (x_1, \ldots , x_m) \equiv \psi], (\phi \mathrm{\; not \; free \; in\; } \psi)$
+
+
+\item Axiom of Reducibility: \\ $ \forall \psi \: \exists \phi \: \forall x_1 \ldots \forall x_m \: [ \phi ! (x_1, \ldots , x_m) \equiv \psi  (x_1, \ldots , x_m)]$
+
+
+
+\end{enumerate}
+
+
+\textbf{Rules:}
+
+
+\begin{enumerate}
+\item Modus Ponens:  \[ \frac{\phi \; \; \; \phi \supset \psi}{\psi} \]
+
+\item  Substitution for individual, functional and propositional variables of each type. 
+
+\item  Universal Generalization: \[ \frac{\phi}{\forall \nu_{\tau} \: \phi}  \]
+\end{enumerate}
+
+
+
+\textbf{Definition of Identity:}
+\begin{enumerate}
+\item[] $ x = y \;\; =_{df} \;\; \forall \phi \: [\phi ! (x) \equiv \phi ! (y) ]$, (for $\phi !$ a  predicative function)
+\end{enumerate}
+
+
+\end{calculus}
+
+
+\begin{clarifications}
+{\bf Primitive connectives} are $ \vee $ and $\sim$. The connective $p \: \supset \: q$ is defined as $ \sim p \: \vee \: q$ and the conjunction $p\: . \: q$ as $\sim \! (\sim \! p \: \vee \: \sim \! q)$.
+
+{\bf {\em r-types}} :
+The system of symbols for {\em r-types} ({\em ramified types}) and the assignment of  r-types to variables for different entities (individuals and functions) is as follows:
+$\iota$ is the r-type for an {\em individual}. Where $\tau_1 
+\ldots, \tau_m$ are any r-types, then $(\tau_1 
+\ldots, \tau_m) / n$ is  the r-type of any $m$-ary propositional function of {\em level} $n$, which has arguments of r- types $\tau_1 
+\ldots, \tau_m$, respectively. 
+ The {\em order} of an individual  is 0.
+The {\em order} of a function of r-type $\tau_1 
+\ldots, \tau_m / n$ is $n+N$ where $N$ is the greatest of the order of the arguments $\tau_1 
+\ldots, \tau_m$.
+
+{\bf Typical ambiguity} All statements of axioms and rules apply in each r-type.
+
+{\bf Restriction on comprehension principle} The comprehension principle avoid paradox by imposing the following restriction on the function $\phi$: $\phi$ is a functional variable of r-type $(\beta_1, \beta_2, \ldots, \beta_m )/ n$ and $x_1, \ldots , x_m$ are distinct variables of r -types $\beta_1, \beta_2, \ldots, \beta_m$, and the bound variables of $A$ are all of order less than the order of $\phi$ and the free variables of $A$ and constants occurring in $A$ are all of order not greater than the order of $\phi$.
+
+
+{\bf Predicative functions} The notation $\phi !$ indicates that the function $\phi$ is {\em predicative}, that is,  the variables $x_1, \ldots , x_m$ are of r-types $\beta_1, \beta_2, \ldots, \beta_m$ respectively and $\phi$ is of r-type $(\beta_1, \beta_2, \ldots, \beta_m )/1 $ and $\psi$ is of r-type $(\beta_1, \beta_2, \ldots, \beta_m) /n $. 
+
+{\bf The ``Multiplicative Axiom'' (Axiom of Choice)  and ``Axiom of Infinity''}. These sentences are not axioms of the formal system, but rather appear in theorems as the antecedents of conditional theorems when used to derive the consequent. 
+
+{\bf Adequacy of the Definition of Identity} The Axiom of Reducibility guarantees that if for any $\psi$ of any r-type,  $\exists \psi \sim \! [\psi (x) \equiv \psi (y)] $, then $x \neq y$. 
+\end{clarifications}
+
+\begin{history}
+The system was published in [1]. This formulation, and most notably, the system of {\em r-types} follows that of Church [2]. Church also adds a Comprehension principle, and rule of Substitution, neither of which are explicit in [1]. See [4] for an account of Whitehead and Russell's notation and [5] for a survey of the contents of [1].
+\end{history}
+
+\begin{technicalities}
+In 1926 Paul Bernays [3] showed that the axioms can be reduced by one, as axiom 4 can be proved from 1,2,3 and 5.
+\end{technicalities}
+
+
+\end{entry}
