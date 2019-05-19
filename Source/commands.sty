@@ -4,7 +4,8 @@
 
 \newcommand{\myline}{\noindent\makebox[\linewidth]{\rule{\textwidth}{0.4pt}}}
 
-\newcommand{\includeProofSystem}[1]{\input{mainmatter/#1}}
+\newcommand{\includeProofSystem}[1]{\mathversion{#1}\input{mainmatter/#1}\mathversion{normal}}
+
 
 \newcommand{\iref}[1]{\{\ref{entry:#1}\}}
 \newcommand{\irefmissing}[1]{}
