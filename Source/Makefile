@@ -4,15 +4,18 @@ MAKEINDEX=makeindex
 
 
 all : main.tex proofsystems.tex frontmatter/*.tex backmatter/*.tex mainmatter/*.tex bibliographies/*.bib 
-	$(TEX) -interaction nonstopmode $<
+	#$(TEX) -interaction nonstopmode $<
+	$(TEX) $<
 	$(BIBTEX) --recodedata=recode_data.xml main
 	$(MAKEINDEX)  logics
 	$(MAKEINDEX)  calculusTypes
 	$(MAKEINDEX)  authors
 	$(MAKEINDEX)  calculusAuthors
 	$(MAKEINDEX)  implementations
-	$(TEX) -interaction nonstopmode $<
-	$(TEX) -interaction nonstopmode $<
+	#$(TEX) -interaction nonstopmode $<
+	#$(TEX) -interaction nonstopmode $<
+	$(TEX) $<
+	$(TEX) $<
 
 
 cleanaux : 
