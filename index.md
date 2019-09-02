@@ -4,18 +4,7 @@ follows a given template and is preferably exactly one page (and no more than tw
 displaying the inference rules of the proof system and a few
 clarifications and technical or historical remarks.
 
-This project is currently coordinated and maintained by [Bruno Woltzenlogel Paleo](http://paleo.woltzenlogel.org).
-
-
-Upcoming Tableaux/FroCoS/ITP Event
-----------------------------------
-
-To promote the encyclopaedia, [Giselle Reis](http://www.gisellereis.com) and [Bruno Woltzenlogel Paleo](http://paleo.woltzenlogel.org) are organizing an event affiliated with the [Tableaux](http://tableaux2017.cic.unb.br), [FroCoS](http://frocos2017.cic.unb.br/) and [ITP](http://itp2017.cic.unb.br/) conferences in Brasilia, the capital of Brazil. The event will consist of:
-
-* a poster session in the afternoon of the 24th of September 2017, during which submitted entries will be displayed as posters.
-* an interactive and hands-on meeting in the morning of the 25th of September 2017, for those who would like to contribute to the continuous improvement of the Encyclopaedia. The activities planned for this meeting will be announced closer to the event.
-
-For this event, **entries should be submitted before the 1st of August 2017**.
+This project is currently coordinated and maintained by [Bruno Woltzenlogel Paleo](http://paleo.woltzenlogel.org) and [Giselle Reis](http://www.gisellereis.com).
 
 
 Submission Instructions
@@ -35,7 +24,7 @@ When compiled, your entry should have exactly one page. If your proof system has
 Please conform to the examples.
 
 
-**If you have a Github account and are familiarised with git**, you should:
+**Only submissions in the form of GitHub pull requests will be accepted**. You should:
 
 1. [fork the repository](https://github.com/ProofSystem/Encyclopedia/fork) to your own account and clone it to your local machine;
 
@@ -51,24 +40,7 @@ Please conform to the examples.
 
 7. commit your changes and push them to your forked repository;
 
-8. Make a *pull request* of your changes. (The coordinator will then merge your changes back into this repository); 
-
-
-**If you do not know how to use git and Github**, you may instead:
-
-1. [download the encyclopedia](https://github.com/ProofSystem/Encyclopedia/zipball/master)
-
-2. add your ".tex" file to the [/mainmatter](https://github.com/ProofSystem/Encyclopedia/blob/master/Source/mainmatter) folder;
-
-3. add your ".bib" file to the [/bibliographies](https://github.com/ProofSystem/Encyclopedia/blob/master/Source/bibliographies) folder;
-
-4. link your ".tex" file to the rest of the encyclopedia by writing an ```\includeProofSystem``` statement in the [proofsystems.tex](https://github.com/ProofSystem/Encyclopedia/blob/master/Source/proofsystems.tex) file;
-
-5. link your ".bib" file to the rest of the encyclopedia by writing an ```\addbibresource``` statement in the [bibliographies.sty](https://github.com/ProofSystem/Encyclopedia/blob/master/Source/bibliographies.sty) file;
-
-6. compile (see instructions below) and check that everything is fine (e.g. no overfull hboxes);
-
-7. [Send to the coordinators](mailto:eps-coordinators@googlegroups.com) your ".tex" and ".bib" files. 
+8. Using GitHub, make a *pull request* of your forked repository. (The coordinator will then merge your changes back into this repository, if the entry is accepted); 
 
 
 Compilation Instructions
@@ -120,21 +92,31 @@ Submission to the online repository is currently open.
 Citations
 ---------
 
-If you would like to cite the whole encyclopaedia, please use the following BibTeX entry:
+If you would like to cite the whole encyclopaedia, please use the following BibTeX entries:
 
-    @book{EPS,
+    @book{EPS1,
       title = {Towards an Encyclopaedia of Proof Systems},   
       editor = {Woltzenlogel Paleo, Bruno}, 
       publisher = {College Publications}, 
       address = {London, UK},
       url = {https://github.com/ProofSystem/Encyclopedia/blob/master/main.pdf},
       year = {2017},
-      month = {1},
       edition = {1},
       isbn = {978-1-84890-233-6}
     }
+    
+    @book{EPS2,
+      title = {An Encyclopaedia of Proof Systems: Second Edition},   
+      editor = {Woltzenlogel Paleo, Bruno and Reis, Giselle}, 
+      publisher = {College Publications}, 
+      address = {London, UK},
+      url = {https://github.com/ProofSystem/Encyclopedia/blob/master/main.pdf},
+      year = {2018},
+      edition = {2},
+      isbn = {978-1-84890-233-6}
+    }
 
-If you would like to cite a single entry of the encyclopaedia, please use the following BibTeX entry (replacing bracketed placeholders by content corresponding to the entry):
+If you would like to cite a single entry of the encyclopaedia, please use the following BibTeX entries (replacing bracketed placeholders by content corresponding to the entry):
 
     @incollection{[bibentry key],
       booktitle = {Towards an Encyclopaedia of Proof Systems},
@@ -146,10 +128,21 @@ If you would like to cite a single entry of the encyclopaedia, please use the fo
       address = {London, UK},
       url       = {https://github.com/ProofSystem/Encyclopedia/blob/master/main.pdf},
       year      = {2017},
-      month = {1},
       edition = {1}
     }
 
+    @incollection{[bibentry key],
+      booktitle = {An Encyclopaedia of Proof Systems: Second Edition},
+      editor = {Woltzenlogel Paleo, Bruno and Reis, Giselle},
+      title = {[entry title]},
+      author    = {[entry authors]},
+      pages     = {[page range of the entry]}, 
+      publisher = {College Publications}, 
+      address = {London, UK},
+      url       = {https://github.com/ProofSystem/Encyclopedia/blob/master/main.pdf},
+      year      = {2018},
+      edition = {2}
+    }
 
 Related Community-Wide Initiatives
 ----------------------------------
