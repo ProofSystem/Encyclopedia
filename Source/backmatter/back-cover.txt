@@ -1,4 +1,0 @@
-
-
-This book contains the first results of a community-wide initiative to provide a reliable, technically accurate, historically informative, uniform and concise collection of logical calculi, adopting a broad and bottom-up approach to questions concerning the nature of logic and deductive inference. The encyclopaedia already includes 64 proof systems, spanning a wide variety of logics (e.g. classical, intuitionistic, linear and modal logics) and deduction styles (e.g. resolution/superposition, natural deduction, sequent calculi and tableaux). Although this large number of calculi illustrates well how much proof theory and automated reasoning have flourished recently, it is still small compared to the number of calculi that have been invented or discovered so far. Therefore, the encyclopaedia remains a work in progress and further contributions describing proof systems that are not yet included here are welcome for future editions.
-
