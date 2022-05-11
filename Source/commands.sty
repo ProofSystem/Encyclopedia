@@ -285,3 +285,15 @@
   \forloop{i}{0}{\value{i} < \value{cacounter}}{\indexCalculusAuthor{\getauthor{\thei}}}
   \forloop{i}{0}{\value{i} < \value{implementationcounter}}{\indexImplementation{\@calculusName!\getimplementation{\thei}}}
 }
+
+% Use \PrintMathFronts anywhere in the document to see the math fonts
+% that are being used at that point.
+% (Useful for debugging "Too many math alphabets" error)
+\newcommand{\PrintMathFonts}{%
+  \typeout{*** Math fonts list ***}
+  \count255=0
+  \loop\ifnum\count255<16
+    \typeout{(\the\count255: \the\textfont\count255 = \fontname\textfont\count255)}
+    \advance\count255 by 1
+  \repeat
+  \typeout{***}}
